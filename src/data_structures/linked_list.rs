@@ -97,6 +97,7 @@ impl<T> LinkedList<T> {
     }
 }
 
+#[cfg(test)]
 mod tests {
     use crate::data_structures::linked_list::LinkedList;
 
