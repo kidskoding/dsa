@@ -96,6 +96,19 @@ impl<T> Stack<T> {
     pub fn is_empty(&self) -> bool {
         self.top == -1
     }
+    
+    /// Return the size of the `Stack`
+    /// 
+    /// # Examples
+    /// 
+    /// ```
+    /// let mut stack: Stack<i32> = Stack::new();
+    /// stack.push(10).unwrap();
+    /// stack.push(20).unwrap();
+    /// stack.pop();
+    /// assert_eq!(stack.size(), 1);
+    /// ```
+    pub fn size(&self) -> isize { self.top + 1 }
 }
 
 #[cfg(test)]
@@ -124,5 +137,14 @@ mod tests {
         stack.push(20).unwrap();
         stack.pop();
         assert_eq!(stack.peek(), Some(&10));
+    }
+    
+    #[test]
+    fn test_stack_size() {
+        let mut stack: Stack<i32> = Stack::new();
+        stack.push(10).unwrap();
+        stack.push(20).unwrap();
+        stack.pop();
+        assert_eq!(stack.size(), 1);
     }
 }
