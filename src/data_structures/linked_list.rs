@@ -1,15 +1,4 @@
-/// A node in a `LinkedList`
-///
-/// This structure represents a single node that stores a value of type `T`
-/// and optionally links to the next node in the list.
-pub struct Node<T> {
-    /// The value stored in this node.
-    value: T,
-
-    /// The next node in this `LinkedList`
-    /// or `None` if this is the last node.
-    next: Option<Box<Node<T>>>,
-}
+use crate::data_structures::node::Node;
 
 /// A singly-linked list.
 ///
@@ -48,10 +37,13 @@ impl<T> LinkedList<T> {
     /// assert!(!list.is_empty());
     /// ```
     pub fn push_front(&mut self, value: T) {
-        let new_node = Box::new(Node {
-            value,
-            next: self.head.take(),
-        });
+        let mut new_node = Box::new(
+            Node::new(
+                value,
+            )
+        );
+
+        new_node.set_next(self.head.take());
         self.head = Some(new_node);
     }
 
@@ -72,8 +64,9 @@ impl<T> LinkedList<T> {
     /// ```
     pub fn pop_front(&mut self) -> Option<T> {
         if let Some(node) = self.head.take() {
-            self.head = node.next;
-            Some(node.value)
+            let (value, next) = node.destructure();
+            self.head = next;
+            Some(value)
         } else {
             None
         }
