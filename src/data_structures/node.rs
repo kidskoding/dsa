@@ -4,11 +4,11 @@
 /// and optionally links to the next node in the list.
 pub struct Node<T> {
     /// The value stored in this node.
-    value: T,
+    pub value: T,
 
     /// The next node in this `LinkedList`
     /// or `None` if this is the last node.
-    next: Option<Box<Node<T>>>,
+    pub next: Option<Box<Node<T>>>,
 }
 
 impl<T> Node<T> {
