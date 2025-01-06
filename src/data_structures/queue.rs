@@ -40,7 +40,8 @@ impl<T> Queue<T> {
     pub fn enqueue(&mut self, value: T) {
         let new_node = Box::new(
             Node::new(
-                value
+                value,
+                None
             )
         );
 
@@ -53,7 +54,7 @@ impl<T> Queue<T> {
             self.rear = new_node_ptr
         } else {
             unsafe {
-                (*self.rear).set_next(Some(Box::from_raw(new_node_ptr)));
+                (*self.rear).next = Some(Box::from_raw(new_node_ptr));
                 self.rear = new_node_ptr
             }
         }
@@ -78,16 +79,15 @@ impl<T> Queue<T> {
             return None;
         }
 
-        let old_front = self.front.take();
-        let (value, next) = old_front?.destructure();
-        self.front = next;
+        let old_front = self.front.take().unwrap();
+        self.front = old_front.next;
         if self.front.is_none() {
             self.rear = std::ptr::null_mut();
         }
 
         self.size -= 1;
 
-        Some(value)
+        Some(old_front.value)
     }
 
     /// Returns a reference to the value at the front without removing it.
@@ -101,7 +101,7 @@ impl<T> Queue<T> {
     /// assert_eq!(queue.peek(), Some(&10));
     /// ```
     pub fn peek(&self) -> Option<&T> {
-        self.front.as_ref().map(|node| node.get_value())
+        self.front.as_ref().map(|node| &node.value)
     }
 
     /// Checks if the `Queue` is empty.
@@ -161,7 +161,7 @@ mod tests {
         queue.enqueue(10);
         queue.enqueue(20);
 
-        assert_eq!(queue.peek(), Some(&10));
+        assert_eq!(queue.peek(), Some(10).as_ref());
     }
 
     #[test]
@@ -194,7 +194,7 @@ mod tests {
         queue.enqueue(20);
         queue.dequeue();
 
-        assert_eq!(queue.peek(), Some(&20));
+        assert_eq!(queue.peek(), Some(20).as_ref());
     }
 
     #[test]

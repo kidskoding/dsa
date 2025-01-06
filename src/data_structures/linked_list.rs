@@ -40,10 +40,11 @@ impl<T> LinkedList<T> {
         let mut new_node = Box::new(
             Node::new(
                 value,
+                None
             )
         );
 
-        new_node.set_next(self.head.take());
+        new_node.next = self.head.take();
         self.head = Some(new_node);
     }
 
@@ -64,9 +65,8 @@ impl<T> LinkedList<T> {
     /// ```
     pub fn pop_front(&mut self) -> Option<T> {
         if let Some(node) = self.head.take() {
-            let (value, next) = node.destructure();
-            self.head = next;
-            Some(value)
+            self.head = node.next;
+            Some(node.value)
         } else {
             None
         }
