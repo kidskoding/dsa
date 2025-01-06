@@ -69,6 +69,33 @@ fn merge(arr: &mut [i32], mid: usize) {
     }
 }
 
+pub fn quick_sort(arr: &mut [i32]) {
+    if arr.len() <= 1 {
+        return;
+    }
+
+    let pivot_index = partition(arr);
+
+    let (left, right) = arr.split_at_mut(pivot_index);
+    quick_sort(left);
+    quick_sort(&mut right[1..]);
+}
+fn partition(arr: &mut [i32]) -> usize {
+    let pivot_index = arr.len() - 1;
+    let pivot = arr[pivot_index];
+    let mut i = 0;
+
+    for j in 0..arr.len() - 1 {
+        if arr[j] < pivot {
+            arr.swap(i, j);
+            i += 1;
+        }
+    }
+
+    arr.swap(i, pivot_index);
+    i
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -107,6 +134,16 @@ mod tests {
     fn test_merge_sort() {
         let mut arr = [66, 18, 54, 67, 36, 44, 78, 18, 12, 56];
         merge_sort(&mut arr);
+
+        let mut expected = arr;
+        expected.sort();
+
+        assert_eq!(arr, expected);
+    }
+    #[test]
+    fn test_quick_sort() {
+        let mut arr = [66, 18, 54, 67, 36, 44, 78, 18, 12, 56];
+        quick_sort(&mut arr);
 
         let mut expected = arr;
         expected.sort();

@@ -171,7 +171,7 @@ mod tests {
         queue.enqueue(20);
         queue.dequeue();
 
-        assert_eq!(queue.size, 1);
+        assert_eq!(queue.size(), 1);
     }
 
     #[test]
