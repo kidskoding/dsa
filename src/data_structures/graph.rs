@@ -57,6 +57,12 @@ mod tests {
         assert_eq!(graph.graph[&node_b], vec![node_a.clone(), node_c.clone()]);
         assert_eq!(graph.graph[&node_c], vec![node_b.clone()]);
 
+        graph.remove_edge(node_a.clone(), node_b.clone());
+
+        assert_eq!(graph.graph[&node_a], vec![]);
+        assert_eq!(graph.graph[&node_b], vec![node_c.clone()]);
+        assert_eq!(graph.graph[&node_c], vec![node_b.clone()]);
+
         graph.remove_node(node_b.clone());
 
         assert_eq!(graph.graph.len(), 2);
