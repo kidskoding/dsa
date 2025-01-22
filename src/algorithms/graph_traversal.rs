@@ -25,20 +25,24 @@ pub fn breadth_first_search<T: Eq + Hash + Clone>(graph: &Graph<T>, start: TreeN
 }
 
 pub fn depth_first_search<T: Eq + Hash + Clone>(graph: &Graph<T>, start: TreeNode<T>) -> Vec<TreeNode<T>> {
-    let mut visited = Vec::new();
-    depth_first_search_helper(graph, start, &mut visited);
-    visited
+    let mut visited = HashSet::new();
+    let mut result = Vec::new();
+    depth_first_search_helper(graph, start, &mut visited, &mut result);
+    result
 }
-fn depth_first_search_helper<T: Eq + Hash + Clone>(graph: &Graph<T>, node: TreeNode<T>, visited: &mut Vec<TreeNode<T>>) {
+fn depth_first_search_helper<T: Eq + Hash + Clone>(
+    graph: &Graph<T>, node: TreeNode<T>, 
+    visited: &mut HashSet<TreeNode<T>>, 
+    result: &mut Vec<TreeNode<T>>,
+) {
     if visited.contains(&node) {
         return;
     }
-    visited.push(node.clone());
+    visited.insert(node.clone());
+    result.push(node.clone());
     if let Some(neighbors) = graph.graph.get(&node) {
         for neighbor in neighbors {
-            if !visited.contains(&neighbor) {
-                depth_first_search_helper(graph, neighbor.clone(), visited);
-            }
+            depth_first_search_helper(graph, neighbor.clone(), visited, result);
         }
     }
 }
