@@ -23,6 +23,8 @@ pub fn binary_search(array: &[i32], target: i32) -> Option<usize> {
     None
 }
 
+
+
 #[cfg(test)]
 mod tests {
     use crate::algorithms::searching::{binary_search, linear_search};
