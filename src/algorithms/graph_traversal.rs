@@ -1,4 +1,5 @@
-use std::collections::{HashSet, VecDeque};
+use std::cmp::Reverse;
+use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::hash::Hash;
 
 use crate::data_structures::graph::Graph;
@@ -55,17 +56,41 @@ fn depth_first_search_helper<T: Eq + Hash + Clone>(
     }
 }
 
-pub fn dijkstra<T: Eq + Hash + Clone>(
-    graph: &Graph<T>, 
+pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
+    graph: &Graph<T>,
     start: TreeNode<T>
-) -> Vec<(TreeNode<T>, Option<u32>)> {
+) -> HashMap<TreeNode<T>, u32> {
+    let mut distances = HashMap::new();
+    let mut priority_queue = BinaryHeap::new();
     
+    distances.insert(start.clone(), 0);
+    priority_queue.push(Reverse((0, start.clone())));
+    
+    while let Some(Reverse((current_distance, current_node))) = priority_queue.pop() {
+        if current_distance < *distances.get(&current_node).unwrap_or(&u32::MAX) {
+            continue;
+        }
+        
+        if let Some(neighbors) = graph.graph.get(&current_node) {
+            for (neighbor, weight) in neighbors {
+                if let Some(weight) = weight {
+                    let new_distance = current_distance + *weight as u32;
+                    if new_distance < *distances.get(&neighbor).unwrap_or(&u32::MAX) {
+                        distances.insert(neighbor.clone(), new_distance);
+                        priority_queue.push(Reverse((new_distance, neighbor.clone())));
+                    }
+                }
+            }
+        }
+    }
+
+    distances
 }
 
 pub fn bellman_ford<T: Eq + Hash + Clone>(
     graph: &Graph<T>, 
     start: TreeNode<T>
-) -> Vec<(TreeNode<T>, Option<i32>)> {
+) -> HashMap<TreeNode<T>, i32> {
     
 }
 
@@ -133,5 +158,80 @@ mod tests {
         ];
 
         assert_eq!(result, expected);
+    }
+    
+    mod dijkstra_tests {
+        use std::collections::HashMap;
+        use crate::algorithms::graph_traversal::dijkstra;
+        use crate::data_structures::graph::Graph;
+        use crate::data_structures::tree::TreeNode;
+
+        fn create_node<T>(value: T) -> TreeNode<T> {
+            TreeNode { value }
+        }
+
+        #[test]
+        fn test_single_node_graph() {
+            let graph = Graph::new();
+            let start = create_node(1);
+
+            let result = dijkstra(&graph, start);
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(create_node(1), 0 as u32);
+                map
+            };
+            
+            assert_eq!(result, expected);
+        }
+
+        #[test]
+        fn test_simple_graph() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+            let node3 = create_node(3);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(5));
+            graph.add_edge(node2.clone(), node3.clone(), Some(10));
+
+            let result = dijkstra(&graph, node1.clone());
+
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(node1.clone(), 0);
+                map.insert(node2.clone(), 5);
+                map.insert(node3.clone(), 15);
+                map
+            };
+
+            assert_eq!(result, expected);
+        }
+        #[test]
+        fn test_graph_with_multiple_paths() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+            let node3 = create_node(3);
+            let node4 = create_node(4);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(1));
+            graph.add_edge(node1.clone(), node3.clone(), Some(4));
+            graph.add_edge(node2.clone(), node3.clone(), Some(2));
+            graph.add_edge(node2.clone(), node4.clone(), Some(5));
+            graph.add_edge(node3.clone(), node4.clone(), Some(1));
+
+            let result = dijkstra(&graph, node1.clone());
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(node1.clone(), 0);
+                map.insert(node2.clone(), 1);
+                map.insert(node3.clone(), 3);
+                map.insert(node4.clone(), 4);
+                map
+            };
+            
+            assert_eq!(result, expected);
+        } 
     }
 }

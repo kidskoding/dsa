@@ -1,3 +1,5 @@
+use std::cmp::Ordering;
+
 #[derive(Eq, Hash, PartialEq, Clone, Debug)]
 pub struct TreeNode<T> {
     pub value: T,
@@ -7,6 +9,16 @@ impl<T> TreeNode<T> {
         TreeNode {
             value,
         }
+    }
+}
+impl<T: Ord> PartialOrd for TreeNode<T> {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        self.value.partial_cmp(&other.value)
+    }
+}
+impl<T: Ord> Ord for TreeNode<T> {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.value.cmp(&other.value)
     }
 }
 
