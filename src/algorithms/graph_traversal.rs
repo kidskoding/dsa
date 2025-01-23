@@ -38,7 +38,8 @@ pub fn depth_first_search<T: Eq + Hash + Clone>(graph: &Graph<T>, start: TreeNod
     result
 }
 fn depth_first_search_helper<T: Eq + Hash + Clone>(
-    graph: &Graph<T>, node: TreeNode<T>, 
+    graph: &Graph<T>, 
+    node: TreeNode<T>, 
     visited: &mut HashSet<TreeNode<T>>, 
     result: &mut Vec<TreeNode<T>>,
 ) {
@@ -52,6 +53,20 @@ fn depth_first_search_helper<T: Eq + Hash + Clone>(
             depth_first_search_helper(graph, neighbor.clone(), visited, result);
         }
     }
+}
+
+pub fn dijkstra<T: Eq + Hash + Clone>(
+    graph: &Graph<T>, 
+    start: TreeNode<T>
+) -> Vec<(TreeNode<T>, Option<u32>)> {
+    
+}
+
+pub fn bellman_ford<T: Eq + Hash + Clone>(
+    graph: &Graph<T>, 
+    start: TreeNode<T>
+) -> Vec<(TreeNode<T>, Option<i32>)> {
+    
 }
 
 #[cfg(test)]

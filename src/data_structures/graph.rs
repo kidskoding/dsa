@@ -3,7 +3,7 @@ use std::hash::Hash;
 use crate::data_structures::tree::TreeNode;
 
 pub struct Graph<T> {
-    pub graph: HashMap<TreeNode<T>, Vec<(TreeNode<T>, Option<u32>)>>,
+    pub graph: HashMap<TreeNode<T>, Vec<(TreeNode<T>, Option<i32>)>>,
 }
 
 impl<T: Eq + Hash + Clone> Graph<T> {
@@ -24,7 +24,7 @@ impl<T: Eq + Hash + Clone> Graph<T> {
         self.graph.retain(|k, _| k != &node);
     }
 
-    pub fn add_edge(&mut self, a: TreeNode<T>, b: TreeNode<T>, weight: Option<u32>) {
+    pub fn add_edge(&mut self, a: TreeNode<T>, b: TreeNode<T>, weight: Option<i32>) {
         self.graph
             .entry(a.clone())
             .or_insert(Vec::new())
