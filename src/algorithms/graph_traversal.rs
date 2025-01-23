@@ -4,23 +4,30 @@ use std::hash::Hash;
 use crate::data_structures::graph::Graph;
 use crate::data_structures::tree::TreeNode;
 
-pub fn breadth_first_search<T: Eq + Hash + Clone>(graph: &Graph<T>, start: TreeNode<T>) -> Vec<TreeNode<T>> {
+pub fn breadth_first_search<T: Eq + Hash + Clone>(
+    graph: &Graph<T>,
+    start: TreeNode<T>,
+) -> Vec<TreeNode<T>> {
     let mut visited = HashSet::new();
     let mut queue = VecDeque::new();
     let mut result = Vec::new();
+
     queue.push_back(start.clone());
-    visited.insert(start);
+    visited.insert(start.clone());
+
     while let Some(node) = queue.pop_front() {
         result.push(node.clone());
-        if let Some(neighbors) = graph.graph.get(&node.clone()) {
-            for neighbor in neighbors {
-                if !visited.contains(&neighbor) {
+
+        if let Some(neighbors) = graph.graph.get(&node) {
+            for (neighbor, _) in neighbors {
+                if !visited.contains(neighbor) {
                     queue.push_back(neighbor.clone());
                     visited.insert(neighbor.clone());
                 }
             }
         }
     }
+
     result
 }
 
@@ -41,22 +48,10 @@ fn depth_first_search_helper<T: Eq + Hash + Clone>(
     visited.insert(node.clone());
     result.push(node.clone());
     if let Some(neighbors) = graph.graph.get(&node) {
-        for neighbor in neighbors {
+        for (neighbor, _) in neighbors {
             depth_first_search_helper(graph, neighbor.clone(), visited, result);
         }
     }
-}
-
-pub fn dijkstra<T: Eq + Hash + Clone>(graph: &Graph<T>) -> Vec<TreeNode<T>> {
-    let mut visited = HashSet::new();
-    let mut result = Vec::new();
-    result
-}
-
-pub fn bellman_ford<T: Eq + Hash + Clone>(graph: &Graph<T>) -> Vec<TreeNode<T>> {
-    let mut visited = HashSet::new();
-    let mut result = Vec::new();
-    result
 }
 
 #[cfg(test)]
@@ -81,10 +76,10 @@ mod tests {
         graph.add_node(node_d.clone());
         graph.add_node(node_e.clone());
 
-        graph.add_edge(node_a.clone(), node_b.clone());
-        graph.add_edge(node_a.clone(), node_c.clone());
-        graph.add_edge(node_b.clone(), node_d.clone());
-        graph.add_edge(node_b.clone(), node_e.clone());
+        graph.add_edge(node_a.clone(), node_b.clone(), None);
+        graph.add_edge(node_a.clone(), node_c.clone(), None);
+        graph.add_edge(node_b.clone(), node_d.clone(), None);
+        graph.add_edge(node_b.clone(), node_e.clone(), None);
     
         graph
     }
