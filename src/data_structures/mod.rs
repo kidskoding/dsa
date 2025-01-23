@@ -4,3 +4,4 @@ pub(crate) mod stack;
 pub(crate) mod queue;
 pub(crate) mod tree;
 pub(crate) mod graph;
+mod weighted_graph;

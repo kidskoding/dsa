@@ -47,6 +47,18 @@ fn depth_first_search_helper<T: Eq + Hash + Clone>(
     }
 }
 
+pub fn dijkstra<T: Eq + Hash + Clone>(graph: &Graph<T>) -> Vec<TreeNode<T>> {
+    let mut visited = HashSet::new();
+    let mut result = Vec::new();
+    result
+}
+
+pub fn bellman_ford<T: Eq + Hash + Clone>(graph: &Graph<T>) -> Vec<TreeNode<T>> {
+    let mut visited = HashSet::new();
+    let mut result = Vec::new();
+    result
+}
+
 #[cfg(test)]
 mod tests {
     use std::hash::Hash;
