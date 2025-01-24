@@ -87,16 +87,47 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
     distances
 }
 
-pub fn bellman_ford<T: Eq + Hash + Clone>(
-    graph: &Graph<T>, 
+pub fn bellman_ford<T: Eq + Hash + Clone + Ord>(
+    graph: &Graph<T>,
     start: TreeNode<T>
-) -> HashMap<TreeNode<T>, i32> {
-    
-}
+) -> Result<HashMap<TreeNode<T>, i32>, &str> {
+    let mut distances = HashMap::new();
+    distances.insert(start.clone(), 0);
+    let num_vertices: i32 = graph.graph.len() as i32;
+
+    for _ in 0..num_vertices - 1 {
+        for (node, neighbors) in &graph.graph {
+            if let Some(&current_distance) = distances.get(&node) {
+                for (neighbor, weight) in neighbors {
+                    let new_distance = current_distance + weight.unwrap();
+                    let existing_distance = distances.entry(neighbor.clone()).or_insert(i32::MAX);
+                    if new_distance < *existing_distance {
+                        *existing_distance = new_distance;
+                    }
+                }
+            }
+        }
+    }
+
+    for (node, neighbors) in &graph.graph {
+        if let Some(&current_distance) = distances.get(&node) {
+            for (neighbor, weight) in neighbors {
+                let new_distance = current_distance + weight.unwrap();
+                if let Some(existing_distance) = distances.get(neighbor) {
+                    if new_distance < *existing_distance {
+                        return Err("Graph contains a negative weight cycle! \
+                            Bellman-Ford will not be accurate for this graph");
+                    }
+                }
+            }
+        }
+    }
+
+    Ok(distances)
+} 
 
 #[cfg(test)]
 mod tests {
-    use std::hash::Hash;
     use crate::algorithms::graph_traversal::{breadth_first_search, depth_first_search};
     use crate::data_structures::graph::Graph;
     use crate::data_structures::tree::TreeNode;
@@ -233,5 +264,135 @@ mod tests {
             
             assert_eq!(result, expected);
         } 
+    }
+    mod bellman_ford_tests {
+        use std::collections::HashMap;
+        
+        use crate::algorithms::graph_traversal::bellman_ford;
+        use crate::data_structures::graph::Graph;
+        use crate::data_structures::tree::TreeNode;
+
+        fn create_node<T>(value: T) -> TreeNode<T> {
+            TreeNode { value }
+        }
+
+        #[test]
+        fn test_single_node_graph() {
+            let graph = Graph::new();
+            let start = create_node(1);
+
+            let result = bellman_ford(&graph, start);
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(create_node(1), 0);
+                Ok(map)
+            };
+
+            assert_eq!(result, expected);
+        }
+
+        #[test]
+        fn test_simple_graph() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+            let node3 = create_node(3);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(5));
+            graph.add_edge(node2.clone(), node3.clone(), Some(10));
+
+            let result = bellman_ford(&graph, node1.clone());
+
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(node1.clone(), 0);
+                map.insert(node2.clone(), 5);
+                map.insert(node3.clone(), 15);
+                Ok(map)
+            };
+
+            assert_eq!(result, expected);
+        }
+
+        #[test]
+        fn test_graph_with_negative_weights() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+            let node3 = create_node(3);
+            let node4 = create_node(4);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(1));
+            graph.add_edge(node1.clone(), node3.clone(), Some(4));
+            graph.add_edge(node2.clone(), node3.clone(), Some(-2));
+            graph.add_edge(node2.clone(), node4.clone(), Some(-5));
+            graph.add_edge(node3.clone(), node4.clone(), Some(1));
+
+            let result = bellman_ford(&graph, node1.clone());
+
+            assert!(result.is_err(), "Expected negative cycle error, got {:?}", result);
+        }
+        
+        #[test]
+        fn test_negative_cycle() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+            let node3 = create_node(3);
+            let node4 = create_node(4);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(1));
+            graph.add_edge(node1.clone(), node3.clone(), Some(4));
+            graph.add_edge(node2.clone(), node3.clone(), Some(2));
+            graph.add_edge(node2.clone(), node4.clone(), Some(5));
+            graph.add_edge(node3.clone(), node4.clone(), Some(1));
+
+            graph.add_edge(node4.clone(), node2.clone(), Some(-10)); 
+
+            let result = bellman_ford(&graph, node1.clone());
+
+            assert!(result.is_err(), "Expected negative cycle error, got {:?}", result);
+        }
+
+        #[test]
+        fn test_disconnected_graph() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+            let node3 = create_node(3);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(5));
+
+            let result = bellman_ford(&graph, node1.clone());
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(node1.clone(), 0);
+                map.insert(node2.clone(), 5);
+                map
+            };
+
+            assert_eq!(result.clone().unwrap(), expected);
+            assert!(result.clone().unwrap().get(&node3).is_none()); 
+        }
+
+        #[test]
+        fn test_graph_with_self_loops() {
+            let mut graph = Graph::new();
+            let node1 = create_node(1);
+            let node2 = create_node(2);
+
+            graph.add_edge(node1.clone(), node2.clone(), Some(1));
+            graph.add_edge(node2.clone(), node2.clone(), Some(0)); 
+
+            let result = bellman_ford(&graph, node1.clone());
+            let expected = {
+                let mut map = HashMap::new();
+                map.insert(node1.clone(), 0);
+                map.insert(node2.clone(), 1);
+                map
+            };
+
+            assert_eq!(result.unwrap(), expected);
+        }
     }
 }
