@@ -113,6 +113,30 @@ pub fn counting_sort(arr: &mut [i32]) {
     }
 }
 
+pub fn radix_sort(arr: &mut [i32]) {
+    let max_val = *arr.iter().max().unwrap();
+    let mut exp = 1;
+
+    while max_val / exp > 0 {
+        let mut radix_array = vec![vec![]; 10];
+
+        for &num in arr.iter() {
+            let digit = (num / exp) % 10;
+            radix_array[digit as usize].push(num);
+        }
+
+        let mut idx = 0;
+        for bucket in radix_array.iter() {
+            for &num in bucket.iter() {
+                arr[idx] = num;
+                idx += 1;
+            }
+        }
+
+        exp *= 10;
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -171,6 +195,16 @@ mod tests {
     fn test_counting_sort() {
         let mut arr = [2, 5, 3, 0, 2, 3, 0, 3];
         counting_sort(&mut arr);
+        
+        let mut expected = arr;
+        expected.sort();
+        
+        assert_eq!(arr, expected);
+    }
+    #[test]
+    fn test_radix_sort() {
+        let mut arr = [2, 5, 3, 0, 2, 3, 0, 3];
+        radix_sort(&mut arr);
         
         let mut expected = arr;
         expected.sort();
