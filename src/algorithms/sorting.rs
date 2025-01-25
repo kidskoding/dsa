@@ -96,6 +96,23 @@ fn partition(arr: &mut [i32]) -> usize {
     i
 }
 
+pub fn counting_sort(arr: &mut [i32]) {
+    let max = *arr.iter().max().unwrap();
+    let mut count_arr = vec![0; max as usize + 1];
+    
+    for &num in arr.iter() {
+        count_arr[num as usize] += 1;
+    }
+    
+    let mut index = 0;
+    for (num, &count) in count_arr.iter().enumerate() {
+        for _ in 0..count {
+            arr[index] = num as i32;
+            index += 1;
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -148,6 +165,16 @@ mod tests {
         let mut expected = arr;
         expected.sort();
 
+        assert_eq!(arr, expected);
+    }
+    #[test]
+    fn test_counting_sort() {
+        let mut arr = [2, 5, 3, 0, 2, 3, 0, 3];
+        counting_sort(&mut arr);
+        
+        let mut expected = arr;
+        expected.sort();
+        
         assert_eq!(arr, expected);
     }
 }
