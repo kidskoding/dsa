@@ -29,8 +29,10 @@ impl<T> Stack<T> {
     ///
     /// ```
     /// let mut stack = Stack::new();
+    /// 
     /// stack.push(10).unwrap();
     /// stack.push(20).unwrap();
+    /// 
     /// assert_eq!(stack.peek(), Some(&20));
     /// ```
     pub fn push(&mut self, value: T) -> Result<(), &str> {
@@ -49,8 +51,10 @@ impl<T> Stack<T> {
     ///
     /// ```
     /// let mut stack = Stack::new();
+    /// 
     /// stack.push(10).unwrap();
     /// stack.push(20).unwrap();
+    /// 
     /// assert_eq!(stack.pop(), Some(20));
     /// assert_eq!(stack.pop(), Some(10));
     /// assert!(stack.pop().is_none());
@@ -71,8 +75,10 @@ impl<T> Stack<T> {
     ///
     /// ```
     /// let mut stack = Stack::new();
+    /// 
     /// stack.push(10).unwrap();
     /// stack.push(20).unwrap();
+    /// 
     /// assert_eq!(stack.peek(), Some(&20));
     /// ```
     pub fn peek(&self) -> Option<&T> {
@@ -89,6 +95,7 @@ impl<T> Stack<T> {
     ///
     /// ```
     /// let mut stack = Stack::new();
+    /// 
     /// assert!(stack.is_empty());
     /// stack.push(10).unwrap();
     /// assert!(!stack.is_empty());
@@ -103,9 +110,11 @@ impl<T> Stack<T> {
     /// 
     /// ```
     /// let mut stack: Stack<i32> = Stack::new();
+    /// 
     /// stack.push(10).unwrap();
     /// stack.push(20).unwrap();
     /// stack.pop();
+    /// 
     /// assert_eq!(stack.size(), 1);
     /// ```
     pub fn size(&self) -> isize { self.top + 1 }
