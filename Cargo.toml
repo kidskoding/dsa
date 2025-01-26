@@ -1,5 +1,5 @@
 [package]
-name = "dsa-lib"
+name = "data-structures-algorithms"
 description = "Data Structures and Algorithms in Rust!"
 authors = ["Anirudh Konidala (kidskoding)"]
 license = "MIT"
