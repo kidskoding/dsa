@@ -1,5 +1,6 @@
 mod data_structures;
 mod algorithms;
+mod tests;
 
 fn main() {
     println!("Data Structures and Algorithms in Rust!");
