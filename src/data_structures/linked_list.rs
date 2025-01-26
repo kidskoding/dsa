@@ -23,7 +23,7 @@ impl<T> LinkedList<T> {
         LinkedList { head: None }
     }
 
-    //// Adds a value to the front of the `LinkedList`.
+    /// Adds a value to the front of the `LinkedList`.
     ///
     /// This method creates a new node containing the given value
     /// and makes it the new head of the list.

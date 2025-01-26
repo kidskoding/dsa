@@ -7,3 +7,4 @@ mod linked_list_test;
 mod queue_test;
 mod stack_test;
 mod tree_test;
+mod heap_test;

@@ -8,6 +8,13 @@ use crate::data_structures::tree::TreeNode;
 /// and edges are stored as a vector of tuples containing the neighboring nodes
 /// and their optional weights
 pub struct Graph<T> {
+    /// The adjacency list representation of the graph. This `HashMap` stores the graph's structure, where
+    /// - The keys are `TreeNode<T>` objects representing the graph's nodes.
+    /// - The values are vectors of tuples, each representing an edge from the key node:
+    ///   - The first element of the tuple is a `TreeNode<T>` representing the neighboring node.
+    ///   - The second element of the tuple is an optional `i32` (`Option<i32>`), representing the weight of the edge (if any).
+    ///
+    /// This design allows the graph to represent both weighted and unweighted graphs.
     pub graph: HashMap<TreeNode<T>, Vec<(TreeNode<T>, Option<i32>)>>,
 }
 
