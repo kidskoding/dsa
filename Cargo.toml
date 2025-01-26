@@ -1,6 +1,9 @@
 [package]
-name = "dsa"
-version = "0.1.0"
+name = "dsa-lib"
+description = "Data Structures and Algorithms in Rust!"
+authors = ["Anirudh Konidala (kidskoding)"]
+license = "MIT"
+version = "1.0.0"
 edition = "2021"
 
 [dependencies]
