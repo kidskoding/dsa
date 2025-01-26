@@ -3,7 +3,20 @@
 /// This structure implements a simple stack where elements of type `T` are pushed and popped
 /// according to the Last-In-First-Out (LIFO) principle. The stack has a fixed size of 100 elements.
 pub struct Stack<T> {
+    /// An array to store the elements of the stack.
+    ///
+    /// The stack can hold up to 100 elements of type `T`. Each element is wrapped in an `Option` 
+    /// to handle the possibility of uninitialized slots (i.e., `None`).
+    ///
+    /// The array has a fixed size of 100 elements, providing the stack with a predefined capacity.
     data: [Option<T>; 100],
+    
+    /// The index of the top element in the stack.
+    /// 
+    /// This value indicates the position of the last pushed element in the `data` array.
+    /// 
+    /// A value of `-1` means the stack is empty, and as elements are pushed, this index
+    /// is incremented. Conversely, when elements are popped, the index is decremented.
     top: isize,
 }
 

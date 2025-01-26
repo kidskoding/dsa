@@ -1,5 +1,5 @@
 #[cfg(test)]
-mod graph_traversal_tests {
+mod graph_traversal_test {
     use crate::algorithms::graph_traversal::{breadth_first_search, depth_first_search};
     use crate::data_structures::graph::Graph;
     use crate::data_structures::tree::TreeNode;

@@ -96,7 +96,7 @@ impl<T: Ord> Heap<T> {
     /// # Parameters
     /// - `index`: The index of the current node that needs to be sifted down.
     /// - `len`: The total length of the heap (used to avoid out-of-bounds errors).
-    fn sift_down(&mut self, index: usize, len: usize) {
+    pub fn sift_down(&mut self, index: usize, len: usize) {
         let left_child = 2 * index + 1;
         let right_child = 2 * index + 2;
         let mut largest_or_smallest = index;

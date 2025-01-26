@@ -105,7 +105,7 @@ fn depth_first_search_helper<T: Eq + Hash + Clone>(
     }
 }
 
-/// Performs Dijkstra's algorithm to find the shortest paths from the `start` node to all other nodes in the graph.
+/// Performs Dijkstra's algorithm to find the shortest path from the `start` node to all other nodes in the graph.
 ///
 /// This function computes the shortest distance from the start node to every other node in the graph and returns
 /// a map of nodes to their corresponding shortest distances.

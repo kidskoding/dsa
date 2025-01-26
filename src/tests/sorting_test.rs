@@ -1,6 +1,7 @@
 #[cfg(test)]
-mod tests {
+mod sorting_test {
     use crate::algorithms::sorting::*;
+    use crate::data_structures::heap::Heap;
 
     #[test]
     fn test_bubble_sort() {
@@ -71,5 +72,24 @@ mod tests {
         expected.sort();
 
         assert_eq!(arr, expected);
+    }
+    #[test]
+    fn test_heap_sort_max_heap() {
+        let mut heap = Heap::new(true); // Max-heap
+        heap.values = vec![3, 1, 6, 5, 2, 4];
+
+        heap_sort(&mut heap);
+
+        assert_eq!(heap.values, vec![1, 2, 3, 4, 5, 6]);
+    }
+
+    #[test]
+    fn test_heap_sort_min_heap() {
+        let mut heap = Heap::new(false); // Min-heap
+        heap.values = vec![3, 1, 6, 5, 2, 4];
+
+        heap_sort(&mut heap);
+
+        assert_eq!(heap.values, vec![6, 5, 4, 3, 2, 1]);
     }
 }

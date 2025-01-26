@@ -5,20 +5,32 @@ use crate::data_structures::node::Node;
 /// This structure implements a simple queue where elements of type `T` are
 /// enqueued and dequeued according to the First-In-First-Out (FIFO) principle.
 pub struct Queue<T> {
+    /// The front of the queue, represented by an `Option` of a `Box` containing the first `Node`.
+    ///
+    /// This points to the first element in the queue. If the queue is empty, this is `None`.
+    /// The front node is removed when dequeuing an element.
     front: Option<Box<Node<T>>>,
+    /// A pointer to the rear node in the queue.
+    ///
+    /// This is a raw pointer to the last `Node` in the queue. It is used to quickly append new
+    /// nodes at the end when enqueuing. It is set to `null_mut` if the queue is empty.
     rear: *mut Node<T>,
+    /// The current size of the queue.
+    ///
+    /// This keeps track of how many elements are in the queue. It is incremented when an element
+    /// is enqueued and decremented when an element is dequeued.
     size: usize,
 }
 
-/// Creates a new, empty `Queue`.
-///
-/// # Examples
-///
-/// ```
-/// let queue: Queue<i32> = Queue::new();
-/// assert!(queue.is_empty());
-/// ```
 impl<T> Queue<T> {
+    /// Creates a new, empty `Queue`.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// let queue: Queue<i32> = Queue::new();
+    /// assert!(queue.is_empty());
+    /// ```
     pub fn new() -> Self {
         Queue {
             front: None,

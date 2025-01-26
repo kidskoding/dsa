@@ -1,5 +1,5 @@
 #[cfg(test)]
-mod searching_tests {
+mod searching_test {
     use crate::algorithms::searching::{binary_search, linear_search};
 
     #[test]

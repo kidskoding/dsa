@@ -6,6 +6,7 @@ use std::cmp::Ordering;
 /// be compared to other `TreeNode`s based on the value it contains.
 #[derive(Eq, Hash, PartialEq, Clone, Debug)]
 pub struct TreeNode<T> {
+    /// The value of the `TreeNode`
     pub value: T,
 }
 impl<T> TreeNode<T> {
@@ -60,8 +61,11 @@ impl<T: Ord> Ord for TreeNode<T> {
 /// child nodes, `left` and `right`, which are either `Some(Box<BinaryTree<T>>)`, or `None` if the
 /// node has no children.
 pub struct BinaryTree<T> {
+    /// The current node of the `BinaryTree`
     pub node: TreeNode<T>,
+    /// The left child of the `BinaryTree`, or `None` if there is no left child
     pub left: Option<Box<BinaryTree<T>>>,
+    /// The right child of the `BinaryTree`, or `None` if there is no right child
     pub right: Option<Box<BinaryTree<T>>>,
 }
 impl<T> BinaryTree<T> {

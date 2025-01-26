@@ -1,3 +1,5 @@
+use crate::data_structures::heap::Heap;
+
 /// Sorts a slice using the Bubble Sort algorithm.
 ///
 /// The bubble sort algorithm repeatedly steps through the list, compares adjacent
@@ -251,5 +253,36 @@ pub fn radix_sort(arr: &mut [i32]) {
         }
 
         exp *= 10;
+    }
+}
+
+/// Sorts a heap in ascending order (min heap) or descending order (max heap)
+/// 
+/// Heap sort transforms its elements into a heap, then repeatedly removes
+/// the largest (or smallest) element and places it in the correct position,
+/// restoring the heap property after each removal.
+/// 
+/// # Parameters
+/// - `&mut Heap<i32>`: a mutable reference to a `Heap` instance and sorts its elements
+/// 
+/// If the heap is configured as a max-heap, the elements
+/// will be sorted in ascending order. If it's a min-heap, the elements
+/// will be sorted in descending order.
+/// 
+/// # Time Complexity
+/// - Best: `O(n log n)`
+/// - Worst: `O(n log n)`
+/// - Average: `O(n log n)`
+/// 
+/// # Space Complexity
+/// - `O(n + k)`
+pub fn heap_sort(heap: &mut Heap<i32>) {
+    heap.build_heap();
+    let mut considered = heap.values.len();
+    
+    while considered > 1 {
+        heap.values.swap(0, considered - 1);
+        considered -= 1;
+        heap.sift_down(0, considered);
     }
 }
