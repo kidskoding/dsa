@@ -8,3 +8,4 @@ mod queue_test;
 mod stack_test;
 mod tree_test;
 mod heap_test;
+mod intro_algorithm_test;
