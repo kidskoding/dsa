@@ -1,7 +1,7 @@
 use std::cmp::Reverse;
 use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::hash::Hash;
-
+use std::rc::Rc;
 use crate::data_structures::graph::Graph;
 use crate::data_structures::tree::TreeNode;
 
@@ -26,24 +26,23 @@ use crate::data_structures::tree::TreeNode;
 /// # Returns
 /// A vector containing the nodes in the order they were visited.
 pub fn breadth_first_search<T: Eq + Hash + Clone>(
-    graph: &Graph<T>,
-    start: TreeNode<T>,
-) -> Vec<TreeNode<T>> {
+    graph: &Graph<T>, 
+    start: Rc<TreeNode<T>>
+) -> Vec<T> {
     let mut visited = HashSet::new();
     let mut queue = VecDeque::new();
     let mut result = Vec::new();
 
-    queue.push_back(start.clone());
-    visited.insert(start.clone());
+    queue.push_back(Rc::clone(&start));
+    visited.insert(Rc::clone(&start));
 
     while let Some(node) = queue.pop_front() {
-        result.push(node.clone());
-
+        result.push(node.value.clone());
         if let Some(neighbors) = graph.graph.get(&node) {
             for (neighbor, _) in neighbors {
                 if !visited.contains(neighbor) {
-                    queue.push_back(neighbor.clone());
-                    visited.insert(neighbor.clone());
+                    queue.push_back(Rc::clone(neighbor));
+                    visited.insert(Rc::clone(neighbor));
                 }
             }
         }
@@ -72,12 +71,16 @@ pub fn breadth_first_search<T: Eq + Hash + Clone>(
 ///
 /// # Returns
 /// A vector containing the nodes in the order they were visited.
-pub fn depth_first_search<T: Eq + Hash + Clone>(graph: &Graph<T>, start: TreeNode<T>) -> Vec<TreeNode<T>> {
+pub fn depth_first_search<T: Eq + Hash + Clone>(
+    graph: &Graph<T>, 
+    start: Rc<TreeNode<T>>
+) -> Vec<T> {
     let mut visited = HashSet::new();
     let mut result = Vec::new();
     depth_first_search_helper(graph, start, &mut visited, &mut result);
     result
 }
+
 /// Helper function for depth-first search (DFS) that recursively visits nodes in the graph.
 ///
 /// This function is used internally in `depth_first_search` to recursively traverse the graph.
@@ -87,20 +90,20 @@ pub fn depth_first_search<T: Eq + Hash + Clone>(graph: &Graph<T>, start: TreeNod
 /// - `node`: The current node being visited.
 /// - `visited`: A mutable set tracking the visited nodes.
 /// - `result`: A mutable vector to store the nodes in the order they were visited.
-fn depth_first_search_helper<T: Eq + Hash + Clone>(
-    graph: &Graph<T>, 
-    node: TreeNode<T>, 
-    visited: &mut HashSet<TreeNode<T>>, 
-    result: &mut Vec<TreeNode<T>>,
+fn depth_first_search_helper<'a, T: Eq + Hash + Clone>(
+    graph: &'a Graph<T>, 
+    node: Rc<TreeNode<T>>,
+    visited: &mut HashSet<Rc<TreeNode<T>>>, 
+    result: &mut Vec<T>,
 ) {
     if visited.contains(&node) {
         return;
     }
-    visited.insert(node.clone());
-    result.push(node.clone());
+    visited.insert(Rc::clone(&node));
+    result.push(node.value.clone());
     if let Some(neighbors) = graph.graph.get(&node) {
-        for (neighbor, _) in neighbors {
-            depth_first_search_helper(graph, neighbor.clone(), visited, result);
+        for(neighbor, _) in neighbors {
+            depth_first_search_helper(graph, Rc::clone(neighbor), visited, result);
         }
     }
 }
@@ -127,13 +130,13 @@ fn depth_first_search_helper<T: Eq + Hash + Clone>(
 /// A map of nodes to their shortest distances from the `start` node.
 pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
     graph: &Graph<T>,
-    start: TreeNode<T>
-) -> HashMap<TreeNode<T>, u32> {
+    start: Rc<TreeNode<T>>
+) -> HashMap<Rc<TreeNode<T>>, u32> {
     let mut distances = HashMap::new();
     let mut priority_queue = BinaryHeap::new();
     
-    distances.insert(start.clone(), 0);
-    priority_queue.push(Reverse((0, start.clone())));
+    distances.insert(Rc::clone(&start), 0);
+    priority_queue.push(Reverse((0, Rc::clone(&start))));
     
     while let Some(Reverse((current_distance, current_node))) = priority_queue.pop() {
         if current_distance < *distances.get(&current_node).unwrap_or(&u32::MAX) {
@@ -144,7 +147,7 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
             for (neighbor, weight) in neighbors {
                 if let Some(weight) = weight {
                     let new_distance = current_distance + *weight as u32;
-                    if new_distance < *distances.get(&neighbor).unwrap_or(&u32::MAX) {
+                    if new_distance < *distances.get(neighbor).unwrap_or(&u32::MAX) {
                         distances.insert(neighbor.clone(), new_distance);
                         priority_queue.push(Reverse((new_distance, neighbor.clone())));
                     }
@@ -178,28 +181,32 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
 /// A result containing a map of nodes to their shortest distances, or an error if a negative weight cycle is detected.
 pub fn bellman_ford<T: Eq + Hash + Clone + Ord>(
     graph: &Graph<T>,
-    start: TreeNode<T>
-) -> Result<HashMap<TreeNode<T>, i32>, &str> {
+    start: Rc<TreeNode<T>>
+) -> Result<HashMap<Rc<TreeNode<T>>, i32>, &str> {
     let mut distances = HashMap::new();
-    distances.insert(start.clone(), 0);
+    distances.insert(Rc::clone(&start), 0);
     let num_vertices: i32 = graph.graph.len() as i32;
 
     for _ in 0..num_vertices - 1 {
+        let mut updates = Vec::new();
         for (node, neighbors) in &graph.graph {
-            if let Some(&current_distance) = distances.get(&node) {
+            if let Some(current_distance) = distances.get(node) {
                 for (neighbor, weight) in neighbors {
                     let new_distance = current_distance + weight.unwrap();
-                    let existing_distance = distances.entry(neighbor.clone()).or_insert(i32::MAX);
-                    if new_distance < *existing_distance {
-                        *existing_distance = new_distance;
-                    }
+                    updates.push((neighbor, new_distance));
                 }
+            }
+        }
+        for (neighbor, new_distance) in updates {
+            let existing_distance = distances.entry(Rc::clone(neighbor)).or_insert(i32::MAX);
+            if new_distance < *existing_distance {
+                *existing_distance = new_distance;
             }
         }
     }
 
     for (node, neighbors) in &graph.graph {
-        if let Some(&current_distance) = distances.get(&node) {
+        if let Some(&current_distance) = distances.get(node) {
             for (neighbor, weight) in neighbors {
                 let new_distance = current_distance + weight.unwrap();
                 if let Some(existing_distance) = distances.get(neighbor) {
@@ -213,4 +220,4 @@ pub fn bellman_ford<T: Eq + Hash + Clone + Ord>(
     }
 
     Ok(distances)
-} 
+}

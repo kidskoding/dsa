@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod graph_test {
+    use std::rc::Rc;
     use crate::data_structures::graph::Graph;
     use crate::data_structures::tree::TreeNode;
 
@@ -7,31 +8,31 @@ mod graph_test {
     fn test_weighted_graph() {
         let mut graph = Graph::new();
 
-        let node_a = TreeNode::new("Joey");
-        let node_b = TreeNode::new("Dinner");
-        let node_c = TreeNode::new("Lunch");
+        let node_a = Rc::new(TreeNode::new("Joey"));
+        let node_b = Rc::new(TreeNode::new("Dinner"));
+        let node_c = Rc::new(TreeNode::new("Lunch"));
 
-        graph.add_node(node_a.clone());
-        graph.add_node(node_b.clone());
-        graph.add_node(node_c.clone());
+        graph.add_node(Rc::clone(&node_a));
+        graph.add_node(Rc::clone(&node_b));
+        graph.add_node(Rc::clone(&node_c));
 
-        graph.add_edge(node_a.clone(), node_b.clone(), Some(5));
-        graph.add_edge(node_b.clone(), node_c.clone(), None);
+        graph.add_edge(Rc::clone(&node_a), Rc::clone(&node_b), Some(5));
+        graph.add_edge(Rc::clone(&node_b), Rc::clone(&node_c), None);
 
-        assert_eq!(graph.graph[&node_a], vec![(node_b.clone(), Some(5))]);
+        assert_eq!(graph.graph[&node_a], vec![(Rc::clone(&node_b), Some(5))]);
         assert_eq!(
             graph.graph[&node_b],
-            vec![(node_a.clone(), Some(5)), (node_c.clone(), None)]
+            vec![(Rc::clone(&node_a), Some(5)), (Rc::clone(&node_c), None)]
         );
         assert_eq!(graph.graph[&node_c], vec![(node_b.clone(), None)]);
 
-        graph.remove_edge(node_a.clone(), node_b.clone());
+        graph.remove_edge(Rc::clone(&node_a), Rc::clone(&node_b));
 
         assert_eq!(graph.graph[&node_a], vec![]);
-        assert_eq!(graph.graph[&node_b], vec![(node_c.clone(), None)]);
-        assert_eq!(graph.graph[&node_c], vec![(node_b.clone(), None)]);
+        assert_eq!(graph.graph[&node_b], vec![(Rc::clone(&node_c), None)]);
+        assert_eq!(graph.graph[&node_c], vec![(Rc::clone(&node_b), None)]);
 
-        graph.remove_node(node_b.clone());
+        graph.remove_node(Rc::clone(&node_b));
 
         assert_eq!(graph.graph.len(), 2);
         assert!(!graph.graph.contains_key(&node_b));

@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod graph_traversal_test {
+    use std::rc::Rc;
     use crate::algorithms::graph_traversal::{breadth_first_search, depth_first_search};
     use crate::data_structures::graph::Graph;
     use crate::data_structures::tree::TreeNode;
@@ -7,22 +8,22 @@ mod graph_traversal_test {
     fn create_graph() -> Graph<String> {
         let mut graph = Graph::new();
 
-        let node_a = TreeNode::new("A".to_string());
-        let node_b = TreeNode::new("B".to_string());
-        let node_c = TreeNode::new("C".to_string());
-        let node_d = TreeNode::new("D".to_string());
-        let node_e = TreeNode::new("E".to_string());
+        let node_a = Rc::new(TreeNode::new("A".to_string()));
+        let node_b = Rc::new(TreeNode::new("B".to_string()));
+        let node_c = Rc::new(TreeNode::new("C".to_string()));
+        let node_d = Rc::new(TreeNode::new("D".to_string()));
+        let node_e = Rc::new(TreeNode::new("E".to_string()));
 
-        graph.add_node(node_a.clone());
-        graph.add_node(node_b.clone());
-        graph.add_node(node_c.clone());
-        graph.add_node(node_d.clone());
-        graph.add_node(node_e.clone());
+        graph.add_node(Rc::clone(&node_a));
+        graph.add_node(Rc::clone(&node_b));
+        graph.add_node(Rc::clone(&node_c));
+        graph.add_node(Rc::clone(&node_d));
+        graph.add_node(Rc::clone(&node_e));
 
-        graph.add_edge(node_a.clone(), node_b.clone(), None);
-        graph.add_edge(node_a.clone(), node_c.clone(), None);
-        graph.add_edge(node_b.clone(), node_d.clone(), None);
-        graph.add_edge(node_b.clone(), node_e.clone(), None);
+        graph.add_edge(Rc::clone(&node_a), Rc::clone(&node_b), None);
+        graph.add_edge(Rc::clone(&node_a), Rc::clone(&node_c), None);
+        graph.add_edge(Rc::clone(&node_b), Rc::clone(&node_d), None);
+        graph.add_edge(Rc::clone(&node_b), Rc::clone(&node_e), None);
 
         graph
     }
@@ -30,16 +31,16 @@ mod graph_traversal_test {
     #[test]
     fn test_breadth_first_search() {
         let graph = create_graph();
-        let start_node = TreeNode::new("A".to_string());
+        let start_node = Rc::new(TreeNode::new("A".to_string()));
 
-        let result = breadth_first_search(&graph, start_node.clone());
+        let result = breadth_first_search(&graph, start_node);
 
         let expected = vec![
-            TreeNode::new("A".to_string()),
-            TreeNode::new("B".to_string()),
-            TreeNode::new("C".to_string()),
-            TreeNode::new("D".to_string()),
-            TreeNode::new("E".to_string()),
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
         ];
 
         assert_eq!(result, expected);
@@ -48,16 +49,16 @@ mod graph_traversal_test {
     #[test]
     fn test_depth_first_search() {
         let graph = create_graph();
-        let start_node = TreeNode::new(String::from("A"));
+        let start_node = Rc::new(TreeNode::new(String::from("A")));
 
-        let result = depth_first_search(&graph, start_node.clone());
+        let result = depth_first_search(&graph, start_node);
 
         let expected = vec![
-            TreeNode::new("A".to_string()),
-            TreeNode::new("B".to_string()),
-            TreeNode::new("D".to_string()),
-            TreeNode::new("E".to_string()),
-            TreeNode::new("C".to_string()),
+            "A",
+            "B",
+            "D",
+            "E",
+            "C",
         ];
 
         assert_eq!(result, expected);
@@ -65,6 +66,7 @@ mod graph_traversal_test {
 
     mod dijkstra_tests {
         use std::collections::HashMap;
+        use std::rc::Rc;
         use crate::algorithms::graph_traversal::dijkstra;
         use crate::data_structures::graph::Graph;
         use crate::data_structures::tree::TreeNode;
@@ -76,12 +78,12 @@ mod graph_traversal_test {
         #[test]
         fn test_single_node_graph() {
             let graph = Graph::new();
-            let start = create_node(1);
+            let start = Rc::new(create_node(1));
 
             let result = dijkstra(&graph, start);
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(create_node(1), 0 as u32);
+                map.insert(Rc::new(create_node(1)), 0 as u32);
                 map
             };
 
@@ -91,20 +93,20 @@ mod graph_traversal_test {
         #[test]
         fn test_simple_graph() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
-            let node3 = create_node(3);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
+            let node3 = Rc::new(create_node(3));
 
-            graph.add_edge(node1.clone(), node2.clone(), Some(5));
-            graph.add_edge(node2.clone(), node3.clone(), Some(10));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(5));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(10));
 
-            let result = dijkstra(&graph, node1.clone());
+            let result = dijkstra(&graph, Rc::clone(&node1));
 
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(node1.clone(), 0);
-                map.insert(node2.clone(), 5);
-                map.insert(node3.clone(), 15);
+                map.insert(Rc::clone(&node1), 0);
+                map.insert(Rc::clone(&node2), 5);
+                map.insert(Rc::clone(&node3), 15);
                 map
             };
 
@@ -113,24 +115,24 @@ mod graph_traversal_test {
         #[test]
         fn test_graph_with_multiple_paths() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
-            let node3 = create_node(3);
-            let node4 = create_node(4);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
+            let node3 = Rc::new(create_node(3));
+            let node4 = Rc::new(create_node(4));
 
-            graph.add_edge(node1.clone(), node2.clone(), Some(1));
-            graph.add_edge(node1.clone(), node3.clone(), Some(4));
-            graph.add_edge(node2.clone(), node3.clone(), Some(2));
-            graph.add_edge(node2.clone(), node4.clone(), Some(5));
-            graph.add_edge(node3.clone(), node4.clone(), Some(1));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(4));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(2));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node4), Some(5));
+            graph.add_edge(Rc::clone(&node3), Rc::clone(&node4), Some(1));
 
             let result = dijkstra(&graph, node1.clone());
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(node1.clone(), 0);
-                map.insert(node2.clone(), 1);
-                map.insert(node3.clone(), 3);
-                map.insert(node4.clone(), 4);
+                map.insert(Rc::clone(&node1), 0);
+                map.insert(Rc::clone(&node2), 1);
+                map.insert(Rc::clone(&node3), 3);
+                map.insert(Rc::clone(&node4), 4);
                 map
             };
 
@@ -139,7 +141,7 @@ mod graph_traversal_test {
     }
     mod bellman_ford_tests {
         use std::collections::HashMap;
-
+        use std::rc::Rc;
         use crate::algorithms::graph_traversal::bellman_ford;
         use crate::data_structures::graph::Graph;
         use crate::data_structures::tree::TreeNode;
@@ -151,12 +153,12 @@ mod graph_traversal_test {
         #[test]
         fn test_single_node_graph() {
             let graph = Graph::new();
-            let start = create_node(1);
+            let start = Rc::new(create_node(1));
 
             let result = bellman_ford(&graph, start);
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(create_node(1), 0);
+                map.insert(Rc::new(create_node(1)), 0);
                 Ok(map)
             };
 
@@ -166,20 +168,20 @@ mod graph_traversal_test {
         #[test]
         fn test_simple_graph() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
-            let node3 = create_node(3);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
+            let node3 = Rc::new(create_node(3));
 
-            graph.add_edge(node1.clone(), node2.clone(), Some(5));
-            graph.add_edge(node2.clone(), node3.clone(), Some(10));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(5));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(10));
 
-            let result = bellman_ford(&graph, node1.clone());
+            let result = bellman_ford(&graph, Rc::clone(&node1));
 
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(node1.clone(), 0);
-                map.insert(node2.clone(), 5);
-                map.insert(node3.clone(), 15);
+                map.insert(Rc::clone(&node1), 0);
+                map.insert(Rc::clone(&node2), 5);
+                map.insert(Rc::clone(&node3), 15);
                 Ok(map)
             };
 
@@ -189,18 +191,18 @@ mod graph_traversal_test {
         #[test]
         fn test_graph_with_negative_weights() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
-            let node3 = create_node(3);
-            let node4 = create_node(4);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
+            let node3 = Rc::new(create_node(3));
+            let node4 = Rc::new(create_node(4));
 
-            graph.add_edge(node1.clone(), node2.clone(), Some(1));
-            graph.add_edge(node1.clone(), node3.clone(), Some(4));
-            graph.add_edge(node2.clone(), node3.clone(), Some(-2));
-            graph.add_edge(node2.clone(), node4.clone(), Some(-5));
-            graph.add_edge(node3.clone(), node4.clone(), Some(1));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(4));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(-2));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node4), Some(-5));
+            graph.add_edge(Rc::clone(&node3), Rc::clone(&node4), Some(1));
 
-            let result = bellman_ford(&graph, node1.clone());
+            let result = bellman_ford(&graph, Rc::clone(&node1));
 
             assert!(result.is_err(), "Expected negative cycle error, got {:?}", result);
         }
@@ -208,20 +210,20 @@ mod graph_traversal_test {
         #[test]
         fn test_negative_cycle() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
-            let node3 = create_node(3);
-            let node4 = create_node(4);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
+            let node3 = Rc::new(create_node(3));
+            let node4 = Rc::new(create_node(4));
 
-            graph.add_edge(node1.clone(), node2.clone(), Some(1));
-            graph.add_edge(node1.clone(), node3.clone(), Some(4));
-            graph.add_edge(node2.clone(), node3.clone(), Some(2));
-            graph.add_edge(node2.clone(), node4.clone(), Some(5));
-            graph.add_edge(node3.clone(), node4.clone(), Some(1));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(4));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(2));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node4), Some(5));
+            graph.add_edge(Rc::clone(&node3), Rc::clone(&node4), Some(1));
 
             graph.add_edge(node4.clone(), node2.clone(), Some(-10));
 
-            let result = bellman_ford(&graph, node1.clone());
+            let result = bellman_ford(&graph, Rc::clone(&node1));
 
             assert!(result.is_err(), "Expected negative cycle error, got {:?}", result);
         }
@@ -229,42 +231,42 @@ mod graph_traversal_test {
         #[test]
         fn test_disconnected_graph() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
-            let node3 = create_node(3);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
+            let node3 = Rc::new(create_node(3));
 
             graph.add_edge(node1.clone(), node2.clone(), Some(5));
 
-            let result = bellman_ford(&graph, node1.clone());
+            let result = bellman_ford(&graph, Rc::clone(&node1));
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(node1.clone(), 0);
-                map.insert(node2.clone(), 5);
-                map
+                map.insert(Rc::clone(&node1), 0);
+                map.insert(Rc::clone(&node2), 5);
+                Ok(map)
             };
 
-            assert_eq!(result.clone().unwrap(), expected);
-            assert!(result.clone().unwrap().get(&node3).is_none());
+            assert_eq!(result, expected);
+            assert!(result.unwrap().get(&node3).is_none());
         }
 
         #[test]
         fn test_graph_with_self_loops() {
             let mut graph = Graph::new();
-            let node1 = create_node(1);
-            let node2 = create_node(2);
+            let node1 = Rc::new(create_node(1));
+            let node2 = Rc::new(create_node(2));
 
-            graph.add_edge(node1.clone(), node2.clone(), Some(1));
-            graph.add_edge(node2.clone(), node2.clone(), Some(0));
+            graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
+            graph.add_edge(Rc::clone(&node2), Rc::clone(&node2), Some(0));
 
-            let result = bellman_ford(&graph, node1.clone());
+            let result = bellman_ford(&graph, Rc::clone(&node1));
             let expected = {
                 let mut map = HashMap::new();
-                map.insert(node1.clone(), 0);
-                map.insert(node2.clone(), 1);
-                map
+                map.insert(Rc::clone(&node1), 0);
+                map.insert(Rc::clone(&node2), 1);
+                Ok(map)
             };
 
-            assert_eq!(result.unwrap(), expected);
+            assert_eq!(result, expected);
         }
     }
 }
