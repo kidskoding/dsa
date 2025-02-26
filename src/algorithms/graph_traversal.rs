@@ -11,12 +11,22 @@ use crate::data_structures::tree::TreeNode;
 /// moving outward to its neighbors. It returns the nodes in the order they were visited.
 ///
 /// # Examples
-///
 /// ```
-/// let graph = Graph::new();
-/// let start = TreeNode::new(1);
-/// let result = breadth_first_search(&graph, start);
-/// assert_eq!(result, vec![TreeNode::new(1), TreeNode::new(2), TreeNode::new(3)]);
+/// use std::rc::Rc;
+/// use dsa::data_structures::graph::Graph;
+/// use dsa::data_structures::tree::TreeNode;
+/// use dsa::algorithms::graph_traversal::breadth_first_search;
+///
+/// let mut graph = Graph::new();
+/// let node1 = Rc::new(TreeNode::new(1));
+/// let node2 = Rc::new(TreeNode::new(2));
+/// let node3 = Rc::new(TreeNode::new(3));
+///
+/// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
+/// graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(1));
+///
+/// let result = breadth_first_search(&graph, Rc::clone(&node1));
+/// assert_eq!(result, vec![1, 2, 3]);
 /// ```
 ///
 /// # Parameters
@@ -59,10 +69,21 @@ pub fn breadth_first_search<T: Eq + Hash + Clone>(
 /// # Examples
 ///
 /// ```
-/// let graph = Graph::new();
-/// let start = TreeNode::new(1);
-/// let result = depth_first_search(&graph, start);
-/// assert_eq!(result, vec![TreeNode::new(1), TreeNode::new(2), TreeNode::new(3)]);
+/// use std::rc::Rc;
+/// use dsa::algorithms::graph_traversal::depth_first_search;
+/// use dsa::data_structures::graph::Graph;
+/// use dsa::data_structures::tree::TreeNode;
+/// 
+/// let mut graph = Graph::new();
+/// let node1 = Rc::new(TreeNode::new(1));
+/// let node2 = Rc::new(TreeNode::new(2));
+/// let node3 = Rc::new(TreeNode::new(3));
+///
+/// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
+/// graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(1));
+///
+/// let result = depth_first_search(&graph, Rc::clone(&node1));
+/// assert_eq!(result, vec![1, 2, 3]);
 /// ```
 ///
 /// # Parameters
@@ -70,7 +91,7 @@ pub fn breadth_first_search<T: Eq + Hash + Clone>(
 /// - `start`: The node from which the search begins.
 ///
 /// # Returns
-/// A vector containing the nodes in the order they were visited.
+/// A vector containing the values of the nodes in the order they were visited.
 pub fn depth_first_search<T: Eq + Hash + Clone>(
     graph: &Graph<T>, 
     start: Rc<TreeNode<T>>
@@ -116,10 +137,31 @@ fn depth_first_search_helper<'a, T: Eq + Hash + Clone>(
 /// # Examples
 ///
 /// ```
-/// let graph = Graph::new();
-/// let start = TreeNode::new(1);
-/// let result = dijkstra(&graph, start);
-/// assert_eq!(result, HashMap::from([(TreeNode::new(1), 0), (TreeNode::new(2), 3)]));
+/// use std::collections::HashMap;
+/// use std::rc::Rc;
+/// use dsa::algorithms::graph_traversal::dijkstra;
+/// use dsa::data_structures::graph::Graph;
+/// use dsa::data_structures::tree::TreeNode;
+///
+/// let mut graph = Graph::new();
+/// let node1 = Rc::new(TreeNode::new(1));
+/// let node2 = Rc::new(TreeNode::new(2));
+/// let node3 = Rc::new(TreeNode::new(3));
+///
+/// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(5));
+/// graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(10));
+///
+/// let result = dijkstra(&graph, Rc::clone(&node1));
+///
+/// let expected = {
+///     let mut map = HashMap::new();
+///     map.insert(Rc::clone(&node1), 0);
+///     map.insert(Rc::clone(&node2), 5);
+///     map.insert(Rc::clone(&node3), 15);
+///     map
+/// };
+///
+/// assert_eq!(result, expected);
 /// ```
 ///
 /// # Parameters
@@ -143,7 +185,7 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
             continue;
         }
         
-        if let Some(neighbors) = graph.graph.get(&current_node) {
+        if let Some(neighbors) = graph.graph.get(&*current_node) {
             for (neighbor, weight) in neighbors {
                 if let Some(weight) = weight {
                     let new_distance = current_distance + *weight as u32;
@@ -167,10 +209,31 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
 /// # Examples
 ///
 /// ```
-/// let graph = Graph::new();
-/// let start = TreeNode::new(1);
-/// let result = bellman_ford(&graph, start);
-/// assert_eq!(result, Ok(HashMap::from([(TreeNode::new(1), 0), (TreeNode::new(2), 3)])));
+/// use std::collections::HashMap;
+/// use std::rc::Rc;
+/// use dsa::data_structures::graph::Graph;
+/// use dsa::algorithms::graph_traversal::bellman_ford;
+/// use dsa::data_structures::tree::TreeNode;
+///
+/// let mut graph = Graph::new();
+/// let node1 = Rc::new(TreeNode::new(1));
+/// let node2 = Rc::new(TreeNode::new(2));
+/// let node3 = Rc::new(TreeNode::new(3));
+///
+/// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(5));
+/// graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(10));
+///
+/// let result = bellman_ford(&graph, Rc::clone(&node1));
+///
+/// let expected = {
+///     let mut map = HashMap::new();
+///     map.insert(Rc::clone(&node1), 0);
+///     map.insert(Rc::clone(&node2), 5);
+///     map.insert(Rc::clone(&node3), 15);
+///     Ok(map)
+/// };
+///
+/// assert_eq!(result, expected);
 /// ```
 ///
 /// # Parameters
@@ -178,11 +241,11 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
 /// - `start`: The node from which the shortest paths are calculated.
 ///
 /// # Returns
-/// A result containing a map of nodes to their shortest distances, or an error if a negative weight cycle is detected.
+/// A `Result` containing a map of nodes to their shortest distances, or an error if a negative weight cycle is detected.
 pub fn bellman_ford<T: Eq + Hash + Clone + Ord>(
     graph: &Graph<T>,
     start: Rc<TreeNode<T>>
-) -> Result<HashMap<Rc<TreeNode<T>>, i32>, &str> {
+) -> Result<HashMap<Rc<TreeNode<T>>, i32>, String> {
     let mut distances = HashMap::new();
     distances.insert(Rc::clone(&start), 0);
     let num_vertices: i32 = graph.graph.len() as i32;
@@ -212,7 +275,7 @@ pub fn bellman_ford<T: Eq + Hash + Clone + Ord>(
                 if let Some(existing_distance) = distances.get(neighbor) {
                     if new_distance < *existing_distance {
                         return Err("Graph contains a negative weight cycle! \
-                            Bellman-Ford will not be accurate for this graph");
+                            Bellman-Ford will not be accurate for this graph".to_string());
                     }
                 }
             }

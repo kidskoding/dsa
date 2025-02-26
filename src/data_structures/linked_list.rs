@@ -16,6 +16,8 @@ impl<T> LinkedList<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::linked_list::LinkedList;
+    /// 
     /// let list: LinkedList<i32> = LinkedList::new();
     /// assert!(list.is_empty());
     /// ```
@@ -31,6 +33,8 @@ impl<T> LinkedList<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::linked_list::LinkedList;
+    /// 
     /// let mut list = LinkedList::new();
     /// list.push_front(10);
     /// list.push_front(20);
@@ -53,10 +57,19 @@ impl<T> LinkedList<T> {
     /// If the list is empty, this method returns `None`. Otherwise,
     /// it removes the head node and returns its value.
     ///
+    /// 
+    /// # Returns
+    /// An `Option<T>` optional generic type based on whether the topmost node was popped
+    /// from the list
+    /// - `Some` node is returned if this `LinkedList` has a head, otherwise `None`
+    /// 
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::linked_list::LinkedList;
+    /// 
     /// let mut list = LinkedList::new();
+    ///
     /// list.push_front(10);
     /// list.push_front(20);
     /// assert_eq!(list.pop_front(), Some(20));
@@ -74,12 +87,15 @@ impl<T> LinkedList<T> {
 
     /// Checks whether the `LinkedList` is empty.
     ///
-    /// This method returns `true` if the list contains no elements
-    /// and `false` otherwise.
+    /// # Returns
+    /// A `bool`, `true` or `false`, based on whether this `LinkedList` is
+    /// empty
     ///
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::linked_list::LinkedList;
+    /// 
     /// let mut list = LinkedList::new();
     /// assert!(list.is_empty());
     /// list.push_front(10);

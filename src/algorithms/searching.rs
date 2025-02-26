@@ -16,6 +16,8 @@
 /// # Examples
 ///
 /// ```
+/// use dsa::algorithms::searching::linear_search;
+/// 
 /// let array = [1, 2, 3, 4, 5];
 /// assert_eq!(linear_search(&array, 3), Some(2));
 /// assert_eq!(linear_search(&array, 6), None);
@@ -49,6 +51,8 @@ pub fn linear_search(array: &[i32], target: i32) -> Option<usize> {
 /// # Examples
 ///
 /// ```
+/// use dsa::algorithms::searching::binary_search;
+/// 
 /// let array = [1, 2, 3, 4, 5];
 /// assert_eq!(binary_search(&array, 3), Some(2));
 /// assert_eq!(binary_search(&array, 6), None);

@@ -16,6 +16,15 @@ use crate::data_structures::heap::Heap;
 ///
 /// # Space Complexity
 /// - `O(1)` (in-place sorting)
+///
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::bubble_sort;
+///
+/// let mut arr = [5, 3, 8, 4, 2];
+/// bubble_sort(&mut arr);
+/// assert_eq!(arr, [2, 3, 4, 5, 8]);
+/// ```
 pub fn bubble_sort(arr: &mut [i32]) {
     for i in 0..arr.len() {
         for j in 1..(arr.len() - i) {
@@ -31,16 +40,25 @@ pub fn bubble_sort(arr: &mut [i32]) {
 /// Insertion sort builds the sorted array one element at a time. It takes each new element
 /// and inserts it into its correct position within the sorted portion of the array.
 ///
-/// # Parameters
+/// ### Parameters
 /// - `arr`: A mutable reference to the slice of integers to be sorted.
 ///
-/// # Time Complexity
+/// ### Time Complexity
 /// - Best: `O(n)`
 /// - Worst: `O(n²)`
 /// - Average: `O(n²)`
 ///
-/// # Space Complexity
+/// ### Space Complexity
 /// - `O(1)` (in-place sorting)
+/// 
+/// ### Examples
+/// ```
+/// use dsa::algorithms::sorting::insertion_sort;
+///
+/// let mut arr = [5, 3, 8, 4, 2];
+/// insertion_sort(&mut arr);
+/// assert_eq!(arr, [2, 3, 4, 5, 8]);
+/// ```
 pub fn insertion_sort(arr: &mut [i32]) {
     for i in 1..arr.len() {
         let mut j = i;
@@ -66,6 +84,15 @@ pub fn insertion_sort(arr: &mut [i32]) {
 ///
 /// # Space Complexity
 /// - `O(1)` (in-place sorting)
+///
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::selection_sort;
+///
+/// let mut arr = [5, 3, 8, 4, 2];
+/// selection_sort(&mut arr);
+/// assert_eq!(arr, [2, 3, 4, 5, 8]);
+/// ```
 pub fn selection_sort(arr: &mut [i32]) {
     for i in 0..arr.len() {
         let mut min_index = i;
@@ -93,6 +120,15 @@ pub fn selection_sort(arr: &mut [i32]) {
 ///
 /// # Space Complexity
 /// - `O(n)` (requires additional space for merging)
+/// 
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::merge_sort;
+///
+/// let mut arr = [5, 3, 8, 4, 2];
+/// merge_sort(&mut arr);
+/// assert_eq!(arr, [2, 3, 4, 5, 8]);
+/// ```
 pub fn merge_sort(arr: &mut [i32]) {
     if arr.len() <= 1 {
         return;
@@ -152,6 +188,15 @@ fn merge(arr: &mut [i32], mid: usize) {
 ///
 /// # Space Complexity
 /// - `O(log n)` (due to recursion stack)
+///
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::quick_sort;
+///
+/// let mut arr = [5, 3, 8, 4, 2];
+/// quick_sort(&mut arr);
+/// assert_eq!(arr, [2, 3, 4, 5, 8]);
+/// ```
 pub fn quick_sort(arr: &mut [i32]) {
     if arr.len() <= 1 {
         return;
@@ -201,6 +246,15 @@ fn partition(arr: &mut [i32]) -> usize {
 ///
 /// # Space Complexity
 /// - `O(k)` (requires extra space for the count array)
+///
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::counting_sort;
+///
+/// let mut arr = [5, 3, 8, 4, 2];
+/// counting_sort(&mut arr);
+/// assert_eq!(arr, [2, 3, 4, 5, 8]);
+/// ```
 pub fn counting_sort(arr: &mut [i32]) {
     let max = *arr.iter().max().unwrap();
     let mut count_arr = vec![0; max as usize + 1];
@@ -232,6 +286,15 @@ pub fn counting_sort(arr: &mut [i32]) {
 ///
 /// # Space Complexity
 /// - `O(n + k)` (requires additional space for the buckets)
+///
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::radix_sort;
+///
+/// let mut arr = [170, 45, 75, 90, 802, 24, 2, 66];
+/// radix_sort(&mut arr);
+/// assert_eq!(arr, [2, 24, 45, 66, 75, 90, 170, 802]);
+/// ```
 pub fn radix_sort(arr: &mut [i32]) {
     let max_val = *arr.iter().max().unwrap();
     let mut exp = 1;
@@ -276,6 +339,17 @@ pub fn radix_sort(arr: &mut [i32]) {
 /// 
 /// # Space Complexity
 /// - `O(n + k)`
+///
+/// # Examples
+/// ```
+/// use dsa::algorithms::sorting::heap_sort;
+/// use dsa::data_structures::heap::Heap;
+/// 
+/// let mut heap = Heap::new(false); // Min-heap
+/// heap.values = vec![3, 1, 6, 5, 2, 4];
+/// heap_sort(&mut heap);
+/// assert_eq!(heap.values, vec![6, 5, 4, 3, 2, 1]);
+/// ```
 pub fn heap_sort(heap: &mut Heap<i32>) {
     heap.build_heap();
     let mut considered = heap.values.len();

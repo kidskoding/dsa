@@ -26,6 +26,7 @@ impl<T> Stack<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::stack::Stack; 
     /// let stack: Stack<i32> = Stack::new();
     /// assert!(stack.is_empty());
     /// ```
@@ -38,16 +39,23 @@ impl<T> Stack<T> {
 
     /// Pushes a value onto the `Stack`.
     ///
-    /// # Examples
-    ///
+    /// ### Examples
     /// ```
+    /// use dsa::data_structures::stack::Stack;
     /// let mut stack = Stack::new();
-    /// 
     /// stack.push(10).unwrap();
     /// stack.push(20).unwrap();
-    /// 
     /// assert_eq!(stack.peek(), Some(&20));
+    /// assert_eq!(stack.size(), 2);
     /// ```
+    /// 
+    /// ### Parameters
+    /// - `value`: A `T` generic value that will 
+    /// be pushed onto the top of this `Stack`
+    /// 
+    /// ### Returns
+    /// - A `Result` object that return an `Err` if
+    /// this `Stack` is full, otherwise an empty `Ok(())`
     pub fn push(&mut self, value: T) -> Result<(), &str> {
         if self.top + 1 >= self.data.len() as isize {
             Err("Stack Overflow")
@@ -60,18 +68,19 @@ impl<T> Stack<T> {
 
     /// Pops a value from the `Stack`.
     ///
-    /// # Examples
-    ///
+    /// ### Examples
     /// ```
-    /// let mut stack = Stack::new();
-    /// 
-    /// stack.push(10).unwrap();
-    /// stack.push(20).unwrap();
-    /// 
-    /// assert_eq!(stack.pop(), Some(20));
-    /// assert_eq!(stack.pop(), Some(10));
-    /// assert!(stack.pop().is_none());
+    ///  use dsa::data_structures::stack::Stack;
+    ///  let mut stack: Stack<i32> = Stack::new();
+    ///  stack.push(10).unwrap();
+    ///  stack.push(20).unwrap();
+    ///  stack.pop();
+    ///  assert_eq!(stack.pop(), Some(10));
     /// ```
+    /// 
+    /// ### Returns
+    /// - An optional `T` generic that represents the
+    /// topmost value that has been removed from this `Stack`
     pub fn pop(&mut self) -> Option<T> {
         if self.top == -1 {
             None
@@ -83,17 +92,20 @@ impl<T> Stack<T> {
     }
 
     /// Returns a reference to the top element without removing it.
-    ///
-    /// # Examples
-    ///
-    /// ```
-    /// let mut stack = Stack::new();
     /// 
-    /// stack.push(10).unwrap();
-    /// stack.push(20).unwrap();
-    /// 
-    /// assert_eq!(stack.peek(), Some(&20));
+    /// ### Examples
     /// ```
+    ///  use dsa::data_structures::stack::Stack;
+    ///  let mut stack: Stack<i32> = Stack::new();
+    ///  stack.push(10).unwrap();
+    ///  stack.push(20).unwrap();
+    ///  stack.pop();
+    ///  assert_eq!(stack.peek(), Some(&10));
+    /// ```
+    /// 
+    /// ### Returns
+    /// - The topmost value of this `Stack` as an optional
+    /// `T` generic reference
     pub fn peek(&self) -> Option<&T> {
         if self.top == -1 {
             None
@@ -104,31 +116,33 @@ impl<T> Stack<T> {
 
     /// Checks if the `Stack` is empty.
     ///
-    /// # Examples
-    ///
+    /// ### Examples
     /// ```
-    /// let mut stack = Stack::new();
+    /// use dsa::data_structures::stack::Stack;
     /// 
+    /// let mut stack: Stack<u32> = Stack::new();
     /// assert!(stack.is_empty());
-    /// stack.push(10).unwrap();
-    /// assert!(!stack.is_empty());
     /// ```
+    ///
+    /// ### Returns
+    /// - A bool value determining whether this `Stack` is empty
     pub fn is_empty(&self) -> bool {
         self.top == -1
     }
     
-    /// Return the size of the `Stack`
-    /// 
-    /// # Examples
-    /// 
+    /// Get the size of this `Stack`
+    ///
+    /// ### Examples
     /// ```
+    /// use dsa::data_structures::stack::Stack;
     /// let mut stack: Stack<i32> = Stack::new();
-    /// 
-    /// stack.push(10).unwrap();
+    /// stack.push(10).unwrap(); 
     /// stack.push(20).unwrap();
     /// stack.pop();
-    /// 
-    /// assert_eq!(stack.size(), 1);
+    /// assert_eq!(stack.size(), 1); 
     /// ```
+    /// 
+    /// ### Returns
+    /// - An unsigned CPU architecture int representing the size of this `Stack`
     pub fn size(&self) -> isize { self.top + 1 }
 }

@@ -28,6 +28,7 @@ impl<T> Queue<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::queue::Queue;
     /// let queue: Queue<i32> = Queue::new();
     /// assert!(queue.is_empty());
     /// ```
@@ -44,9 +45,10 @@ impl<T> Queue<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::queue::Queue;
     /// let mut queue = Queue::new();
-    /// queue.enqueue(10).unwrap();
-    /// queue.enqueue(20).unwrap();
+    /// queue.enqueue(10);
+    /// queue.enqueue(20);
     /// assert_eq!(queue.peek(), Some(&10));
     /// ```
     pub fn enqueue(&mut self, value: T) {
@@ -79,9 +81,10 @@ impl<T> Queue<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::queue::Queue;
     /// let mut queue = Queue::new();
-    /// queue.enqueue(10).unwrap();
-    /// queue.enqueue(20).unwrap();
+    /// queue.enqueue(10);
+    /// queue.enqueue(20);
     /// assert_eq!(queue.dequeue(), Some(10));
     /// assert_eq!(queue.dequeue(), Some(20));
     /// assert!(queue.dequeue().is_none());
@@ -107,9 +110,10 @@ impl<T> Queue<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::queue::Queue;
     /// let mut queue = Queue::new();
-    /// queue.enqueue(10).unwrap();
-    /// queue.enqueue(20).unwrap();
+    /// queue.enqueue(10);
+    /// queue.enqueue(20);
     /// assert_eq!(queue.peek(), Some(&10));
     /// ```
     pub fn peek(&self) -> Option<&T> {
@@ -121,9 +125,10 @@ impl<T> Queue<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::queue::Queue;
     /// let mut queue = Queue::new();
     /// assert!(queue.is_empty());
-    /// queue.enqueue(10).unwrap();
+    /// queue.enqueue(10);
     /// assert!(!queue.is_empty());
     /// ```
     pub fn is_empty(&self) -> bool {
@@ -135,9 +140,10 @@ impl<T> Queue<T> {
     /// # Examples
     ///
     /// ```
+    /// use dsa::data_structures::queue::Queue;
     /// let mut queue: Queue<i32> = Queue::new();
-    /// queue.enqueue(10).unwrap();
-    /// queue.enqueue(20).unwrap();
+    /// queue.enqueue(10);
+    /// queue.enqueue(20);
     /// queue.dequeue();
     /// assert_eq!(queue.size(), 1);
     /// ```

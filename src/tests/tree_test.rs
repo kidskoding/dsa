@@ -19,9 +19,9 @@ mod tree_test {
         let right_tree = BinaryTree::new(right_node, None, None);
         let tree = BinaryTree::new(root_node, Some(Box::new(left_tree)), Some(Box::new(right_tree)));
 
-        assert_eq!(tree.node.value, 1);
-        assert_eq!(tree.left.as_ref().unwrap().node.value, 2);
-        assert_eq!(tree.right.as_ref().unwrap().node.value, 3);
+        assert_eq!(tree.root.value, 1);
+        assert_eq!(tree.left.as_ref().unwrap().root.value, 2);
+        assert_eq!(tree.right.as_ref().unwrap().root.value, 3);
     }
 
     #[test]
@@ -33,7 +33,7 @@ mod tree_test {
         let left_tree = BinaryTree::new(left_node, None, None);
         tree.left = Some(Box::new(left_tree));
 
-        assert_eq!(tree.left.as_ref().unwrap().node.value, 2);
+        assert_eq!(tree.left.as_ref().unwrap().root.value, 2);
     }
 
     #[test]
@@ -45,6 +45,6 @@ mod tree_test {
         let right_tree = BinaryTree::new(right_node, None, None);
         tree.right = Some(Box::new(right_tree));
 
-        assert_eq!(tree.right.as_ref().unwrap().node.value, 3);
+        assert_eq!(tree.right.as_ref().unwrap().root.value, 3);
     }
 }

@@ -10,20 +10,6 @@ use std::cmp::Ord;
 ///
 /// This implementation allows you to specify whether the heap is a max-heap
 /// or a min-heap when creating it.
-///
-/// # Example
-///
-/// ```
-/// let mut heap = Heap::new(true);
-/// 
-/// heap.values.push(3);
-/// heap.values.push(1);
-/// heap.values.push(2);
-/// 
-/// heap.build_heap();
-/// 
-/// assert_eq!(heap.values, vec![3, 1, 2]); 
-/// ```
 pub struct Heap<T> {
     /// The values stored in the heap.
     ///
@@ -50,7 +36,9 @@ impl<T: Ord> Heap<T> {
     /// # Example
     ///
     /// ```
-    /// let heap = Heap::new(true);
+    /// use dsa::data_structures::heap::Heap;
+    /// 
+    /// let heap: Heap<i32> = Heap::new(true);
     /// assert_eq!(heap.is_max_heap, true);
     /// ```
     pub fn new(is_max_heap: bool) -> Self {
@@ -59,6 +47,51 @@ impl<T: Ord> Heap<T> {
             is_max_heap,
         }
     }
+    
+    /// Inserts a new value into the heap
+    /// 
+    /// # Parameters
+    /// - `value`: The value to insert into the heap
+    /// 
+    /// # Examples
+    /// ```
+    /// use dsa::data_structures::heap::Heap;
+    /// 
+    /// let mut heap = Heap::new(true);
+    ///
+    /// heap.insert(3);
+    /// heap.insert(1);
+    /// heap.insert(2);
+    /// heap.build_heap();
+    /// 
+    /// assert_eq!(heap.values, vec![3, 1, 2]);
+    /// ```
+    pub fn insert(&mut self, value: T) {
+        self.values.push(value);
+        self.sift_up(self.values.len() - 1);
+    }
+    
+    /// Sifts up a value in the heap to maintain the heap property
+    /// 
+    /// # Parameters
+    /// - `index`: The position of the newly inserted element that needs
+    ///    to be moved up
+    fn sift_up(&mut self, index: usize) {
+        if index == 0 {
+            return;
+        }
+        let parent = (index - 1) / 2;
+        let compare_result = if self.is_max_heap {
+            self.values[index] > self.values[parent]
+        } else {
+            self.values[index] < self.values[parent]
+        };
+
+        if compare_result {
+            self.values.swap(index, parent);
+            self.sift_up(parent);
+        }
+    } 
 
     /// Builds the heap from the current values.
     ///
@@ -68,16 +101,17 @@ impl<T: Ord> Heap<T> {
     /// up to the root.
     ///
     /// # Example
-    ///
     /// ```
+    /// use dsa::data_structures::heap::Heap;
+    /// 
     /// let mut heap = Heap::new(true);
-    /// 
-    /// heap.values.push(3);
-    /// heap.values.push(1);
-    /// heap.values.push(2);
+    ///
+    /// heap.insert(3);
+    /// heap.insert(1);
+    /// heap.insert(2);
     /// heap.build_heap();
-    /// 
-    /// assert_eq!(heap.values, vec![3, 1, 2]); // Max-heap property holds
+    ///
+    /// assert_eq!(heap.values, vec![3, 1, 2]);
     /// ```
     pub fn build_heap(&mut self) {
         let len = self.values.len();

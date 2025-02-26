@@ -7,3 +7,7 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
+
+[lib]
+name = "dsa"
+path = "src/lib.rs"
