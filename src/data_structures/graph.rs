@@ -26,6 +26,14 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     ///
     /// # Returns
     /// - A newly made `Graph` instance
+    ///
+    /// # Examples
+    /// ```
+    /// use dsa::data_structures::graph::Graph;
+    ///
+    /// let graph: Graph<i32> = Graph::new();
+    /// assert!(graph.graph.is_empty());
+    /// ```
     pub fn new() -> Self {
         Graph {
             graph: HashMap::new(),
@@ -39,6 +47,18 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// # Parameters
     /// - `node`: The reference counted, `Rc`, `TreeNode` to be added to the graph.
     ///
+    /// # Examples
+    /// ```
+    /// use std::rc::Rc;
+    /// use dsa::data_structures::graph::Graph;
+    /// use dsa::data_structures::tree::TreeNode;
+    ///
+    /// let node = Rc::new(TreeNode::new(1));
+    /// let mut graph = Graph::new();
+    /// graph.add_node(Rc::clone(&node));
+    ///
+    /// assert!(graph.graph.contains_key(&node));
+    /// ```
     pub fn add_node(&mut self, node: Rc<TreeNode<T>>) {
         self.graph.entry(node).or_insert(Vec::new());
     }
@@ -50,6 +70,25 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     ///
     /// # Parameters
     /// - `node`: The `TreeNode` to be removed from the graph.
+    ///
+    /// # Examples
+    /// ```
+    /// use std::rc::Rc;
+    /// use dsa::data_structures::graph::Graph;
+    /// use dsa::data_structures::tree::TreeNode;
+    ///
+    /// let node1 = Rc::new(TreeNode::new(1));
+    /// let node2 = Rc::new(TreeNode::new(2));
+    /// let mut graph = Graph::new();
+    /// graph.add_node(Rc::clone(&node1));
+    /// graph.add_node(Rc::clone(&node2));
+    /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(10));
+    ///
+    /// graph.remove_node(Rc::clone(&node1));
+    /// assert!(!graph.graph.contains_key(&node1));
+    /// assert!(graph.graph.contains_key(&node2));
+    /// assert!(graph.graph[&node2].is_empty());
+    /// ```
     pub fn remove_node(&mut self, node: Rc<TreeNode<T>>) {
         for (_, neighbors) in &mut self.graph {
             neighbors.retain(|(neighbor, _)| neighbor != &node);
@@ -66,6 +105,23 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// - `a`: The first `TreeNode` as a reference counting `Rc` pointer
     /// - `b`: The second `TreeNode` as a reference counting `Rc` pointer
     /// - `weight`: An optional weight for the edge.
+    ///
+    /// # Examples
+    /// ```
+    /// use std::rc::Rc;
+    /// use dsa::data_structures::graph::Graph;
+    /// use dsa::data_structures::tree::TreeNode;
+    ///
+    /// let node1 = Rc::new(TreeNode::new(1));
+    /// let node2 = Rc::new(TreeNode::new(2));
+    /// let mut graph = Graph::new();
+    /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(10));
+    ///
+    /// assert!(graph.graph.contains_key(&node1));
+    /// assert!(graph.graph.contains_key(&node2));
+    /// assert_eq!(graph.graph[&node1].len(), 1);
+    /// assert_eq!(graph.graph[&node2].len(), 1);
+    /// ```
     pub fn add_edge(&mut self, a: Rc<TreeNode<T>>, b: Rc<TreeNode<T>>, weight: Option<i32>) {
         self.graph
             .entry(Rc::clone(&a))
@@ -85,6 +141,22 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// # Parameters
     /// - `a`: The first `TreeNode` as a reference counting `Rc` pointer.
     /// - `b`: The second `TreeNode` as a reference counting `Rc` pointer.
+    ///
+    /// # Examples
+    /// ```
+    /// use std::rc::Rc;
+    /// use dsa::data_structures::graph::Graph;
+    /// use dsa::data_structures::tree::TreeNode;
+    ///
+    /// let node1 = Rc::new(TreeNode::new(1));
+    /// let node2 = Rc::new(TreeNode::new(2));
+    /// let mut graph = Graph::new();
+    /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(10));
+    /// graph.remove_edge(Rc::clone(&node1), Rc::clone(&node2));
+    ///
+    /// assert!(graph.graph[&node1].is_empty());
+    /// assert!(graph.graph[&node2].is_empty());
+    /// ```
     pub fn remove_edge(&mut self, a: Rc<TreeNode<T>>, b: Rc<TreeNode<T>>) {
         if let Some(neighbors) = self.graph.get_mut(&a) {
             neighbors.retain(|(neighbor, _)| neighbor != &b);

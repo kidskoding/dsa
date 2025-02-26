@@ -26,10 +26,10 @@ impl<T> TreeNode<T> {
 impl<T: Ord> PartialOrd for TreeNode<T> {
     /// Compares two `TreeNode`s for partial ordering.
     /// 
-    /// ### Parameters
+    /// # Parameters
     /// - other: Another `TreeNode` object to compare this `TreeNode`s value
     /// 
-    /// ### Returns
+    /// # Returns
     /// - An optional `Ordering` object that indicates whether there exists an
     ///     `Ordering` where this `TreeNode` is less than, equal to, or greater than
     ///     the other `TreeNode`.
@@ -40,11 +40,11 @@ impl<T: Ord> PartialOrd for TreeNode<T> {
 impl<T: Ord> Ord for TreeNode<T> {
     /// Compares two `TreeNode`s for total ordering.
     ///
-    /// ### Parameters
+    /// # Parameters
     /// - `other`: Another `TreeNode` instance to compare the value to this `TreeNode`'s
     /// value
     /// 
-    /// ### Returns
+    /// # Returns
     /// - An `Ordering` object that indicates whether the value of
     /// this `TreeNode` is less than, equal to, or greater than the value
     /// of the other `TreeNode`
@@ -70,7 +70,7 @@ pub struct BinaryTree<T> {
 impl<T> BinaryTree<T> {
     /// Creates a new `BinaryTree` with the given node, left child, and right child.
     /// 
-    /// ### Parameters
+    /// # Parameters
     /// - `root`: A `TreeNode` object that represents the topmost 
     /// node of this `BinaryTree`
     /// - `left`: An optional `BinaryTree` `Box` pointer that points to the
@@ -78,10 +78,21 @@ impl<T> BinaryTree<T> {
     /// - `right`: An optional `BinaryTree` `Box` pointer that points to the
     /// right child of this `BinaryTree`, or `None` if no right child exists
     /// 
-    /// ### Returns
+    /// # Returns
     /// - A new instance of a `BinaryTree` containing the given `root` node,
     /// `left` child, and `right` child
-    pub fn new(root: TreeNode<T>, left: Option<Box<BinaryTree<T>>>, 
+    /// 
+    /// # Examples
+    /// ```
+    /// use dsa::data_structures::tree::{BinaryTree, TreeNode};
+    /// let tree = BinaryTree::new(
+    ///     TreeNode::new(1), 
+    ///     Some(Box::new(BinaryTree::new(TreeNode::new(2), None, None))),
+    ///     Some(Box::new(BinaryTree::new(TreeNode::new(3), None, None)))
+    /// );
+    /// ```
+    pub fn new(root: TreeNode<T>, 
+               left: Option<Box<BinaryTree<T>>>, 
                right: Option<Box<BinaryTree<T>>>) -> Self {
         BinaryTree::<T> {
             root,

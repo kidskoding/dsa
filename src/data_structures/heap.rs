@@ -34,7 +34,6 @@ impl<T: Ord> Heap<T> {
     /// A new `Heap` instance with no elements.
     ///
     /// # Example
-    ///
     /// ```
     /// use dsa::data_structures::heap::Heap;
     /// 
