@@ -3,7 +3,7 @@ use std::collections::{BinaryHeap, HashMap, HashSet, VecDeque};
 use std::hash::Hash;
 use std::rc::Rc;
 use crate::data_structures::graph::Graph;
-use crate::data_structures::tree::TreeNode;
+use crate::data_structures::graph::GraphNode;
 
 /// Performs a breadth-first search (BFS) on the given graph starting from the `start` node.
 ///
@@ -13,14 +13,13 @@ use crate::data_structures::tree::TreeNode;
 /// # Examples
 /// ```
 /// use std::rc::Rc;
-/// use dsa::data_structures::graph::Graph;
-/// use dsa::data_structures::tree::TreeNode;
+/// use dsa::data_structures::graph::{Graph, GraphNode};
 /// use dsa::algorithms::graph_traversal::breadth_first_search;
 ///
 /// let mut graph = Graph::new();
-/// let node1 = Rc::new(TreeNode::new(1));
-/// let node2 = Rc::new(TreeNode::new(2));
-/// let node3 = Rc::new(TreeNode::new(3));
+/// let node1 = Rc::new(GraphNode::new(1));
+/// let node2 = Rc::new(GraphNode::new(2));
+/// let node3 = Rc::new(GraphNode::new(3));
 ///
 /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
 /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(1));
@@ -37,7 +36,7 @@ use crate::data_structures::tree::TreeNode;
 /// A vector containing the nodes in the order they were visited.
 pub fn breadth_first_search<T: Eq + Hash + Clone>(
     graph: &Graph<T>, 
-    start: Rc<TreeNode<T>>
+    start: Rc<GraphNode<T>>
 ) -> Vec<T> {
     let mut visited = HashSet::new();
     let mut queue = VecDeque::new();
@@ -71,13 +70,12 @@ pub fn breadth_first_search<T: Eq + Hash + Clone>(
 /// ```
 /// use std::rc::Rc;
 /// use dsa::algorithms::graph_traversal::depth_first_search;
-/// use dsa::data_structures::graph::Graph;
-/// use dsa::data_structures::tree::TreeNode;
+/// use dsa::data_structures::graph::{Graph, GraphNode};
 /// 
 /// let mut graph = Graph::new();
-/// let node1 = Rc::new(TreeNode::new(1));
-/// let node2 = Rc::new(TreeNode::new(2));
-/// let node3 = Rc::new(TreeNode::new(3));
+/// let node1 = Rc::new(GraphNode::new(1));
+/// let node2 = Rc::new(GraphNode::new(2));
+/// let node3 = Rc::new(GraphNode::new(3));
 ///
 /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(1));
 /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node3), Some(1));
@@ -94,7 +92,7 @@ pub fn breadth_first_search<T: Eq + Hash + Clone>(
 /// A vector containing the values of the nodes in the order they were visited.
 pub fn depth_first_search<T: Eq + Hash + Clone>(
     graph: &Graph<T>, 
-    start: Rc<TreeNode<T>>
+    start: Rc<GraphNode<T>>
 ) -> Vec<T> {
     let mut visited = HashSet::new();
     let mut result = Vec::new();
@@ -113,8 +111,8 @@ pub fn depth_first_search<T: Eq + Hash + Clone>(
 /// - `result`: A mutable vector to store the nodes in the order they were visited.
 fn depth_first_search_helper<'a, T: Eq + Hash + Clone>(
     graph: &'a Graph<T>, 
-    node: Rc<TreeNode<T>>,
-    visited: &mut HashSet<Rc<TreeNode<T>>>, 
+    node: Rc<GraphNode<T>>,
+    visited: &mut HashSet<Rc<GraphNode<T>>>, 
     result: &mut Vec<T>,
 ) {
     if visited.contains(&node) {
@@ -140,13 +138,12 @@ fn depth_first_search_helper<'a, T: Eq + Hash + Clone>(
 /// use std::collections::HashMap;
 /// use std::rc::Rc;
 /// use dsa::algorithms::graph_traversal::dijkstra;
-/// use dsa::data_structures::graph::Graph;
-/// use dsa::data_structures::tree::TreeNode;
+/// use dsa::data_structures::graph::{Graph, GraphNode};
 ///
 /// let mut graph = Graph::new();
-/// let node1 = Rc::new(TreeNode::new(1));
-/// let node2 = Rc::new(TreeNode::new(2));
-/// let node3 = Rc::new(TreeNode::new(3));
+/// let node1 = Rc::new(GraphNode::new(1));
+/// let node2 = Rc::new(GraphNode::new(2));
+/// let node3 = Rc::new(GraphNode::new(3));
 ///
 /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(5));
 /// graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(10));
@@ -172,8 +169,8 @@ fn depth_first_search_helper<'a, T: Eq + Hash + Clone>(
 /// A map of nodes to their shortest distances from the `start` node.
 pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
     graph: &Graph<T>,
-    start: Rc<TreeNode<T>>
-) -> HashMap<Rc<TreeNode<T>>, u32> {
+    start: Rc<GraphNode<T>>
+) -> HashMap<Rc<GraphNode<T>>, u32> {
     let mut distances = HashMap::new();
     let mut priority_queue = BinaryHeap::new();
     
@@ -211,14 +208,13 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
 /// ```
 /// use std::collections::HashMap;
 /// use std::rc::Rc;
-/// use dsa::data_structures::graph::Graph;
+/// use dsa::data_structures::graph::{Graph, GraphNode};
 /// use dsa::algorithms::graph_traversal::bellman_ford;
-/// use dsa::data_structures::tree::TreeNode;
 ///
 /// let mut graph = Graph::new();
-/// let node1 = Rc::new(TreeNode::new(1));
-/// let node2 = Rc::new(TreeNode::new(2));
-/// let node3 = Rc::new(TreeNode::new(3));
+/// let node1 = Rc::new(GraphNode::new(1));
+/// let node2 = Rc::new(GraphNode::new(2));
+/// let node3 = Rc::new(GraphNode::new(3));
 ///
 /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(5));
 /// graph.add_edge(Rc::clone(&node2), Rc::clone(&node3), Some(10));
@@ -244,8 +240,8 @@ pub fn dijkstra<T: Eq + Hash + Clone + Ord>(
 /// A `Result` containing a map of nodes to their shortest distances, or an error if a negative weight cycle is detected.
 pub fn bellman_ford<T: Eq + Hash + Clone + Ord>(
     graph: &Graph<T>,
-    start: Rc<TreeNode<T>>
-) -> Result<HashMap<Rc<TreeNode<T>>, i32>, String> {
+    start: Rc<GraphNode<T>>
+) -> Result<HashMap<Rc<GraphNode<T>>, i32>, String> {
     let mut distances = HashMap::new();
     distances.insert(Rc::clone(&start), 0);
     let num_vertices: i32 = graph.graph.len() as i32;

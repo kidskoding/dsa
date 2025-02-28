@@ -1,7 +1,58 @@
+use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::hash::Hash;
 use std::rc::Rc;
-use crate::data_structures::tree::TreeNode;
+
+/// A graph node that holds a value of type `T` generic
+///
+/// This structure represents a single node in a graph. It holds a value of type `T` and can
+/// be compared to other `GraphNode`s based on the value it contains.
+#[derive(Eq, Hash, PartialEq, Clone, Debug)]
+pub struct GraphNode<T> {
+    /// The `value` of this `GraphNode`
+    pub value: T,
+}
+impl<T> GraphNode<T> {
+    /// Creates a new `GraphNode` with the given `value`
+    ///
+    /// # Parameters
+    /// - `value`: The value to be stored in this `GraphNode`
+    ///
+    /// # Returns
+    /// - A new instance of `GraphNode` containing the provided `value`
+    pub fn new(value: T) -> Self {
+        GraphNode { value }
+    }
+}
+impl<T: Ord> PartialOrd for GraphNode<T> {
+    /// Compares two `GraphNode`s for partial ordering.
+    /// 
+    /// # Parameters
+    /// - other: Another `GraphNode` object to compare this `GraphNode`s value
+    /// 
+    /// # Returns
+    /// - An optional `Ordering` object that indicates whether there exists an
+    ///     `Ordering` where this `TreeNode` is less than, equal to, or greater than
+    ///     the other `TreeNode`.
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        self.value.partial_cmp(&other.value)
+    }
+}
+impl<T: Ord> Ord for GraphNode<T> {
+    /// Compares two `GraphNode`s for total ordering.
+    ///
+    /// # Parameters
+    /// - `other`: Another `GraphNode` instance to compare the value to this `GraphNode`'s
+    /// value
+    ///
+    /// # Returns
+    /// - An `Ordering` object that indicates whether the value of
+    /// this `GraphNode` is less than, equal to, or greater than the value
+    /// of the other `GraphNode`
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.value.cmp(&other.value)
+    }
+}
 
 /// A graph data structure represented as an adjacency list
 ///
@@ -18,7 +69,7 @@ pub struct Graph<T> {
     ///   - The second element of the tuple is an optional `i32` (`Option<i32>`), representing the weight of the edge (if any).
     ///
     /// This design allows the graph to represent both weighted and unweighted graphs.
-    pub graph: HashMap<Rc<TreeNode<T>>, Vec<(Rc<TreeNode<T>>, Option<i32>)>>,
+    pub graph: HashMap<Rc<GraphNode<T>>, Vec<(Rc<GraphNode<T>>, Option<i32>)>>,
 }
 
 impl<T: Eq + Hash + Clone> Graph<T> {
@@ -50,16 +101,15 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// # Examples
     /// ```
     /// use std::rc::Rc;
-    /// use dsa::data_structures::graph::Graph;
-    /// use dsa::data_structures::tree::TreeNode;
+    /// use dsa::data_structures::graph::{Graph, GraphNode};
     ///
-    /// let node = Rc::new(TreeNode::new(1));
+    /// let node = Rc::new(GraphNode::new(1));
     /// let mut graph = Graph::new();
     /// graph.add_node(Rc::clone(&node));
     ///
     /// assert!(graph.graph.contains_key(&node));
     /// ```
-    pub fn add_node(&mut self, node: Rc<TreeNode<T>>) {
+    pub fn add_node(&mut self, node: Rc<GraphNode<T>>) {
         self.graph.entry(node).or_insert(Vec::new());
     }
 
@@ -74,11 +124,10 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// # Examples
     /// ```
     /// use std::rc::Rc;
-    /// use dsa::data_structures::graph::Graph;
-    /// use dsa::data_structures::tree::TreeNode;
+    /// use dsa::data_structures::graph::{Graph, GraphNode};
     ///
-    /// let node1 = Rc::new(TreeNode::new(1));
-    /// let node2 = Rc::new(TreeNode::new(2));
+    /// let node1 = Rc::new(GraphNode::new(1));
+    /// let node2 = Rc::new(GraphNode::new(2));
     /// let mut graph = Graph::new();
     /// graph.add_node(Rc::clone(&node1));
     /// graph.add_node(Rc::clone(&node2));
@@ -89,7 +138,7 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// assert!(graph.graph.contains_key(&node2));
     /// assert!(graph.graph[&node2].is_empty());
     /// ```
-    pub fn remove_node(&mut self, node: Rc<TreeNode<T>>) {
+    pub fn remove_node(&mut self, node: Rc<GraphNode<T>>) {
         for (_, neighbors) in &mut self.graph {
             neighbors.retain(|(neighbor, _)| neighbor != &node);
         }
@@ -109,11 +158,10 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// # Examples
     /// ```
     /// use std::rc::Rc;
-    /// use dsa::data_structures::graph::Graph;
-    /// use dsa::data_structures::tree::TreeNode;
+    /// use dsa::data_structures::graph::{Graph, GraphNode};
     ///
-    /// let node1 = Rc::new(TreeNode::new(1));
-    /// let node2 = Rc::new(TreeNode::new(2));
+    /// let node1 = Rc::new(GraphNode::new(1));
+    /// let node2 = Rc::new(GraphNode::new(2));
     /// let mut graph = Graph::new();
     /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(10));
     ///
@@ -122,7 +170,7 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// assert_eq!(graph.graph[&node1].len(), 1);
     /// assert_eq!(graph.graph[&node2].len(), 1);
     /// ```
-    pub fn add_edge(&mut self, a: Rc<TreeNode<T>>, b: Rc<TreeNode<T>>, weight: Option<i32>) {
+    pub fn add_edge(&mut self, a: Rc<GraphNode<T>>, b: Rc<GraphNode<T>>, weight: Option<i32>) {
         self.graph
             .entry(Rc::clone(&a))
             .or_insert(Vec::new())
@@ -145,11 +193,10 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// # Examples
     /// ```
     /// use std::rc::Rc;
-    /// use dsa::data_structures::graph::Graph;
-    /// use dsa::data_structures::tree::TreeNode;
+    /// use dsa::data_structures::graph::{Graph, GraphNode};
     ///
-    /// let node1 = Rc::new(TreeNode::new(1));
-    /// let node2 = Rc::new(TreeNode::new(2));
+    /// let node1 = Rc::new(GraphNode::new(1));
+    /// let node2 = Rc::new(GraphNode::new(2));
     /// let mut graph = Graph::new();
     /// graph.add_edge(Rc::clone(&node1), Rc::clone(&node2), Some(10));
     /// graph.remove_edge(Rc::clone(&node1), Rc::clone(&node2));
@@ -157,7 +204,7 @@ impl<T: Eq + Hash + Clone> Graph<T> {
     /// assert!(graph.graph[&node1].is_empty());
     /// assert!(graph.graph[&node2].is_empty());
     /// ```
-    pub fn remove_edge(&mut self, a: Rc<TreeNode<T>>, b: Rc<TreeNode<T>>) {
+    pub fn remove_edge(&mut self, a: Rc<GraphNode<T>>, b: Rc<GraphNode<T>>) {
         if let Some(neighbors) = self.graph.get_mut(&a) {
             neighbors.retain(|(neighbor, _)| neighbor != &b);
         }

@@ -1,16 +1,15 @@
 #[cfg(test)]
 mod graph_test {
     use std::rc::Rc;
-    use crate::data_structures::graph::Graph;
-    use crate::data_structures::tree::TreeNode;
+    use crate::data_structures::graph::{Graph, GraphNode};
 
     #[test]
     fn test_weighted_graph() {
         let mut graph = Graph::new();
 
-        let node_a = Rc::new(TreeNode::new("Joey"));
-        let node_b = Rc::new(TreeNode::new("Dinner"));
-        let node_c = Rc::new(TreeNode::new("Lunch"));
+        let node_a = Rc::new(GraphNode::new("Joey"));
+        let node_b = Rc::new(GraphNode::new("Dinner"));
+        let node_c = Rc::new(GraphNode::new("Lunch"));
 
         graph.add_node(Rc::clone(&node_a));
         graph.add_node(Rc::clone(&node_b));

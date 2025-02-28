@@ -2,17 +2,16 @@
 mod graph_traversal_test {
     use std::rc::Rc;
     use crate::algorithms::graph_traversal::{breadth_first_search, depth_first_search};
-    use crate::data_structures::graph::Graph;
-    use crate::data_structures::tree::TreeNode;
+    use crate::data_structures::graph::{Graph, GraphNode};
 
     fn create_graph() -> Graph<String> {
         let mut graph = Graph::new();
 
-        let node_a = Rc::new(TreeNode::new("A".to_string()));
-        let node_b = Rc::new(TreeNode::new("B".to_string()));
-        let node_c = Rc::new(TreeNode::new("C".to_string()));
-        let node_d = Rc::new(TreeNode::new("D".to_string()));
-        let node_e = Rc::new(TreeNode::new("E".to_string()));
+        let node_a = Rc::new(GraphNode::new("A".to_string()));
+        let node_b = Rc::new(GraphNode::new("B".to_string()));
+        let node_c = Rc::new(GraphNode::new("C".to_string()));
+        let node_d = Rc::new(GraphNode::new("D".to_string()));
+        let node_e = Rc::new(GraphNode::new("E".to_string()));
 
         graph.add_node(Rc::clone(&node_a));
         graph.add_node(Rc::clone(&node_b));
@@ -31,7 +30,7 @@ mod graph_traversal_test {
     #[test]
     fn test_breadth_first_search() {
         let graph = create_graph();
-        let start_node = Rc::new(TreeNode::new("A".to_string()));
+        let start_node = Rc::new(GraphNode::new("A".to_string()));
 
         let result = breadth_first_search(&graph, start_node);
 
@@ -49,7 +48,7 @@ mod graph_traversal_test {
     #[test]
     fn test_depth_first_search() {
         let graph = create_graph();
-        let start_node = Rc::new(TreeNode::new(String::from("A")));
+        let start_node = Rc::new(GraphNode::new(String::from("A")));
 
         let result = depth_first_search(&graph, start_node);
 
@@ -68,11 +67,10 @@ mod graph_traversal_test {
         use std::collections::HashMap;
         use std::rc::Rc;
         use crate::algorithms::graph_traversal::dijkstra;
-        use crate::data_structures::graph::Graph;
-        use crate::data_structures::tree::TreeNode;
+        use crate::data_structures::graph::{Graph, GraphNode};
 
-        fn create_node<T>(value: T) -> TreeNode<T> {
-            TreeNode { value }
+        fn create_node<T>(value: T) -> GraphNode<T> {
+            GraphNode { value }
         }
 
         #[test]
@@ -143,11 +141,10 @@ mod graph_traversal_test {
         use std::collections::HashMap;
         use std::rc::Rc;
         use crate::algorithms::graph_traversal::bellman_ford;
-        use crate::data_structures::graph::Graph;
-        use crate::data_structures::tree::TreeNode;
+        use crate::data_structures::graph::{Graph, GraphNode};
 
-        fn create_node<T>(value: T) -> TreeNode<T> {
-            TreeNode { value }
+        fn create_node<T>(value: T) -> GraphNode<T> {
+            GraphNode { value }
         }
 
         #[test]
