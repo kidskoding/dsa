@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tree_traversal_test {
-    use crate::data_structures::tree::{BinaryTree, TreeNode};
-    use crate::algorithms::tree_traversal::{post_order_traversal, pre_order_traversal, 
+    use dsa::data_structures::tree::{BinaryTree, TreeNode};
+    use dsa::algorithms::tree_traversal::{post_order_traversal, pre_order_traversal, 
                                             in_order_traversal, level_order_traversal};
 
     #[test]

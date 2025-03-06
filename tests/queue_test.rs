@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::data_structures::queue::Queue;
+    use dsa::data_structures::queue::Queue;
 
     #[test]
     fn test_queue_is_empty() {

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod searching_test {
-    use crate::algorithms::searching::{binary_search, linear_search};
+    use dsa::algorithms::searching::{binary_search, linear_search};
 
     #[test]
     fn linear_search_test() {

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod stack_test {
-    use crate::data_structures::stack::Stack;
+    use dsa::data_structures::stack::Stack;
 
     #[test]
     fn test_stack_is_empty() {

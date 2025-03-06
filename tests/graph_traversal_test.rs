@@ -1,8 +1,8 @@
 #[cfg(test)]
 mod graph_traversal_test {
     use std::rc::Rc;
-    use crate::algorithms::graph_traversal::{breadth_first_search, depth_first_search};
-    use crate::data_structures::graph::{Graph, GraphNode};
+    use dsa::algorithms::graph_traversal::{breadth_first_search, depth_first_search};
+    use dsa::data_structures::graph::{Graph, GraphNode};
 
     fn create_graph() -> Graph<String> {
         let mut graph = Graph::new();
@@ -66,8 +66,8 @@ mod graph_traversal_test {
     mod dijkstra_tests {
         use std::collections::HashMap;
         use std::rc::Rc;
-        use crate::algorithms::graph_traversal::dijkstra;
-        use crate::data_structures::graph::{Graph, GraphNode};
+        use dsa::algorithms::graph_traversal::dijkstra;
+        use dsa::data_structures::graph::{Graph, GraphNode};
 
         fn create_node<T>(value: T) -> GraphNode<T> {
             GraphNode { value }
@@ -140,8 +140,8 @@ mod graph_traversal_test {
     mod bellman_ford_tests {
         use std::collections::HashMap;
         use std::rc::Rc;
-        use crate::algorithms::graph_traversal::bellman_ford;
-        use crate::data_structures::graph::{Graph, GraphNode};
+        use dsa::algorithms::graph_traversal::bellman_ford;
+        use dsa::data_structures::graph::{Graph, GraphNode};
 
         fn create_node<T>(value: T) -> GraphNode<T> {
             GraphNode { value }

@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tree_test {
-    use crate::data_structures::tree::TreeNode;
-    use crate::data_structures::tree::BinaryTree;
+    use dsa::data_structures::tree::TreeNode;
+    use dsa::data_structures::tree::BinaryTree;
 
     #[test]
     fn test_tree_node_creation() {

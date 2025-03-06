@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod intro_algorithm_test {
-    use crate::algorithms::intro_algorithm::{euclidean_algorithm, euclidean_algorithm_recursion};
+    use dsa::algorithms::intro_algorithm::{euclidean_algorithm, euclidean_algorithm_recursion};
     #[test]
     fn euclidean_algorithm_test() {
         assert_eq!(euclidean_algorithm(20, 5), 5);

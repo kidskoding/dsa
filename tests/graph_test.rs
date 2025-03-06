@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod graph_test {
     use std::rc::Rc;
-    use crate::data_structures::graph::{Graph, GraphNode};
+    use dsa::data_structures::graph::{Graph, GraphNode};
 
     #[test]
     fn test_weighted_graph() {

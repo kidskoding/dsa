@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod linked_list_test {
-    use crate::data_structures::linked_list::LinkedList;
+    use dsa::data_structures::linked_list::LinkedList;
 
     #[test]
     fn test_linked_list_creation() {

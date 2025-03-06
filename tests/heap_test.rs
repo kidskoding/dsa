@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod heap_test {
-    use crate::data_structures::heap::Heap;
+    use dsa::data_structures::heap::Heap;
 
     #[test]
     fn build_min_heap_test() {

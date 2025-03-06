@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod sorting_test {
-    use crate::algorithms::sorting::*;
-    use crate::data_structures::heap::Heap;
+    use dsa::algorithms::sorting::*;
+    use dsa::data_structures::heap::Heap;
 
     #[test]
     fn test_bubble_sort() {
