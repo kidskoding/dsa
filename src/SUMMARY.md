@@ -14,6 +14,7 @@
 - [1.1 Memory Model](01-arrays/notes/01-memory-model.md)
 - [1.2 Dynamic Arrays](01-arrays/notes/02-dynamic-arrays.md)
 - [1.3 Multidimensional Arrays](01-arrays/notes/03-multidimensional-arrays.md)
+- [1.4 Prefix & Suffix Sums and Products](01-arrays/notes/04-prefix-sums.md)
 - [Problem Set](01-arrays/PROBLEM_SET.md)
 
 # Module 2: Linked Lists
@@ -26,14 +27,16 @@
 - [3.1 Stacks](03-stacks-queues/notes/01-stacks.md)
 - [3.2 Queues](03-stacks-queues/notes/02-queues.md)
 - [3.3 Deques](03-stacks-queues/notes/03-deques.md)
+- [3.4 Monotonic Stack](03-stacks-queues/notes/04-monotonic-stack.md)
 - [Problem Set](03-stacks-queues/PROBLEM_SET.md)
 
 # Module 4: Recursion & Divide and Conquer
 - [4.1 Recursion Deep](04-recursion-divide-conquer/notes/01-recursion-deep.md)
-- [4.2 Divide And Conquer Paradigm](04-recursion-divide-conquer/notes/02-divide-and-conquer-paradigm.md)
-- [4.3 Closest Pair Of Points](04-recursion-divide-conquer/notes/03-closest-pair-of-points.md)
-- [4.4 Fast Exponentiation](04-recursion-divide-conquer/notes/04-fast-exponentiation.md)
-- [4.5 Karatsuba Multiplication](04-recursion-divide-conquer/notes/05-karatsuba-multiplication.md)
+- [4.2 Divide and Conquer](04-recursion-divide-conquer/notes/02-divide-and-conquer.md)
+- [4.3 Backtracking](04-recursion-divide-conquer/notes/03-backtracking.md)
+- [4.4 Closest Pair Of Points](04-recursion-divide-conquer/notes/04-closest-pair-of-points.md)
+- [4.5 Fast Exponentiation](04-recursion-divide-conquer/notes/05-fast-exponentiation.md)
+- [4.6 Karatsuba Multiplication](04-recursion-divide-conquer/notes/06-karatsuba-multiplication.md)
 - [Problem Set](04-recursion-divide-conquer/PROBLEM_SET.md)
 
 # Module 5: Searching & Sorting
@@ -49,6 +52,7 @@
 - [5.10 Counting Sort](05-searching-and-sorting/notes/10-counting-sort.md)
 - [5.11 Radix Sort](05-searching-and-sorting/notes/11-radix-sort.md)
 - [5.12 Bucket Sort](05-searching-and-sorting/notes/12-bucket-sort.md)
+- [5.13 Quickselect](05-searching-and-sorting/notes/13-quickselect.md)
 - [Problem Set](05-searching-and-sorting/PROBLEM_SET.md)
 
 # Module 6: Trees
