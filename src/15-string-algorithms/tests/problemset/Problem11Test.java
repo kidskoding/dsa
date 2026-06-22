@@ -1,21 +1,34 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem11Test {
 
-	@Test
-	void longestBorder_classic_returnsBorder() {
-		assertEquals("aba", new Problem11().longestBorder("abacaba"));
+	private final Problem11 sut = new Problem11();
+
+	private static List<String> sorted(List<String> in) {
+		List<String> out = new ArrayList<>(in);
+		Collections.sort(out);
+		return out;
 	}
 
 	@Test
-	void longestBorder_noBorder_returnsEmpty() {
-		assertEquals("", new Problem11().longestBorder("abcde"));
+	void dna_twoRepeats() {
+		assertEquals(
+				List.of("AAAAACCCCC", "CCCCCAAAAA"),
+				sorted(sut.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT")));
 	}
 
 	@Test
-	void longestBorder_repeated_returnsLongest() {
-		assertEquals("abab", new Problem11().longestBorder("ababab"));
+	void dna_singleRepeat() {
+		assertEquals(List.of("AAAAAAAAAA"), sut.findRepeatedDnaSequences("AAAAAAAAAAAAA"));
+	}
+
+	@Test
+	void dna_tooShort() {
+		assertEquals(List.of(), sut.findRepeatedDnaSequences("ACGT"));
 	}
 }

@@ -1,18 +1,15 @@
-/** Tier 3 — Problem 15: Longest path in a weighted DAG via topological relaxation. */
-public class Problem15 {
+/** Applied — Problem 15: Two-team rivalry split. */
+class Problem15 {
 
 	/**
-	 * Returns the longest-path length from {@code source} to every vertex of a weighted DAG (weights
-	 * may be negative), using {@link Integer#MIN_VALUE} for unreachable vertices.
+	 * Reports whether players can be split into two teams so every rivalry crosses between them.
 	 *
-	 * @param vertexCount the number of vertices
-	 * @param edges the directed edges as {@code [u, v, w]} triples meaning {@code u -> v} with weight
-	 *		 {@code w}
-	 * @param source the start vertex
-	 * @return longest distances indexed by vertex
+	 * @param playerCount the number of players
+	 * @param edges the undirected rivalry edges as {@code [u, v]} pairs
+	 * @return {@code true} if a valid two-team split exists, otherwise {@code false}
 	 */
-	public int[] longestPaths(int vertexCount, int[][] edges, int source) {
-		// TODO: topologically order the DAG, then relax edges maximizing distance.
-		throw new UnsupportedOperationException("TODO: implement longestPaths");
+	boolean canSplit(int playerCount, int[][] edges) {
+		// TODO: bipartite-color the rivalry graph across all components.
+		throw new UnsupportedOperationException("TODO: implement canSplit");
 	}
 }

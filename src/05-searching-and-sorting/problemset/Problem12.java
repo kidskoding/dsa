@@ -1,19 +1,20 @@
 /**
- * Problem 12 — Search in a rotated sorted array. A sorted array is rotated at an unknown pivot.
- * Find a target's index in \(O(\log n)\) without first finding the pivot separately.
+ * Problem 12 — Search a 2D Matrix. Each row is ascending and the first value of each row exceeds the
+ * last value of the previous row. Return whether {@code target} occurs, in {@code O(log(m * n))} time
+ * by binary-searching the flattened order.
  */
-public class Problem12 {
+class Problem12 {
 
 	/**
-	 * Returns the index of {@code target} in {@code a}, a distinct-valued ascending array that has
-	 * been rotated at an unknown pivot, or {@code -1} if it is absent.
+	 * Returns whether {@code target} appears in {@code matrix}, an {@code m x n} grid whose values are
+	 * ascending when read row by row.
 	 *
-	 * @param a a rotated, ascending-then-wrapping array of distinct values
-	 * @param target the value to locate
-	 * @return the index of {@code target}, or {@code -1} if not found
+	 * @param matrix a row-major fully-sorted matrix
+	 * @param target the value to search for
+	 * @return {@code true} if {@code target} is present, otherwise {@code false}
 	 */
-	public int search(int[] a, int target) {
-		// TODO: binary search, deciding each step which half is sorted and whether target lies in it.
-		throw new UnsupportedOperationException("TODO: implement rotated search");
+	boolean searchMatrix(int[][] matrix, int target) {
+		// TODO: binary-search the flattened index range, mapping back to (row, col).
+		throw new UnsupportedOperationException("TODO: implement searchMatrix");
 	}
 }

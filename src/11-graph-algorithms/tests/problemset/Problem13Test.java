@@ -4,14 +4,23 @@ import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
+	private final Problem13 sut = new Problem13();
+
 	@Test
-	void secondBestOfTriangle() {
-		// MST = edges {1,2} = 1+2 = 3. Second-best swaps the weight-3 edge for the dropped
-		// weight-2 edge on its cycle, giving 1+3 = 4.
-		WeightedGraph g = new WeightedGraph(3);
-		g.addUndirectedEdge(0, 1, 1.0);
-		g.addUndirectedEdge(1, 2, 2.0);
-		g.addUndirectedEdge(0, 2, 3.0);
-		assertEquals(4.0, new Problem13().secondBestSpanningTreeWeight(g));
+	void smallGrid() {
+		int[][] g = {{0, 2}, {1, 3}};
+		assertEquals(3, sut.swimInWater(g));
+	}
+
+	@Test
+	void spiralGrid() {
+		int[][] g = {{0, 1, 2, 3, 4}, {24, 23, 22, 21, 5}, {12, 13, 14, 15, 16}, {11, 17, 18, 19, 20}, {10, 9, 8, 7, 6}};
+		assertEquals(16, sut.swimInWater(g));
+	}
+
+	@Test
+	void cornerElevation() {
+		int[][] g = {{0, 1}, {2, 3}};
+		assertEquals(3, sut.swimInWater(g));
 	}
 }

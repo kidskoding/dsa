@@ -1,16 +1,22 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem15Test {
 
+	private final Problem15 sut = new Problem15();
+
 	@Test
-	void maxNonOverlapping_picksBestWeightSubset() {
-		var sut = new Problem15();
-		int[] starts = {1, 2, 4};
-		int[] ends = {3, 5, 6};
-		int[] weights = {5, 6, 5};
-		// [1,3] (5) + [4,6] (5) = 10 beats [2,5] (6)
-		assertEquals(10L, sut.maxNonOverlapping(starts, ends, weights));
+	void rangeFrequencies_basic() {
+		int[] arr = {12, 33, 4, 56, 22, 2, 34, 33, 22, 12, 34, 56};
+		int[][] q = {{1, 2, 4}, {0, 11, 33}, {0, 11, 22}};
+		assertArrayEquals(new int[] {1, 2, 2}, sut.rangeFrequencies(arr, q));
+	}
+
+	@Test
+	void rangeFrequencies_absentValue() {
+		int[] arr = {7, 8, 9};
+		int[][] q = {{0, 2, 5}};
+		assertArrayEquals(new int[] {0}, sut.rangeFrequencies(arr, q));
 	}
 }

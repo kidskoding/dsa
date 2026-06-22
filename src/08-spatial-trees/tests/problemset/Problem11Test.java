@@ -1,31 +1,23 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem11Test {
 
+	private final Problem11 sut = new Problem11();
+
 	@Test
-	void build_emptyList_returnsNull() {
-		var sut = new Problem11();
-		assertNull(sut.build(List.of()));
+	void threePoints() {
+		assertEquals(2L, sut.closestPair(new int[][] {{0, 0}, {3, 4}, {1, 1}}));
 	}
 
 	@Test
-	void build_sevenPoints_isBalanced() {
-		var sut = new Problem11();
-		var points =
-				List.of(
-						new Point2D(2, 3),
-						new Point2D(5, 4),
-						new Point2D(9, 6),
-						new Point2D(4, 7),
-						new Point2D(8, 1),
-						new Point2D(7, 2),
-						new Point2D(1, 1));
-		Problem11.BalancedKdNode root = sut.build(points);
-		// A balanced tree over 7 nodes has height 2.
-		assertEquals(2, sut.height(root));
+	void singlePair() {
+		assertEquals(1L, sut.closestPair(new int[][] {{5, 5}, {5, 6}}));
+	}
+
+	@Test
+	void coincident() {
+		assertEquals(0L, sut.closestPair(new int[][] {{1, 1}, {1, 1}, {9, 9}}));
 	}
 }

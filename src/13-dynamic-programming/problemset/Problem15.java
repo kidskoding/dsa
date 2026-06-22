@@ -1,21 +1,19 @@
 /**
- * Problem 15 — Best Time to Buy and Sell Stock with K Transactions.
+ * Problem 15 — Longest Common Subsequence.
  *
- * <p>Given daily prices and an integer {@code k}, compute the maximum profit using at most {@code
- * k} non-overlapping buy/sell transactions.
+ * <p>Compute the length of the longest common subsequence of {@code text1} and {@code text2}.
  */
-public class Problem15 {
+class Problem15 {
 
 	/**
-	 * Returns the maximum profit from at most {@code k} non-overlapping buy/sell transactions over
-	 * {@code prices}.
+	 * Returns the length of the longest common subsequence of the two strings.
 	 *
-	 * @param prices the daily prices (non-null)
-	 * @param k the maximum number of transactions ({@code k >= 0})
-	 * @return the maximum achievable profit (0 when none is possible)
+	 * @param text1 the first string
+	 * @param text2 the second string
+	 * @return the LCS length
 	 */
-	public int maxProfit(int[] prices, int k) {
-		// TODO: track best buy/sell state for each transaction count across days.
-		throw new UnsupportedOperationException("TODO: implement maxProfit");
+	int longestCommonSubsequence(String text1, String text2) {
+		// TODO: dp[i][j] = match ? dp[i-1][j-1]+1 : max(dp[i-1][j], dp[i][j-1]).
+		throw new UnsupportedOperationException("TODO: implement longestCommonSubsequence");
 	}
 }

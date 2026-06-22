@@ -1,17 +1,18 @@
-/** Tier 3 — Problem 14: Mergeable Treaps (Split/Merge). */
-public class Problem14 {
+/**
+ * Problem 14 — Count of Smaller Numbers After Self (LeetCode 315). For each element, count strictly
+ * smaller elements to its right in \(O(n \log n)\).
+ */
+class Problem14 {
 
 	/**
-	 * Treats {@code values} as an implicit-key treap and reverses the inclusive subrange {@code [lo,
-	 * hi]} using order-preserving split and merge, returning the resulting sequence.
+	 * Returns an array {@code counts} where {@code counts[i]} is the number of elements to the right
+	 * of {@code nums[i]} that are strictly smaller than {@code nums[i]}.
 	 *
-	 * @param values the input sequence
-	 * @param lo the inclusive left bound of the range to reverse
-	 * @param hi the inclusive right bound of the range to reverse
-	 * @return the sequence after reversing {@code [lo, hi]}
+	 * @param nums the input array
+	 * @return the right-smaller counts, in input order
 	 */
-	public int[] rangeReverse(int[] values, int lo, int hi) {
-		// TODO: split out [lo, hi], flip with a lazy reverse flag, then merge back.
-		throw new UnsupportedOperationException("TODO: implement rangeReverse");
+	int[] countSmaller(int[] nums) {
+		// TODO: sweep right-to-left, inserting compressed values into a Fenwick tree.
+		throw new UnsupportedOperationException("TODO: implement countSmaller");
 	}
 }

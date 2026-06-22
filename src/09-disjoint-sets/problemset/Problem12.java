@@ -1,16 +1,19 @@
-/** Tier 3 — Problem 12: Number of islands. */
+import java.util.List;
+
+/** Problem 12: Accounts Merge. */
 public class Problem12 {
 
 	/**
-	 * Given a binary {@code grid} of {@code '0'} and {@code '1'} characters, returns the number of
-	 * connected regions of {@code '1'}s under 4-directional adjacency, using union-find over cell
-	 * indices.
+	 * Given a list of {@code accounts} where each account is a name followed by emails, merges
+	 * accounts that share any email. Returns the merged accounts: each is the name followed by all
+	 * its emails in sorted order. Accounts may be returned in any order. Key a union-find on emails,
+	 * then group emails by representative.
 	 *
-	 * @param grid the character grid (rows may be empty)
-	 * @return the number of islands
+	 * @param accounts the accounts, each a name followed by emails
+	 * @return the merged accounts
 	 */
-	public int numIslands(char[][] grid) {
-		// TODO: union adjacent land cells, then count distinct land representatives.
-		throw new UnsupportedOperationException("TODO: implement numIslands");
+	List<List<String>> accountsMerge(List<List<String>> accounts) {
+		// TODO: union accounts that share an email, then collect and sort emails per representative.
+		throw new UnsupportedOperationException("TODO: implement accountsMerge");
 	}
 }

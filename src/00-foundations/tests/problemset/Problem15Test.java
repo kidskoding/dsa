@@ -5,8 +5,12 @@ import org.junit.jupiter.api.Test;
 class Problem15Test {
 
 	@Test
-	void totalMutations_pushesThenMultipop_countsAllMutations() {
-		var sut = new Problem15();
-		assertEquals(5L, sut.totalMutations(new int[] {1, 2, 3, -2}));
+	void maxLayers_ten() {
+		assertEquals(4L, new Problem15().maxLayers(10));
+	}
+
+	@Test
+	void maxLayers_zero() {
+		assertEquals(0L, new Problem15().maxLayers(0));
 	}
 }

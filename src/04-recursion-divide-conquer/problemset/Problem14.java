@@ -1,18 +1,17 @@
 /**
- * Problem 14 — Count inversions. Return the number of inversions in an array in {@code O(n log n)}
- * using a merge-sort variant.
+ * Problem 14 — Sort an Array (Merge Sort). Return {@code nums} sorted ascending in {@code O(n log
+ * n)} using merge sort, without any built-in sort.
  */
-public class Problem14 {
+class Problem14 {
 
 	/**
-	 * Returns the number of inversions in {@code values}, i.e. the count of index pairs {@code (i,
-	 * j)} with {@code i < j} and {@code values[i] > values[j]}.
+	 * Returns {@code nums} sorted in non-decreasing order.
 	 *
-	 * @param values the input array (may be reordered internally, not observable)
-	 * @return the inversion count
+	 * @param nums the array to sort
+	 * @return a new array holding the elements of {@code nums} in ascending order
 	 */
-	public long countInversions(int[] values) {
-		// TODO: merge sort, counting cross-half inversions during each merge step.
-		throw new UnsupportedOperationException("TODO: implement countInversions");
+	int[] sortArray(int[] nums) {
+		// TODO: split in half, recursively sort each half, then merge.
+		throw new UnsupportedOperationException("TODO: implement sortArray");
 	}
 }

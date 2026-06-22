@@ -1,16 +1,16 @@
-/** Problem 15 — Sliding Window Maximum. See {@code PROBLEM_SET.md}. */
-public class Problem15 {
+import java.util.List;
+
+/** Problem 15 — Spiral Matrix. See {@code PROBLEM_SET.md}. */
+class Problem15 {
 
 	/**
-	 * Returns the maximum of each contiguous window of size {@code k} in {@code a}, in O(n) total
-	 * time.
+	 * Returns all elements of the {@code r x c} matrix in clockwise spiral order from the top-left.
 	 *
-	 * @param a the input array
-	 * @param k the window size; {@code 1 <= k <= a.length}
-	 * @return an array of length {@code a.length - k + 1} of per-window maxima
+	 * @param matrix the input matrix (row-major)
+	 * @return the elements in spiral order
 	 */
-	public int[] maxSlidingWindow(int[] a, int k) {
-		// TODO: monotonic deque of indices holding candidate maxima.
-		throw new UnsupportedOperationException("TODO: implement maxSlidingWindow");
+	List<Integer> spiralOrder(int[][] matrix) {
+		// TODO: walk right/down/left/up, shrinking the four boundaries.
+		throw new UnsupportedOperationException("TODO: implement spiralOrder");
 	}
 }

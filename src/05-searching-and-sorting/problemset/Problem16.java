@@ -1,17 +1,21 @@
 /**
- * Problem 16 — Wiggle sort. Reorder an array so that {@code a[0] < a[1] > a[2] < a[3] ...}. Aim for
- * O(n) average time using selection plus a three-way partition.
+ * Problem 16 — Relative Ranks. Given distinct athlete scores, rank them descending and return each
+ * athlete's placement: {@code "Gold Medal"}, {@code "Silver Medal"}, {@code "Bronze Medal"} for the
+ * top three, otherwise the 1-indexed placement as a string. Sort indices by score with a custom
+ * comparator.
  */
-public class Problem16 {
+class Problem16 {
 
 	/**
-	 * Reorders {@code a} in place into a wiggle pattern where elements at odd indices are not smaller
-	 * than their neighbours, i.e. {@code a[0] <= a[1] >= a[2] <= a[3] ...}.
+	 * Returns an array whose {@code i}-th entry is athlete {@code i}'s rank label: {@code "Gold
+	 * Medal"}, {@code "Silver Medal"}, {@code "Bronze Medal"} for the top three scorers, or the
+	 * 1-indexed placement as a string for the rest.
 	 *
-	 * @param a the array to reorder (reordered in place)
+	 * @param score distinct athlete scores
+	 * @return the rank label for each athlete, in original index order
 	 */
-	public void wiggleSort(int[] a) {
-		// TODO: find the median (quickselect), then place values around it into wiggle positions.
-		throw new UnsupportedOperationException("TODO: implement wiggleSort");
+	String[] findRelativeRanks(int[] score) {
+		// TODO: sort indices by descending score, then assign medal/placement labels.
+		throw new UnsupportedOperationException("TODO: implement findRelativeRanks");
 	}
 }

@@ -1,16 +1,15 @@
-/** Tier 3 — Problem 15: Multipop stack work. */
-public class Problem15 {
+/** Foundations — Problem 15: Triangular Layer Budget. */
+class Problem15 {
 
 	/**
-	 * Given a sequence of {@code push} and {@code multipop(j)} operations encoded as integers
-	 * (positive = push, negative = multipop count), returns the total number of stack mutations
-	 * performed. The total should be linear in the number of operations.
+	 * Returns the largest number of complete triangular layers {@code k} such that
+	 * {@code k(k+1)/2 <= crates}.
 	 *
-	 * @param operations the encoded operation sequence
-	 * @return total number of push and pop mutations
+	 * @param crates the crate budget, at least 0
+	 * @return the maximum number of complete layers
 	 */
-	public long totalMutations(int[] operations) {
-		// TODO: track the stack size, applying pushes and bounded multipops while counting mutations.
-		throw new UnsupportedOperationException("TODO: implement totalMutations");
+	long maxLayers(long crates) {
+		// TODO: find the largest k whose triangular number fits the budget.
+		throw new UnsupportedOperationException("TODO: implement maxLayers");
 	}
 }

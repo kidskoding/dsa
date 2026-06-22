@@ -1,19 +1,25 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
+	private final Problem13 sut = new Problem13();
+
 	@Test
-	void bridges_path_everyEdgeIsBridge() {
-		var sut = new Problem13();
-		assertEquals(2, sut.bridges(3, new int[][] {{0, 1}, {1, 2}}).size());
+	void path_triangle() {
+		assertTrue(sut.validPath(3, new int[][] {{0, 1}, {1, 2}, {2, 0}}, 0, 2));
 	}
 
 	@Test
-	void bridges_cycle_none() {
-		var sut = new Problem13();
-		assertTrue(sut.bridges(3, new int[][] {{0, 1}, {1, 2}, {2, 0}}).isEmpty());
+	void path_separateComponents() {
+		int[][] edges = {{0, 1}, {0, 2}, {3, 5}, {5, 4}, {4, 3}};
+		assertFalse(sut.validPath(6, edges, 0, 5));
+	}
+
+	@Test
+	void path_selfReach() {
+		assertTrue(sut.validPath(1, new int[][] {}, 0, 0));
 	}
 }

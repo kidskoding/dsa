@@ -1,21 +1,24 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
+	private final Problem14 sut = new Problem14();
+
 	@Test
-	void condense_cycleMembers_shareComponentId() {
-		var sut = new Problem14();
-		var c = sut.condense(2, new int[][] {{0, 1}, {1, 0}});
-		assertEquals(c.componentId[0], c.componentId[1]);
+	void bipartite_evenCycle() {
+		assertTrue(sut.isBipartite(new int[][] {{1, 3}, {0, 2}, {1, 3}, {0, 2}}));
 	}
 
 	@Test
-	void condense_singleScc_hasNoInterComponentEdges() {
-		var sut = new Problem14();
-		var c = sut.condense(3, new int[][] {{0, 1}, {1, 2}, {2, 0}});
-		assertTrue(c.edges.isEmpty());
+	void bipartite_triangle() {
+		assertFalse(sut.isBipartite(new int[][] {{1, 2, 3}, {0, 2}, {0, 1, 3}, {0, 2}}));
+	}
+
+	@Test
+	void bipartite_loneEdge() {
+		assertTrue(sut.isBipartite(new int[][] {{}, {3}, {}, {1}}));
 	}
 }

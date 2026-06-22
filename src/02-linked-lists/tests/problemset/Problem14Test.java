@@ -1,31 +1,42 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
-	@Test
-	void get_missingKey_returnsMinusOne() {
-		var cache = new Problem14(2);
-		assertEquals(-1, cache.get(1));
+	static ListNode of(int... vals) {
+		ListNode head = null;
+		for (int i = vals.length - 1; i >= 0; i--) {
+			head = new ListNode(vals[i], head);
+		}
+		return head;
+	}
+
+	static int[] toArray(ListNode head) {
+		int n = 0;
+		for (ListNode c = head; c != null; c = c.next) {
+			n++;
+		}
+		int[] out = new int[n];
+		int i = 0;
+		for (ListNode c = head; c != null; c = c.next) {
+			out[i++] = c.val;
+		}
+		return out;
 	}
 
 	@Test
-	void putThenGet_returnsValue() {
-		var cache = new Problem14(2);
-		cache.put(1, 10);
-		assertEquals(10, cache.get(1));
+	void partition_basic() {
+		assertArrayEquals(new int[] {1, 2, 2, 4, 3, 5}, toArray(new Problem14().partition(of(1, 4, 3, 2, 5, 2), 3)));
 	}
 
 	@Test
-	void put_overCapacity_evictsLeastRecentlyUsed() {
-		var cache = new Problem14(2);
-		cache.put(1, 1);
-		cache.put(2, 2);
-		cache.get(1); // 1 becomes most recent; 2 is now LRU
-		cache.put(3, 3); // evicts 2
-		assertEquals(-1, cache.get(2));
-		assertEquals(1, cache.get(1));
-		assertEquals(3, cache.get(3));
+	void partition_swap() {
+		assertArrayEquals(new int[] {1, 2}, toArray(new Problem14().partition(of(2, 1), 2)));
+	}
+
+	@Test
+	void partition_noneLess() {
+		assertArrayEquals(new int[] {1, 2, 3}, toArray(new Problem14().partition(of(1, 2, 3), 0)));
 	}
 }

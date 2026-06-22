@@ -1,18 +1,18 @@
-/** Tier 3 — Problem 13: Persistent Segment Tree. */
-public class Problem13 {
+/**
+ * Problem 13 — Reverse Pairs (LeetCode 493). Count index pairs {@code (i, j)} with {@code i < j} and
+ * {@code nums[i] > 2 * nums[j]} in \(O(n \log n)\).
+ */
+class Problem13 {
 
 	/**
-	 * Builds a fully persistent segment tree from {@code initial} (version 0), applies the point
-	 * updates {@code updates[i] = {index, value}} to produce versions 1, 2, ..., then answers each
-	 * historical query {@code queries[j] = {version, lo, hi}} as an inclusive range sum.
+	 * Counts the reverse pairs in an array: pairs {@code (i, j)} with {@code i < j} and
+	 * {@code nums[i] > 2 * nums[j]}.
 	 *
-	 * @param initial the initial array (version 0)
-	 * @param updates point updates {@code {index, value}} producing successive versions
-	 * @param queries historical range-sum queries {@code {version, lo, hi}}
-	 * @return the range sums against the requested versions, in order
+	 * @param nums the input array
+	 * @return the number of reverse pairs
 	 */
-	public long[] queryVersion(int[] initial, int[][] updates, int[][] queries) {
-		// TODO: share unchanged subtrees across versions, O(log n) extra space per update.
-		throw new UnsupportedOperationException("TODO: implement queryVersion");
+	long countReversePairs(int[] nums) {
+		// TODO: modified merge-sort counting (or Fenwick over compressed values).
+		throw new UnsupportedOperationException("TODO: implement countReversePairs");
 	}
 }

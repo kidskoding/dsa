@@ -1,16 +1,15 @@
-/** Tier 3 — Problem 17: Hamiltonian path via a bitmask DP over vertex subsets. */
-public class Problem17 {
+/** Applied — Problem 17: Build deadlock detection. */
+class Problem17 {
 
 	/**
-	 * Returns whether the undirected graph has a Hamiltonian path (a path visiting every vertex
-	 * exactly once), decided with a bitmask dynamic program over vertex subsets.
+	 * Reports whether the build-dependency graph contains a circular dependency (a deadlock).
 	 *
-	 * @param vertexCount the number of vertices
-	 * @param edges the undirected edges as {@code [u, v]} pairs
-	 * @return {@code true} if a Hamiltonian path exists
+	 * @param taskCount the number of build tasks
+	 * @param deps pairs {@code [a, b]} meaning {@code a} must finish before {@code b}
+	 * @return {@code true} if a cycle exists, otherwise {@code false}
 	 */
-	public boolean hasHamiltonianPath(int vertexCount, int[][] edges) {
-		// TODO: DP over (subset, last) reachability states; accept when subset is full.
-		throw new UnsupportedOperationException("TODO: implement hasHamiltonianPath");
+	boolean hasDeadlock(int taskCount, int[][] deps) {
+		// TODO: detect a cycle in the directed dependency graph.
+		throw new UnsupportedOperationException("TODO: implement hasDeadlock");
 	}
 }

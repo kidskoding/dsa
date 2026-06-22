@@ -1,16 +1,19 @@
-/** Tier 3 — Problem 10: Shortest Period. */
-public class Problem10 {
+import java.util.List;
+
+/** Problem 10 — Find All Anagrams in a String. See {@code PROBLEM_SET.md}. */
+class Problem10 {
 
 	/**
-	 * Returns the length of the shortest period of {@code s}: the smallest {@code p} such that {@code
-	 * s} is a prefix of an infinite repetition of its first {@code p} characters. Computed using the
-	 * prefix function.
+	 * Returns the ascending start indices of every substring of {@code s} that is an anagram of
+	 * {@code p}, using a fixed-width sliding window of character counts. Returns an empty list when
+	 * {@code p} is longer than {@code s}.
 	 *
-	 * @param s the string to analyze
-	 * @return the shortest period length
+	 * @param s the text to scan
+	 * @param p the anagram target
+	 * @return ascending start indices of all anagram windows
 	 */
-	public int shortestPeriod(String s) {
-		// TODO: derive the period from |s| minus the last prefix-function value.
-		throw new UnsupportedOperationException("TODO: implement shortestPeriod");
+	List<Integer> findAnagrams(String s, String p) {
+		// TODO: slide a window of width p.length(), matching count vectors.
+		throw new UnsupportedOperationException("TODO: implement findAnagrams");
 	}
 }

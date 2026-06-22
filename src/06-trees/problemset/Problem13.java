@@ -1,21 +1,20 @@
 /**
- * Problem 13 — Kth smallest element in a BST.
+ * Problem 13 — Path sum.
  *
- * <p>Given the root of a BST and an integer {@code k}, return the {@code k}-th smallest value
- * (1-indexed) without materializing the full sorted order.
+ * <p>Given the root of a binary tree and a target, return whether some root-to-leaf path's values
+ * add up exactly to the target. A leaf is a node with no children. An empty tree has no such path.
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns the {@code k}-th smallest value in the BST rooted at {@code root}.
+	 * Returns whether a root-to-leaf path in the tree rooted at {@code root} sums to {@code target}.
 	 *
-	 * @param root the root of the BST
-	 * @param k the 1-indexed rank to retrieve
-	 * @return the k-th smallest value
-	 * @throws IllegalArgumentException if k is out of range
+	 * @param root the root node, or null for an empty tree
+	 * @param target the desired path sum
+	 * @return true if such a root-to-leaf path exists
 	 */
-	public int kthSmallest(TreeNode<Integer> root, int k) {
-		// TODO: inorder walk with a counter; stop and return when the counter reaches k.
-		throw new UnsupportedOperationException("TODO: implement kthSmallest");
+	boolean hasPathSum(TreeNode<Integer> root, int target) {
+		// TODO: subtract the node value descending; at a leaf, succeed iff the remainder is zero.
+		throw new UnsupportedOperationException("TODO: implement hasPathSum");
 	}
 }

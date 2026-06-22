@@ -1,17 +1,20 @@
-/** Tier 3 — Problem 15: Offline Interval Scheduling via Order-Statistics Tree. */
-public class Problem15 {
+/**
+ * Problem 15 — Range Frequency Queries (LeetCode 2080). Count occurrences of a value within an
+ * inclusive index range via per-value sorted index lists and binary search.
+ */
+class Problem15 {
 
 	/**
-	 * Selects a maximum-weight subset of pairwise non-overlapping intervals from the given closed
-	 * intervals and returns the total weight of that subset.
+	 * Answers a batch of range-frequency queries over an immutable array. Each query is a 3-element
+	 * array {@code {l, r, value}} asking how many times {@code value} appears among indices
+	 * {@code [l, r]}. Answers are returned in query order.
 	 *
-	 * @param starts the interval start points
-	 * @param ends the interval end points, aligned with {@code starts}
-	 * @param weights the interval weights, aligned with {@code starts}
-	 * @return the maximum achievable total weight of non-overlapping intervals
+	 * @param arr the immutable array
+	 * @param queries the {@code {l, r, value}} queries
+	 * @return the frequencies, in query order
 	 */
-	public long maxNonOverlapping(int[] starts, int[] ends, int[] weights) {
-		// TODO: sort by end and use an order-statistics structure for the weighted DP.
-		throw new UnsupportedOperationException("TODO: implement maxNonOverlapping");
+	int[] rangeFrequencies(int[] arr, int[][] queries) {
+		// TODO: bucket indices per value, then binary-search the [l, r] window per query.
+		throw new UnsupportedOperationException("TODO: implement rangeFrequencies");
 	}
 }

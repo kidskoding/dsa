@@ -1,24 +1,20 @@
-import java.util.List;
-
 /**
- * Problem 13 — Word break.
+ * Problem 13 — Top-K Autocomplete.
  *
- * <p>Given a dictionary stored in a trie and a string \( s \), return whether \( s \) can be
- * segmented into a sequence of dictionary words.
+ * <p>Element 0 is {@code k}, element 1 is the query prefix, and the rest are {@code "word freq"}
+ * entries. Return the {@code k} most frequent completions of the prefix, ties broken lexically.
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns whether {@code s} can be segmented into a sequence of words drawn from {@code
-	 * dictionary}.
+	 * Returns up to {@code k} highest-frequency words beginning with the query prefix, ordered by
+	 * descending frequency then lexicographically.
 	 *
-	 * @param s the string to segment
-	 * @param dictionary the available dictionary words
-	 * @return true if {@code s} is a concatenation of dictionary words
+	 * @param input element 0 is {@code k}; element 1 is the prefix; elements 2.. are {@code "word freq"}
+	 * @return the ranked completion words (frequencies omitted)
 	 */
-	public boolean wordBreak(String s, List<String> dictionary) {
-		// TODO: load the dictionary into a trie, then DP/memoised search over split
-		// points using trie traversal to test each candidate word.
-		throw new UnsupportedOperationException("TODO: implement wordBreak");
+	String[] run(String[] input) {
+		// TODO: insert words into a trie; collect completions of the prefix and rank them.
+		throw new UnsupportedOperationException("TODO: implement run");
 	}
 }

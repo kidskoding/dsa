@@ -1,22 +1,21 @@
 /**
- * Problem 12 — Largest rectangle in histogram.
+ * Problem 12 — Daily Temperatures.
  *
- * <p>Given bar heights, return the area of the largest axis-aligned rectangle that fits under the
- * histogram. Use a monotonic stack in {@code O(n)} time.
+ * <p>For each day, return how many days you must wait for a warmer temperature, or {@code 0} if no
+ * warmer day follows. Use a monotonic decreasing stack of indices in {@code O(n)} time.
  */
-public final class Problem12 {
+final class Problem12 {
 
 	private Problem12() {}
 
 	/**
-	 * Returns the area of the largest rectangle that fits under the histogram.
+	 * Returns, for each day, the number of days until a warmer temperature.
 	 *
-	 * @param heights the bar heights (non-negative)
-	 * @return the maximal rectangle area
+	 * @param temperatures the daily temperatures
+	 * @return the wait counts
 	 */
-	public static int largestRectangleArea(int[] heights) {
-		// TODO: keep a stack of increasing-height bar indices; when a shorter bar arrives,
-		//			 pop and compute areas using the popped bar as the limiting height.
-		throw new UnsupportedOperationException("TODO: implement largestRectangleArea");
+	static int[] dailyTemperatures(int[] temperatures) {
+		// TODO: keep a stack of indices; pop cooler days when a warmer day arrives.
+		throw new UnsupportedOperationException("TODO: implement dailyTemperatures");
 	}
 }

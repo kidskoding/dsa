@@ -1,21 +1,21 @@
-/** Tier 3 — Problem 18: Dynamic Predecessor Under a Bounded Universe. */
-public class Problem18 {
-
-	/** Sentinel returned when a predecessor query has no answer. */
-	public static final int NIL = -1;
+/**
+ * Problem 18 — Range Update, Range Sum (Lazy Segment Tree). Apply range-add updates and answer
+ * range-sum queries, each in \(O(\log n)\) with lazy propagation.
+ */
+class Problem18 {
 
 	/**
-	 * Applies a sequence of operations over the universe {@code {0, ..., universe - 1}} and returns
-	 * the answers to the predecessor queries. Each operation is {@code {type, value}} where type 0
-	 * inserts, type 1 deletes, and type 2 asks for the largest stored element strictly less than
-	 * {@code value} (or {@link #NIL}).
+	 * Replays an operation stream over an array of {@code n} positions initialized to zero. Each
+	 * operation is a 4-element array: {@code {0, l, r, delta}} adds {@code delta} across {@code [l, r]};
+	 * {@code {1, l, r, 0}} queries the inclusive sum over {@code [l, r]}. Type-1 answers are returned
+	 * in order.
 	 *
-	 * @param universe the universe size (a power of two)
+	 * @param n the number of positions
 	 * @param operations the encoded operation stream
-	 * @return the predecessor-query answers, in order
+	 * @return the range-sum (type-1) answers, in order
 	 */
-	public int[] predecessorAfterOps(int universe, int[][] operations) {
-		// TODO: back the operations with a van Emde Boas tree for O(log log u) per op.
-		throw new UnsupportedOperationException("TODO: implement predecessorAfterOps");
+	long[] rangeSumsAfterRangeUpdates(int n, int[][] operations) {
+		// TODO: lazy-propagation segment tree supporting range-add and range-sum.
+		throw new UnsupportedOperationException("TODO: implement rangeSumsAfterRangeUpdates");
 	}
 }

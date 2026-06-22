@@ -1,18 +1,17 @@
-
 /**
- * Problem 16 — Sort a linked list. Sort a singly linked list in O(n log n) time and O(1) auxiliary
- * space using bottom-up merge sort.
+ * Problem 16 — Copy list with random pointer. Returns a deep copy of a {@link RandomNode} list whose
+ * {@code next} and {@code random} structure mirrors the original, sharing no nodes, in O(n) time.
  */
-public class Problem16 {
+class Problem16 {
 
 	/**
-	 * Sorts the list ascending.
+	 * Returns a deep copy of the random-pointer list.
 	 *
-	 * @param head the head of the list
-	 * @return the head of the sorted list
+	 * @param head the head of the original list (may be {@code null})
+	 * @return the head of the deep copy
 	 */
-	public ListNode sort(ListNode head) {
-		// TODO: bottom-up merge sort, doubling the run width each pass.
-		throw new UnsupportedOperationException("TODO: implement Problem16.sort");
+	RandomNode copyRandomList(RandomNode head) {
+		// TODO: interleave cloned nodes (or use a map), wire randoms, then unweave the copy.
+		throw new UnsupportedOperationException("TODO: implement Problem16.copyRandomList");
 	}
 }

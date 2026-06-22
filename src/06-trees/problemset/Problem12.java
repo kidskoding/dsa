@@ -1,20 +1,19 @@
 /**
- * Problem 12 — Reconstruct a tree from traversals.
+ * Problem 12 — Balanced binary tree.
  *
- * <p>Given the preorder and inorder traversals of a binary tree with distinct values, reconstruct
- * and return the tree.
+ * <p>Given the root of a binary tree, return whether it is height-balanced: for every node, the
+ * heights of its two subtrees differ by at most one. An empty tree is balanced.
  */
-public class Problem12 {
+class Problem12 {
 
 	/**
-	 * Rebuilds the binary tree whose preorder and inorder sequences are given, returning its root.
+	 * Returns whether the tree rooted at {@code root} is height-balanced.
 	 *
-	 * @param preorder the preorder traversal (node, left, right)
-	 * @param inorder the inorder traversal (left, node, right)
-	 * @return the reconstructed tree's root, or null when the input is empty
+	 * @param root the root node, or null for an empty tree
+	 * @return true if the tree is height-balanced
 	 */
-	public TreeNode<Integer> buildTree(int[] preorder, int[] inorder) {
-		// TODO: preorder[0] is the root; split inorder at it to size the subtrees, recurse.
-		throw new UnsupportedOperationException("TODO: implement buildTree");
+	boolean isBalanced(TreeNode<Integer> root) {
+		// TODO: post-order returning subtree heights; short-circuit when any imbalance is found.
+		throw new UnsupportedOperationException("TODO: implement isBalanced");
 	}
 }

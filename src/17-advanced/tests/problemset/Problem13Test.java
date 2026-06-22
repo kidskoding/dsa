@@ -1,15 +1,23 @@
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
+	private final Problem13 sut = new Problem13();
+
 	@Test
-	void queryVersion_answersHistoricalQueries() {
-		var sut = new Problem13();
-		int[] initial = {1, 2, 3}; // version 0
-		int[][] updates = {{1, 10}}; // version 1: [1, 10, 3]
-		int[][] queries = {{0, 0, 2}, {1, 0, 2}}; // {version, lo, hi}
-		assertArrayEquals(new long[] {6L, 14L}, sut.queryVersion(initial, updates, queries));
+	void countReversePairs_basic() {
+		assertEquals(2L, sut.countReversePairs(new int[] {1, 3, 2, 3, 1}));
+	}
+
+	@Test
+	void countReversePairs_another() {
+		assertEquals(3L, sut.countReversePairs(new int[] {2, 4, 3, 5, 1}));
+	}
+
+	@Test
+	void countReversePairs_none() {
+		assertEquals(0L, sut.countReversePairs(new int[] {1, 2, 3, 4, 5}));
 	}
 }

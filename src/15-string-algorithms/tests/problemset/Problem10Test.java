@@ -1,21 +1,24 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem10Test {
 
+	private final Problem10 sut = new Problem10();
+
 	@Test
-	void shortestPeriod_repeated_returnsUnitLength() {
-		assertEquals(2, new Problem10().shortestPeriod("abababab"));
+	void anagrams_two() {
+		assertEquals(List.of(0, 6), sut.findAnagrams("cbaebabacd", "abc"));
 	}
 
 	@Test
-	void shortestPeriod_partialRepeat_returnsPrefixLength() {
-		assertEquals(3, new Problem10().shortestPeriod("abcabca"));
+	void anagrams_overlapping() {
+		assertEquals(List.of(0, 1, 2), sut.findAnagrams("abab", "ab"));
 	}
 
 	@Test
-	void shortestPeriod_aperiodic_returnsFullLength() {
-		assertEquals(5, new Problem10().shortestPeriod("abcde"));
+	void anagrams_none() {
+		assertEquals(List.of(), sut.findAnagrams("af", "be"));
 	}
 }

@@ -1,26 +1,18 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
 	@Test
-	void simpleAddition() {
-		assertEquals(2, Problem13.calculate("1 + 1"));
+	void wrapsAround() {
+		assertArrayEquals(new int[] {2, -1, 2}, Problem13.nextGreaterElements(new int[] {1, 2, 1}));
 	}
 
 	@Test
-	void mixedWithSpaces() {
-		assertEquals(3, Problem13.calculate(" 2-1 + 2 "));
-	}
-
-	@Test
-	void nestedParentheses() {
-		assertEquals(23, Problem13.calculate("(1+(4+5+2)-3)+(6+8)"));
-	}
-
-	@Test
-	void singleNumber() {
-		assertEquals(42, Problem13.calculate("42"));
+	void decreasing() {
+		assertArrayEquals(
+				new int[] {-1, 5, 5, 5, 5},
+				Problem13.nextGreaterElements(new int[] {5, 4, 3, 2, 1}));
 	}
 }

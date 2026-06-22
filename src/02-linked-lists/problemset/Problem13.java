@@ -1,17 +1,18 @@
 /**
- * Problem 13 — Copy a list with random pointers. Each node has a {@code next} and a {@code random}
- * pointer to any node (or null). Return a deep copy in O(n) time and O(1) extra space.
+ * Problem 13 — Rotate list right. Rotates the list to the right by {@code k} places (k taken modulo
+ * the length) and returns the new head; an empty list returns {@code null}.
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns a deep copy of the list.
+	 * Rotates the list right by {@code k} positions.
 	 *
-	 * @param head the head of the list
-	 * @return the head of the copied list
+	 * @param head the head of the list (may be {@code null})
+	 * @param k the number of positions to rotate right
+	 * @return the head of the rotated list
 	 */
-	public RandomNode copyRandomList(RandomNode head) {
-		// TODO: interleave copies, wire random pointers, then split the two lists.
-		throw new UnsupportedOperationException("TODO: implement Problem13.copyRandomList");
+	ListNode rotateRight(ListNode head, int k) {
+		// TODO: close the list into a ring, then break it at the new tail (length - k % length).
+		throw new UnsupportedOperationException("TODO: implement Problem13.rotateRight");
 	}
 }

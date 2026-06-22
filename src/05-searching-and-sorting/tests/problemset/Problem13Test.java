@@ -4,27 +4,20 @@ import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
-	private static final double EPS = 1e-9;
-
 	private final Problem13 sut = new Problem13();
 
 	@Test
-	void median_oddTotal_isMiddleValue() {
-		assertEquals(2.0, sut.findMedianSortedArrays(new int[] {1, 3}, new int[] {2}), EPS);
+	void findKthLargest_secondLargest() {
+		assertEquals(5, sut.findKthLargest(new int[] {3, 2, 1, 5, 6, 4}, 2));
 	}
 
 	@Test
-	void median_evenTotal_isAverageOfMiddle() {
-		assertEquals(2.5, sut.findMedianSortedArrays(new int[] {1, 2}, new int[] {3, 4}), EPS);
+	void findKthLargest_withDuplicates() {
+		assertEquals(4, sut.findKthLargest(new int[] {3, 2, 3, 1, 2, 4, 5, 5, 6}, 4));
 	}
 
 	@Test
-	void median_oneEmpty_usesOther() {
-		assertEquals(2.0, sut.findMedianSortedArrays(new int[] {}, new int[] {1, 2, 3}), EPS);
-	}
-
-	@Test
-	void median_disjointRanges_isCorrect() {
-		assertEquals(5.5, sut.findMedianSortedArrays(new int[] {1, 2, 3}, new int[] {8, 9, 10}), EPS);
+	void findKthLargest_single() {
+		assertEquals(1, sut.findKthLargest(new int[] {1}, 1));
 	}
 }

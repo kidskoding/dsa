@@ -1,25 +1,25 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
 	@Test
-	void roundTrip_emptyTree_isNull() {
-		var sut = new Problem14();
-		assertNull(sut.deserialize(sut.serialize(null)));
+	void minDepth_nearestLeaf() {
+		var right = new TreeNode<>(20, new TreeNode<>(15), new TreeNode<>(7));
+		var root = new TreeNode<>(3, new TreeNode<>(9), right);
+		assertEquals(2, new Problem14().minDepth(root));
 	}
 
 	@Test
-	void roundTrip_preservesStructure() {
-		var sut = new Problem14();
-		var left = new TreeNode<>(2, new TreeNode<>(4), null);
-		var root = new TreeNode<>(1, left, new TreeNode<>(3));
-		var copy = sut.deserialize(sut.serialize(root));
-		assertEquals(1, copy.value);
-		assertEquals(2, copy.left.value);
-		assertEquals(4, copy.left.left.value);
-		assertEquals(3, copy.right.value);
+	void minDepth_singleChildChain() {
+		// 2 -> 3 -> 4, only leaf at depth 3; single-child nodes are not leaves.
+		var root = new TreeNode<>(2, null, new TreeNode<>(3, null, new TreeNode<>(4)));
+		assertEquals(3, new Problem14().minDepth(root));
+	}
+
+	@Test
+	void minDepth_emptyTree_isZero() {
+		assertEquals(0, new Problem14().minDepth(null));
 	}
 }

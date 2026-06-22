@@ -1,30 +1,43 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
-	@Test
-	void copy_isDeepCopy() {
-		RandomNode a = new RandomNode(1);
-		RandomNode b = new RandomNode(2);
-		a.next = b;
-		a.random = b;
-		b.random = b;
+	static ListNode of(int... vals) {
+		ListNode head = null;
+		for (int i = vals.length - 1; i >= 0; i--) {
+			head = new ListNode(vals[i], head);
+		}
+		return head;
+	}
 
-		RandomNode copy = new Problem13().copyRandomList(a);
-		assertNotSame(a, copy);
-		assertEquals(1, copy.val);
-		assertEquals(2, copy.next.val);
-		assertSame(copy.next, copy.random);
-		assertSame(copy.next, copy.next.random);
+	static int[] toArray(ListNode head) {
+		int n = 0;
+		for (ListNode c = head; c != null; c = c.next) {
+			n++;
+		}
+		int[] out = new int[n];
+		int i = 0;
+		for (ListNode c = head; c != null; c = c.next) {
+			out[i++] = c.val;
+		}
+		return out;
 	}
 
 	@Test
-	void copy_empty() {
-		assertNull(new Problem13().copyRandomList(null));
+	void rotate_two() {
+		assertArrayEquals(new int[] {4, 5, 1, 2, 3}, toArray(new Problem13().rotateRight(of(1, 2, 3, 4, 5), 2)));
+	}
+
+	@Test
+	void rotate_moreThanLength() {
+		assertArrayEquals(new int[] {2, 0, 1}, toArray(new Problem13().rotateRight(of(0, 1, 2), 4)));
+	}
+
+	@Test
+	void rotate_empty() {
+		assertNull(new Problem13().rotateRight(null, 3));
 	}
 }

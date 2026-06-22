@@ -1,28 +1,23 @@
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem11Test {
 
 	@Test
-	void mergeKSorted_threeLists() {
-		var lists = List.of(new int[] {1, 4, 7}, new int[] {2, 5, 8}, new int[] {3, 6, 9});
-		int[] merged = Problem11.mergeKSorted(lists);
-		assertArrayEquals(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9}, merged);
-		assertTrue(ProblemTestSupport.isAscending(merged));
+	void findMedian_oddAndEvenCounts() {
+		Problem11 m = new Problem11();
+		m.addNum(1);
+		m.addNum(2);
+		assertEquals(1.5, m.findMedian(), 1e-9);
+		m.addNum(3);
+		assertEquals(2.0, m.findMedian(), 1e-9);
 	}
 
 	@Test
-	void mergeKSorted_withEmptyLists() {
-		var lists = List.of(new int[] {}, new int[] {2, 2}, new int[] {1, 3});
-		assertArrayEquals(new int[] {1, 2, 2, 3}, Problem11.mergeKSorted(lists));
-	}
-
-	@Test
-	void mergeKSorted_singleList() {
-		var lists = List.of(new int[] {5, 6, 7});
-		assertArrayEquals(new int[] {5, 6, 7}, Problem11.mergeKSorted(lists));
+	void findMedian_singleElement() {
+		Problem11 m = new Problem11();
+		m.addNum(5);
+		assertEquals(5.0, m.findMedian(), 1e-9);
 	}
 }

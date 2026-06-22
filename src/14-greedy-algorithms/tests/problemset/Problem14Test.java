@@ -4,19 +4,20 @@ import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
+	private final Problem14 sut = new Problem14();
+
 	@Test
-	void maximizeCapital_picksMostProfitableAffordable() {
-		var sut = new Problem14();
-		int[] capitalRequired = {0, 1, 1};
-		int[] profits = {1, 2, 3};
-		assertEquals(4L, sut.maximizeCapital(2, 0, capitalRequired, profits));
+	void canCompleteCircuit_startsAtThree() {
+		assertEquals(3, sut.canCompleteCircuit(new int[] {1, 2, 3, 4, 5}, new int[] {3, 4, 5, 1, 2}));
 	}
 
 	@Test
-	void maximizeCapital_noAffordableProject_keepsStartCapital() {
-		var sut = new Problem14();
-		int[] capitalRequired = {5};
-		int[] profits = {10};
-		assertEquals(2L, sut.maximizeCapital(1, 2, capitalRequired, profits));
+	void canCompleteCircuit_impossible() {
+		assertEquals(-1, sut.canCompleteCircuit(new int[] {2, 3, 4}, new int[] {3, 4, 3}));
+	}
+
+	@Test
+	void canCompleteCircuit_startsAtFour() {
+		assertEquals(4, sut.canCompleteCircuit(new int[] {5, 1, 2, 3, 4}, new int[] {4, 4, 1, 5, 1}));
 	}
 }

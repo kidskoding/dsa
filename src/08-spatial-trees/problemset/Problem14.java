@@ -1,33 +1,17 @@
-import java.util.List;
-
-/** Tier 3 — Problem 14: Count points in range. */
+/** Tier 2 — Problem 14: Median split point. */
 public class Problem14 {
 
 	/**
-	 * Preprocesses a static set of points so that {@link #countInRange(double, double, double,
-	 * double)} can report how many lie inside an axis-aligned query rectangle.
+	 * Returns the index of the point whose {@code axis} coordinate ({@code 0} for x, {@code 1} for y)
+	 * is the lower median — the element at sorted position {@code (n-1)/2}. Ties on equal coordinate
+	 * break by smaller original index. Assumes {@code points} is non-empty.
 	 *
-	 * @param points the static point set to index
-	 * @throws NullPointerException if {@code points} is {@code null}
+	 * @param points the points, each as {@code [x, y]}
+	 * @param axis {@code 0} to split on x, {@code 1} to split on y
+	 * @return the original index of the median point
 	 */
-	public Problem14(List<Point2D> points) {
-		// TODO: build the supporting index (e.g. sorted arrays / k-d tree) for fast counting.
-		throw new UnsupportedOperationException("TODO: implement Problem14(List)");
-	}
-
-	/**
-	 * Returns how many indexed points fall inside the inclusive axis-aligned rectangle {@code [xMin,
-	 * xMax] x [yMin, yMax]}.
-	 *
-	 * @param xMin the inclusive lower x bound
-	 * @param yMin the inclusive lower y bound
-	 * @param xMax the inclusive upper x bound
-	 * @param yMax the inclusive upper y bound
-	 * @return the number of indexed points inside the rectangle
-	 * @throws IllegalArgumentException if {@code xMin > xMax} or {@code yMin > yMax}
-	 */
-	public int countInRange(double xMin, double yMin, double xMax, double yMax) {
-		// TODO: query the preprocessed index to count points in the rectangle.
-		throw new UnsupportedOperationException("TODO: implement countInRange");
+	public int medianIndex(int[][] points, int axis) {
+		// TODO: find the point at sorted position (n-1)/2 on the chosen axis.
+		throw new UnsupportedOperationException("TODO: implement medianIndex");
 	}
 }

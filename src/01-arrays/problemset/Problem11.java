@@ -1,15 +1,15 @@
-/** Problem 11 — Product Except Self. See {@code PROBLEM_SET.md}. */
-public class Problem11 {
+/** Problem 11 — Relay Towers (visible from left). See {@code PROBLEM_SET.md}. */
+class Problem11 {
 
 	/**
-	 * Returns an array where each position holds the product of all other elements of {@code a},
-	 * without division, in O(n) time.
+	 * Returns the number of towers strictly taller than every tower before them (looking from the
+	 * far left); the first tower is always visible.
 	 *
-	 * @param a the input array
-	 * @return a new array of products-except-self
+	 * @param h the tower heights
+	 * @return the count of visible towers
 	 */
-	public int[] productExceptSelf(int[] a) {
-		// TODO: prefix products pass, then suffix products pass.
-		throw new UnsupportedOperationException("TODO: implement productExceptSelf");
+	int visibleTowers(int[] h) {
+		// TODO: single pass tracking the running maximum height.
+		throw new UnsupportedOperationException("TODO: implement visibleTowers");
 	}
 }

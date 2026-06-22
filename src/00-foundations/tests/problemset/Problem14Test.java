@@ -5,8 +5,12 @@ import org.junit.jupiter.api.Test;
 class Problem14Test {
 
 	@Test
-	void totalBitFlips_threeIncrements_returnsFour() {
-		var sut = new Problem14();
-		assertEquals(4L, sut.totalBitFlips(3));
+	void collatzSteps_one() {
+		assertEquals(0L, new Problem14().collatzSteps(1));
+	}
+
+	@Test
+	void collatzSteps_six() {
+		assertEquals(8L, new Problem14().collatzSteps(6));
 	}
 }

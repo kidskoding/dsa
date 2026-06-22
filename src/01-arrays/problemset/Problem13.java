@@ -1,14 +1,15 @@
-/** Problem 13 — Rotate Matrix 90°. See {@code PROBLEM_SET.md}. */
-public class Problem13 {
+/** Problem 13 — Product of Array Except Self. See {@code PROBLEM_SET.md}. */
+class Problem13 {
 
 	/**
-	 * Rotates an {@code n x n} matrix 90° clockwise in place and returns the same reference.
+	 * Returns an array where entry {@code i} is the product of all elements of {@code a} except
+	 * {@code a[i]}, computed without division.
 	 *
-	 * @param matrix the square matrix to rotate in place
-	 * @return the same matrix reference, now rotated
+	 * @param a the input array
+	 * @return the products-except-self array
 	 */
-	public int[][] rotate(int[][] matrix) {
-		// TODO: transpose, then reverse each row (or rotate in concentric rings).
-		throw new UnsupportedOperationException("TODO: implement rotate");
+	int[] productExceptSelf(int[] a) {
+		// TODO: prefix products left-to-right, then multiply by suffix products right-to-left.
+		throw new UnsupportedOperationException("TODO: implement productExceptSelf");
 	}
 }

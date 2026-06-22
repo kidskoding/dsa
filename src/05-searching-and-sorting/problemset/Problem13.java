@@ -1,19 +1,20 @@
 /**
- * Problem 13 — Median of two sorted arrays. Given two sorted arrays, return the median of their
- * union in \(O(\log(\min(m, n)))\) time.
+ * Problem 13 — Kth Largest Element. Given an array and a 1-indexed {@code k}, return the k-th largest
+ * value ({@code k == 1} is the maximum), counting duplicates by rank. Solve without a full sort
+ * (quickselect or a size-k heap).
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns the median of the combined multiset of {@code a} and {@code b}, both sorted ascending.
-	 * For an even total size the median is the average of the two central elements.
+	 * Returns the {@code k}-th largest value in {@code nums} (1-indexed), where {@code k == 1} is the
+	 * maximum; duplicates count toward the rank.
 	 *
-	 * @param a the first sorted array
-	 * @param b the second sorted array
-	 * @return the median of the union of {@code a} and {@code b}
+	 * @param nums the input array; may contain duplicates
+	 * @param k the 1-indexed rank from the top, with {@code 1 <= k <= nums.length}
+	 * @return the k-th largest element
 	 */
-	public double findMedianSortedArrays(int[] a, int[] b) {
-		// TODO: binary-search a partition of the smaller array balancing the two halves.
-		throw new UnsupportedOperationException("TODO: implement findMedianSortedArrays");
+	int findKthLargest(int[] nums, int k) {
+		// TODO: quickselect or a size-k min-heap.
+		throw new UnsupportedOperationException("TODO: implement findKthLargest");
 	}
 }

@@ -1,25 +1,19 @@
-import java.util.OptionalDouble;
-
 /**
- * Tier 3 — Problem 14: Shortest Path With Exactly K Edges.
- *
- * <p>Compute the minimum-weight walk from {@code source} to {@code sink} that uses exactly {@code
- * k} edges (repeated vertices allowed), or report that none exists.
+ * Problem 14: Minimum Cost To Reach Destination In Time. Minimize total passing fees from city 0 to
+ * city {@code n-1} within {@code maxTime} minutes, or {@code -1} if impossible.
  */
-public class Problem14 {
+class Problem14 {
 
 	/**
-	 * Returns the minimum weight of a {@code source}-{@code sink} walk using exactly {@code k} edges.
+	 * Returns the minimum total passing fee to reach city {@code n-1} within {@code maxTime}.
 	 *
-	 * @param graph the weighted graph
-	 * @param source the start vertex
-	 * @param sink the end vertex
-	 * @param k the exact number of edges the walk must use
-	 * @return the minimum walk weight, or empty if no such walk exists
-	 * @throws IllegalArgumentException if {@code k} is negative
+	 * @param maxTime the time budget in minutes
+	 * @param edges bidirectional roads {@code {u, v, time}}
+	 * @param passingFees the per-city passing fee
+	 * @return the minimum total fee, or {@code -1} if no route fits the budget
 	 */
-	public OptionalDouble shortestWalkWithKEdges(WeightedGraph graph, int source, int sink, int k) {
-		// TODO: DP over (edge count, vertex): dp[i][v] = best weight to reach v using exactly i edges.
-		throw new UnsupportedOperationException("TODO: implement shortestWalkWithKEdges");
+	int minCost(int maxTime, int[][] edges, int[] passingFees) {
+		// TODO: Dijkstra over states (city, timeUsed) keyed on cost; prune states exceeding maxTime.
+		throw new UnsupportedOperationException("TODO: implement");
 	}
 }

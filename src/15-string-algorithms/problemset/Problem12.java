@@ -1,16 +1,15 @@
-/** Tier 3 — Problem 12: Pattern in Cyclic Rotations. */
-public class Problem12 {
+/** Problem 12 — Valid Palindrome II. See {@code PROBLEM_SET.md}. */
+class Problem12 {
 
 	/**
-	 * Decides whether {@code pattern} occurs in any rotation of {@code text} in O(n + m), by matching
-	 * {@code pattern} against {@code text} concatenated with itself.
+	 * Returns {@code true} if {@code s} is a palindrome or can become one by deleting at most one
+	 * character, using two pointers in O(n).
 	 *
-	 * @param text the text whose rotations are considered
-	 * @param pattern the pattern to find
-	 * @return {@code true} if {@code pattern} occurs in some rotation of {@code text}
+	 * @param s the input string
+	 * @return whether {@code s} is a near-palindrome
 	 */
-	public boolean occursInSomeRotation(String text, String pattern) {
-		// TODO: search for the pattern within text + text (bounded to valid rotation starts).
-		throw new UnsupportedOperationException("TODO: implement occursInSomeRotation");
+	boolean validPalindrome(String s) {
+		// TODO: two pointers; on mismatch try skipping the left or the right char.
+		throw new UnsupportedOperationException("TODO: implement validPalindrome");
 	}
 }

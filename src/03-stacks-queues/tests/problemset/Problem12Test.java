@@ -1,26 +1,19 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
 	@Test
-	void classicExample() {
-		assertEquals(10, Problem12.largestRectangleArea(new int[] {2, 1, 5, 6, 2, 3}));
+	void waitCounts() {
+		assertArrayEquals(
+				new int[] {1, 1, 4, 2, 1, 1, 0, 0},
+				Problem12.dailyTemperatures(new int[] {73, 74, 75, 71, 69, 72, 76, 73}));
 	}
 
 	@Test
-	void twoBars() {
-		assertEquals(4, Problem12.largestRectangleArea(new int[] {2, 4}));
-	}
-
-	@Test
-	void singleBar() {
-		assertEquals(5, Problem12.largestRectangleArea(new int[] {5}));
-	}
-
-	@Test
-	void uniformHeights() {
-		assertEquals(12, Problem12.largestRectangleArea(new int[] {3, 3, 3, 3}));
+	void strictlyIncreasing() {
+		assertArrayEquals(
+				new int[] {1, 1, 1, 0}, Problem12.dailyTemperatures(new int[] {30, 40, 50, 60}));
 	}
 }

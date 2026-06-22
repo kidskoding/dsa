@@ -1,16 +1,15 @@
-import java.util.List;
-
-/** Problem 12 — Spiral Order Traversal. See {@code PROBLEM_SET.md}. */
-public class Problem12 {
+/** Problem 12 — Best Time to Buy and Sell Stock. See {@code PROBLEM_SET.md}. */
+class Problem12 {
 
 	/**
-	 * Returns the elements of an {@code r x c} row-major matrix in clockwise spiral order.
+	 * Returns the maximum profit from one buy followed by a strictly later sell, or 0 if no profit
+	 * is possible.
 	 *
-	 * @param matrix the input matrix (rectangular)
-	 * @return the elements in clockwise spiral order
+	 * @param prices the daily prices
+	 * @return the maximum achievable profit
 	 */
-	public List<Integer> spiralOrder(int[][] matrix) {
-		// TODO: shrink top/bottom/left/right bounds while walking the perimeter.
-		throw new UnsupportedOperationException("TODO: implement spiralOrder");
+	int maxProfit(int[] prices) {
+		// TODO: track running minimum price and best profit in one pass.
+		throw new UnsupportedOperationException("TODO: implement maxProfit");
 	}
 }

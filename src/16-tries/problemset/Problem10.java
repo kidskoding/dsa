@@ -1,31 +1,19 @@
 /**
- * Problem 10 — Wildcard search.
+ * Problem 10 — Longest Word in Dictionary.
  *
- * <p>Support {@link #search(String)} where {@code '.'} matches any single character. Bound the
- * worst-case cost of a query (it can branch across all children at a wildcard).
+ * <p>Return the longest word buildable one character at a time so that every intermediate prefix is
+ * itself a word in {@code words}, breaking ties by the lexicographically smallest word.
  */
-public class Problem10 {
+class Problem10 {
 
 	/**
-	 * Inserts {@code word} into the trie.
+	 * Returns the longest buildable word, or {@code ""} if none qualifies.
 	 *
-	 * @param word the key to insert
+	 * @param words the dictionary words (lowercase letters)
+	 * @return the longest word whose every prefix is also present, ties broken lexicographically
 	 */
-	public void insert(String word) {
-		// TODO: create the path of trie nodes and mark the terminal node.
-		throw new UnsupportedOperationException("TODO: implement insert");
-	}
-
-	/**
-	 * Returns whether {@code pattern} matches a complete inserted key, with {@code '.'} matching any
-	 * single character.
-	 *
-	 * @param pattern the search pattern, possibly containing {@code '.'} wildcards
-	 * @return true if some inserted key matches the pattern
-	 */
-	public boolean search(String pattern) {
-		// TODO: DFS; on '.' recurse into every child, otherwise into the matching
-		// child. Succeed at an end-of-word node when the pattern is consumed.
-		throw new UnsupportedOperationException("TODO: implement search");
+	String run(String[] words) {
+		// TODO: build a trie; DFS only through terminal nodes, tracking the deepest/smallest word.
+		throw new UnsupportedOperationException("TODO: implement run");
 	}
 }

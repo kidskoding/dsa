@@ -5,16 +5,21 @@ import org.junit.jupiter.api.Test;
 class Problem13Test {
 
 	@Test
-	void rotate_threeByThree_rotatesClockwise() {
+	void productExceptSelf_basic() {
 		var sut = new Problem13();
-		int[][] m = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-		int[][] expected = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
-		assertArrayEquals(expected, sut.rotate(m));
+		assertArrayEquals(new int[] {24, 12, 8, 6}, sut.productExceptSelf(new int[] {1, 2, 3, 4}));
 	}
 
 	@Test
-	void rotate_oneByOne_unchanged() {
+	void productExceptSelf_withZero() {
 		var sut = new Problem13();
-		assertArrayEquals(new int[][] {{9}}, sut.rotate(new int[][] {{9}}));
+		assertArrayEquals(
+				new int[] {0, 0, 9, 0, 0}, sut.productExceptSelf(new int[] {-1, 1, 0, -3, 3}));
+	}
+
+	@Test
+	void productExceptSelf_pair() {
+		var sut = new Problem13();
+		assertArrayEquals(new int[] {3, 2}, sut.productExceptSelf(new int[] {2, 3}));
 	}
 }

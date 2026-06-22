@@ -7,22 +7,17 @@ class Problem12Test {
 	private final Problem12 p = new Problem12();
 
 	@Test
-	void classicInstance() {
-		assertEquals(4, p.longestPalindromicSubsequence("bbbab"));
+	void circleBlocksEnds() {
+		assertEquals(3, p.rob(new int[] {2, 3, 2}));
 	}
 
 	@Test
-	void noRepeats() {
-		assertEquals(1, p.longestPalindromicSubsequence("abcde"));
+	void pickAlternating() {
+		assertEquals(4, p.rob(new int[] {1, 2, 3, 1}));
 	}
 
 	@Test
-	void fullPalindrome() {
-		assertEquals(7, p.longestPalindromicSubsequence("racecar"));
-	}
-
-	@Test
-	void emptyString() {
-		assertEquals(0, p.longestPalindromicSubsequence(""));
+	void singleHouse() {
+		assertEquals(5, p.rob(new int[] {5}));
 	}
 }

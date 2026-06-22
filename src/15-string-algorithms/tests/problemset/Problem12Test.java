@@ -5,19 +5,20 @@ import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
+	private final Problem12 sut = new Problem12();
+
 	@Test
-	void occursInSomeRotation_rotationContainsPattern_returnsTrue() {
-		// "cdeab" is a rotation of "abcde" and contains "dea".
-		assertTrue(new Problem12().occursInSomeRotation("abcde", "dea"));
+	void palindrome_already() {
+		assertTrue(sut.validPalindrome("aba"));
 	}
 
 	@Test
-	void occursInSomeRotation_wrapAround_returnsTrue() {
-		assertTrue(new Problem12().occursInSomeRotation("abcde", "eab"));
+	void palindrome_oneDelete() {
+		assertTrue(sut.validPalindrome("abca"));
 	}
 
 	@Test
-	void occursInSomeRotation_absent_returnsFalse() {
-		assertFalse(new Problem12().occursInSomeRotation("abcde", "xyz"));
+	void palindrome_false() {
+		assertFalse(sut.validPalindrome("abc"));
 	}
 }

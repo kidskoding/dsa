@@ -1,16 +1,17 @@
-/** Tier 3 — Problem 11: Longest Prefix–Suffix Border. */
-public class Problem11 {
+import java.util.List;
+
+/** Problem 11 — Repeated DNA Sequences. See {@code PROBLEM_SET.md}. */
+class Problem11 {
 
 	/**
-	 * Returns the longest proper border of {@code s} — the longest string that is both a proper
-	 * prefix and a proper suffix of {@code s} — using the prefix function, without re-scanning.
-	 * Returns the empty string when no proper border exists.
+	 * Returns every length-10 substring over {@code {A, C, G, T}} that appears more than once in
+	 * {@code s}. Order of the result is unspecified.
 	 *
-	 * @param s the string to analyze
-	 * @return the longest proper border
+	 * @param s the DNA sequence
+	 * @return the repeated 10-letter substrings
 	 */
-	public String longestBorder(String s) {
-		// TODO: read the longest proper border off the last prefix-function entry.
-		throw new UnsupportedOperationException("TODO: implement longestBorder");
+	List<String> findRepeatedDnaSequences(String s) {
+		// TODO: hash/count every length-10 window and collect those seen twice.
+		throw new UnsupportedOperationException("TODO: implement findRepeatedDnaSequences");
 	}
 }

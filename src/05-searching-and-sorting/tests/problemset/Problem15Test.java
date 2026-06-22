@@ -7,23 +7,17 @@ class Problem15Test {
 	private final Problem15 sut = new Problem15();
 
 	@Test
-	void maximumGap_unsorted_findsLargestGap() {
-		// sorted: 1 3 6 9 -> gaps 2,3,3 -> max 3
-		assertEquals(3, sut.maximumGap(new int[] {3, 6, 9, 1}));
+	void hIndex_mixed() {
+		assertEquals(3, sut.hIndex(new int[] {3, 0, 6, 1, 5}));
 	}
 
 	@Test
-	void maximumGap_singleElement_isZero() {
-		assertEquals(0, sut.maximumGap(new int[] {7}));
+	void hIndex_small() {
+		assertEquals(1, sut.hIndex(new int[] {1, 3, 1}));
 	}
 
 	@Test
-	void maximumGap_empty_isZero() {
-		assertEquals(0, sut.maximumGap(new int[] {}));
-	}
-
-	@Test
-	void maximumGap_twoElements_isTheirDifference() {
-		assertEquals(10, sut.maximumGap(new int[] {1, 11}));
+	void hIndex_uncited() {
+		assertEquals(0, sut.hIndex(new int[] {0}));
 	}
 }

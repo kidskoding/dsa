@@ -5,14 +5,20 @@ import org.junit.jupiter.api.Test;
 class Problem13Test {
 
 	@Test
-	void longestConsecutive_findsRun() {
+	void anagramGroups_three() {
 		var sut = new Problem13();
-		assertEquals(4, sut.longestConsecutive(new int[] {100, 4, 200, 1, 3, 2}));
+		assertEquals(3, sut.countAnagramGroups(new String[] {"eat", "tea", "tan", "ate", "nat", "bat"}));
 	}
 
 	@Test
-	void longestConsecutive_emptyInput_returnsZero() {
+	void anagramGroups_emptyWord() {
 		var sut = new Problem13();
-		assertEquals(0, sut.longestConsecutive(new int[] {}));
+		assertEquals(1, sut.countAnagramGroups(new String[] {""}));
+	}
+
+	@Test
+	void anagramGroups_allDistinct() {
+		var sut = new Problem13();
+		assertEquals(3, sut.countAnagramGroups(new String[] {"a", "b", "c"}));
 	}
 }

@@ -1,21 +1,17 @@
-import java.util.List;
-
-/** Tier 3 — Problem 12: k nearest neighbors. */
+/** Tier 2 — Problem 12: Rectangle overlap. */
 public class Problem12 {
 
 	/**
-	 * Returns the {@code k} points from {@code points} closest to {@code query}, ordered from nearest
-	 * to farthest. Conceptually this drives a bounded max-heap during a branch-and-bound k-d tree
-	 * descent, but any correct method that returns the same set/order is acceptable.
+	 * Returns whether the two axis-aligned rectangles {@code rec1} and {@code rec2}, each given as
+	 * {@code [x1, y1, x2, y2]} (bottom-left and top-right corners), overlap with positive area.
+	 * Rectangles touching only along an edge or corner do not overlap.
 	 *
-	 * @param points the stored points
-	 * @param query the query point
-	 * @param k the number of neighbors to return; must be non-negative
-	 * @return up to {@code k} nearest points, nearest first
-	 * @throws IllegalArgumentException if {@code k} is negative
+	 * @param rec1 the first rectangle {@code [x1, y1, x2, y2]}
+	 * @param rec2 the second rectangle {@code [x1, y1, x2, y2]}
+	 * @return {@code true} if their intersection has positive area
 	 */
-	public List<Point2D> kNearest(List<Point2D> points, Point2D query, int k) {
-		// TODO: maintain a size-k max-heap keyed by squared distance, then drain it in sorted order.
-		throw new UnsupportedOperationException("TODO: implement kNearest");
+	public boolean isOverlap(int[] rec1, int[] rec2) {
+		// TODO: rectangles overlap iff they overlap on both the x and y projections.
+		throw new UnsupportedOperationException("TODO: implement isOverlap");
 	}
 }

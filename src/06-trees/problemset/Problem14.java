@@ -1,30 +1,20 @@
 /**
- * Problem 14 — Serialize and deserialize a binary tree.
+ * Problem 14 — Minimum depth of a binary tree.
  *
- * <p>Implement a round-trip encoding of an arbitrary binary tree to a string and back, such that
- * {@code deserialize(serialize(root))} reproduces the original structure and values.
+ * <p>Given the root of a binary tree, return its minimum depth: the number of nodes on the shortest
+ * path from the root to the nearest leaf. A node with one child is not a leaf, so the missing
+ * child's depth of zero must not be taken. An empty tree has depth {@code 0}.
  */
-public class Problem14 {
+class Problem14 {
 
 	/**
-	 * Encodes the binary tree rooted at {@code root} as a string.
+	 * Returns the minimum depth of the tree rooted at {@code root}, in nodes.
 	 *
 	 * @param root the root node, or null for an empty tree
-	 * @return a string encoding of the tree
+	 * @return the minimum depth in nodes ({@code 0} for an empty tree)
 	 */
-	public String serialize(TreeNode<Integer> root) {
-		// TODO: preorder with an explicit marker for null children so structure is recoverable.
-		throw new UnsupportedOperationException("TODO: implement serialize");
-	}
-
-	/**
-	 * Decodes a string produced by {@link #serialize(TreeNode)} back into a tree.
-	 *
-	 * @param data the encoded string
-	 * @return the reconstructed tree's root, or null for an empty tree
-	 */
-	public TreeNode<Integer> deserialize(String data) {
-		// TODO: consume tokens in the same order serialize emitted them, rebuilding recursively.
-		throw new UnsupportedOperationException("TODO: implement deserialize");
+	int minDepth(TreeNode<Integer> root) {
+		// TODO: at a node with one missing child, descend into the present child only.
+		throw new UnsupportedOperationException("TODO: implement minDepth");
 	}
 }

@@ -1,18 +1,16 @@
-/** Tier 1 — Problem 05: Lexicographically Smallest Subsequence. */
-public class Problem05 {
+/** Greedy Algorithms — Problem 5: Lexicographically Smallest After Removing K Digits. */
+class Problem05 {
 
 	/**
-	 * Removes exactly {@code k} digits from {@code digits} (order preserved) so the remaining string
-	 * is the smallest possible number, returned with no leading zeros except the value {@code "0"}.
-	 * Uses a monotonic-stack greedy that drops larger preceding digits.
+	 * Removes exactly {@code k} digits from {@code num} to form the smallest possible number,
+	 * preserving order. Uses a monotonic stack and strips leading zeros.
 	 *
-	 * @param digits the input digit string
-	 * @param k the exact number of digits to remove ({@code 0 <= k <= digits.length()})
-	 * @return the lexicographically smallest resulting number as a string
+	 * @param num the non-negative integer as a digit string
+	 * @param k the number of digits to remove
+	 * @return the smallest resulting number, or {@code "0"} if empty
 	 */
-	public String removeKDigits(String digits, int k) {
-		// TODO: greedily pop larger digits from a stack while removals remain, then strip leading
-		// zeros.
-		throw new UnsupportedOperationException("TODO: implement removeKDigits");
+	String removeKdigits(String num, int k) {
+		// TODO: monotonic stack popping larger preceding digits while removals remain.
+		throw new UnsupportedOperationException("TODO: implement removeKdigits");
 	}
 }

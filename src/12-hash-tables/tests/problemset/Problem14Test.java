@@ -1,18 +1,24 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
 	@Test
-	void subarraySum_countsMatchingSubarrays() {
+	void topK_two() {
 		var sut = new Problem14();
-		assertEquals(2, sut.subarraySum(new int[] {1, 1, 1}, 2));
+		assertArrayEquals(new int[] {1, 2}, sut.topKFrequent(new int[] {1, 1, 1, 2, 2, 3}, 2));
 	}
 
 	@Test
-	void subarraySum_withNegatives() {
+	void topK_single() {
 		var sut = new Problem14();
-		assertEquals(2, sut.subarraySum(new int[] {1, -1, 0}, 0));
+		assertArrayEquals(new int[] {1}, sut.topKFrequent(new int[] {1}, 1));
+	}
+
+	@Test
+	void topK_tieBySmaller() {
+		var sut = new Problem14();
+		assertArrayEquals(new int[] {4, 5}, sut.topKFrequent(new int[] {4, 4, 5, 5, 6}, 2));
 	}
 }

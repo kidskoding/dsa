@@ -1,21 +1,23 @@
 /**
- * Problem 14 — Sort a nearly sorted array.
+ * Problem 14 — Task Scheduler.
  *
- * <p>Given an array in which every element is at most {@code k} positions away from its sorted
- * position, sort it ascending in {@code O(n log k)} time using a bounded-size heap.
+ * <p>Given CPU tasks identified by uppercase letters and a cooldown {@code n}, return the minimum
+ * number of time units to finish all tasks, where two identical tasks must be at least {@code n}
+ * units apart. A heap-driven greedy schedule runs the most-frequent ready task.
  */
-public final class Problem14 {
+final class Problem14 {
 
 	private Problem14() {}
 
 	/**
-	 * Sorts a {@code k}-sorted array ascending in place.
+	 * Returns the minimum number of time units to run all tasks under the cooldown.
 	 *
-	 * @param array the nearly sorted array to sort in place
-	 * @param k the maximum distance any element is from its sorted position
+	 * @param tasks the task labels
+	 * @param n the cooldown between identical tasks
+	 * @return the minimum schedule length, counting idle units
 	 */
-	public static void sortNearlySorted(int[] array, int k) {
-		// TODO: keep a size-(k+1) min-heap window; pop the min into the output as the window slides.
-		throw new UnsupportedOperationException("TODO: implement sortNearlySorted");
+	static int leastInterval(char[] tasks, int n) {
+		// TODO: greedily schedule the most-frequent ready task using a max-heap of counts.
+		throw new UnsupportedOperationException("TODO: implement leastInterval");
 	}
 }

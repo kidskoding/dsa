@@ -1,19 +1,17 @@
-
 /**
- * Tier 1 — Problem 04: Count Connected Components.
- *
- * <p>Treating the graph as undirected, count the number of connected components.
+ * Problem 04: Count Connected Components. Treating the graph as undirected, count its connected
+ * components; isolated vertices each count once.
  */
-public class Problem04 {
+class Problem04 {
 
 	/**
-	 * Returns the number of connected components, treating every edge as undirected.
+	 * Returns the number of connected components of the graph treated as undirected.
 	 *
 	 * @param graph the weighted graph
-	 * @return the count of connected components
+	 * @return the number of connected components
 	 */
-	public int countComponents(WeightedGraph graph) {
-		// TODO: run union-find or flood fill over the undirected version of the graph.
-		throw new UnsupportedOperationException("TODO: implement countComponents");
+	int countComponents(WeightedGraph graph) {
+		// TODO: union-find or DFS over undirected adjacency; count distinct components.
+		throw new UnsupportedOperationException("TODO: implement");
 	}
 }

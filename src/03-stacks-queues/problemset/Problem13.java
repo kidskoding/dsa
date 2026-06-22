@@ -1,21 +1,21 @@
 /**
- * Problem 13 — Basic calculator.
+ * Problem 13 — Next Greater Element II.
  *
- * <p>Evaluate a string expression containing non-negative integers, {@code +}, {@code -}, and
- * parentheses. Use stacks to handle nesting in a single pass.
+ * <p>Given a circular array, return the next greater number for every element, or {@code -1} if
+ * none exists. Use a monotonic decreasing stack, scanning the array twice.
  */
-public final class Problem13 {
+final class Problem13 {
 
 	private Problem13() {}
 
 	/**
-	 * Evaluates an arithmetic expression with {@code +}, {@code -}, and parentheses.
+	 * Returns the next greater element for each position in the circular array.
 	 *
-	 * @param s the expression string
-	 * @return the integer value of the expression
+	 * @param nums the circular input array
+	 * @return the next greater element for each index, or {@code -1}
 	 */
-	public static int calculate(String s) {
-		// TODO: track a running result and sign; on '(' push state, on ')' pop and combine.
-		throw new UnsupportedOperationException("TODO: implement calculate");
+	static int[] nextGreaterElements(int[] nums) {
+		// TODO: iterate indices 0..2n-1 using i % n; maintain a decreasing stack.
+		throw new UnsupportedOperationException("TODO: implement nextGreaterElements");
 	}
 }

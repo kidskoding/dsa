@@ -4,20 +4,20 @@ import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
+	private final Problem12 sut = new Problem12();
+
 	@Test
-	void minPenalty_dropsCheapestConflictingTask() {
-		var sut = new Problem12();
-		// Two tasks both due at slot 1; the cheaper penalty (10) must be late.
-		int[] deadlines = {1, 1};
-		int[] penalties = {10, 20};
-		assertEquals(10L, sut.minPenalty(deadlines, penalties));
+	void jump_twoJumps() {
+		assertEquals(2, sut.jump(new int[] {2, 3, 1, 1, 4}));
 	}
 
 	@Test
-	void minPenalty_allFitNoPenalty() {
-		var sut = new Problem12();
-		int[] deadlines = {1, 2, 3};
-		int[] penalties = {5, 6, 7};
-		assertEquals(0L, sut.minPenalty(deadlines, penalties));
+	void jump_twoJumpsWithZero() {
+		assertEquals(2, sut.jump(new int[] {2, 3, 0, 1, 4}));
+	}
+
+	@Test
+	void jump_alreadyAtEnd() {
+		assertEquals(0, sut.jump(new int[] {0}));
 	}
 }

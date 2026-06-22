@@ -1,18 +1,24 @@
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem11Test {
 
 	@Test
-	void productExceptSelf_noZeros_returnsProducts() {
+	void visibleTowers_basic() {
 		var sut = new Problem11();
-		assertArrayEquals(new int[] {24, 12, 8, 6}, sut.productExceptSelf(new int[] {1, 2, 3, 4}));
+		assertEquals(3, sut.visibleTowers(new int[] {3, 1, 4, 1, 5}));
 	}
 
 	@Test
-	void productExceptSelf_singleZero_zeroesAllButOne() {
+	void visibleTowers_decreasing() {
 		var sut = new Problem11();
-		assertArrayEquals(new int[] {0, 0, 6, 0}, sut.productExceptSelf(new int[] {1, 2, 0, 3}));
+		assertEquals(1, sut.visibleTowers(new int[] {5, 4, 3}));
+	}
+
+	@Test
+	void visibleTowers_increasing() {
+		var sut = new Problem11();
+		assertEquals(4, sut.visibleTowers(new int[] {1, 2, 3, 4}));
 	}
 }

@@ -1,16 +1,21 @@
-/** Tier 3 — Problem 17: Distinct Values in a Range (Offline). */
-public class Problem17 {
+/**
+ * Problem 17 — Range Update, Point Query. Apply range-add updates and answer point queries, each in
+ * \(O(\log n)\) via a difference-array Fenwick tree.
+ */
+class Problem17 {
 
 	/**
-	 * Answers, for each inclusive query {@code queries[i] = {lo, hi}}, the number of distinct values
-	 * in {@code values[lo..hi]}, processing the queries offline.
+	 * Replays an operation stream over an array of {@code n} positions initialized to zero. Each
+	 * operation is a 4-element array: {@code {0, l, r, delta}} adds {@code delta} to every position in
+	 * {@code [l, r]}; {@code {1, i, 0, 0}} queries the current value at position {@code i}. Type-1
+	 * answers are returned in order.
 	 *
-	 * @param values the input array
-	 * @param queries inclusive range queries, each {@code {lo, hi}}
-	 * @return the distinct-value counts, one per query, in original order
+	 * @param n the number of positions
+	 * @param operations the encoded operation stream
+	 * @return the point-query (type-1) answers, in order
 	 */
-	public int[] distinctInRanges(int[] values, int[][] queries) {
-		// TODO: sort queries by right endpoint and sweep with a Fenwick tree of last occurrences.
-		throw new UnsupportedOperationException("TODO: implement distinctInRanges");
+	long[] pointValuesAfterRangeUpdates(int n, int[][] operations) {
+		// TODO: difference-array Fenwick tree; point value = prefix sum of deltas.
+		throw new UnsupportedOperationException("TODO: implement pointValuesAfterRangeUpdates");
 	}
 }

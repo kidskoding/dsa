@@ -1,18 +1,17 @@
-/** Tier 3 — Problem 13: Kruskal's MST weight. */
+/** Problem 13: Number of Provinces from Friend Pairs. */
 public class Problem13 {
 
 	/**
-	 * Given a weighted undirected graph on {@code n} nodes described by {@code edges} (each {@code
-	 * [u, v, weight]}), returns the total weight of a minimum spanning tree by sorting edges and
-	 * using union-find to reject cycle-forming edges. If the graph is disconnected, returns the total
-	 * weight of the minimum spanning forest.
+	 * Given {@code n} people labelled {@code 0..n-1} and a list of {@code friendships} (each
+	 * {@code [a, b]}), returns the number of friend circles (maximal groups connected directly or
+	 * indirectly). Union each friendship pair, then count components.
 	 *
-	 * @param n the number of nodes, n &ge; 0
-	 * @param edges the weighted edges, each {@code [u, v, weight]}
-	 * @return the total MST (or MSF) weight
+	 * @param n the number of people, n &ge; 1
+	 * @param friendships the friendship pairs, each a two-element array
+	 * @return the number of friend circles
 	 */
-	public long mstWeight(int n, int[][] edges) {
-		// TODO: sort edges by weight; add an edge only if it joins two different sets.
-		throw new UnsupportedOperationException("TODO: implement mstWeight");
+	int countFriendCircles(int n, int[][] friendships) {
+		// TODO: union each friendship pair, then count distinct roots.
+		throw new UnsupportedOperationException("TODO: implement countFriendCircles");
 	}
 }

@@ -1,19 +1,19 @@
-
 /**
- * Problem 12 — Reverse nodes in k-group. Reverse the nodes of the list k at a time. Nodes left over
- * (fewer than k) stay as-is. Use O(1) extra space beyond the call structure.
+ * Problem 12 — Add two numbers (most-significant first). Each list stores a non-negative integer as
+ * decimal digits, most-significant digit first; returns their sum as a new such list with no
+ * leading zeros (except the single node {@code 0}).
  */
-public class Problem12 {
+class Problem12 {
 
 	/**
-	 * Reverses the list in groups of {@code k}.
+	 * Returns the sum of two most-significant-first digit lists.
 	 *
-	 * @param head the head of the list
-	 * @param k the group size
-	 * @return the head of the modified list
+	 * @param a the first number's digit list
+	 * @param b the second number's digit list
+	 * @return the sum as a most-significant-first digit list
 	 */
-	public ListNode reverseKGroup(ListNode head, int k) {
-		// TODO: reverse each full window of k nodes and stitch the segments.
-		throw new UnsupportedOperationException("TODO: implement Problem12.reverseKGroup");
+	ListNode addTwoNumbers(ListNode a, ListNode b) {
+		// TODO: reverse or stack the digits, add with carry, then build the result high-to-low.
+		throw new UnsupportedOperationException("TODO: implement Problem12.addTwoNumbers");
 	}
 }

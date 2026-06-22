@@ -1,18 +1,25 @@
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
 	@Test
-	void distinctPerWindow_countsPerWindow() {
+	void nearbyDuplicate_withinK() {
 		var sut = new Problem12();
-		assertArrayEquals(new int[] {2, 3, 3}, sut.distinctPerWindow(new int[] {1, 2, 1, 3, 4}, 3));
+		assertTrue(sut.containsNearbyDuplicate(new int[] {1, 2, 3, 1}, 3));
 	}
 
 	@Test
-	void distinctPerWindow_fullWindow() {
+	void nearbyDuplicate_adjacent() {
 		var sut = new Problem12();
-		assertArrayEquals(new int[] {2}, sut.distinctPerWindow(new int[] {5, 5, 7}, 3));
+		assertTrue(sut.containsNearbyDuplicate(new int[] {1, 0, 1, 1}, 1));
+	}
+
+	@Test
+	void nearbyDuplicate_tooFar() {
+		var sut = new Problem12();
+		assertFalse(sut.containsNearbyDuplicate(new int[] {1, 2, 3, 1, 2, 3}, 2));
 	}
 }

@@ -4,13 +4,23 @@ import org.junit.jupiter.api.Test;
 
 class Problem16Test {
 
+	private final Problem16 sut = new Problem16();
+
 	@Test
-	void vertexCapacityLimitsFlow() {
-		WeightedGraph g = new WeightedGraph(3);
-		g.addDirectedEdge(0, 1, 10.0);
-		g.addDirectedEdge(1, 2, 10.0);
-		// Middle vertex capped at 4 throttles the otherwise-10 flow.
-		double[] vertexCaps = {10.0, 4.0, 10.0};
-		assertEquals(4.0, new Problem16().maxFlow(g, vertexCaps, 0, 2));
+	void bottleneckRating() {
+		int[][] r = {{0, 1, 3}, {1, 2, 1}, {2, 3, 4}, {0, 3, 2}};
+		assertEquals(3, sut.minPlowRating(4, r));
+	}
+
+	@Test
+	void equalDepths() {
+		int[][] r = {{0, 1, 5}, {1, 2, 5}};
+		assertEquals(5, sut.minPlowRating(3, r));
+	}
+
+	@Test
+	void disconnectedReturnsMinusOne() {
+		int[][] r = {{0, 1, 2}};
+		assertEquals(-1, sut.minPlowRating(3, r));
 	}
 }

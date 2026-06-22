@@ -1,36 +1,24 @@
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem10Test {
 
+	private final Problem10 sut = new Problem10();
+
 	@Test
-	void exactMatch() {
-		Problem10 p = new Problem10();
-		p.insert("bad");
-		assertTrue(p.search("bad"));
+	void buildableChain() {
+		assertEquals("world", sut.run(new String[] {"w", "wo", "wor", "worl", "world"}));
 	}
 
 	@Test
-	void wildcardMatchesAnyChar() {
-		Problem10 p = new Problem10();
-		p.insert("bad");
-		assertTrue(p.search("b.d"));
-		assertTrue(p.search("..."));
+	void tieBrokenLexicographically() {
+		String[] words = {"a", "banana", "app", "appl", "ap", "apply", "apple"};
+		assertEquals("apple", sut.run(words));
 	}
 
 	@Test
-	void wildcardRequiresCorrectLength() {
-		Problem10 p = new Problem10();
-		p.insert("bad");
-		assertFalse(p.search("b."));
-		assertFalse(p.search("b..."));
-	}
-
-	@Test
-	void noMatchInEmptyTrie() {
-		Problem10 p = new Problem10();
-		assertFalse(p.search("..."));
+	void shortBuildableWord() {
+		assertEquals("yo", sut.run(new String[] {"yo", "ew", "fc", "zsl", "y"}));
 	}
 }

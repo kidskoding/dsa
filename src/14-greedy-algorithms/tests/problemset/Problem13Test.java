@@ -1,25 +1,24 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
+	private final Problem13 sut = new Problem13();
+
 	@Test
-	void minRefuelStops_classicInstance_returnsTwo() {
-		var sut = new Problem13();
-		int[][] stations = {{10, 60}, {20, 30}, {30, 30}, {60, 40}};
-		assertEquals(2, sut.minRefuelStops(100, 10, stations));
+	void merge_overlapping() {
+		int[][] expected = {{1, 6}, {8, 10}, {15, 18}};
+		assertArrayEquals(expected, sut.merge(new int[][] {{1, 3}, {2, 6}, {8, 10}, {15, 18}}));
 	}
 
 	@Test
-	void minRefuelStops_enoughStartFuel_returnsZero() {
-		var sut = new Problem13();
-		assertEquals(0, sut.minRefuelStops(50, 100, new int[][] {}));
+	void merge_touching() {
+		assertArrayEquals(new int[][] {{1, 5}}, sut.merge(new int[][] {{1, 4}, {4, 5}}));
 	}
 
 	@Test
-	void minRefuelStops_unreachable_returnsMinusOne() {
-		var sut = new Problem13();
-		assertEquals(-1, sut.minRefuelStops(100, 1, new int[][] {{10, 100}}));
+	void merge_contained() {
+		assertArrayEquals(new int[][] {{1, 4}}, sut.merge(new int[][] {{1, 4}, {2, 3}}));
 	}
 }

@@ -1,23 +1,17 @@
-
 /**
- * Tier 3 — Problem 13: Second-Best Minimum Spanning Tree.
- *
- * <p>Compute the weight of the second-best spanning tree: the minimum weight over all spanning
- * trees that differ from the MST in at least one edge.
+ * Problem 13: Swim In Rising Water (minimax path). Return the least time at which the bottom-right
+ * cell becomes reachable from the top-left, swimming through submerged cells.
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns the weight of the second-best spanning tree of a connected, undirected graph.
+	 * Returns the least time {@code t} at which {@code (n-1, n-1)} is reachable from {@code (0, 0)}.
 	 *
-	 * @param graph an undirected, connected, weighted graph
-	 * @return the weight of the second-best spanning tree
-	 * @throws IllegalStateException if no second spanning tree exists (e.g. the graph is itself a
-	 *		 tree)
+	 * @param grid the elevation grid
+	 * @return the minimum waiting time
 	 */
-	public double secondBestSpanningTreeWeight(WeightedGraph graph) {
-		// TODO: build the MST, then for each non-tree edge swap in and remove the heaviest edge on the
-		//			 cycle it closes; take the cheapest resulting increase.
-		throw new UnsupportedOperationException("TODO: implement secondBestSpanningTreeWeight");
+	int swimInWater(int[][] grid) {
+		// TODO: bottleneck Dijkstra: a path's cost is the max cell elevation along it; minimize that.
+		throw new UnsupportedOperationException("TODO: implement");
 	}
 }

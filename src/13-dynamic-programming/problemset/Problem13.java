@@ -1,22 +1,19 @@
-import java.util.List;
-
 /**
- * Problem 13 — Word Break.
+ * Problem 13 — Decode Ways.
  *
- * <p>Given a string and a dictionary of words, decide whether the string can be segmented into a
- * sequence of one or more dictionary words.
+ * <p>Digits encode letters via {@code 'A'->"1" ... 'Z'->"26"}. Count the ways to decode the
+ * digit string {@code s}, respecting leading and standalone zeros.
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns whether {@code s} can be segmented into a sequence of words from {@code dictionary}.
+	 * Returns the number of ways to decode {@code s}.
 	 *
-	 * @param s the string to segment (non-null)
-	 * @param dictionary the allowed words (non-null)
-	 * @return true if a valid segmentation exists
+	 * @param s the digit string (non-empty)
+	 * @return the number of valid decodings
 	 */
-	public boolean canSegment(String s, List<String> dictionary) {
-		// TODO: dp[i] = some j < i where dp[j] and s[j..i) is in the dictionary; dp[0] = true.
-		throw new UnsupportedOperationException("TODO: implement canSegment");
+	int numDecodings(String s) {
+		// TODO: dp[i] adds dp[i-1] if s[i-1] in 1..9 and dp[i-2] if s[i-2..i-1] in 10..26.
+		throw new UnsupportedOperationException("TODO: implement numDecodings");
 	}
 }

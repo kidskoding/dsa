@@ -1,18 +1,19 @@
 /**
- * Problem 12 — Longest Palindromic Subsequence.
+ * Problem 12 — House Robber II (Circular Street).
  *
- * <p>Given a string, compute the length of its longest palindromic subsequence.
+ * <p>Houses are in a circle, so the first and last are adjacent. Maximize loot without robbing
+ * two adjacent houses.
  */
-public class Problem12 {
+class Problem12 {
 
 	/**
-	 * Returns the length of the longest palindromic subsequence of {@code s}.
+	 * Returns the maximum robbable amount on a circular street.
 	 *
-	 * @param s the input string (non-null)
-	 * @return the longest palindromic subsequence length (0 for the empty string)
+	 * @param nums the non-negative house values
+	 * @return the maximum total loot
 	 */
-	public int longestPalindromicSubsequence(String s) {
-		// TODO: interval DP; dp[i][j] grows by 2 when s[i]==s[j], else max(dp[i+1][j], dp[i][j-1]).
-		throw new UnsupportedOperationException("TODO: implement longestPalindromicSubsequence");
+	int rob(int[] nums) {
+		// TODO: max of linear-rob(nums[0..n-2]) and linear-rob(nums[1..n-1]); handle n == 1.
+		throw new UnsupportedOperationException("TODO: implement rob");
 	}
 }

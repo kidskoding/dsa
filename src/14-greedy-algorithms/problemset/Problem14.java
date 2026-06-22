@@ -1,22 +1,16 @@
-/** Tier 3 — Problem 14: Maximize Capital with k Projects. */
-public class Problem14 {
+/** Greedy Algorithms — Problem 14: Gas Station. */
+class Problem14 {
 
 	/**
-	 * Selects at most {@code k} projects sequentially to maximize final capital, returning that
-	 * maximum. Project {@code i} requires {@code capitalRequired[i]} capital to start and yields
-	 * {@code profits[i]} added to capital on completion. At each step, among all affordable
-	 * unselected projects, the greedy picks the most profitable. Profits accumulate, possibly
-	 * unlocking further projects.
+	 * Returns the unique starting index from which the circular route can be completed once, or
+	 * {@code -1} if impossible. Reset the running tank whenever it goes negative.
 	 *
-	 * @param k the maximum number of projects to undertake
-	 * @param startCapital the initial capital
-	 * @param capitalRequired the per-project capital thresholds, parallel to {@code profits}
-	 * @param profits the per-project profits, parallel to {@code capitalRequired}
-	 * @return the maximum capital achievable after at most {@code k} projects
+	 * @param gas the gas available at each station
+	 * @param cost the cost to travel from each station to the next
+	 * @return the starting station index, or {@code -1}
 	 */
-	public long maximizeCapital(int k, long startCapital, int[] capitalRequired, int[] profits) {
-		// TODO: order by required capital; repeatedly pick the max-profit affordable project from a
-		// max-heap.
-		throw new UnsupportedOperationException("TODO: implement maximizeCapital");
+	int canCompleteCircuit(int[] gas, int[] cost) {
+		// TODO: track total balance and a resettable running tank.
+		throw new UnsupportedOperationException("TODO: implement canCompleteCircuit");
 	}
 }

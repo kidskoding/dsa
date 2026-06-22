@@ -1,17 +1,20 @@
 /**
- * Problem 14 — External / k-way merge. Merge {@code k} sorted streams into one sorted output using
- * a heap, in \(O(N \log k)\) total comparisons where {@code N} is the element count.
+ * Problem 14 — Top K Frequent Elements. Given an array and {@code k}, return the {@code k} most
+ * frequent values ordered from most to least frequent. The top-k set is guaranteed unique. Tally
+ * counts, then select the top {@code k} via a heap or bucket-by-count.
  */
-public class Problem14 {
+class Problem14 {
 
 	/**
-	 * Returns a single ascending array containing every element of the given sorted arrays.
+	 * Returns the {@code k} most frequent values in {@code nums}, ordered from most frequent to least
+	 * frequent.
 	 *
-	 * @param sortedLists an array of {@code k} arrays, each sorted ascending
-	 * @return the merged, ascending output of length {@code N}
+	 * @param nums the input array
+	 * @param k how many of the most frequent values to return
+	 * @return the top {@code k} values by descending frequency
 	 */
-	public int[] mergeKSorted(int[][] sortedLists) {
-		// TODO: seed a min-heap with each list's head, then repeatedly pop and advance.
-		throw new UnsupportedOperationException("TODO: implement mergeKSorted");
+	int[] topKFrequent(int[] nums, int k) {
+		// TODO: count frequencies, then select the top k by count.
+		throw new UnsupportedOperationException("TODO: implement topKFrequent");
 	}
 }

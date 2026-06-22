@@ -1,18 +1,18 @@
-
 /**
- * Problem 15 — Merge k sorted lists. Merge k ascending sorted lists into one, targeting O(N log k)
- * time where N is the total node count.
+ * Problem 15 — Reverse nodes in k-group. Reverses the list k nodes at a time and returns the
+ * modified list; a final run of fewer than k nodes stays as-is.
  */
-public class Problem15 {
+class Problem15 {
 
 	/**
-	 * Merges an array of sorted lists.
+	 * Reverses the list in groups of {@code k}.
 	 *
-	 * @param lists the heads of the sorted lists (entries may be {@code null})
-	 * @return the head of the single merged sorted list
+	 * @param head the head of the list
+	 * @param k the group size
+	 * @return the head of the modified list
 	 */
-	public ListNode mergeKLists(ListNode[] lists) {
-		// TODO: divide-and-conquer pairwise merge, or a min-heap of heads.
-		throw new UnsupportedOperationException("TODO: implement Problem15.mergeKLists");
+	ListNode reverseKGroup(ListNode head, int k) {
+		// TODO: confirm k nodes remain, reverse that group, and recurse/iterate on the rest.
+		throw new UnsupportedOperationException("TODO: implement Problem15.reverseKGroup");
 	}
 }

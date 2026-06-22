@@ -4,19 +4,20 @@ import org.junit.jupiter.api.Test;
 
 class Problem04Test {
 
+	private final Problem04 sut = new Problem04();
+
 	@Test
-	void minWeightedCompletionTime_ordersBySmithRatio() {
-		var sut = new Problem04();
-		// Optimal order is job1 (ratio 10) then job0 (ratio 1.5):
-		// completion 1*10 + (1+4)*3 = 10 + 15 = 25.
-		int[] weights = {3, 10};
-		int[] durations = {2, 1};
-		assertEquals(25L, sut.minWeightedCompletionTime(weights, durations));
+	void minWeightedCompletion_singleJob() {
+		assertEquals(50L, sut.minWeightedCompletion(new int[] {10}, new int[] {5}));
 	}
 
 	@Test
-	void minWeightedCompletionTime_singleJob_isWeightTimesDuration() {
-		var sut = new Problem04();
-		assertEquals(15L, sut.minWeightedCompletionTime(new int[] {5}, new int[] {3}));
+	void minWeightedCompletion_shorterFirst() {
+		assertEquals(4L, sut.minWeightedCompletion(new int[] {1, 1}, new int[] {1, 2}));
+	}
+
+	@Test
+	void minWeightedCompletion_byRatio() {
+		assertEquals(10L, sut.minWeightedCompletion(new int[] {3, 1}, new int[] {1, 2}));
 	}
 }

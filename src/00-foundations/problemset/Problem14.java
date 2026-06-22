@@ -1,15 +1,15 @@
-/** Tier 3 — Problem 14: Binary counter increments. */
-public class Problem14 {
+/** Foundations — Problem 14: Collatz Step Counter. */
+class Problem14 {
 
 	/**
-	 * Starting from zero, performs {@code k} increments on a binary counter and returns the total
-	 * number of bit flips. The amortized cost per increment should approach 2.
+	 * Returns the number of Collatz steps to reach 1 from {@code n}: halve when even, otherwise
+	 * replace with {@code 3n + 1}.
 	 *
-	 * @param k the number of increments, k &ge; 0
-	 * @return total bit flips across all increments
+	 * @param n the starting value, at least 1
+	 * @return the number of steps to reach 1
 	 */
-	public long totalBitFlips(int k) {
-		// TODO: simulate increments, counting every bit toggled by each carry chain.
-		throw new UnsupportedOperationException("TODO: implement totalBitFlips");
+	long collatzSteps(long n) {
+		// TODO: iterate the Collatz map, counting steps until n == 1.
+		throw new UnsupportedOperationException("TODO: implement collatzSteps");
 	}
 }

@@ -1,16 +1,16 @@
-/** Tier 3 — Problem 14: Subarray sum equals K. */
-public class Problem14 {
+/** Problem 14 — Top K Frequent Elements. See {@code PROBLEM_SET.md}. */
+class Problem14 {
 
 	/**
-	 * Returns the number of contiguous subarrays of {@code nums} whose elements sum to {@code k}. Use
-	 * a hash map of prefix-sum frequencies for an {@code O(n)} solution.
+	 * Returns the {@code k} most frequent values in {@code nums}, in descending order of frequency,
+	 * breaking ties by smaller value first. Tally counts in a hash map, then select the top k.
 	 *
 	 * @param nums the input array, non-null
-	 * @param k the target subarray sum
-	 * @return the count of contiguous subarrays summing to {@code k}
+	 * @param k the number of top values to return
+	 * @return the top-k values, most frequent first
 	 */
-	public int subarraySum(int[] nums, int k) {
-		// TODO: track a running prefix sum, counting earlier prefixes equal to (prefix - k).
-		throw new UnsupportedOperationException("TODO: implement subarraySum");
+	int[] topKFrequent(int[] nums, int k) {
+		// TODO: count values, then order by (count desc, value asc) and take the first k.
+		throw new UnsupportedOperationException("TODO: implement topKFrequent");
 	}
 }

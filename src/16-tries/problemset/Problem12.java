@@ -1,21 +1,19 @@
 /**
- * Problem 12 — Maximum XOR pair.
+ * Problem 12 — Add and Search Word (Wildcard {@code .}).
  *
- * <p>Given an array of integers, insert their binary representations into a binary trie and return
- * the maximum XOR over all pairs in \( O(n \cdot b) \) time for \( b \)-bit integers.
+ * <p>Process a stream of {@code "addWord word"} / {@code "search pattern"} commands, where a
+ * {@code .} in a pattern matches any single letter, and report the result of every search.
  */
-public class Problem12 {
+class Problem12 {
 
 	/**
-	 * Returns the maximum value of {@code a ^ b} over all pairs in {@code nums}.
+	 * Runs the operation stream and collects one {@code "true"}/{@code "false"} per {@code search}.
 	 *
-	 * @param nums the input integers
-	 * @return the maximum pairwise XOR, or 0 if fewer than two values are present
+	 * @param operations each {@code "addWord <word>"} or {@code "search <pattern>"}; pattern may use {@code .}
+	 * @return the result of each {@code search} command, in order
 	 */
-	public int maxXor(int[] nums) {
-		// TODO: insert each number's bits (most-significant first) into a binary
-		// trie, then for each number greedily walk toward the opposite bit to
-		// maximise XOR.
-		throw new UnsupportedOperationException("TODO: implement maxXor");
+	String[] run(String[] operations) {
+		// TODO: build a trie; on '.' recurse into every child, otherwise follow the exact edge.
+		throw new UnsupportedOperationException("TODO: implement run");
 	}
 }

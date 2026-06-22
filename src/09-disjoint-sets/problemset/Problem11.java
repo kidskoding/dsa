@@ -1,18 +1,17 @@
-import java.util.List;
-
-/** Tier 3 — Problem 11: Accounts merge. */
+/** Problem 11: Most Stones Removed with Same Row or Column. */
 public class Problem11 {
 
 	/**
-	 * Given a list of {@code accounts} where each account is a name followed by emails, merges
-	 * accounts that share any email and returns the merged groups. Each returned group is the account
-	 * name followed by its emails sorted in ascending order. Use union-find keyed by email.
+	 * Given {@code stones} at integer coordinates, returns the maximum number of stones removable,
+	 * where a stone may be removed if it shares its row or column with another remaining stone. Two
+	 * stones in the same row or column belong to the same group; the answer is
+	 * {@code stones.length - (number of groups)}.
 	 *
-	 * @param accounts the input accounts, each {@code [name, email1, email2, ...]}
-	 * @return the merged accounts, each {@code [name, sortedEmail1, ...]}
+	 * @param stones the stone coordinates, each a two-element array {@code [x, y]}
+	 * @return the maximum number of stones that can be removed
 	 */
-	public List<List<String>> accountsMerge(List<List<String>> accounts) {
-		// TODO: union emails that co-occur in an account, then group emails by representative.
-		throw new UnsupportedOperationException("TODO: implement accountsMerge");
+	int removeStones(int[][] stones) {
+		// TODO: union stones sharing a row or column, then return stones.length - componentCount.
+		throw new UnsupportedOperationException("TODO: implement removeStones");
 	}
 }

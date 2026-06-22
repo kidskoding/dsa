@@ -1,17 +1,19 @@
+import java.util.List;
+
 /**
- * Problem 13 — Tower of Hanoi. Return the minimum number of moves to transfer {@code n} disks
- * between pegs, and confirm it equals {@code 2^n - 1}.
+ * Problem 13 — Permutations. Given an array of distinct integers, return all orderings using
+ * backtracking. Any order of the permutations is accepted.
  */
-public class Problem13 {
+class Problem13 {
 
 	/**
-	 * Returns the minimum number of moves needed to transfer {@code n} disks in the Tower of Hanoi.
+	 * Returns every permutation of {@code nums}, in any order.
 	 *
-	 * @param n the number of disks (non-negative)
-	 * @return the minimum move count, {@code 2^n - 1}
+	 * @param nums an array of distinct integers
+	 * @return a list of all permutations of {@code nums}
 	 */
-	public long minMoves(int n) {
-		// TODO: base case n == 0 returns 0; otherwise 2 * minMoves(n - 1) + 1.
-		throw new UnsupportedOperationException("TODO: implement minMoves");
+	List<List<Integer>> permute(int[] nums) {
+		// TODO: pick an unused element for each position, recurse, then undo the choice.
+		throw new UnsupportedOperationException("TODO: implement permute");
 	}
 }

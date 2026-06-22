@@ -1,18 +1,18 @@
 /**
- * Problem 15 — Maximum gap. Given an unsorted array, find the largest difference between successive
- * elements in its sorted form, in \(O(n)\) time and space (bucketing).
+ * Problem 15 — H-Index. Given per-paper citation counts, return the largest {@code h} such that at
+ * least {@code h} papers each have at least {@code h} citations. Sort and scan, or count by value.
  */
-public class Problem15 {
+class Problem15 {
 
 	/**
-	 * Returns the maximum gap between successive elements of {@code a} once sorted, or {@code 0} if
-	 * {@code a} has fewer than two elements.
+	 * Returns the researcher's h-index for {@code citations}: the largest {@code h} for which at least
+	 * {@code h} papers have at least {@code h} citations each.
 	 *
-	 * @param a the input array
-	 * @return the largest successive gap in the sorted order
+	 * @param citations per-paper citation counts
+	 * @return the h-index
 	 */
-	public int maximumGap(int[] a) {
-		// TODO: distribute values into n-1 evenly sized buckets and compare across bucket boundaries.
-		throw new UnsupportedOperationException("TODO: implement maximumGap");
+	int hIndex(int[] citations) {
+		// TODO: sort descending and find the largest h with citations[h-1] >= h, or count by value.
+		throw new UnsupportedOperationException("TODO: implement hIndex");
 	}
 }

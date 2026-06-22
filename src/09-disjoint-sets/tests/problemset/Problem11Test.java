@@ -1,19 +1,26 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem11Test {
 
+	private final Problem11 sut = new Problem11();
+
 	@Test
-	void accountsMerge_joinsAccountsSharingEmail() {
-		var sut = new Problem11();
-		var accounts =
-				List.of(
-						List.of("John", "a@x.com", "b@x.com"),
-						List.of("John", "b@x.com", "c@x.com"),
-						List.of("Mary", "m@x.com"));
-		var merged = sut.accountsMerge(accounts);
-		assertEquals(2, merged.size());
+	void removeStones_oneGroup_fiveRemovable() {
+		assertEquals(
+			5,
+			sut.removeStones(new int[][] {{0, 0}, {0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 2}}));
+	}
+
+	@Test
+	void removeStones_twoGroups_threeRemovable() {
+		assertEquals(
+			3, sut.removeStones(new int[][] {{0, 0}, {0, 2}, {1, 1}, {2, 0}, {2, 2}}));
+	}
+
+	@Test
+	void removeStones_singleStone_none() {
+		assertEquals(0, sut.removeStones(new int[][] {{0, 0}}));
 	}
 }

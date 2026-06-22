@@ -1,23 +1,35 @@
-import java.util.List;
-
 /**
- * Problem 11 — Merge k sorted lists.
+ * Problem 11 — Find Median from Data Stream.
  *
- * <p>Given {@code k} sorted integer lists, merge them into one sorted list in {@code O(N log k)}
- * time using a min-heap, where {@code N} is the total number of elements.
+ * <p>Support adding integers from a stream and reporting the median of all values seen so far. Use a
+ * max-heap for the lower half and a min-heap for the upper half, kept balanced so each operation is
+ * {@code O(log n)}.
  */
-public final class Problem11 {
+final class Problem11 {
 
-	private Problem11() {}
+	/** Creates an empty median tracker. */
+	Problem11() {
+		// TODO: initialize the two half-heaps.
+		throw new UnsupportedOperationException("TODO: implement constructor");
+	}
 
 	/**
-	 * Merges {@code k} ascending-sorted lists into a single ascending-sorted array.
+	 * Adds {@code num} to the running collection.
 	 *
-	 * @param lists the sorted input lists
-	 * @return one ascending-sorted array containing every element of every list
+	 * @param num the value to add
 	 */
-	public static int[] mergeKSorted(List<int[]> lists) {
-		// TODO: seed a min-heap with the head of each list; repeatedly pop and advance that list.
-		throw new UnsupportedOperationException("TODO: implement mergeKSorted");
+	void addNum(int num) {
+		// TODO: push onto the correct half-heap, then rebalance the two heaps' sizes.
+		throw new UnsupportedOperationException("TODO: implement addNum");
+	}
+
+	/**
+	 * Returns the median of all values added so far.
+	 *
+	 * @return the median; for an even count, the average of the two middle values
+	 */
+	double findMedian() {
+		// TODO: read the heap tops (and average them when the count is even).
+		throw new UnsupportedOperationException("TODO: implement findMedian");
 	}
 }

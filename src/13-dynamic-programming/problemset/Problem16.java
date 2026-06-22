@@ -1,21 +1,18 @@
-
 /**
- * Problem 16 — Maximum Weight Independent Set on a Tree.
+ * Problem 16 — Longest Palindromic Subsequence.
  *
- * <p>Given a rooted tree with node weights, compute the maximum-weight set of nodes such that no
- * two chosen nodes are adjacent (parent/child). Reuses {@link TreeNode} from the {@code
- * dp-on-trees} topic.
+ * <p>Compute the length of the longest palindromic subsequence of {@code s} (interval DP).
  */
-public class Problem16 {
+class Problem16 {
 
 	/**
-	 * Returns the maximum-weight independent set in the tree rooted at {@code root}.
+	 * Returns the length of the longest palindromic subsequence of {@code s}.
 	 *
-	 * @param root the root of the tree, or {@code null} for an empty tree
-	 * @return the maximum independent-set weight (0 when {@code root} is {@code null})
+	 * @param s the input string (non-empty)
+	 * @return the longest palindromic subsequence length
 	 */
-	public int maxWeightIndependentSet(TreeNode root) {
-		// TODO: post-order; combine each node's include/exclude optima from its children.
-		throw new UnsupportedOperationException("TODO: implement maxWeightIndependentSet");
+	int longestPalindromeSubseq(String s) {
+		// TODO: dp[i][j] = (s[i]==s[j]) ? dp[i+1][j-1]+2 : max(dp[i+1][j], dp[i][j-1]).
+		throw new UnsupportedOperationException("TODO: implement longestPalindromeSubseq");
 	}
 }

@@ -1,18 +1,17 @@
-import java.util.List;
-
-/** Tier 3 — Problem 13: Closest pair via spatial subdivision. */
+/** Tier 2 — Problem 13: Manhattan nearest neighbour. */
 public class Problem13 {
 
 	/**
-	 * Returns the pair of distinct points from {@code points} with the smallest Euclidean distance
-	 * between them, faster than the \( O(n^2) \) brute force.
+	 * Returns the index of the point in {@code points} closest to {@code query = [qx, qy]} under the
+	 * Manhattan distance {@code |x-qx| + |y-qy|}, breaking ties by smallest index. Assumes
+	 * {@code points} is non-empty.
 	 *
-	 * @param points the input points; must contain at least two
-	 * @return a two-element array holding the closest pair
-	 * @throws IllegalArgumentException if fewer than two points are given
+	 * @param points the candidate points, each as {@code [x, y]}
+	 * @param query the query point {@code [qx, qy]}
+	 * @return the index of the L1-nearest point
 	 */
-	public Point2D[] closestPair(List<Point2D> points) {
-		// TODO: divide-and-conquer (or k-d tree) closest pair, with the strip-merge step.
-		throw new UnsupportedOperationException("TODO: implement closestPair");
+	public int nearestManhattan(int[][] points, int[] query) {
+		// TODO: track the minimum |dx| + |dy| and its index.
+		throw new UnsupportedOperationException("TODO: implement nearestManhattan");
 	}
 }

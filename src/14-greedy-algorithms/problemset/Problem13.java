@@ -1,20 +1,15 @@
-/** Tier 3 — Problem 13: Minimum Number of Refueling Stops. */
-public class Problem13 {
+/** Greedy Algorithms — Problem 13: Merge Intervals. */
+class Problem13 {
 
 	/**
-	 * Returns the minimum number of refueling stops needed to drive {@code target} units starting
-	 * with {@code startFuel}, or {@code -1} if the target is unreachable. Each {@code stations[i] =
-	 * [position, fuel]} offers {@code fuel} units at {@code position} (the car burns one unit of fuel
-	 * per unit of distance). Uses a max-heap greedy: when fuel runs short, retroactively refuel from
-	 * the largest passed station.
+	 * Merges all overlapping intervals and returns the covering non-overlapping intervals sorted by
+	 * start. Sort by start, then extend the current interval while the next start is within it.
 	 *
-	 * @param target the distance to reach
-	 * @param startFuel the initial fuel
-	 * @param stations the stations, each as {@code [position, fuel]}, in increasing position order
-	 * @return the minimum number of stops, or {@code -1} if the target cannot be reached
+	 * @param intervals the intervals as {@code [start, end]} pairs
+	 * @return the merged, non-overlapping intervals
 	 */
-	public int minRefuelStops(int target, int startFuel, int[][] stations) {
-		// TODO: sweep stations, pushing passed fuel onto a max-heap; when short, pop the largest.
-		throw new UnsupportedOperationException("TODO: implement minRefuelStops");
+	int[][] merge(int[][] intervals) {
+		// TODO: sort by start; sweep extending or emitting merged intervals.
+		throw new UnsupportedOperationException("TODO: implement merge");
 	}
 }

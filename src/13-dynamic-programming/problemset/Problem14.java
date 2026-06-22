@@ -1,21 +1,18 @@
 /**
- * Problem 14 — Edit Distance with Transpositions (Damerau).
+ * Problem 14 — Longest Increasing Subsequence.
  *
- * <p>Compute the minimum edit distance allowing insertions, deletions, substitutions, and
- * transpositions of two adjacent characters.
+ * <p>Compute the length of the longest strictly increasing subsequence of {@code nums}.
  */
-public class Problem14 {
+class Problem14 {
 
 	/**
-	 * Returns the Damerau-Levenshtein distance between {@code a} and {@code b}, allowing adjacent
-	 * transpositions in addition to insert/delete/substitute.
+	 * Returns the length of the longest strictly increasing subsequence of {@code nums}.
 	 *
-	 * @param a the source string (non-null)
-	 * @param b the target string (non-null)
-	 * @return the minimum number of operations
+	 * @param nums the input array (non-empty)
+	 * @return the LIS length
 	 */
-	public int damerauDistance(String a, String b) {
-		// TODO: extend the Levenshtein DP with the adjacent-transposition case (cost +1).
-		throw new UnsupportedOperationException("TODO: implement damerauDistance");
+	int lengthOfLIS(int[] nums) {
+		// TODO: dp[i] = 1 + max(dp[j]) over j < i with nums[j] < nums[i]; answer = max dp.
+		throw new UnsupportedOperationException("TODO: implement lengthOfLIS");
 	}
 }

@@ -1,20 +1,24 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
 	@Test
-	void spiralOrder_threeByThree_walksClockwise() {
+	void maxProfit_basic() {
 		var sut = new Problem12();
-		int[][] m = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-		assertEquals(List.of(1, 2, 3, 6, 9, 8, 7, 4, 5), sut.spiralOrder(m));
+		assertEquals(5, sut.maxProfit(new int[] {7, 1, 5, 3, 6, 4}));
 	}
 
 	@Test
-	void spiralOrder_singleRow_returnsRow() {
+	void maxProfit_decreasing() {
 		var sut = new Problem12();
-		assertEquals(List.of(1, 2, 3), sut.spiralOrder(new int[][] {{1, 2, 3}}));
+		assertEquals(0, sut.maxProfit(new int[] {7, 6, 4, 3, 1}));
+	}
+
+	@Test
+	void maxProfit_short() {
+		var sut = new Problem12();
+		assertEquals(2, sut.maxProfit(new int[] {2, 4, 1}));
 	}
 }

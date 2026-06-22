@@ -1,20 +1,17 @@
 /**
- * Problem 15 — Maximum subarray (divide &amp; conquer). Return the maximum sum of any contiguous
- * non-empty subarray using the cross-boundary recurrence.
+ * Problem 15 — Majority Element. Return the value appearing more than {@code n / 2} times using
+ * divide and conquer.
  */
-public class Problem15 {
+class Problem15 {
 
 	/**
-	 * Returns the maximum sum of any contiguous, non-empty subarray of {@code values}, using a
-	 * divide-and-conquer recurrence (best in left half, best in right half, best crossing the
-	 * midpoint).
+	 * Returns the majority element of {@code nums}, which is guaranteed to exist.
 	 *
-	 * @param values a non-empty array
-	 * @return the maximum subarray sum
-	 * @throws IllegalArgumentException if {@code values} is empty
+	 * @param nums the array to scan
+	 * @return the value appearing more than {@code nums.length / 2} times
 	 */
-	public long maxSubarraySum(int[] values) {
-		// TODO: split, recurse on each half, and compute the best crossing sum.
-		throw new UnsupportedOperationException("TODO: implement maxSubarraySum");
+	int majorityElement(int[] nums) {
+		// TODO: recurse on each half; if they agree return it, else count over the range.
+		throw new UnsupportedOperationException("TODO: implement majorityElement");
 	}
 }

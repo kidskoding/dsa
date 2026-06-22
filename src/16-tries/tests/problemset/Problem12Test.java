@@ -1,30 +1,34 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
+	private final Problem12 sut = new Problem12();
+
 	@Test
-	void maxXorOfPair() {
-		Problem12 p = new Problem12();
-		assertEquals(28, p.maxXor(new int[] {3, 10, 5, 25, 2, 8}));
+	void wildcardMatching() {
+		String[] ops = {
+			"addWord bad",
+			"addWord dad",
+			"addWord mad",
+			"search pad",
+			"search bad",
+			"search .ad",
+			"search b.."
+		};
+		assertArrayEquals(new String[] {"false", "true", "true", "true"}, sut.run(ops));
 	}
 
 	@Test
-	void twoElements() {
-		Problem12 p = new Problem12();
-		assertEquals(7, p.maxXor(new int[] {2, 5}));
+	void singleWildcardAndLength() {
+		String[] ops = {"addWord a", "search .", "search a", "search aa"};
+		assertArrayEquals(new String[] {"true", "true", "false"}, sut.run(ops));
 	}
 
 	@Test
-	void singleElementHasNoPair() {
-		Problem12 p = new Problem12();
-		assertEquals(0, p.maxXor(new int[] {42}));
-	}
-
-	@Test
-	void duplicatesXorToZero() {
-		Problem12 p = new Problem12();
-		assertEquals(0, p.maxXor(new int[] {6, 6}));
+	void searchBeforeAddMisses() {
+		String[] ops = {"search a", "addWord a", "search a"};
+		assertArrayEquals(new String[] {"false", "true"}, sut.run(ops));
 	}
 }

@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,44 +6,22 @@ class Problem16Test {
 
 	private final Problem16 sut = new Problem16();
 
-	private static boolean isWiggle(int[] a) {
-		for (int i = 0; i + 1 < a.length; i++) {
-			if (i % 2 == 0) {
-				if (a[i] > a[i + 1]) {
-					return false;
-				}
-			} else if (a[i] < a[i + 1]) {
-				return false;
-			}
-		}
-		return true;
+	@Test
+	void findRelativeRanks_descending() {
+		assertArrayEquals(
+				new String[] {"Gold Medal", "Silver Medal", "Bronze Medal", "4", "5"},
+				sut.findRelativeRanks(new int[] {5, 4, 3, 2, 1}));
 	}
 
 	@Test
-	void wiggleSort_distinctValues_producesWigglePattern() {
-		int[] a = {3, 5, 2, 1, 6, 4};
-		sut.wiggleSort(a);
-		assertTrue(isWiggle(a));
+	void findRelativeRanks_shuffled() {
+		assertArrayEquals(
+				new String[] {"Gold Medal", "5", "Bronze Medal", "Silver Medal", "4"},
+				sut.findRelativeRanks(new int[] {10, 3, 8, 9, 4}));
 	}
 
 	@Test
-	void wiggleSort_withDuplicates_producesWigglePattern() {
-		int[] a = {1, 5, 1, 1, 6, 4};
-		sut.wiggleSort(a);
-		assertTrue(isWiggle(a));
-	}
-
-	@Test
-	void wiggleSort_singleElement_isWiggle() {
-		int[] a = {1};
-		sut.wiggleSort(a);
-		assertTrue(isWiggle(a));
-	}
-
-	@Test
-	void wiggleSort_empty_isWiggle() {
-		int[] a = {};
-		sut.wiggleSort(a);
-		assertTrue(isWiggle(a));
+	void findRelativeRanks_single() {
+		assertArrayEquals(new String[] {"Gold Medal"}, sut.findRelativeRanks(new int[] {1}));
 	}
 }

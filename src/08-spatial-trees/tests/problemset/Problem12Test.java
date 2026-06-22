@@ -1,23 +1,24 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
+	private final Problem12 sut = new Problem12();
+
 	@Test
-	void kNearest_returnsTwoClosestInOrder() {
-		var sut = new Problem12();
-		var points =
-				List.of(new Point2D(0, 0), new Point2D(1, 1), new Point2D(5, 5), new Point2D(10, 10));
-		List<Point2D> result = sut.kNearest(points, new Point2D(0, 0), 2);
-		assertEquals(List.of(new Point2D(0, 0), new Point2D(1, 1)), result);
+	void overlapping() {
+		assertTrue(sut.isOverlap(new int[] {0, 0, 2, 2}, new int[] {1, 1, 3, 3}));
 	}
 
 	@Test
-	void kNearest_zeroK_returnsEmpty() {
-		var sut = new Problem12();
-		var points = List.of(new Point2D(0, 0), new Point2D(1, 1));
-		assertEquals(List.of(), sut.kNearest(points, new Point2D(0, 0), 0));
+	void touchingEdge() {
+		assertFalse(sut.isOverlap(new int[] {0, 0, 1, 1}, new int[] {1, 0, 2, 1}));
+	}
+
+	@Test
+	void disjoint() {
+		assertFalse(sut.isOverlap(new int[] {0, 0, 1, 1}, new int[] {2, 2, 3, 3}));
 	}
 }

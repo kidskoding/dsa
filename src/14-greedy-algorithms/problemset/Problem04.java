@@ -1,18 +1,16 @@
-/** Tier 1 — Problem 04: Fractional Job Scheduling Profit. */
-public class Problem04 {
+/** Greedy Algorithms — Problem 4: Job Sequencing by Smith's Rule. */
+class Problem04 {
 
 	/**
-	 * Returns the minimum total weighted completion time achievable by ordering jobs on a single
-	 * machine, where job {@code i} has weight {@code weights[i]} and duration {@code durations[i]}.
-	 * The optimal order is by decreasing Smith ratio {@code weight / duration}; the completion time
-	 * of a job is the sum of all durations up to and including it.
+	 * Returns the minimum total weighted completion time on a single machine. The optimal order is
+	 * by ascending {@code duration / weight} (Smith's rule).
 	 *
-	 * @param weights the job weights, parallel to {@code durations}
-	 * @param durations the job durations, parallel to {@code weights}
-	 * @return the minimum total weighted completion time
+	 * @param weight the positive job weights
+	 * @param duration the positive job durations, parallel to {@code weight}
+	 * @return the minimum achievable sum of {@code weight_i * completionTime_i}
 	 */
-	public long minWeightedCompletionTime(int[] weights, int[] durations) {
-		// TODO: sort by the Smith ratio, accumulate completion times, sum weight * completion.
-		throw new UnsupportedOperationException("TODO: implement minWeightedCompletionTime");
+	long minWeightedCompletion(int[] weight, int[] duration) {
+		// TODO: sort by duration/weight ratio; accumulate completion time and weighted sum.
+		throw new UnsupportedOperationException("TODO: implement minWeightedCompletion");
 	}
 }

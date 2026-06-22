@@ -1,19 +1,19 @@
+import java.util.List;
+
 /**
- * Problem 16 — Quickselect. Return the {@code k}-th smallest element of an unsorted array in
- * expected linear time using divide-and-conquer partitioning.
+ * Problem 16 — Different Ways to Add Parentheses. Return all results of evaluating {@code
+ * expression} under every parenthesization, using divide and conquer at each operator.
  */
-public class Problem16 {
+class Problem16 {
 
 	/**
-	 * Returns the {@code k}-th smallest element (1-indexed) of {@code values} using quickselect.
+	 * Returns every value obtainable by parenthesizing {@code expression}, in any order.
 	 *
-	 * @param values a non-empty array
-	 * @param k the rank to select, with {@code 1 <= k <= values.length}
-	 * @return the {@code k}-th smallest element
-	 * @throws IllegalArgumentException if {@code k} is out of range
+	 * @param expression a string of integer operands and the operators {@code + - *}
+	 * @return all distinct evaluation results, in any order
 	 */
-	public int select(int[] values, int k) {
-		// TODO: partition around a pivot and recurse into the side containing rank k.
-		throw new UnsupportedOperationException("TODO: implement select");
+	List<Integer> diffWaysToCompute(String expression) {
+		// TODO: split at each operator, recurse on both sides, combine all result pairs.
+		throw new UnsupportedOperationException("TODO: implement diffWaysToCompute");
 	}
 }

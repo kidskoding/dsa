@@ -1,23 +1,21 @@
 /**
- * Problem 14 — Minimum in all subarrays via deque.
+ * Problem 14 — Simplify Path.
  *
- * <p>Given an array and a window size {@code k}, return the minimum of each window using a
- * monotonic deque, generalizing the sliding-window technique.
+ * <p>Given an absolute Unix-style path, return its canonical form (single slashes, no trailing
+ * slash, no {@code .}, and each {@code ..} popping a directory) using a stack of components.
  */
-public final class Problem14 {
+final class Problem14 {
 
 	private Problem14() {}
 
 	/**
-	 * Returns the minimum of each contiguous window of size {@code k}.
+	 * Returns the canonical simplified form of the path.
 	 *
-	 * @param nums the input array
-	 * @param k the window size (assumed {@code 1 <= k <= nums.length})
-	 * @return an array of length {@code nums.length - k + 1} of per-window minima
+	 * @param path an absolute Unix-style path
+	 * @return the canonical path
 	 */
-	public static int[] minSlidingWindow(int[] nums, int k) {
-		// TODO: maintain indices in a deque whose values are increasing; evict out-of-window
-		//			 and dominated indices.
-		throw new UnsupportedOperationException("TODO: implement minSlidingWindow");
+	static String simplifyPath(String path) {
+		// TODO: split on '/', push names, pop on "..", skip "." and empties.
+		throw new UnsupportedOperationException("TODO: implement simplifyPath");
 	}
 }

@@ -1,21 +1,19 @@
 /**
- * Problem 15 — Range count in a BST.
+ * Problem 15 — Sum of left leaves.
  *
- * <p>Given the root of a BST and an inclusive range {@code [lo, hi]}, count the number of stored
- * keys that fall within the range, pruning subtrees that cannot contribute.
+ * <p>Given the root of a binary tree, return the sum of all left leaves. A left leaf is a node that
+ * is the left child of its parent and itself has no children.
  */
-public class Problem15 {
+class Problem15 {
 
 	/**
-	 * Counts the keys in the BST rooted at {@code root} that lie in {@code [lo, hi]} inclusive.
+	 * Returns the sum of all left leaves in the tree rooted at {@code root}.
 	 *
-	 * @param root the root of the BST
-	 * @param lo the inclusive lower bound
-	 * @param hi the inclusive upper bound
-	 * @return the number of stored keys within the range
+	 * @param root the root node, or null for an empty tree
+	 * @return the sum of the left-leaf values
 	 */
-	public int rangeCount(TreeNode<Integer> root, int lo, int hi) {
-		// TODO: recurse, skipping the left subtree when value < lo and the right when value > hi.
-		throw new UnsupportedOperationException("TODO: implement rangeCount");
+	int sumOfLeftLeaves(TreeNode<Integer> root) {
+		// TODO: traverse carrying whether the current node is a left child; add it if it is a leaf.
+		throw new UnsupportedOperationException("TODO: implement sumOfLeftLeaves");
 	}
 }

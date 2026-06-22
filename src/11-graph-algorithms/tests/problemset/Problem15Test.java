@@ -4,15 +4,23 @@ import org.junit.jupiter.api.Test;
 
 class Problem15Test {
 
+	private final Problem15 sut = new Problem15();
+
 	@Test
-	void minCostOfMaxFlow() {
-		WeightedGraph cap = new WeightedGraph(3);
-		cap.addDirectedEdge(0, 1, 2.0);
-		cap.addDirectedEdge(1, 2, 2.0);
-		WeightedGraph cost = new WeightedGraph(3);
-		cost.addDirectedEdge(0, 1, 1.0);
-		cost.addDirectedEdge(1, 2, 3.0);
-		// Max flow = 2 units along 0->1->2; per-unit cost 1+3 = 4, total 8.
-		assertEquals(8.0, new Problem15().minCostMaxFlow(cap, cost, 0, 2));
+	void reachableDestination() {
+		int[][] m = {{0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 0}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 0}};
+		assertEquals(12, sut.shortestDistance(m, new int[]{0, 4}, new int[]{4, 4}));
+	}
+
+	@Test
+	void cannotStopThere() {
+		int[][] m = {{0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 1, 0}, {1, 1, 0, 1, 1}, {0, 0, 0, 0, 0}};
+		assertEquals(-1, sut.shortestDistance(m, new int[]{0, 4}, new int[]{3, 2}));
+	}
+
+	@Test
+	void tinyCorner() {
+		int[][] m = {{0, 0}, {0, 0}};
+		assertEquals(2, sut.shortestDistance(m, new int[]{0, 0}, new int[]{1, 1}));
 	}
 }

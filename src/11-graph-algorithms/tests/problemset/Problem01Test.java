@@ -1,25 +1,35 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
+import java.util.OptionalDouble;
+
 import org.junit.jupiter.api.Test;
 
 class Problem01Test {
 
+	private final Problem01 sut = new Problem01();
+
 	@Test
-	void validWalkSumsWeights() {
+	void sumsWalkWeight() {
 		WeightedGraph g = new WeightedGraph(3);
-		g.addDirectedEdge(0, 1, 2.0);
-		g.addDirectedEdge(1, 2, 3.0);
-		var result = new Problem01().pathWeight(g, List.of(0, 1, 2));
-		assertTrue(result.isPresent());
-		assertEquals(5.0, result.getAsDouble());
+		g.addUndirectedEdge(0, 1, 4);
+		g.addUndirectedEdge(1, 2, 3);
+		assertEquals(7.0, sut.pathWeight(g, List.of(0, 1, 2)).getAsDouble());
 	}
 
 	@Test
-	void invalidWalkReportsEmpty() {
+	void invalidWalkIsEmpty() {
 		WeightedGraph g = new WeightedGraph(3);
-		g.addDirectedEdge(0, 1, 2.0);
-		assertTrue(new Problem01().pathWeight(g, List.of(0, 1, 2)).isEmpty());
+		g.addUndirectedEdge(0, 1, 4);
+		assertFalse(sut.pathWeight(g, List.of(0, 2)).isPresent());
+	}
+
+	@Test
+	void singleVertexHasZeroWeight() {
+		WeightedGraph g = new WeightedGraph(2);
+		OptionalDouble r = sut.pathWeight(g, List.of(0));
+		assertTrue(r.isPresent());
+		assertEquals(0.0, r.getAsDouble());
 	}
 }

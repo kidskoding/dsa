@@ -4,10 +4,15 @@ import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
+	private final Problem14 sut = new Problem14();
+
 	@Test
-	void rangeReverse_reversesSubrange() {
-		var sut = new Problem14();
-		int[] values = {1, 2, 3, 4, 5};
-		assertArrayEquals(new int[] {1, 4, 3, 2, 5}, sut.rangeReverse(values, 1, 3));
+	void countSmaller_basic() {
+		assertArrayEquals(new int[] {2, 1, 1, 0}, sut.countSmaller(new int[] {5, 2, 6, 1}));
+	}
+
+	@Test
+	void countSmaller_duplicates() {
+		assertArrayEquals(new int[] {3, 1, 1, 1, 0}, sut.countSmaller(new int[] {3, 2, 2, 6, 1}));
 	}
 }

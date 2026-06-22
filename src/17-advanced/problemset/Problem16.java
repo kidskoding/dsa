@@ -1,16 +1,19 @@
-/** Tier 3 — Problem 16: Longest Common Substring of Two Strings. */
-public class Problem16 {
+/**
+ * Problem 16 — Interval Stabbing Counts. For each query point, count how many closed intervals cover
+ * it, answered offline in \(O((n + q) \log(n + q))\).
+ */
+class Problem16 {
 
 	/**
-	 * Returns the longest substring common to {@code a} and {@code b} using a generalized suffix
-	 * structure. If several substrings tie in length, any one of them is acceptable.
+	 * Counts, for each query point, how many closed intervals {@code [start, end]} cover it
+	 * (inclusive of endpoints). Answers are returned in the order of {@code points}.
 	 *
-	 * @param a the first string
-	 * @param b the second string
-	 * @return a longest common substring (empty if none)
+	 * @param intervals the closed intervals as {@code {start, end}} pairs
+	 * @param points the query points
+	 * @return the coverage counts, in point order
 	 */
-	public String longestCommonSubstring(String a, String b) {
-		// TODO: build a generalized suffix structure and find the deepest node spanning both strings.
-		throw new UnsupportedOperationException("TODO: implement longestCommonSubstring");
+	int[] stabbingCounts(int[][] intervals, int[] points) {
+		// TODO: offline sorted boundary sweep (or difference array over compressed coordinates).
+		throw new UnsupportedOperationException("TODO: implement stabbingCounts");
 	}
 }

@@ -1,16 +1,15 @@
-/** Tier 3 — Problem 13: Longest consecutive sequence. */
-public class Problem13 {
+/** Problem 13 — Group Anagrams. See {@code PROBLEM_SET.md}. */
+class Problem13 {
 
 	/**
-	 * Returns the length of the longest run of consecutive integers in {@code nums} (e.g. {@code
-	 * [100,4,200,1,3,2]} yields 4 for the run {@code 1,2,3,4}). Use a hash set for {@code O(n)} time
-	 * without sorting.
+	 * Returns the number of distinct anagram groups among {@code words}. Two words share a group when
+	 * one is a permutation of the other. Map each word to a canonical key and count distinct keys.
 	 *
-	 * @param nums the input array, non-null
-	 * @return the length of the longest consecutive run
+	 * @param words the input words, non-null
+	 * @return the number of distinct anagram groups
 	 */
-	public int longestConsecutive(int[] nums) {
-		// TODO: put values in a set, then from each run-start (no value-1 present) count upward.
-		throw new UnsupportedOperationException("TODO: implement longestConsecutive");
+	int countAnagramGroups(String[] words) {
+		// TODO: compute a canonical key (sorted chars) per word; count distinct keys via a set.
+		throw new UnsupportedOperationException("TODO: implement countAnagramGroups");
 	}
 }

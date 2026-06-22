@@ -1,21 +1,21 @@
 /**
- * Problem 15 — Decode string.
+ * Problem 15 — Asteroid Collision.
  *
- * <p>Given an encoded string like {@code 3[a2[c]]}, return the decoded string using a stack to
- * manage nested repetition counts.
+ * <p>Each integer is an asteroid whose sign is its direction and magnitude its size; when two meet
+ * the smaller explodes (equal sizes both explode). Return the survivors using a stack.
  */
-public final class Problem15 {
+final class Problem15 {
 
 	private Problem15() {}
 
 	/**
-	 * Decodes a string encoded with the {@code k[encoded]} repetition rule.
+	 * Returns the asteroids remaining after all collisions.
 	 *
-	 * @param s the encoded string
-	 * @return the fully decoded string
+	 * @param asteroids the asteroids in row order
+	 * @return the surviving asteroids
 	 */
-	public static String decodeString(String s) {
-		// TODO: push counts and partial strings on '['; pop and repeat on ']'.
-		throw new UnsupportedOperationException("TODO: implement decodeString");
+	static int[] asteroidCollision(int[] asteroids) {
+		// TODO: a left-moving asteroid collides with the stack top until destroyed or it survives.
+		throw new UnsupportedOperationException("TODO: implement asteroidCollision");
 	}
 }

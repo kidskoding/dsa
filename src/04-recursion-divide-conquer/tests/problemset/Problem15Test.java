@@ -4,13 +4,20 @@ import org.junit.jupiter.api.Test;
 
 class Problem15Test {
 
+	private final Problem15 sut = new Problem15();
+
 	@Test
-	void maxSubarraySum_mixedSigns_returnsBestRun() {
-		assertEquals(6L, new Problem15().maxSubarraySum(new int[] {-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+	void majorityElement_short() {
+		assertEquals(3, sut.majorityElement(new int[] {3, 2, 3}));
 	}
 
 	@Test
-	void maxSubarraySum_allNegative_returnsLargestElement() {
-		assertEquals(-1L, new Problem15().maxSubarraySum(new int[] {-3, -1, -7}));
+	void majorityElement_longer() {
+		assertEquals(2, sut.majorityElement(new int[] {2, 2, 1, 1, 1, 2, 2}));
+	}
+
+	@Test
+	void majorityElement_singleton() {
+		assertEquals(7, sut.majorityElement(new int[] {7}));
 	}
 }

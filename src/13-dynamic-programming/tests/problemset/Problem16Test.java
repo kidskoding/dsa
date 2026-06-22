@@ -7,28 +7,17 @@ class Problem16Test {
 	private final Problem16 p = new Problem16();
 
 	@Test
-	void emptyTree() {
-		assertEquals(0, p.maxWeightIndependentSet(null));
+	void typical() {
+		assertEquals(4, p.longestPalindromeSubseq("bbbab"));
 	}
 
 	@Test
-	void singleNode() {
-		assertEquals(9, p.maxWeightIndependentSet(new TreeNode(9)));
+	void innerPair() {
+		assertEquals(2, p.longestPalindromeSubseq("cbbd"));
 	}
 
 	@Test
-	void childrenBeatRoot() {
-		TreeNode root = new TreeNode(1);
-		root.addChild(new TreeNode(5));
-		root.addChild(new TreeNode(5));
-		assertEquals(10, p.maxWeightIndependentSet(root));
-	}
-
-	@Test
-	void heavyRootWins() {
-		TreeNode root = new TreeNode(10);
-		root.addChild(new TreeNode(1));
-		root.addChild(new TreeNode(1));
-		assertEquals(10, p.maxWeightIndependentSet(root));
+	void single() {
+		assertEquals(1, p.longestPalindromeSubseq("a"));
 	}
 }

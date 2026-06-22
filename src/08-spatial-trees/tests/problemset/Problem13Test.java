@@ -1,18 +1,23 @@
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class Problem13Test {
 
+	private final Problem13 sut = new Problem13();
+
 	@Test
-	void closestPair_findsTheNearestTwo() {
-		var sut = new Problem13();
-		var points =
-				List.of(new Point2D(0, 0), new Point2D(10, 10), new Point2D(0, 1), new Point2D(50, 50));
-		Point2D[] pair = sut.closestPair(points);
-		List<Point2D> asList = List.of(pair[0], pair[1]);
-		assertTrue(asList.contains(new Point2D(0, 0)));
-		assertTrue(asList.contains(new Point2D(0, 1)));
+	void nearest() {
+		assertEquals(0, sut.nearestManhattan(new int[][] {{1, 1}, {4, 4}, {0, 3}}, new int[] {0, 0}));
+	}
+
+	@Test
+	void tieByIndex() {
+		assertEquals(0, sut.nearestManhattan(new int[][] {{2, 0}, {0, 2}}, new int[] {0, 0}));
+	}
+
+	@Test
+	void onPoint() {
+		assertEquals(0, sut.nearestManhattan(new int[][] {{5, 5}}, new int[] {5, 5}));
 	}
 }

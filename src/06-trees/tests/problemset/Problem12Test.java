@@ -1,23 +1,27 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class Problem12Test {
 
 	@Test
-	void buildTree_emptyInput_returnsNull() {
-		assertNull(new Problem12().buildTree(new int[] {}, new int[] {}));
+	void balanced_tree() {
+		var right = new TreeNode<>(20, new TreeNode<>(15), new TreeNode<>(7));
+		var root = new TreeNode<>(3, new TreeNode<>(9), right);
+		assertTrue(new Problem12().isBalanced(root));
 	}
 
 	@Test
-	void buildTree_reconstructsRootAndChildren() {
-		// Tree: 1 with left 2 and right 3.
-		int[] preorder = {1, 2, 3};
-		int[] inorder = {2, 1, 3};
-		var root = new Problem12().buildTree(preorder, inorder);
-		assertEquals(1, root.value);
-		assertEquals(2, root.left.value);
-		assertEquals(3, root.right.value);
+	void unbalanced_tree() {
+		// Left subtree height 2, right subtree empty: differ by more than one at the root's left.
+		var deep = new TreeNode<>(2, new TreeNode<>(3, new TreeNode<>(4), null), null);
+		var root = new TreeNode<>(1, deep, null);
+		assertFalse(new Problem12().isBalanced(root));
+	}
+
+	@Test
+	void balanced_emptyTree() {
+		assertTrue(new Problem12().isBalanced(null));
 	}
 }

@@ -1,25 +1,29 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 class Problem14Test {
 
+	private final Problem14 sut = new Problem14();
+
 	@Test
-	void exactlyTwoEdgeWalk() {
-		WeightedGraph g = new WeightedGraph(3);
-		g.addDirectedEdge(0, 1, 2.0);
-		g.addDirectedEdge(1, 2, 3.0);
-		g.addDirectedEdge(0, 2, 1.0);
-		var result = new Problem14().shortestWalkWithKEdges(g, 0, 2, 2);
-		assertTrue(result.isPresent());
-		assertEquals(5.0, result.getAsDouble());
+	void cheapRouteFits() {
+		int[][] e = {{0, 1, 10}, {1, 2, 10}, {2, 5, 10}, {0, 3, 1}, {3, 4, 10}, {4, 5, 15}};
+		int[] fees = {5, 1, 2, 20, 20, 3};
+		assertEquals(11, sut.minCost(30, e, fees));
 	}
 
 	@Test
-	void noWalkOfGivenLength() {
-		WeightedGraph g = new WeightedGraph(2);
-		g.addDirectedEdge(0, 1, 1.0);
-		assertTrue(new Problem14().shortestWalkWithKEdges(g, 0, 1, 3).isEmpty());
+	void tighterBudgetCostsMore() {
+		int[][] e = {{0, 1, 10}, {1, 2, 10}, {2, 5, 10}, {0, 3, 1}, {3, 4, 10}, {4, 5, 15}};
+		int[] fees = {5, 1, 2, 20, 20, 3};
+		assertEquals(48, sut.minCost(29, e, fees));
+	}
+
+	@Test
+	void impossibleReturnsMinusOne() {
+		int[][] e = {{0, 1, 10}, {1, 2, 10}, {2, 5, 10}, {0, 3, 1}, {3, 4, 10}, {4, 5, 15}};
+		int[] fees = {5, 1, 2, 20, 20, 3};
+		assertEquals(-1, sut.minCost(25, e, fees));
 	}
 }
