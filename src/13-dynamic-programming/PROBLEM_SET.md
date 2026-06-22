@@ -156,7 +156,8 @@ Output: 1
 
 ## Problem 5: Subset Sum Feasibility
 
-**LeetCode:** ### Description
+### Description
+
 Given an array of positive integers `nums` and a target `t`, decide whether some subset of
 `nums` sums to exactly `t`. This is the boolean core of the knapsack family: `reachable[s]`
 is true if some subset sums to `s`, and adding a number `x` makes `reachable[s]` true whenever
@@ -970,7 +971,8 @@ Output: 3
 
 ## Problem 27: 0/1 Knapsack
 
-**LeetCode:** ### Description
+### Description
+
 You are given `n` items, where item `i` has weight `weights[i]` and value `values[i]`, and a
 knapsack with capacity `capacity`. Choose a subset of items whose total weight does not exceed
 `capacity` so as to maximize the total value. Each item may be taken at most once. Return the
@@ -1008,7 +1010,8 @@ The only item is too heavy.
 
 ## Problem 28: Minimum Workshop Split
 
-**LeetCode:** ### Description
+### Description
+
 An elf workshop must divide a pile of parts into two bins. Given positive part weights `parts`,
 split them into two groups so that the absolute difference between the two group sums is as small
 as possible. Return that minimum difference. This is the optimization twin of partition: find the
@@ -1043,7 +1046,8 @@ Output: 10
 
 ## Problem 29: Matrix Chain Multiplication
 
-**LeetCode:** ### Description
+### Description
+
 You must multiply a chain of matrices `A1 · A2 · ... · An`, where matrix `Ai` has dimensions
 `dims[i-1] x dims[i]`. Matrix multiplication is associative, so the parenthesization does not
 change the result but does change the number of scalar multiplications. Given the array `dims` of

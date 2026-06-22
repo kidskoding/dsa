@@ -652,7 +652,8 @@ Output: [5, -1, 4, 4, -6, -6, 1, 1, 1]
 
 ## Problem 18: Count Inversions
 
-**LeetCode:** ### Description
+### Description
+
 Given an array `nums`, count the number of inversions: pairs of indices
 `(i, j)` with `i < j` and `nums[i] > nums[j]`. A naive double loop is `O(n^2)`;
 you must do better by piggybacking the count onto a merge sort, accumulating
@@ -999,7 +1000,8 @@ Output: 0
 
 ## Problem 27: Leaderboard Sort
 
-**LeetCode:** ### Description
+### Description
+
 A game leaderboard stores `(score, name)` entries given as parallel arrays
 `scores` and `names` of equal length. Rank entries by score descending, breaking
 ties by name ascending (lexicographic), and return the names in final ranked
@@ -1036,7 +1038,8 @@ Output: ["solo"]
 
 ## Problem 28: External K-Way Merge
 
-**LeetCode:** ### Description
+### Description
+
 You are given `k` already-sorted integer streams (as a list of arrays) and must
 merge them into one ascending array. Simulating external merge, use a min-heap
 keyed on the current front of each stream so the total work is `O(N log k)`,

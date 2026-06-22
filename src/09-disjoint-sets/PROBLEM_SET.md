@@ -139,7 +139,8 @@ Output: [1,3]
 
 ## Problem 4: Largest Set Size
 
-**LeetCode:** ### Description
+### Description
+
 You are given `n` elements labelled `0` to `n - 1` and a sequence of union operations,
 each a pair `[a, b]` that merges the sets containing `a` and `b`. After applying all
 unions, return the size of the largest resulting set.
@@ -178,7 +179,8 @@ Set `{2,3,4}` reaches size 3; the redundant union `[2,4]` does not change sizes.
 
 ## Problem 5: Are All Elements Connected?
 
-**LeetCode:** ### Description
+### Description
+
 You are given `n` elements labelled `0` to `n - 1` and a list of union operations.
 After applying all of them, return `true` if every element belongs to a single set,
 and `false` otherwise.
@@ -706,7 +708,8 @@ Indices `{0,1,2}` form one group; the characters sort to `abc`.
 
 ## Problem 17: Kruskal's Minimum Spanning Tree Weight
 
-**LeetCode:** ### Description
+### Description
+
 You are given `n` nodes labelled `0` to `n - 1` and a list of weighted undirected
 `edges`, where each `edges[i] = [u, v, w]`. Return the total weight of a minimum
 spanning tree connecting all nodes, or `-1` if the graph is not connected.
@@ -748,7 +751,8 @@ A single node needs no edges; the MST weight is zero.
 
 ## Problem 18: Bridge Building Budget
 
-**LeetCode:** ### Description
+### Description
+
 There are `n` islands labelled `0` to `n - 1` and a list of candidate bridges, each
 `[u, v, cost]`. Bridges are considered in ascending order of cost; a bridge is built
 only if its endpoints are not already connected. Return the total cost to connect every
@@ -790,7 +794,8 @@ A single island is already connected; no bridges are needed.
 
 ## Problem 19: Galactic Senate Faction Queries
 
-**LeetCode:** ### Description
+### Description
+
 The Galactic Senate has `n` senators labelled `0` to `n - 1`. You are given `alliances`,
 where each `[a, b]` means `a` and `b` belong to the same faction (alliances are
 transitive), and a list of `queries`, each `[x, y]`. For every query, report whether
@@ -831,7 +836,8 @@ Output: [true,false]
 
 ## Problem 20: Advent Grid Flood
 
-**LeetCode:** ### Description
+### Description
+
 You are handed a `rows x cols` grid of characters. Two orthogonally adjacent cells (up,
 down, left, right) are joined when they hold the same character. A region is a maximal
 group of joined cells. Return the size (cell count) of the single largest region.

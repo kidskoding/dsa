@@ -15,7 +15,8 @@ name wherever an adjacency structure is convenient.
 
 ## Problem 1: Vertex Degrees
 
-**LeetCode:** ### Description
+### Description
+
 You are given an undirected graph with `vertexCount` vertices labelled `0..vertexCount-1`
 and a list of `edges`, where each edge is a pair `[u, v]`. Return an array `deg` where
 `deg[i]` is the degree of vertex `i` — the number of edges incident to it. The graph has
@@ -53,7 +54,8 @@ Vertex 0 is the hub of a star and touches all three edges.
 
 ## Problem 2: Connected Components
 
-**LeetCode:** ### Description
+### Description
+
 Given an undirected graph as a `vertexCount` and an `int[][]` edge list, return the number
 of connected components — maximal sets of vertices reachable from one another. Isolated
 vertices count as their own component.
@@ -89,7 +91,8 @@ The triangle `{0,1,2}`, the pair `{3,4}`, and the lone vertex `5`.
 
 ## Problem 3: BFS Within K Levels
 
-**LeetCode:** ### Description
+### Description
+
 Given an unweighted undirected graph (as `vertexCount` and an `int[][]` edge list), a
 `source` vertex, and an integer `k`, return — sorted ascending — every vertex whose
 shortest-path distance from `source` is at most `k` BFS levels. The source itself is at
@@ -126,7 +129,8 @@ With no edges only the source is reachable.
 
 ## Problem 4: Detect a Cycle (Undirected)
 
-**LeetCode:** ### Description
+### Description
+
 Given an undirected graph as `vertexCount` and an `int[][]` edge list, return `true` if the
 graph contains a cycle and `false` otherwise. The graph has no self-loops or duplicate
 edges, so any cycle has length at least 3.
@@ -162,7 +166,8 @@ The component `{2,3,4}` forms a cycle even though `{0,1}` does not.
 
 ## Problem 5: Topological Order
 
-**LeetCode:** ### Description
+### Description
+
 Given a directed graph as `vertexCount` and an `int[][]` edge list (each `[u, v]` means
 `u -> v`), return a valid topological ordering of all vertices as an `int[]`. If the graph
 contains a cycle no ordering exists, so return an empty array. Any valid order is accepted.
@@ -198,7 +203,8 @@ Output: [3, 0, 1, 2]
 
 ## Problem 6: Bipartite Check With Classes
 
-**LeetCode:** ### Description
+### Description
+
 Given an undirected graph as `vertexCount` and an `int[][]` edge list, decide whether it is
 2-colorable. Return an `int[]` `color` of length `vertexCount` where each entry is `0` or
 `1` and no edge joins two same-colored vertices. If the graph is not bipartite, return an
@@ -351,7 +357,8 @@ The whole grid is one island of six cells.
 
 ## Problem 10: Largest Treasure Region
 
-**LeetCode:** ### Description
+### Description
+
 A treasure map is an `int[][]` `grid` of `1` (treasure) and `0` (sea). A region is a maximal
 group of treasure cells connected 4-directionally, and its size is the number of cells.
 Return the size of the largest region, or `0` if there is no treasure.
@@ -538,7 +545,8 @@ A lone edge `{1,3}` plus isolated vertices is bipartite.
 
 ## Problem 15: Two-Team Rivalry Split
 
-**LeetCode:** ### Description
+### Description
+
 A tournament has `playerCount` players labelled `0..playerCount-1` and a list of undirected
 `[u, v]` rivalry edges. Decide whether the players can be split into exactly two teams so
 that every rivalry crosses between the teams. Return `true` or `false`. The rivalry graph may
@@ -613,7 +621,8 @@ The chain `0 -> 1 -> 2` is acyclic.
 
 ## Problem 17: Build Deadlock
 
-**LeetCode:** ### Description
+### Description
+
 A continuous-integration system has `taskCount` build tasks labelled `0..taskCount-1` and a
 list of `[a, b]` dependencies meaning task `a` must finish before task `b`. Return `true` if
 the dependency graph contains a circular dependency (a deadlock), else `false`.
@@ -687,7 +696,8 @@ A cyclic prerequisite leaves no ordering.
 
 ## Problem 19: Pipeline Schedule
 
-**LeetCode:** ### Description
+### Description
+
 Given `stepCount` pipeline steps and `[a, b]` dependency pairs (`a` must run before `b`),
 return any valid execution order of all steps as an `int[]`, or an empty array if a cycle
 makes the pipeline unschedulable. When several steps are simultaneously available, prefer the
@@ -837,7 +847,8 @@ The start cell is blocked, so no path exists.
 
 ## Problem 23: Maze Escape Hops
 
-**LeetCode:** ### Description
+### Description
+
 A robot stands on the cell marked `'S'` in a `char[][]` `maze` where `'#'` is a wall, `'.'`
 is open floor, and `'E'` is the single exit. Each move steps to a 4-adjacent non-wall cell.
 Return the minimum number of moves from `'S'` to `'E'`, or `-1` if the exit is unreachable.
