@@ -1,0 +1,31 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Enforces .editorconfig (tab indent for Java, trailing-whitespace trim,
+  # final newline, LF). Blocks the PR on any violation.
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: editorconfig-checker/action-editorconfig-checker@v2
+      - run: editorconfig-checker
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      # Compiles every module and runs its JUnit 5 tests via the Gradle wrapper.
+      # Student skeletons throw UnsupportedOperationException, so tests fail by
+      # design — `ignoreFailures` in build.gradle.kts keeps the build green, so
+      # this step is informational and never blocks CI.
+      - name: Compile + test (informational)
+        run: ./gradlew test --console=plain
