@@ -1,0 +1,17 @@
+[book]
+title = "Data Structures and Algorithms"
+authors = []
+language = "en"
+src = "src"
+
+[output.html]
+mathjax-support = true
+default-theme = "gruvbox"
+git-repository-url = ""
+preferred-dark-theme = "gruvbox"
+additional-css = ["gruvbox/css/variables.css", "gruvbox/highlight.css", "custom.css"]
+additional-js = ["gruvbox/gruvbox.js"]
+
+[output.html.fold]
+enable = true
+level = 1

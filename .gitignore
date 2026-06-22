@@ -1,0 +1,16 @@
+# Gradle / Java
+.gradle/
+build/
+*.class
+
+# mdBook
+book/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.zed/
+
+# MacOS
+.DS_Store

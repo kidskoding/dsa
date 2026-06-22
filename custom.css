@@ -1,0 +1,6 @@
+/* Hide mdBook's auto-generated chapter numbers in the sidebar
+   (the bold "1." etc.), so only the manual "module.topic" numbering
+   written into SUMMARY.md is shown. */
+.chapter-item strong[aria-hidden="true"] {
+  display: none !important;
+}
