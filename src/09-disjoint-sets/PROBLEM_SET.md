@@ -500,7 +500,7 @@ Input:  accounts = [["John","a@x.com","b@x.com"],
                     ["John","b@x.com","c@x.com"],
                     ["Mary","m@x.com"]]
 Output: [["John","a@x.com","b@x.com","c@x.com"],
-         ["Mary","m@x.com"]]
+        ["Mary","m@x.com"]]
 ```
 The two "John" accounts share `b@x.com`, so they merge; "Mary" stays separate.
 
@@ -509,7 +509,7 @@ The two "John" accounts share `b@x.com`, so they merge; "Mary" stays separate.
 Input:  accounts = [["Alex","alex@x.com"],
                     ["Alex","alex2@x.com"]]
 Output: [["Alex","alex2@x.com"],
-         ["Alex","alex@x.com"]]
+        ["Alex","alex@x.com"]]
 ```
 The two "Alex" accounts share no email, so they remain distinct.
 
