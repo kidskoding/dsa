@@ -2,6 +2,7 @@
 .gradle/
 build/
 *.class
+bin/
 
 # mdBook
 book/
