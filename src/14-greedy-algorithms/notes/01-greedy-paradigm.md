@@ -40,10 +40,10 @@
 *Across greedy algorithms, where does the running time actually go?*
 
 ### The Sort Step Usually Dominates
-*Why does an initial sort make the typical greedy \( O(n \log n) \), and when can a heap or counting sort change that?*
+*Why does an initial sort make the typical greedy \\( O(n \log n) \\), and when can a heap or counting sort change that?*
 
 ### Cost of the Greedy Pass
-*Why is the commit-as-you-go scan often a single \( O(n) \) sweep, and what pushes it higher (e.g. a per-step heap pop)?*
+*Why is the commit-as-you-go scan often a single \\( O(n) \\) sweep, and what pushes it higher (e.g. a per-step heap pop)?*
 
 ### Best vs. Worst Case
 *Why does greedy's runtime usually not vary with input shape the way search or DP does?*
@@ -52,7 +52,7 @@
 *What does a greedy algorithm need to keep in memory beyond the input?*
 
 ### Auxiliary Structures
-*When does greedy need only \( O(1) \) running state, and when does it carry a heap or result list of size \( O(n) \)?*
+*When does greedy need only \\( O(1) \\) running state, and when does it carry a heap or result list of size \\( O(n) \\)?*
 
 ### In-Place vs. Extra Output
 *How does choosing to mutate the input versus build a separate answer change the space bound?*

@@ -25,13 +25,13 @@
 *For "point update + range sum," "range add + range min," and "range assign + range sum," which structure fits and why?*
 
 ## Time Complexity Compared
-*Both are \( O(\log n) \) asymptotically — dig into why one is faster in practice.*
+*Both are \\( O(\log n) \\) asymptotically — dig into why one is faster in practice.*
 
 ### Same Big-O, Different Constants
-*If both query and update are \( O(\log n) \), why does the BIT typically run several times faster? Think about the number of array touches and branches per operation.*
+*If both query and update are \\( O(\log n) \\), why does the BIT typically run several times faster? Think about the number of array touches and branches per operation.*
 
 ### Build Costs
-*Both build in \( O(n) \) — but how does the work per element differ between pushing low bits and recursively merging children?*
+*Both build in \\( O(n) \\) — but how does the work per element differ between pushing low bits and recursively merging children?*
 
 ### Where the Segment Tree Pays More
 *Which operations carry extra overhead on a segment tree (recursion, two child reads, lazy push-downs) that the BIT's tight loops avoid?*
@@ -40,7 +40,7 @@
 *Quantify the memory gap and its consequences.*
 
 ### n vs 2n–4n
-*Why is the BIT exactly one array of size \( n \) while the segment tree needs \( 2n \)–\( 4n \) (plus a lazy array)? Where does each extra factor come from?*
+*Why is the BIT exactly one array of size \\( n \\) while the segment tree needs \\( 2n \\)–\\( 4n \\) (plus a lazy array)? Where does each extra factor come from?*
 
 ### Cache Behavior
 *Why does the BIT's smaller, more contiguous footprint translate into better cache performance, reinforcing the constant-factor win?*

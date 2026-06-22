@@ -13,7 +13,7 @@
 *Describe chaining from hypothesis to conclusion using definitions and known facts — how do you decide the first thing to write down?*
 
 ## Proof by Contrapositive
-*Explain why proving \( \lnot Q \Rightarrow \lnot P \) settles \( P \Rightarrow Q \), and give the gut-check for when the contrapositive is the easier direction.*
+*Explain why proving \\( \lnot Q \Rightarrow \lnot P \\) settles \\( P \Rightarrow Q \\), and give the gut-check for when the contrapositive is the easier direction.*
 
 ## Proof by Contradiction
 *Describe assuming the negation and chasing it to an absurdity — what makes a claim a good candidate for this technique?*
@@ -25,7 +25,7 @@
 *Lay out base case and inductive step as a "domino" argument — what is the inductive hypothesis actually letting you assume?*
 
 ### Weak vs Strong Induction
-*Compare assuming just \( k \) versus all of \( 1..k \) — describe a problem (proving a recursive routine correct) where you genuinely need the strong form.*
+*Compare assuming just \\( k \\) versus all of \\( 1..k \\) — describe a problem (proving a recursive routine correct) where you genuinely need the strong form.*
 
 ### Structural Induction
 *Explain induction over recursively-defined structures (trees, lists) — how does the base case become "the leaf/empty case" and the step become "assume children correct"?*
@@ -49,13 +49,13 @@
 *Describe when you must split into cases and what "exhaustive" requires — what's the risk if your cases overlap or leave a gap?*
 
 ## Reasoning About Complexity Claims
-*Explain how proof technique underpins a complexity statement — when you assert an algorithm is \( O(n\log n) \), what is the implicit "for all inputs of size \( n \)" claim, and how would induction or an invariant justify it?*
+*Explain how proof technique underpins a complexity statement — when you assert an algorithm is \\( O(n\log n) \\), what is the implicit "for all inputs of size \\( n \\)" claim, and how would induction or an invariant justify it?*
 
 ### Time-Bound Arguments via Invariants
 *Show how a loop invariant about "work done so far" can prove a running-time bound, not just correctness — what quantity would the invariant track?*
 
 ### Space-Bound Arguments via Induction
-*Reason about proving a recursive routine never exceeds \( O(\log n) \) stack depth — how does induction on the recursion depth give that bound?*
+*Reason about proving a recursive routine never exceeds \\( O(\log n) \\) stack depth — how does induction on the recursion depth give that bound?*
 
 ## Connecting Proofs to Real Algorithm Analysis
 *Map each technique to where it shows up later: invariants for iterative algorithms, induction for recursion, contradiction for greedy/optimality, counterexamples for disproving a heuristic — which would you reach for first on a greedy proof?*

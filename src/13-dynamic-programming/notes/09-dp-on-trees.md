@@ -16,7 +16,7 @@
 *Each subtree is solved once in a plain tree DP — so where is the "overlap"? Contrast with rerooting, where reuse genuinely matters.*
 
 ## State Per Subtree
-*What does \( dp[v] \) summarize about the subtree rooted at \( v \)? How do you pick what to store so the parent can combine it?*
+*What does \\( dp[v] \\) summarize about the subtree rooted at \\( v \\)? How do you pick what to store so the parent can combine it?*
 
 ## Combining Children
 *How do you fold each child's answer into the parent's accumulator? Why must all children be finished first?*
@@ -25,7 +25,7 @@
 *Many tree DPs track two values per node (e.g. max independent set, house robber on a tree). Sketch when one number per node isn't enough.*
 
 ### How the Two States Interact at the Parent
-*If \( v \) is "included", what does that force about each child's allowed state? If "excluded"?*
+*If \\( v \\) is "included", what does that force about each child's allowed state? If "excluded"?*
 
 ## Post-Order Traversal & Fill Order
 *Why does a single post-order DFS guarantee children are computed before parents?*
@@ -34,16 +34,16 @@
 *How do you walk back down from the root, carrying the parent's decision, to recover which nodes/edges were actually chosen?*
 
 ## The Rerooting Technique
-*When you need the answer with every node as root, how do you reuse work instead of re-running DFS \( n \) times?*
+*When you need the answer with every node as root, how do you reuse work instead of re-running DFS \\( n \\) times?*
 
 ### Down-pass and Up-pass
 *What does each of the two passes compute, and how do they combine into a per-node answer?*
 
 ## Time Complexity
-*Apply cost = states × transition. Why does summing the work over all nodes (each child visited once) give \( O(n) \) for a single-root DP?*
+*Apply cost = states × transition. Why does summing the work over all nodes (each child visited once) give \\( O(n) \\) for a single-root DP?*
 
 ### Why Rerooting Stays Linear
-*Naively re-rooting is \( O(n^2) \) — how does precomputing partial sums / "answer excluding one child" keep the rerooted version \( O(n) \)?*
+*Naively re-rooting is \\( O(n^2) \\) — how does precomputing partial sums / "answer excluding one child" keep the rerooted version \\( O(n) \\)?*
 
 ## Space Complexity
 *What is the per-node DP storage, and what dominates the rest: the recursion stack. How deep can it get on a degenerate (path-like) tree, and how do you avoid overflow?*
@@ -61,7 +61,7 @@
 *How is the tree stored, how do you pass the parent to avoid going back up, and where does the post-order work happen?*
 
 ### Per-Node State & Leaf Base Case
-*What does a leaf's \( dp \) value hold, and how is that the base case the recursion bottoms out on?*
+*What does a leaf's \\( dp \\) value hold, and how is that the base case the recursion bottoms out on?*
 
 ### Combining Children Into the Parent
 *After recursing into each child, how do you merge their returned values (including the include/exclude pair) into the node's answer?*

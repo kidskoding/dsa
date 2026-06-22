@@ -37,7 +37,7 @@
 *In a max-heap, what goes wrong if you swap with the smaller child instead of the larger one?*
 
 ## Peek vs. Poll
-*Why is reading the top \( O(1) \) while removing it forces \( O(\log n) \) — what structural repair does removal trigger that a read never does?*
+*Why is reading the top \\( O(1) \\) while removing it forces \\( O(\log n) \\) — what structural repair does removal trigger that a read never does?*
 
 ## Min-Heap vs. Max-Heap
 *What is the single thing you change to flip one into the other, and where in code does that decision actually live — the comparator?*
@@ -46,25 +46,25 @@
 *If you change a key already inside the heap, why must you re-sift, and how do you decide whether to sift up or down from that position?*
 
 ## Time Complexity
-*Tie every operation's cost to the tree's height, which is about \( \log_2 n \) precisely because the tree is complete.*
+*Tie every operation's cost to the tree's height, which is about \\( \log_2 n \\) precisely because the tree is complete.*
 
 ### Peek
-*Why is reading min/max always \( O(1) \) no matter the size — what does it actually touch?*
+*Why is reading min/max always \\( O(1) \\) no matter the size — what does it actually touch?*
 
 ### Insert (Sift-Up)
-*Worst case the new element climbs the full height — what bound is that? What's the best case when it stops at its parent, and why is the average closer to \( O(1) \) given most nodes live near the bottom?*
+*Worst case the new element climbs the full height — what bound is that? What's the best case when it stops at its parent, and why is the average closer to \\( O(1) \\) given most nodes live near the bottom?*
 
 ### Extract (Sift-Down)
 *Why is the worst case the full height again, and why can't you rely on an early stop the way insert sometimes can?*
 
 ### Building From n Inserts
-*If you build by inserting one at a time, why does that land at \( O(n\log n) \) — and how is that different from the bottom-up build in the build-heap note?*
+*If you build by inserting one at a time, why does that land at \\( O(n\log n) \\) — and how is that different from the bottom-up build in the build-heap note?*
 
 ## Space Complexity
-*Why does the array-backed heap need only \( O(n) \) total and \( O(1) \) auxiliary space — no node objects, no child pointers?*
+*Why does the array-backed heap need only \\( O(n) \\) total and \\( O(1) \\) auxiliary space — no node objects, no child pointers?*
 
 ### Iterative vs. Recursive Sifting
-*If you code sift-down recursively, what call-stack depth do you pay, and how does rewriting it as a loop drop that back to \( O(1) \)?*
+*If you code sift-down recursively, what call-stack depth do you pay, and how does rewriting it as a loop drop that back to \\( O(1) \\)?*
 
 ### Dynamic Array Resizing
 *When the backing array grows, what amortized cost does doubling add, and does it change the asymptotic space?*

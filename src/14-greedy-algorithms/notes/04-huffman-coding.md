@@ -43,7 +43,7 @@
 *Where does the running time go for building and using the code?*
 
 ### Building the Tree
-*Why is the build \( O(n \log n) \) in the number of distinct symbols, driven by heap pushes and pops?*
+*Why is the build \\( O(n \log n) \\) in the number of distinct symbols, driven by heap pushes and pops?*
 
 ### Counting, Encoding, and Decoding
 *Why is the frequency count and the encode/decode pass linear in the text length?*
@@ -52,7 +52,7 @@
 *What memory does the encoder and decoder need?*
 
 ### The Tree and the Code Table
-*Why are the tree and per-symbol code table both \( O(n) \) in the alphabet size?*
+*Why are the tree and per-symbol code table both \\( O(n) \\) in the alphabet size?*
 
 ### Output and Heap Footprint
 *How big is the compressed bitstream and the heap relative to the input?*

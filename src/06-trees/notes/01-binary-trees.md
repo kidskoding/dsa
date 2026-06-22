@@ -10,10 +10,10 @@
 ### Naming the Parts
 *Name every part — root, parent, child, sibling, leaf, internal node — what exactly makes a node a leaf?*
 ### Degree and Edges
-*What is the degree of a node, and why does a tree with \( n \) nodes always have exactly \( n-1 \) edges?*
+*What is the degree of a node, and why does a tree with \\( n \\) nodes always have exactly \\( n-1 \\) edges?*
 
 ## Depth, Height, and Levels
-*How do depth (measured top-down) and height (measured bottom-up) differ, and how many nodes can live at level \( d \)?*
+*How do depth (measured top-down) and height (measured bottom-up) differ, and how many nodes can live at level \\( d \\)?*
 
 ## Tree Shapes and Why They Matter
 ### Full, Complete, and Perfect
@@ -25,7 +25,7 @@
 ### Linked Nodes with Child References
 *How does a node object hold its two children, and where do the null links sit?*
 ### Implicit Array Layout
-*For index \( i \), where do its children and parent live, and which tree shapes waste no slots?*
+*For index \\( i \\), where do its children and parent live, and which tree shapes waste no slots?*
 
 ## Traversals
 ### Depth-First: Pre / In / Post Order
@@ -41,17 +41,17 @@
 
 ## Time Complexity
 ### Traversal Cost
-*Why is every full traversal \( \Theta(n) \) — what is each node charged for exactly once, and why can't you do better when you must visit all nodes?*
+*Why is every full traversal \\( \Theta(n) \\) — what is each node charged for exactly once, and why can't you do better when you must visit all nodes?*
 ### Single-Path Descent
-*Why does following one root-to-leaf path cost \( O(h) \), and what is \( h \) for a balanced vs a degenerate tree?*
+*Why does following one root-to-leaf path cost \\( O(h) \\), and what is \\( h \\) for a balanced vs a degenerate tree?*
 ### Search Without an Ordering
-*With no sort rule to prune branches, why does finding an arbitrary key still cost \( O(n) \) in the worst case?*
+*With no sort rule to prune branches, why does finding an arbitrary key still cost \\( O(n) \\) in the worst case?*
 
 ## Space Complexity
 ### Node Storage
-*Why is the structure itself \( \Theta(n) \), and what per-node overhead do the two child pointers add?*
+*Why is the structure itself \\( \Theta(n) \\), and what per-node overhead do the two child pointers add?*
 ### Recursion Call Stack
-*Why does a recursive walk hold \( O(h) \) frames at peak — and why is that \( O(n) \) for a stick but \( O(\log n) \) when balanced?*
+*Why does a recursive walk hold \\( O(h) \\) frames at peak — and why is that \\( O(n) \\) for a stick but \\( O(\log n) \\) when balanced?*
 ### Iterative Auxiliary Structures
 *How much extra memory does the explicit DFS stack or BFS queue hold at its widest point?*
 

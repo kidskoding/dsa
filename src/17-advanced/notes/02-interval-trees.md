@@ -37,13 +37,13 @@
 *Reason about each query and update in terms of height and output size.*
 
 ### Single-Overlap Query
-*Why is one overlap found along an \( O(\log n) \) path, given the pruning rule? What stops you from descending both subtrees?*
+*Why is one overlap found along an \\( O(\log n) \\) path, given the pruning rule? What stops you from descending both subtrees?*
 
 ### All-Overlaps Query
-*Why is reporting all \( k \) matches \( O(k \log n) \) (or \( O(k + \log n) \) with care)? Where does the output term enter the bound?*
+*Why is reporting all \\( k \\) matches \\( O(k \log n) \\) (or \\( O(k + \log n) \\) with care)? Where does the output term enter the bound?*
 
 ### Insert, Delete, Rotations
-*Why does maintaining max add only constant extra work per node on the update path, leaving the operations \( O(\log n) \)?*
+*Why does maintaining max add only constant extra work per node on the update path, leaving the operations \\( O(\log n) \\)?*
 
 ## Space Complexity
 *What does the tree plus augmentation cost?*

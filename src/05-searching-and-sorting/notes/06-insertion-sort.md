@@ -22,7 +22,7 @@
 *How does the work insertion sort does map directly onto the number of inversions in the input?*
 
 ## Stability & In-Place
-*Which comparison choice (`>` vs `>=`) keeps equal keys in order while using \( O(1) \) extra space?*
+*Which comparison choice (`>` vs `>=`) keeps equal keys in order while using \\( O(1) \\) extra space?*
 
 ## Binary Insertion Variant
 *How does using binary search to find the slot cut comparisons but not the shifting cost?*
@@ -31,16 +31,16 @@
 *How do you count comparisons and shifts, and why does input order drive the result?*
 
 ### Best Case
-*Why does an already-sorted (or nearly-sorted) array run in \( O(n) \), and what makes the inner loop exit immediately?*
+*Why does an already-sorted (or nearly-sorted) array run in \\( O(n) \\), and what makes the inner loop exit immediately?*
 
 ### Average Case
-*Why does a random permutation land at \( \Theta(n^2) \), and how does the average inversion count explain it?*
+*Why does a random permutation land at \\( \Theta(n^2) \\), and how does the average inversion count explain it?*
 
 ### Worst Case
 *Which input (reverse-sorted) forces the maximum shifts, and why does every element travel the full prefix?*
 
 ## Space Complexity
-*Why is insertion sort \( O(1) \) auxiliary space, and why does it need no recursion stack?*
+*Why is insertion sort \\( O(1) \\) auxiliary space, and why does it need no recursion stack?*
 
 ## Trade-offs vs Other Quadratic Sorts
 *Why is insertion sort usually the fastest quadratic sort in practice and the most adaptive to input order?*

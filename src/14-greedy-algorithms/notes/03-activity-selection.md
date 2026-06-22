@@ -16,7 +16,7 @@
 *Sort by finish time, then scan — when do you take an activity and when do you skip it?*
 
 ### Tracking the Last Finish Time
-*What single variable lets you decide compatibility in \( O(1) \) per activity?*
+*What single variable lets you decide compatibility in \\( O(1) \\) per activity?*
 
 ## Why the Greedy Is Optimal (Intuition)
 *How would an exchange argument swap an optimal solution's first pick for the earliest-finishing one?*
@@ -34,16 +34,16 @@
 *Where does the work go from input to answer?*
 
 ### Sorting Dominates
-*Why is the sort by finish time the \( O(n \log n) \) bottleneck?*
+*Why is the sort by finish time the \\( O(n \log n) \\) bottleneck?*
 
 ### The Linear Scan
-*Why is the selection pass only \( O(n) \), and how does pre-sorted input drop the total to \( O(n) \)?*
+*Why is the selection pass only \\( O(n) \\), and how does pre-sorted input drop the total to \\( O(n) \\)?*
 
 ## Space Complexity
 *What memory does the algorithm need beyond the intervals themselves?*
 
 ### Storing the Result
-*Why is the extra space \( O(n) \) for the chosen set in the worst case but only \( O(1) \) running state?*
+*Why is the extra space \\( O(n) \\) for the chosen set in the worst case but only \\( O(1) \\) running state?*
 
 ## Real Uses
 *Where does this appear — meeting-room booking, CPU job scheduling, bandwidth allocation?*

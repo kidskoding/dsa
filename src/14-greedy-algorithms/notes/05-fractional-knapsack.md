@@ -7,7 +7,7 @@
 *Why does allowing partial items change the problem from NP-hard to easy?*
 
 ## The Greedy Choice: Value Density
-*Why is the value-per-weight ratio \( v_i / w_i \) the right thing to sort and pick by?*
+*Why is the value-per-weight ratio \\( v_i / w_i \\) the right thing to sort and pick by?*
 
 ### Why Density, Not Raw Value or Weight
 *What counterexample shows that picking by highest value (or lightest item) first fails?*
@@ -31,16 +31,16 @@
 *Where does the running time go?*
 
 ### Sorting by Ratio Dominates
-*Why is computing and sorting densities the \( O(n \log n) \) step?*
+*Why is computing and sorting densities the \\( O(n \log n) \\) step?*
 
 ### The Fill Pass
-*Why is the greedy fill only \( O(n) \), and could a selection-based approach reach \( O(n) \) overall?*
+*Why is the greedy fill only \\( O(n) \\), and could a selection-based approach reach \\( O(n) \\) overall?*
 
 ## Space Complexity
 *What memory does the algorithm need beyond the items?*
 
 ### Running State vs. Item Array
-*Why is the extra space \( O(1) \) (remaining capacity, accumulated value) on top of the \( O(n) \) item list?*
+*Why is the extra space \\( O(1) \\) (remaining capacity, accumulated value) on top of the \\( O(n) \\) item list?*
 
 ## Real Uses
 *Where does divisible-resource allocation appear — investment splitting, bandwidth, cargo by weight?*

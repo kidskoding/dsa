@@ -7,7 +7,7 @@
 *How do you picture walking a collection element by element, and what single piece of state do you carry as you go?*
 
 ### The Loop Invariant
-*What is guaranteed about every element you've already passed at the moment you inspect index \( i \)?*
+*What is guaranteed about every element you've already passed at the moment you inspect index \\( i \\)?*
 
 ### Why Order Doesn't Matter
 *Why does this work on unsorted data when binary search cannot, and what freedom does that give you?*
@@ -28,28 +28,28 @@
 *What hidden per-iteration cost does the bounds check carry, and what must you restore afterward?*
 
 ## The Found vs Not-Found Contract
-*What should you return when the target is absent — an index, a boolean, or \( -1 \) — and why does the caller care?*
+*What should you return when the target is absent — an index, a boolean, or \\( -1 \\) — and why does the caller care?*
 
 ## Time Complexity
-*What is the cost model — how many comparisons does linear search perform as a function of \( n \)?*
+*What is the cost model — how many comparisons does linear search perform as a function of \\( n \\)?*
 
 ### Best Case
-*What input makes it finish in \( O(1) \), and where must the target sit for that to happen?*
+*What input makes it finish in \\( O(1) \\), and where must the target sit for that to happen?*
 
 ### Average Case
-*If the target is equally likely at any position, where does a random hit land on average, and why is that still \( \Theta(n) \)?*
+*If the target is equally likely at any position, where does a random hit land on average, and why is that still \\( \Theta(n) \\)?*
 
 ### Worst Case
-*Which two situations both force a full \( n \)-element scan, and why?*
+*Which two situations both force a full \\( n \\)-element scan, and why?*
 
 ### Constant Factors
-*Why can a plain linear scan beat a fancier algorithm on small \( n \) despite the same or worse big-O?*
+*Why can a plain linear scan beat a fancier algorithm on small \\( n \\) despite the same or worse big-O?*
 
 ## Space Complexity
-*Why is linear search \( O(1) \) auxiliary space, and what would you have to add to change that?*
+*Why is linear search \\( O(1) \\) auxiliary space, and what would you have to add to change that?*
 
 ## Trade-offs vs Binary Search & Hashing
-*When is an \( O(n) \) scan actually the right call over an \( O(\log n) \) or \( O(1) \) lookup, once you count setup cost?*
+*When is an \\( O(n) \\) scan actually the right call over an \\( O(\log n) \\) or \\( O(1) \\) lookup, once you count setup cost?*
 
 ## Common Bugs & Edge Cases
 *What goes wrong with empty inputs, off-by-one loop bounds, or comparing objects with `==` instead of `.equals`?*

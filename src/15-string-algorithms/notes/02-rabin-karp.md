@@ -10,7 +10,7 @@
 *Why treat the characters as digits of a number in some base when forming the hash?*
 
 ## The Rolling Hash Update
-*Why can the next window's hash be computed in \( O(1) \) from the previous one?*
+*Why can the next window's hash be computed in \\( O(1) \\) from the previous one?*
 
 ### Remove-Left, Add-Right
 *What two operations slide the window, and why does precomputing the high-power constant matter?*
@@ -37,22 +37,22 @@
 *Why does the same algorithm have such different best and worst behavior?*
 
 ### Building Hashes
-*Why is computing the initial pattern and window hash \( O(m) \), and each roll \( O(1) \)?*
+*Why is computing the initial pattern and window hash \\( O(m) \\), and each roll \\( O(1) \\)?*
 
 ### Expected Case
-*Why is the total \( O(n + m) \) expected when collisions are rare and verifications few?*
+*Why is the total \\( O(n + m) \\) expected when collisions are rare and verifications few?*
 
 ### Worst Case with Collisions
-*Why does an adversarial input that forces a verify at every position degrade to \( O(nm) \)?*
+*Why does an adversarial input that forces a verify at every position degrade to \\( O(nm) \\)?*
 
 ## Space Complexity
 *What memory does the algorithm need?*
 
 ### Single-Pattern Footprint
-*Why is the auxiliary space \( O(1) \) — a few hash values and the precomputed power — for one pattern?*
+*Why is the auxiliary space \\( O(1) \\) — a few hash values and the precomputed power — for one pattern?*
 
 ### Multi-Pattern Sets
-*Why does searching many patterns cost \( O(k) \) extra to store their fingerprints in a set?*
+*Why does searching many patterns cost \\( O(k) \\) extra to store their fingerprints in a set?*
 
 ## Real Uses
 *Where do rolling hashes appear — plagiarism detection, rsync chunking, substring dedup?*

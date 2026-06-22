@@ -10,7 +10,7 @@
 *What must hold between every parent and its children in a max-heap, and why does that put the max at the root?*
 
 ### Index Arithmetic
-*For node at index \( i \), what are the formulas for its parent and two children, and where do internal nodes end?*
+*For node at index \\( i \\), what are the formulas for its parent and two children, and where do internal nodes end?*
 
 ## Sift-Down (Heapify)
 *How does pushing an out-of-place element downward restore the heap property?*
@@ -25,7 +25,7 @@
 *How does heapifying from the last internal node up to the root turn an arbitrary array into a heap?*
 
 ### Why Build-Heap Is Linear
-*Conceptually, why is bottom-up build \( O(n) \) and not \( O(n \log n) \) — where do most nodes sit, and how far can they sift? (intuition only)*
+*Conceptually, why is bottom-up build \\( O(n) \\) and not \\( O(n \log n) \\) — where do most nodes sit, and how far can they sift? (intuition only)*
 
 ## Extract-Max into the Suffix
 *How does repeatedly swapping the root to the end and re-heapifying grow a sorted suffix in place?*
@@ -34,28 +34,28 @@
 *How do the build phase and the repeated-extract phase combine into the full sort, and what shrinks each round?*
 
 ## In-Place but Unstable
-*Why does heapsort need only \( O(1) \) extra space, and why does swapping the root away lose stability?*
+*Why does heapsort need only \\( O(1) \\) extra space, and why does swapping the root away lose stability?*
 
 ## Time Complexity
-*Why is the total cost the build plus \( n \) extractions — reason out each piece.*
+*Why is the total cost the build plus \\( n \\) extractions — reason out each piece.*
 
 ### Build Phase Cost
-*Why does the build phase total \( O(n) \) despite touching every node?*
+*Why does the build phase total \\( O(n) \\) despite touching every node?*
 
 ### Extraction Phase Cost
-*Why does each of the \( n \) extractions cost \( O(\log n) \) sift-down work, giving \( O(n \log n) \) overall?*
+*Why does each of the \\( n \\) extractions cost \\( O(\log n) \\) sift-down work, giving \\( O(n \log n) \\) overall?*
 
 ### Why There's No Best Case
-*Why does heapsort stay \( \Theta(n \log n) \) even on sorted or all-equal input?*
+*Why does heapsort stay \\( \Theta(n \log n) \\) even on sorted or all-equal input?*
 
 ### Constant Factors
 *Why is heapsort usually slower than quicksort in practice despite matching big-O — think cache behavior?*
 
 ## Space Complexity
-*Why is heapsort \( O(1) \) auxiliary space, and why does the iterative sift-down avoid a recursion stack?*
+*Why is heapsort \\( O(1) \\) auxiliary space, and why does the iterative sift-down avoid a recursion stack?*
 
 ## Trade-offs vs Quicksort & Merge Sort
-*When do you choose heapsort's worst-case guarantee and \( O(1) \) space over quicksort's speed or merge sort's stability?*
+*When do you choose heapsort's worst-case guarantee and \\( O(1) \\) space over quicksort's speed or merge sort's stability?*
 
 ## Common Bugs & Edge Cases
 *Where do wrong child-index formulas, an unshrunk heap bound, or a missed final element go wrong?*

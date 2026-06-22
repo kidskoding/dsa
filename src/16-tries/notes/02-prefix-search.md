@@ -22,7 +22,7 @@
 *How does the traversal order affect the order in which completions come out?*
 
 ## Counting Keys with a Prefix
-*How can a per-node passing-count answer "how many keys have this prefix" in \( O(L) \)?*
+*How can a per-node passing-count answer "how many keys have this prefix" in \\( O(L) \\)?*
 
 ### Maintaining Counters on Insert/Delete
 *Why must each insertion and deletion update counts all along the path?*
@@ -34,19 +34,19 @@
 *Why does a prefix query split into a cheap descent and an output-dependent collection?*
 
 ### Descent Cost
-*Why is reaching the prefix node \( O(L) \) in the prefix length?*
+*Why is reaching the prefix node \\( O(L) \\) in the prefix length?*
 
 ### Output-Sensitive Enumeration
 *Why does collecting matches cost in proportion to the number and length of results, not the whole trie?*
 
 ### Counting in Constant Extra Time
-*Why does a stored per-node count answer "how many" in \( O(L) \) with no subtree walk?*
+*Why does a stored per-node count answer "how many" in \\( O(L) \\) with no subtree walk?*
 
 ## Space Complexity
 *What memory does answering a prefix query require?*
 
 ### Recursion and Result Buffer
-*Why is the traversal stack \( O(\text{depth}) \) and the result list sized by the number of matches?*
+*Why is the traversal stack \\( O(\text{depth}) \\) and the result list sized by the number of matches?*
 
 ### Cost of Per-Node Counters
 *Why does adding a count field cost only a constant per node?*

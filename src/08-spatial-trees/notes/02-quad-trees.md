@@ -40,22 +40,22 @@
 *Why can two identical (or sub-resolution) points make subdivision recurse forever, and what guard (max depth) stops it?*
 
 ## Time Complexity
-*Tie costs to tree DEPTH, and be explicit that depth depends on the point distribution, not just \( n \).*
+*Tie costs to tree DEPTH, and be explicit that depth depends on the point distribution, not just \\( n \\).*
 
 ### Insert & Point Query
-*Why are these \( O(\text{depth}) \) — \( O(\log n) \) when points spread evenly, but degrading toward \( O(n) \) when they clump into one corner?*
+*Why are these \\( O(\text{depth}) \\) — \\( O(\log n) \\) when points spread evenly, but degrading toward \\( O(n) \\) when they clump into one corner?*
 
 ### Range Query
-*Why is the cost output-sensitive — \( O(\text{visited nodes} + m) \) reported points — and what query/region shapes make it visit a lot?*
+*Why is the cost output-sensitive — \\( O(\text{visited nodes} + m) \\) reported points — and what query/region shapes make it visit a lot?*
 
 ### Best / Average / Worst Triggers
 *What point distribution gives the balanced best case, and what distribution (heavy clustering, coincident points) triggers the degenerate worst case?*
 
 ## Space Complexity
-*Why is total space \( O(n) \) in the well-spread case but potentially worse with deep clustering — internal nodes can outnumber points?*
+*Why is total space \\( O(n) \\) in the well-spread case but potentially worse with deep clustering — internal nodes can outnumber points?*
 
 ### Empty-Child Overhead & Recursion Stack
-*Why do allocating four children even for sparse quadrants waste space, and what stack depth (\( O(\text{depth}) \)) does recursive insert/query pay?*
+*Why do allocating four children even for sparse quadrants waste space, and what stack depth (\\( O(\text{depth}) \\)) does recursive insert/query pay?*
 
 ## vs. kd-Trees & Grids
 *When do you reach for a quadtree over a kd-tree or a uniform grid — and what's the trade-off in each direction (adaptivity, balance guarantees, simplicity)?*

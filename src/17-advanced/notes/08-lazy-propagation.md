@@ -37,22 +37,22 @@
 *Reason about why deferral keeps things logarithmic.*
 
 ### Why Range Update Becomes O(log n)
-*With lazy tags, a range update stops at \( O(\log n) \) canonical nodes instead of \( O(\text{range size}) \) leaves. Tie this to the same "two partial nodes per level" argument as plain queries.*
+*With lazy tags, a range update stops at \\( O(\log n) \\) canonical nodes instead of \\( O(\text{range size}) \\) leaves. Tie this to the same "two partial nodes per level" argument as plain queries.*
 
 ### Why Query Stays O(log n) Despite Push-Downs
-*Each visited node does \( O(1) \) push-down work. Why doesn't pushing down add more than a constant factor to the \( O(\log n) \) nodes a query already visits?*
+*Each visited node does \\( O(1) \\) push-down work. Why doesn't pushing down add more than a constant factor to the \\( O(\log n) \\) nodes a query already visits?*
 
 ### Amortized vs Worst Case
-*Is each individual operation worst-case \( O(\log n) \) here, or amortized? Why is it actually worst-case for standard add/assign tags?*
+*Is each individual operation worst-case \\( O(\log n) \\) here, or amortized? Why is it actually worst-case for standard add/assign tags?*
 
 ## Space Complexity
 *Account for the extra per-node bookkeeping.*
 
 ### The Lazy Array
-*Why does lazy propagation add a second array (one tag per node) of the same size as the tree, and what's the total relative to \( n \)?*
+*Why does lazy propagation add a second array (one tag per node) of the same size as the tree, and what's the total relative to \\( n \\)?*
 
 ### Multiple Tag Types
-*If you carry both assign and add tags, how does that change the per-node storage, and why is it still \( O(n) \)?*
+*If you carry both assign and add tags, how does that change the per-node storage, and why is it still \\( O(n) \\)?*
 
 ## Real Uses
 *Where do range updates appear — range increment/assign with range sum/min/max, interval painting, scheduling, difference-array-style problems?*

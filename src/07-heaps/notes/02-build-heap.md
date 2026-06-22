@@ -4,7 +4,7 @@
 *When you already hold an unordered array, why heapify it in place instead of inserting elements one at a time into an empty heap?*
 
 ## Top-Down (Insert-by-Insert) Baseline
-*If you insert all \( n \) elements one at a time, what's the total cost and why is repeatedly sifting up the slower approach?*
+*If you insert all \\( n \\) elements one at a time, what's the total cost and why is repeatedly sifting up the slower approach?*
 
 ## Bottom-Up Heapify
 *Why start from the last internal node and walk backward toward index 0 instead of going front to back?*
@@ -19,10 +19,10 @@
 *Why can you skip the entire second half of the array, and exactly which index marks the first leaf?*
 
 ## Why It's O(n), Not O(n log n)
-*Most nodes sit near the bottom and sift down only a step or two; only the rare high nodes travel far. Give the intuition for why those costs sum to a constant times \( n \) — no summation, just the "cheap nodes are common, expensive nodes are rare" argument.*
+*Most nodes sit near the bottom and sift down only a step or two; only the rare high nodes travel far. Give the intuition for why those costs sum to a constant times \\( n \\) — no summation, just the "cheap nodes are common, expensive nodes are rare" argument.*
 
 ### Where the Insert-by-Insert Version Loses
-*The top-down build pays the most for the LAST elements (deepest) and there are many of them — why does that flip the cost to \( O(n\log n) \)?*
+*The top-down build pays the most for the LAST elements (deepest) and there are many of them — why does that flip the cost to \\( O(n\log n) \\)?*
 
 ## In-Place Heapify
 *How does bottom-up build rearrange the original array directly, and why does that matter for memory-tight code?*
@@ -31,25 +31,25 @@
 *Once the array is a max-heap, how do repeated extract-max steps sort it ascending, and what's the total running time?*
 
 ### Sorting In the Same Array
-*Where does each extracted max go so heapsort stays \( O(1) \) extra space — what shrinking boundary separates "heap" from "sorted tail"?*
+*Where does each extracted max go so heapsort stays \\( O(1) \\) extra space — what shrinking boundary separates "heap" from "sorted tail"?*
 
 ## Time Complexity
 *Separate the linear build phase from anything built on top of it.*
 
 ### Build Phase
-*Why is bottom-up build \( O(n) \) best, average, AND worst — what about the structure makes the input order irrelevant to the bound?*
+*Why is bottom-up build \\( O(n) \\) best, average, AND worst — what about the structure makes the input order irrelevant to the bound?*
 
 ### Heapsort Phase
-*Why does the extraction phase cost \( O(n\log n) \) — \( n \) extractions each sifting down up to the full height?*
+*Why does the extraction phase cost \\( O(n\log n) \\) — \\( n \\) extractions each sifting down up to the full height?*
 
 ### Best/Worst Triggers
-*Does heapsort have a meaningfully better best case, or is it \( O(n\log n) \) regardless of input order? Why?*
+*Does heapsort have a meaningfully better best case, or is it \\( O(n\log n) \\) regardless of input order? Why?*
 
 ## Space Complexity
-*Why is bottom-up build \( O(1) \) auxiliary, and what would push it higher?*
+*Why is bottom-up build \\( O(1) \\) auxiliary, and what would push it higher?*
 
 ### Recursion Depth of Sift-Down
-*If sift-down is recursive, what stack depth does the build incur, and how does an iterative sift-down keep the whole build \( O(1) \) space?*
+*If sift-down is recursive, what stack depth does the build incur, and how does an iterative sift-down keep the whole build \\( O(1) \\) space?*
 
 ## Pitfalls
 *What breaks if you sift up instead of down during build, start the loop at the wrong index, iterate forward instead of backward, or assume build-heap leaves the array fully sorted?*

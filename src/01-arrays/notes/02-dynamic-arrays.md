@@ -43,28 +43,28 @@
 *Reason about per-operation cost, including why one operation needs the amortized lens.*
 
 ### Index Access & Update
-*Why are `get` and `set` flat \( O(1) \) just like a plain array, regardless of size?*
+*Why are `get` and `set` flat \\( O(1) \\) just like a plain array, regardless of size?*
 
 ### Amortized Append
-*Why is a single append \( O(n) \) in the worst case (the resize) yet \( O(1) \) amortized — what is the intuition for spreading the rare expensive copy across the many cheap appends? State the bound; don't formally derive it.*
+*Why is a single append \\( O(n) \\) in the worst case (the resize) yet \\( O(1) \\) amortized — what is the intuition for spreading the rare expensive copy across the many cheap appends? State the bound; don't formally derive it.*
 
 ### Insert / Delete at Index
-*Why is editing position \( k \) \( O(n - k) \), making the front \( O(n) \) and the tail \( O(1) \), and how does a triggered resize fold into that?*
+*Why is editing position \\( k \\) \\( O(n - k) \\), making the front \\( O(n) \\) and the tail \\( O(1) \\), and how does a triggered resize fold into that?*
 
 ### Search
-*Why is unsorted search \( O(n) \), and what changes if the contents are sorted?*
+*Why is unsorted search \\( O(n) \\), and what changes if the contents are sorted?*
 
 ## Space Complexity
 *Reason about the memory the structure holds versus the data it stores.*
 
 ### Storage and Slack
-*Why is space \( O(n) \) yet potentially up to ~2x the live data because of unused capacity — and when is that slack at its worst?*
+*Why is space \\( O(n) \\) yet potentially up to ~2x the live data because of unused capacity — and when is that slack at its worst?*
 
 ### Resize Transients
 *Why does a grow momentarily hold both the old and new backing arrays, and what is the peak extra space during the copy?*
 
 ### Auxiliary Space of Operations
-*Why do append, insert, and delete each need only \( O(1) \) auxiliary space beyond any resize copy?*
+*Why do append, insert, and delete each need only \\( O(1) \\) auxiliary space beyond any resize copy?*
 
 ## Trade-offs vs Linked List
 *Random access and cache friendliness vs cheap middle insertion and no resize cost — when does each structure win?*
@@ -73,7 +73,7 @@
 *Forgetting to null out removed slots (leaks), growing from capacity 0, integer overflow on the new capacity, copying `size` vs `capacity` elements — which bite hardest?*
 
 ## Real-World & Interview Uses
-*Where does this back the standard library (`ArrayList`, `vector`, Python `list`), and which interview patterns assume an \( O(1) \) amortized push?*
+*Where does this back the standard library (`ArrayList`, `vector`, Python `list`), and which interview patterns assume an \\( O(1) \\) amortized push?*
 
 ## Implementation Walkthrough
 *Before writing code, break the problem into the pieces you must get right.*

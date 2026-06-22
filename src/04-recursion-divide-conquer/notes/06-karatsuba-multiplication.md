@@ -7,7 +7,7 @@
 *Why does the grade-school digit-by-digit method scale quadratically, and exactly what work does it duplicate?*
 
 ## Splitting Numbers in Half
-*How do you write each factor as \( a \cdot 10^{m} + b \) (or the base-2 equivalent)?*
+*How do you write each factor as \\( a \cdot 10^{m} + b \\) (or the base-2 equivalent)?*
 
 ### Choosing the Split Point
 *How does the digit count decide where to cut, and what do you do when the length is odd?*
@@ -19,10 +19,10 @@
 *What makes the straightforward expansion no better than schoolbook in the number of big multiplications?*
 
 ## The Three-Multiplication Trick
-*How does computing \( (a+b)(c+d) \) let you recover the middle term and drop one of the four products?*
+*How does computing \\( (a+b)(c+d) \\) let you recover the middle term and drop one of the four products?*
 
 ### Recovering the Middle Term
-*Which two already-computed products do you subtract from \( (a+b)(c+d) \) to isolate the cross term?*
+*Which two already-computed products do you subtract from \\( (a+b)(c+d) \\) to isolate the cross term?*
 
 ## The Mental Model
 *How do you see three smaller multiplications replacing four, recursively, as the source of the speedup?*
@@ -52,7 +52,7 @@
 *Why does replacing four half-size multiplies with three change the growth rate at all?*
 
 ### The Resulting Exponent
-*Why does three-way branching on half-size inputs land near \( n^{1.585} \) rather than \( n^2 \)?*
+*Why does three-way branching on half-size inputs land near \\( n^{1.585} \\) rather than \\( n^2 \\)?*
 
 ### The Hidden Constant Factor
 *Why do the extra additions, subtractions, and shifts inflate the constant, hurting small inputs?*
@@ -64,7 +64,7 @@
 *Why is the stack depth tied to how many times the operands can be halved?*
 
 ### Temporary Sums and Partial Products
-*Why do the intermediate sums \( a+b \), \( c+d \), and the three products need scratch space at each level?*
+*Why do the intermediate sums \\( a+b \\), \\( c+d \\), and the three products need scratch space at each level?*
 
 ## Trade-offs vs Alternatives
 *Why is Karatsuba slower than schoolbook on small inputs, and where do FFT-based methods eventually take over?*
@@ -85,10 +85,10 @@
 *At what size do you fall back to direct multiplication, and what do you return there?*
 
 ### Splitting Into High and Low Halves
-*How do you extract \( a, b \) and \( c, d \) from each operand without losing digits?*
+*How do you extract \\( a, b \\) and \\( c, d \\) from each operand without losing digits?*
 
 ### The Three Recursive Products
-*Which three products do you compute, and how do you form the \( (a+b) \) and \( (c+d) \) inputs?*
+*Which three products do you compute, and how do you form the \\( (a+b) \\) and \\( (c+d) \\) inputs?*
 
 ### Recombining With Shifts
 *How do you apply the powers of the base and the middle-term subtraction to assemble the result?*

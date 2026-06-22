@@ -34,10 +34,10 @@
 *How does compression change the cost of operations versus a plain trie?*
 
 ### Lookup by Key Length
-*Why is search still \( O(L) \) in key length, now counting matched characters across edges?*
+*Why is search still \\( O(L) \\) in key length, now counting matched characters across edges?*
 
 ### Insert with Splitting
-*Why does a split add only constant extra work on top of the \( O(L) \) descent?*
+*Why does a split add only constant extra work on top of the \\( O(L) \\) descent?*
 
 ## Space Complexity
 *Why is the compressed form more memory-efficient?*

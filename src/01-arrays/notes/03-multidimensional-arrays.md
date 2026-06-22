@@ -13,7 +13,7 @@
 *Two ways to order the cells: walk a full row before dropping down, or walk a full column. Which does Java use, which do Fortran and NumPy default to?*
 
 ### Index Flattening Formula
-*How do you turn a coordinate \( (i, j) \) into one linear offset given the column count, and why does the number of columns appear in the formula?*
+*How do you turn a coordinate \\( (i, j) \\) into one linear offset given the column count, and why does the number of columns appear in the formula?*
 
 ### Reading Back a Coordinate
 *Given a flat offset, how do you recover the row and column using divide and modulo, and which operand is the column count?*
@@ -46,28 +46,28 @@
 *Reason about the cost of grid operations in terms of rows R and columns C.*
 
 ### Cell Access
-*Why is reading or writing a single cell \( O(1) \) regardless of grid size, even with the flattening math?*
+*Why is reading or writing a single cell \\( O(1) \\) regardless of grid size, even with the flattening math?*
 
 ### Full Traversal
-*Why is visiting every cell \( O(R \cdot C) \), and why is that bound the same no matter the loop order even when wall-clock time differs?*
+*Why is visiting every cell \\( O(R \cdot C) \\), and why is that bound the same no matter the loop order even when wall-clock time differs?*
 
 ### Row Scan vs Column Scan
-*Why are both a single row scan \( O(C) \) and a single column scan \( O(R) \) in Big-O, yet one can be far slower in practice on a row-major layout?*
+*Why are both a single row scan \\( O(C) \\) and a single column scan \\( O(R) \\) in Big-O, yet one can be far slower in practice on a row-major layout?*
 
 ## Space Complexity
 *Reason about the memory a grid occupies and what extra space operations need.*
 
 ### Storing the Grid
-*Why is the data \( O(R \cdot C) \), and what extra overhead does a jagged array carry (one pointer and length per row) over a flat block?*
+*Why is the data \\( O(R \cdot C) \\), and what extra overhead does a jagged array carry (one pointer and length per row) over a flat block?*
 
 ### In-Place vs Allocating Operations
-*Why can a row sum run in \( O(1) \) extra space while a transpose into a new grid needs \( O(R \cdot C) \), and when can transpose be done in place?*
+*Why can a row sum run in \\( O(1) \\) extra space while a transpose into a new grid needs \\( O(R \cdot C) \\), and when can transpose be done in place?*
 
 ### Recursive Grid Walks
-*Why can a recursive flood-fill or DFS over a grid use up to \( O(R \cdot C) \) call-stack space in the worst case?*
+*Why can a recursive flood-fill or DFS over a grid use up to \\( O(R \cdot C) \\) call-stack space in the worst case?*
 
 ## Common Bugs & Edge Cases
-*Swapped \( i \) and \( j \), mismatched row lengths in a jagged array, off-by-one on the last row/column, assuming rectangularity that isn't there.*
+*Swapped \\( i \\) and \\( j \\), mismatched row lengths in a jagged array, off-by-one on the last row/column, assuming rectangularity that isn't there.*
 
 ## Real-World & Interview Uses
 *Image buffers, matrices, dynamic-programming tables, grid/maze problems — which interview patterns live on a 2D array?*

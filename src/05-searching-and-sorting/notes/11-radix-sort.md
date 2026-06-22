@@ -21,7 +21,7 @@
 ## The Stable Subroutine Requirement
 *What goes wrong if the per-digit sort (usually counting sort) isn't stable?*
 
-## Choosing the Radix \( r \)
+## Choosing the Radix \\( r \\)
 *How does picking the base trade the number of passes against the work per pass?*
 
 ### Bits-per-Pass Tuning
@@ -33,20 +33,20 @@
 ## Time Complexity
 *Why is the cost the number of digits times the per-digit pass cost — break it into its factors.*
 
-### The \( O(d \cdot (n + r)) \) Bound
-*Where do the \( d \), the \( n \), and the \( r \) each come from in the total cost?*
+### The \\( O(d \cdot (n + r)) \\) Bound
+*Where do the \\( d \\), the \\( n \\), and the \\( r \\) each come from in the total cost?*
 
-### Why It Can Beat \( n \log n \)
-*Under what relationship between \( d \), \( r \), and \( n \) does radix sort beat comparison sorts, and when does it not?*
+### Why It Can Beat \\( n \log n \\)
+*Under what relationship between \\( d \\), \\( r \\), and \\( n \\) does radix sort beat comparison sorts, and when does it not?*
 
 ### Best, Average, Worst
 *Why is radix sort's running time essentially insensitive to input order?*
 
 ## Space Complexity
-*Why does each counting-sort pass need \( O(n + r) \) auxiliary space, and why is radix sort not in-place?*
+*Why does each counting-sort pass need \\( O(n + r) \\) auxiliary space, and why is radix sort not in-place?*
 
 ## Trade-offs vs Comparison Sorts & Counting Sort
-*When does the digit count \( d \) or memory overhead make radix sort lose to a plain comparison sort or plain counting sort?*
+*When does the digit count \\( d \\) or memory overhead make radix sort lose to a plain comparison sort or plain counting sort?*
 
 ## Common Bugs & Edge Cases
 *Where do digit-extraction errors, an unstable inner sort, or mixed-length keys break correctness?*
@@ -58,10 +58,10 @@
 *Break the algorithm into the parts you must get right before you write a line.*
 
 ### Setup & Digit Count
-*How do you determine how many digit passes \( d \) you need from the maximum key?*
+*How do you determine how many digit passes \\( d \\) you need from the maximum key?*
 
 ### Extracting One Digit
-*How do you pull out the digit at position \( p \) in base \( r \) using division and modulo?*
+*How do you pull out the digit at position \\( p \\) in base \\( r \\) using division and modulo?*
 
 ### The Stable Per-Digit Pass
 *How does the counting-sort subroutine run on a single digit, and where does its output go?*

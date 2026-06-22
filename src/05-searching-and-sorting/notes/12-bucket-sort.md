@@ -13,7 +13,7 @@
 *How do you map each key to a bucket index so that buckets stay in sorted order relative to each other?*
 
 ### The Index Mapping Formula
-*For a key in a known range and \( b \) buckets, what formula sends it to the right bucket?*
+*For a key in a known range and \\( b \\) buckets, what formula sends it to the right bucket?*
 
 ### Choosing the Number of Buckets
 *How does bucket count affect the size of each bucket and the work to sort it?*
@@ -25,22 +25,22 @@
 *Why does gathering the buckets in index order produce a fully sorted array?*
 
 ## Stability & Space
-*Why does bucket sort need \( O(n + b) \) extra space, and when is it stable?*
+*Why does bucket sort need \\( O(n + b) \\) extra space, and when is it stable?*
 
 ## Time Complexity
 *Why does the cost split into scatter, per-bucket sort, and gather — reason about each.*
 
 ### Expected (Average) Case
-*Under uniform input, why does the per-bucket sorting total only \( O(n) \), giving \( O(n + b) \) overall?*
+*Under uniform input, why does the per-bucket sorting total only \\( O(n) \\), giving \\( O(n + b) \\) overall?*
 
 ### Worst Case
-*What skewed input dumps everything into one bucket, and why does that collapse the cost to the inner sort's \( O(n^2) \)?*
+*What skewed input dumps everything into one bucket, and why does that collapse the cost to the inner sort's \\( O(n^2) \\)?*
 
 ### Why the Distribution Drives Everything
-*Why is bucket sort's complexity a statement about the input distribution, not just \( n \)?*
+*Why is bucket sort's complexity a statement about the input distribution, not just \\( n \\)?*
 
 ## Space Complexity
-*Why does bucket sort allocate \( O(n + b) \) for the buckets, and why is it not in-place?*
+*Why does bucket sort allocate \\( O(n + b) \\) for the buckets, and why is it not in-place?*
 
 ### The Cost of Too Many Buckets
 *Why does choosing far more buckets than elements waste space without helping time?*
@@ -52,7 +52,7 @@
 *Where do bad index mapping, out-of-range keys, or empty buckets cause problems?*
 
 ## Real-World Uses
-*Where do uniformly distributed floats or known-range data — like sorting fractions in \( [0, 1) \) — fit bucket sort?*
+*Where do uniformly distributed floats or known-range data — like sorting fractions in \\( [0, 1) \\) — fit bucket sort?*
 
 ## Implementation Walkthrough
 *Break the algorithm into the parts you must get right before you write a line.*

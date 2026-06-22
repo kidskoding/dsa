@@ -19,10 +19,10 @@
 *Where does the array "live" as a single starting address, and what is the stride that separates one element's start from the next?*
 
 ## Address Arithmetic
-*How is the address of element \( i \) computed from base and stride, and why is it pure multiply-and-add with no scanning?*
+*How is the address of element \\( i \\) computed from base and stride, and why is it pure multiply-and-add with no scanning?*
 
 ### Why Indexing Never "Looks Through" Earlier Elements
-*Why does the CPU never visit elements 0..i-1 to reach element \( i \) — what does it compute directly instead?*
+*Why does the CPU never visit elements 0..i-1 to reach element \\( i \\) — what does it compute directly instead?*
 
 ### Zero-Based Indexing
 *Why does counting from 0 make the offset formula cleanest, and what does index 0 mean in terms of the base address?*
@@ -37,13 +37,13 @@
 *What is the difference between reusing nearby addresses and reusing the same address, and which does a forward array scan exploit?*
 
 ### When Stride Hurts
-*Why can jumping by a large stride defeat the cache even though each individual access is still \( O(1) \)?*
+*Why can jumping by a large stride defeat the cache even though each individual access is still \\( O(1) \\)?*
 
 ## Fixed Size & Why Arrays Don't Grow
 *Once the block is allocated, why can't you append in place, and what does "the array is full" actually force you to do?*
 
 ## Bounds & Out-of-Range Access
-*What lives just past index \( n-1 \), who is responsible for the check, and how do Java's checked access and C's unchecked access differ?*
+*What lives just past index \\( n-1 \\), who is responsible for the check, and how do Java's checked access and C's unchecked access differ?*
 
 ### The Invariant a Valid Index Must Hold
 *What condition must every index satisfy before use, and why is violating it either a thrown exception or silent corruption depending on the language?*
@@ -55,34 +55,34 @@
 *Reason about the cost of every fundamental array operation and what makes each bound hold.*
 
 ### Index Read / Write
-*Why is access or assignment by index \( O(1) \) in all cases with no best/worst split — what single computation does it reduce to?*
+*Why is access or assignment by index \\( O(1) \\) in all cases with no best/worst split — what single computation does it reduce to?*
 
 ### Search by Value
-*Why is finding an unknown value \( O(n) \) worst case, what is the best case (first slot) and the average case, and how would a sorted array change the picture?*
+*Why is finding an unknown value \\( O(n) \\) worst case, what is the best case (first slot) and the average case, and how would a sorted array change the picture?*
 
 ### Insert or Delete at an Index
-*Why does editing the middle cost \( O(n) \) from shifting, why is the front the worst case, and why is the tail the cheap case?*
+*Why does editing the middle cost \\( O(n) \\) from shifting, why is the front the worst case, and why is the tail the cheap case?*
 
 ### Why Constant Factors Still Matter
-*Two \( O(n) \) scans can differ widely in wall-clock time — how do cache behavior and stride change the hidden constant?*
+*Two \\( O(n) \\) scans can differ widely in wall-clock time — how do cache behavior and stride change the hidden constant?*
 
 ## Space Complexity
 *Reason about how much memory an array occupies and what extra space its operations need.*
 
 ### The Array Itself
-*Why is the storage \( O(n) \) for \( n \) elements, and what fixed overhead (length field, header) rides along?*
+*Why is the storage \\( O(n) \\) for \\( n \\) elements, and what fixed overhead (length field, header) rides along?*
 
 ### Operating In Place
-*Why do read, write, and search need only \( O(1) \) auxiliary space, and what does "in place" really mean here?*
+*Why do read, write, and search need only \\( O(1) \\) auxiliary space, and what does "in place" really mean here?*
 
 ### Iterative vs Recursive Traversal
-*Why does an iterative scan use \( O(1) \) extra space while a naive recursive walk can cost \( O(n) \) on the call stack — and what sits in those stack frames?*
+*Why does an iterative scan use \\( O(1) \\) extra space while a naive recursive walk can cost \\( O(n) \\) on the call stack — and what sits in those stack frames?*
 
 ## Common Bugs & Edge Cases
 *Off-by-one at the boundaries, the empty array, uninitialized/default values, signed-index mistakes, assuming a fixed array can grow — which trip people up most?*
 
 ## Real-World & Interview Uses
-*Where does the raw array hide under the hood — strings, buffers, matrices, hash-table backing stores — and which interview patterns lean on \( O(1) \) indexing?*
+*Where does the raw array hide under the hood — strings, buffers, matrices, hash-table backing stores — and which interview patterns lean on \\( O(1) \\) indexing?*
 
 ## Implementation Walkthrough
 *Before writing code, break the problem into the pieces you must get right.*

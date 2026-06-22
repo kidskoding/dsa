@@ -4,13 +4,13 @@
 *What pair of operations — range queries and point/range updates on an array — does this structure make logarithmic when a prefix array can't handle updates?*
 
 ## The Core Idea: Recursive Node Ranges
-*How does each node own an interval \( [lo, hi] \), with children splitting it at the midpoint down to single-element leaves?*
+*How does each node own an interval \\( [lo, hi] \\), with children splitting it at the midpoint down to single-element leaves?*
 
 ### Array Layout vs Pointer Layout
-*When do you store the tree flat in an array (node \( i \) → children \( 2i, 2i{+}1 \)) versus with explicit node objects, and why?*
+*When do you store the tree flat in an array (node \\( i \\) → children \\( 2i, 2i{+}1 \\)) versus with explicit node objects, and why?*
 
 ### Canonical Segments
-*What are the \( O(n) \) "canonical" intervals a segment tree can represent, and why is every query range a union of \( O(\log n) \) of them?*
+*What are the \\( O(n) \\) "canonical" intervals a segment tree can represent, and why is every query range a union of \\( O(\log n) \\) of them?*
 
 ## Building the Tree
 *How does build recurse to the leaves and combine children bottom-up, and why is it linear time?*
@@ -37,19 +37,19 @@
 *Reason about why each operation is logarithmic, not just that it is.*
 
 ### Build
-*Why is building bottom-up \( O(n) \) — how many internal nodes are there, and how much work does each merge do?*
+*Why is building bottom-up \\( O(n) \\) — how many internal nodes are there, and how much work does each merge do?*
 
 ### Query
-*Tie the cost to the "at most two partial nodes per level" argument: why does that make a range query \( O(\log n) \) merges?*
+*Tie the cost to the "at most two partial nodes per level" argument: why does that make a range query \\( O(\log n) \\) merges?*
 
 ### Point and Range Update
-*Why does a point update walk a single root-to-leaf path (\( O(\log n) \)), and why does a naive range update degrade to \( O(n) \) without lazy tags?*
+*Why does a point update walk a single root-to-leaf path (\\( O(\log n) \\)), and why does a naive range update degrade to \\( O(n) \\) without lazy tags?*
 
 ## Space Complexity
 *Account for the array or node storage and the recursion.*
 
 ### Why the Array Needs ~2n to 4n Slots
-*For a flat array layout, why must you size it to the next power of two (or \( 4n \) to be safe), and where does the wasted space come from?*
+*For a flat array layout, why must you size it to the next power of two (or \\( 4n \\) to be safe), and where does the wasted space come from?*
 
 ### Recursion Stack
 *How deep does the recursive query/update go, and how does that relate to tree height?*

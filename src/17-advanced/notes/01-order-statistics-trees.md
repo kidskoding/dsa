@@ -16,7 +16,7 @@
 *State the size invariant precisely: at every node, size equals 1 plus left size plus right size. Why must this hold after every mutation, not just at the end?*
 
 ## Select: Finding the k-th Element
-*Trace how the left subtree's size tells you whether the answer is in the left subtree, is the current node, or is the \( (k - \text{leftSize} - 1) \)-th element of the right subtree.*
+*Trace how the left subtree's size tells you whether the answer is in the left subtree, is the current node, or is the \\( (k - \text{leftSize} - 1) \\)-th element of the right subtree.*
 
 ### Off-by-One in Select
 *Where does the choice of 0-based vs 1-based rank change the comparison, and how do you keep it consistent end to end?*
@@ -40,7 +40,7 @@
 *Reason about each operation's cost in terms of tree height.*
 
 ### Search, Select, Rank
-*Each follows a single root-to-leaf path. Why is that path length the height, and why does balancing pin the height at \( O(\log n) \)?*
+*Each follows a single root-to-leaf path. Why is that path length the height, and why does balancing pin the height at \\( O(\log n) \\)?*
 
 ### Insert and Delete
 *Beyond the descent, what bounds the number of rotations and size-fixups per update, and why does that not change the asymptotic cost?*

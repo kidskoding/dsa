@@ -4,7 +4,7 @@
 *What kinds of queries — nearest neighbor, k-NN, range/box search over points in space — make a kd-tree worth building over a plain list?*
 
 ## Alternating Split Dimensions
-*Why does the splitting axis cycle through \( x, y, z, \dots \) as you descend, and how does the node's depth (mod \( k \)) pick the axis?*
+*Why does the splitting axis cycle through \\( x, y, z, \dots \\) as you descend, and how does the node's depth (mod \\( k \\)) pick the axis?*
 
 ### What a Split Plane Means Geometrically
 *Why does each node carve space into "everything left of the plane" and "everything right," and why is the plane axis-aligned?*
@@ -40,7 +40,7 @@
 *Why does the order in which you visit the near vs. far child matter for how much you can prune?*
 
 ## Curse of Dimensionality
-*Why does search degrade toward \( O(n) \) as the number of dimensions \( k \) grows — why does almost everything become "the far side might be closer" so pruning fails?*
+*Why does search degrade toward \\( O(n) \\) as the number of dimensions \\( k \\) grows — why does almost everything become "the far side might be closer" so pruning fails?*
 
 ## vs. Quadtrees & Other Structures
 *When is a kd-tree the better choice than a quadtree, a uniform grid, or a brute-force scan, and when is it the worse one?*
@@ -49,19 +49,19 @@
 *Separate the one-time build from per-query costs, and be explicit about what makes the worst case bite.*
 
 ### Build
-*Why is building \( O(n\log n) \) when you use linear-time median selection at each level — what's the recurrence shape intuitively?*
+*Why is building \\( O(n\log n) \\) when you use linear-time median selection at each level — what's the recurrence shape intuitively?*
 
 ### Range Query
-*Why is a balanced range query roughly \( O(\sqrt{n} + m) \) in 2D (\( m \) reported points), and what about the query box size and dimension changes it?*
+*Why is a balanced range query roughly \\( O(\sqrt{n} + m) \\) in 2D (\\( m \\) reported points), and what about the query box size and dimension changes it?*
 
 ### Nearest-Neighbor: Best / Average / Worst
-*Why is NN often close to \( O(\log n) \) in low dimensions, but \( O(n) \) worst case — what query position or dimensionality triggers visiting nearly every node?*
+*Why is NN often close to \\( O(\log n) \\) in low dimensions, but \\( O(n) \\) worst case — what query position or dimensionality triggers visiting nearly every node?*
 
 ## Space Complexity
-*Why is the tree itself \( O(n) \) — one node per point — and what does a pointer-based representation cost over a flat array?*
+*Why is the tree itself \\( O(n) \\) — one node per point — and what does a pointer-based representation cost over a flat array?*
 
 ### Recursion Call-Stack
-*Why does query and build recursion cost \( O(\text{height}) \) stack — \( O(\log n) \) balanced, \( O(n) \) degenerate — and how does that interact with deep skewed trees?*
+*Why does query and build recursion cost \\( O(\text{height}) \\) stack — \\( O(\log n) \\) balanced, \\( O(n) \\) degenerate — and how does that interact with deep skewed trees?*
 
 ## Pitfalls
 *What breaks if you forget to alternate axes, compare on the wrong coordinate at a level, let the tree skew after many inserts, or skip the back-up/other-side step in nearest-neighbor?*

@@ -37,7 +37,7 @@
 *Two phases: sorting the edges, then a near-linear sweep with union-find. Which dominates?*
 
 ### Why the Sort Dominates
-*State the sort cost in terms of `E`, and explain why the union-find work over all edges is effectively linear (the inverse-Ackermann factor). Why is `\( \log E \)` interchangeable with `\( \log V \)` here?*
+*State the sort cost in terms of `E`, and explain why the union-find work over all edges is effectively linear (the inverse-Ackermann factor). Why is `\\( \log E \\)` interchangeable with `\\( \log V \\)` here?*
 
 ## Space Complexity
 *What do the edge array and the union-find `parent[]`/`rank[]` arrays cost in terms of `V` and `E`?*

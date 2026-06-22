@@ -10,7 +10,7 @@
 *If you track a single large value, why does it rise to the top in one pass while small values drift only one step?*
 
 ## The Pass Invariant
-*What is guaranteed about the last \( k \) elements after \( k \) completed passes, and why does that prove correctness?*
+*What is guaranteed about the last \\( k \\) elements after \\( k \\) completed passes, and why does that prove correctness?*
 
 ## Iterative Coding
 *How do the outer pass loop and inner adjacent-comparison loop fit together?*
@@ -19,7 +19,7 @@
 *What exactly do you compare, and under what condition do you swap?*
 
 ## The Early-Exit Flag
-*How can a "no swaps this pass" check turn the best case into \( O(n) \)?*
+*How can a "no swaps this pass" check turn the best case into \\( O(n) \\)?*
 
 ### Shrinking the Inner Bound Each Pass
 *Why can you stop the inner loop one element earlier after every completed pass?*
@@ -31,16 +31,16 @@
 *How do you count total comparisons and swaps across all passes, and how do they relate to the number of inversions?*
 
 ### Best Case
-*Which input lets the early-exit flag finish in a single \( O(n) \) pass?*
+*Which input lets the early-exit flag finish in a single \\( O(n) \\) pass?*
 
 ### Average Case
-*Why does a random permutation cost \( \Theta(n^2) \), and roughly how many swaps is that?*
+*Why does a random permutation cost \\( \Theta(n^2) \\), and roughly how many swaps is that?*
 
 ### Worst Case
 *Which input (think reverse-sorted) forces the maximum swaps, and why does each element travel the full distance?*
 
 ## Space Complexity
-*Why is bubble sort \( O(1) \) auxiliary space with no recursion, and how does that compare to merge sort?*
+*Why is bubble sort \\( O(1) \\) auxiliary space with no recursion, and how does that compare to merge sort?*
 
 ## Trade-offs vs Insertion & Selection Sort
 *Among the quadratic sorts, why is bubble sort usually the slowest in practice despite matching big-O?*

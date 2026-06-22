@@ -34,19 +34,19 @@
 *Where does the running time go across all the proposal rounds?*
 
 ### Bounding Total Proposals
-*Why can each proposer propose at most \( n \) times, capping proposals at \( O(n^2) \)?*
+*Why can each proposer propose at most \\( n \\) times, capping proposals at \\( O(n^2) \\)?*
 
 ### Constant-Time Per Step
-*What precomputed ranking tables let a receiver compare two suitors in \( O(1) \)?*
+*What precomputed ranking tables let a receiver compare two suitors in \\( O(1) \\)?*
 
 ## Space Complexity
 *What memory does the algorithm need to run efficiently?*
 
 ### Preference Lists and Rank Lookup
-*Why do the preference lists cost \( O(n^2) \), and what inverse-rank table buys constant-time comparisons?*
+*Why do the preference lists cost \\( O(n^2) \\), and what inverse-rank table buys constant-time comparisons?*
 
 ### Tracking Engagements and Next-Proposal Pointers
-*Why are the current-partner and next-to-propose arrays only \( O(n) \)?*
+*Why are the current-partner and next-to-propose arrays only \\( O(n) \\)?*
 
 ## Real Uses
 *Where is this deployed — residency matching, school choice, organ exchange, ad allocation?*

@@ -16,7 +16,7 @@
 *Why is a boolean flag needed to tell a stored key apart from a mere prefix of one?*
 
 ## Insert
-*How does inserting a key walk down, creating missing child nodes along the path in \( O(L) \)?*
+*How does inserting a key walk down, creating missing child nodes along the path in \\( O(L) \\)?*
 
 ### Creating Nodes Lazily
 *Why do you only allocate a child the first time a character is seen on that path?*
@@ -40,10 +40,10 @@
 *Why are the core operations independent of how many keys are stored?*
 
 ### Insert, Search, Delete by Key Length
-*Why are all three \( O(L) \) in the key's length, not \( O(\log n) \) in the number of keys?*
+*Why are all three \\( O(L) \\) in the key's length, not \\( O(\log n) \\) in the number of keys?*
 
 ### The Alphabet Constant
-*Why does an array-of-children give \( O(1) \) child access while a map adds a hashing constant?*
+*Why does an array-of-children give \\( O(1) \\) child access while a map adds a hashing constant?*
 
 ## Space Complexity
 *Where does a trie's memory actually go?*
@@ -52,7 +52,7 @@
 *Why is the worst-case node count proportional to the total length of all inserted keys?*
 
 ### Array vs. Map Children
-*Why does a fixed array of size \( \Sigma \) per node blow up space on sparse alphabets, and how does a map fix it?*
+*Why does a fixed array of size \\( \Sigma \\) per node blow up space on sparse alphabets, and how does a map fix it?*
 
 ## Real Uses
 *Where do tries appear — spell-checkers, IP routing tables, autocomplete, dictionary lookups?*

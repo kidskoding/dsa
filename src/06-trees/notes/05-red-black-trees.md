@@ -40,15 +40,15 @@
 
 ## Time Complexity
 ### Search / Insert / Delete
-*Why are all three \( O(\log n) \) given the bounded height, and why does the 2x-path bound still leave height logarithmic?*
+*Why are all three \\( O(\log n) \\) given the bounded height, and why does the 2x-path bound still leave height logarithmic?*
 ### Cost of Fix-Up
-*Why does insert do at most two rotations and delete at most three, regardless of \( n \) — and why is the recoloring chain still \( O(\log n) \) but cheap?*
+*Why does insert do at most two rotations and delete at most three, regardless of \\( n \\) — and why is the recoloring chain still \\( O(\log n) \\) but cheap?*
 ### vs AVL Rebalancing
 *Why does red-black's looser balance mean fewer rotations per update, and where does that matter?*
 
 ## Space Complexity
 ### Node Storage and the Color Bit
-*Why is the tree \( \Theta(n) \), and why is the per-node color just a single bit?*
+*Why is the tree \\( \Theta(n) \\), and why is the per-node color just a single bit?*
 ### Recursion / Parent Pointers and the Sentinel
 *Why do iterative implementations keep parent pointers, and how does the single shared nil sentinel save space and simplify the cases?*
 

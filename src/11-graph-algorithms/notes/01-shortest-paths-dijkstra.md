@@ -49,7 +49,7 @@
 *With a binary heap, what does each pop-min and each decrease-key cost, and how does that give the standard bound in terms of `V` and `E`? How does a Fibonacci heap change the decrease-key cost, and why is the improved bound rarely realized in practice?*
 
 ### Why the Bound Holds Intuitively
-*Tie the total to "one pop per vertex, one relaxation per edge, each touching the heap." Why does the `\( \log V \)` factor attach to those operations?*
+*Tie the total to "one pop per vertex, one relaxation per edge, each touching the heap." Why does the `\\( \log V \\)` factor attach to those operations?*
 
 ## Space Complexity
 *What must you store for `dist[]`, `prev[]`, the settled markers, and the adjacency representation, each in terms of `V` and `E`?*

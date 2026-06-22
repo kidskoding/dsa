@@ -37,22 +37,22 @@
 *Why does the cost depend entirely on how balanced each partition is — reason from the partition quality (no recurrence solving).*
 
 ### Best Case
-*What pivot quality gives even splits, and why does that yield \( \Theta(n \log n) \)?*
+*What pivot quality gives even splits, and why does that yield \\( \Theta(n \log n) \\)?*
 
 ### Average Case
-*Why does a random or median-of-three pivot make balanced-enough splits the norm, keeping the expected cost \( O(n \log n) \)?*
+*Why does a random or median-of-three pivot make balanced-enough splits the norm, keeping the expected cost \\( O(n \log n) \\)?*
 
 ### Worst Case
-*What input plus pivot choice produces maximally unbalanced splits and \( \Theta(n^2) \), and why?*
+*What input plus pivot choice produces maximally unbalanced splits and \\( \Theta(n^2) \\), and why?*
 
 ### Constant Factors
 *Why does quicksort's cache-friendly, low-overhead inner loop beat heapsort and merge sort in practice?*
 
 ## Space Complexity
-*Why is quicksort \( O(1) \) for data movement but \( O(\log n) \) — or \( O(n) \) — for the recursion stack?*
+*Why is quicksort \\( O(1) \\) for data movement but \\( O(\log n) \\) — or \\( O(n) \\) — for the recursion stack?*
 
 ### Where the Stack Depth Comes From
-*How does recursing on the smaller partition first bound the stack at \( O(\log n) \) even in the worst case?*
+*How does recursing on the smaller partition first bound the stack at \\( O(\log n) \\) even in the worst case?*
 
 ## Trade-offs vs Merge Sort & Heapsort
 *When do you give up quicksort's speed for merge sort's stability or heapsort's worst-case guarantee?*

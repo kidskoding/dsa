@@ -13,22 +13,22 @@
 *Why is the cheapest transform of two full strings built from cheapest transforms of their prefixes? Reason about the last operation.*
 
 ## Overlapping Subproblems
-*In the recursion over prefix pairs, which \( (i, j) \) states recur? How many distinct ones are there?*
+*In the recursion over prefix pairs, which \\( (i, j) \\) states recur? How many distinct ones are there?*
 
 ## DP State on Two Prefixes
-*What does \( D(i, j) \) mean over the first \( i \) chars of the source and first \( j \) of the target?*
+*What does \\( D(i, j) \\) mean over the first \\( i \\) chars of the source and first \\( j \\) of the target?*
 
 ### Base Cases
-*What is \( D(i, 0) \) and \( D(0, j) \) — transforming to/from an empty string? Why are these pure insert/delete counts?*
+*What is \\( D(i, 0) \\) and \\( D(0, j) \\) — transforming to/from an empty string? Why are these pure insert/delete counts?*
 
 ## The Recurrence
-*Write \( D(i,j) \) as a min over the three edits, plus the free "match" case when characters are equal. Walk each branch.*
+*Write \\( D(i,j) \\) as a min over the three edits, plus the free "match" case when characters are equal. Walk each branch.*
 
 ### Which Neighbor Is Which Edit
 *Map each of up / left / diagonal in the grid to insert / delete / replace. Why is that mapping easy to flip by accident?*
 
 ## Top-Down vs Bottom-Up
-*How do you cache on \( (i,j) \) top-down, and in what order do you fill the grid bottom-up?*
+*How do you cache on \\( (i,j) \\) top-down, and in what order do you fill the grid bottom-up?*
 
 ## Reconstructing the Edit Script
 *How do you trace the table back into an actual alignment or sequence of operations?*
@@ -37,13 +37,13 @@
 *How do you reduce to two rows (or one) for the cost, and what does that cost you for reconstruction?*
 
 ## Time Complexity
-*Apply cost = states × transition. How many \( (i, j) \) states, and why is each transition O(1) (a min of three)?*
+*Apply cost = states × transition. How many \\( (i, j) \\) states, and why is each transition O(1) (a min of three)?*
 
 ### Why It Beats Naive Recursion
-*Unmemoized, the three-way branching is exponential — how does the prefix grid collapse it to \( O(mn) \)?*
+*Unmemoized, the three-way branching is exponential — how does the prefix grid collapse it to \\( O(mn) \\)?*
 
 ## Space Complexity
-*The full grid is \( O(mn) \). Why can the cost-only version drop to \( O(\min(m,n)) \), and what does that prevent? Add the top-down stack cost.*
+*The full grid is \\( O(mn) \\). Why can the cost-only version drop to \\( O(\min(m,n)) \\), and what does that prevent? Add the top-down stack cost.*
 
 ## Variants & Weighted Costs
 *How does the recurrence change under unequal operation costs, or when transpositions are allowed (Damerau)?*

@@ -7,13 +7,13 @@
 *Why is the structure a loose collection of trees in a circular root list instead of one rigid complete tree, and what flexibility does that looseness enable?*
 
 ### The Min Pointer
-*Why keep a single pointer to the minimum root, and how does that alone make find-min \( O(1) \)?*
+*Why keep a single pointer to the minimum root, and how does that alone make find-min \\( O(1) \\)?*
 
 ## Pointers & Node Layout
-*What links does each node carry — parent, one child, left/right siblings, degree, mark — and why does a circular doubly linked sibling list make splicing \( O(1) \)?*
+*What links does each node carry — parent, one child, left/right siblings, degree, mark — and why does a circular doubly linked sibling list make splicing \\( O(1) \\)?*
 
 ## Lazy Insert & Union
-*Why can insert and union be \( O(1) \) — what work is deliberately postponed instead of done immediately?*
+*Why can insert and union be \\( O(1) \\) — what work is deliberately postponed instead of done immediately?*
 
 ### Insert as a Trivial Union
 *Why is inserting one element just merging a one-node heap into the root list, and why does that avoid any sifting?*
@@ -34,25 +34,25 @@
 *How does the "lose at most one child before you're cut" rule stop trees from degenerating into long thin paths?*
 
 ## The Fibonacci Bound (Intuition)
-*Why do subtree sizes grow at least like Fibonacci numbers \( F_k \), and why does that cap the maximum degree at \( O(\log n) \)? Reason about it, don't prove it.*
+*Why do subtree sizes grow at least like Fibonacci numbers \\( F_k \\), and why does that cap the maximum degree at \\( O(\log n) \\)? Reason about it, don't prove it.*
 
 ## Time Complexity
 *Separate amortized bounds from worst-case single-operation cost — this is the whole point of the structure.*
 
 ### Amortized vs. Worst-Case
-*What does "amortized" mean here — why can one extract-min be slow yet the average over a sequence stay \( O(\log n) \)? Give the potential-function intuition (roots + marks as stored-up work) without formal algebra.*
+*What does "amortized" mean here — why can one extract-min be slow yet the average over a sequence stay \\( O(\log n) \\)? Give the potential-function intuition (roots + marks as stored-up work) without formal algebra.*
 
 ### O(1) Operations
-*Why are insert, find-min, union, and decrease-key all \( O(1) \) amortized — what cost did each defer, and onto which later operation?*
+*Why are insert, find-min, union, and decrease-key all \\( O(1) \\) amortized — what cost did each defer, and onto which later operation?*
 
 ### O(log n) Operations
-*Why do extract-min and delete cost \( O(\log n) \) amortized, and what single quantity (max degree) bounds the consolidation work?*
+*Why do extract-min and delete cost \\( O(\log n) \\) amortized, and what single quantity (max degree) bounds the consolidation work?*
 
 ## Space Complexity
-*Why is the heap \( O(n) \) in nodes, but with a much larger per-node constant than a binary heap — how many pointers and flags per node?*
+*Why is the heap \\( O(n) \\) in nodes, but with a much larger per-node constant than a binary heap — how many pointers and flags per node?*
 
 ### Consolidation Scratch Space
-*Why does consolidation need an auxiliary array sized to the maximum degree, \( O(\log n) \), and why is that the only notable extra allocation?*
+*Why does consolidation need an auxiliary array sized to the maximum degree, \\( O(\log n) \\), and why is that the only notable extra allocation?*
 
 ## Trade-offs: Theory vs. Practice
 *Why do real systems often still pick a binary or d-ary heap despite the better Big-O — what hidden constants, pointer-chasing, and cache misses bite in practice?*

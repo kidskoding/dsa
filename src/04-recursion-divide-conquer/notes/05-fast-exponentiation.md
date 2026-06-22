@@ -7,13 +7,13 @@
 *Why is multiplying one factor at a time wasteful, and exactly how many multiplications does it spend?*
 
 ## The Squaring Insight
-*How does \( x^n = (x^{n/2})^2 \) cut the remaining work roughly in half at each step?*
+*How does \\( x^n = (x^{n/2})^2 \\) cut the remaining work roughly in half at each step?*
 
 ### Why Halving the Exponent Is the Whole Trick
 *What is the key realization that lets you reuse one squared value instead of recomputing from scratch?*
 
 ## Odd vs Even Exponents
-*What extra factor of \( x \) appears when the exponent is odd, and how do you fold it in?*
+*What extra factor of \\( x \\) appears when the exponent is odd, and how do you fold it in?*
 
 ### Handling the Parity at Each Step
 *How does testing the lowest bit of the exponent decide whether you multiply in an extra factor?*
@@ -31,7 +31,7 @@
 *How do the bits of the exponent tell you when to square and when to multiply?*
 
 ### Reading the Exponent's Bits
-*How does scanning \( n \) bit by bit drive an accumulator alongside a running square?*
+*How does scanning \\( n \\) bit by bit drive an accumulator alongside a running square?*
 
 ### Why the Running Square Tracks Powers of Two
 *What does the repeatedly-squared base represent at the moment you inspect each bit?*
@@ -49,7 +49,7 @@
 *How do you reason about the cost without deriving a recurrence?*
 
 ### Counting the Multiplications
-*Why does halving the exponent each step give a number of multiplications tied to the bit-length of \( n \)?*
+*Why does halving the exponent each step give a number of multiplications tied to the bit-length of \\( n \\)?*
 
 ### Recursive vs Iterative Step Count
 *Why do both forms perform essentially the same number of squarings and multiplies?*
@@ -64,7 +64,7 @@
 *Why does the loop need only a couple of accumulator variables regardless of the exponent?*
 
 ### Recursive Call-Stack Depth
-*Why does the top-down version cost stack depth proportional to the bit-length of \( n \)?*
+*Why does the top-down version cost stack depth proportional to the bit-length of \\( n \\)?*
 
 ## Common Bugs & Edge Cases
 *What goes wrong with exponent zero, negative exponents, integer overflow, a missing modulo, or squaring before handling the odd factor?*

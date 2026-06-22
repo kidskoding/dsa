@@ -52,31 +52,31 @@
 *Reason about each operation and exactly what makes it cheap or costly.*
 
 ### Head Operations
-*Why are insert-at-head and delete-head \( O(1) \) — what work is bounded no matter how long the list is?*
+*Why are insert-at-head and delete-head \\( O(1) \\) — what work is bounded no matter how long the list is?*
 
 ### Tail Operations
-*Why is insert-at-tail \( O(n) \) without a tail pointer but \( O(1) \) with one, and why is delete-tail still \( O(n) \) even with a tail pointer?*
+*Why is insert-at-tail \\( O(n) \\) without a tail pointer but \\( O(1) \\) with one, and why is delete-tail still \\( O(n) \\) even with a tail pointer?*
 
 ### Search & Index Access
-*Why are search and "get the k-th element" \( O(n) \) worst case, what is the best case, and why is there no \( O(1) \) random access at all?*
+*Why are search and "get the k-th element" \\( O(n) \\) worst case, what is the best case, and why is there no \\( O(1) \\) random access at all?*
 
 ### Reversal & Cycle Detection
-*Why are both single-pass \( O(n) \) walks, and why does the two-pointer cycle check stay \( O(n) \) despite the hare moving twice as fast?*
+*Why are both single-pass \\( O(n) \\) walks, and why does the two-pointer cycle check stay \\( O(n) \\) despite the hare moving twice as fast?*
 
 ## Space Complexity
 *Reason about per-node overhead and the extra space operations consume.*
 
 ### Per-Node Pointer Overhead
-*Why does each node cost its payload plus one reference, making total space \( O(n) \) with a real constant the array doesn't pay?*
+*Why does each node cost its payload plus one reference, making total space \\( O(n) \\) with a real constant the array doesn't pay?*
 
 ### In-Place Operations
-*Why do insert, delete, search, and iterative reversal all need only \( O(1) \) auxiliary space?*
+*Why do insert, delete, search, and iterative reversal all need only \\( O(1) \\) auxiliary space?*
 
 ### Recursive vs Iterative Traversal
-*Why does a recursive traversal or recursive reversal use \( O(n) \) call-stack space while the iterative version uses \( O(1) \) — and what risk does that create on a long list?*
+*Why does a recursive traversal or recursive reversal use \\( O(n) \\) call-stack space while the iterative version uses \\( O(1) \\) — and what risk does that create on a long list?*
 
 ## Trade-offs vs Arrays
-*No random access and poor cache behavior vs \( O(1) \) splicing and no resize cost — when does each win?*
+*No random access and poor cache behavior vs \\( O(1) \\) splicing and no resize cost — when does each win?*
 
 ## Pointer-Surgery Bugs & Edge Cases
 *Losing the tail by reassigning `next` too early, dropping the last reference (leak), one-element and empty-list cases, deleting the head — which are the classic traps?*

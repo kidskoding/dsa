@@ -10,43 +10,43 @@
 *For fractional knapsack greedy works — what breaks when items are indivisible? Construct a tiny counterexample in your head.*
 
 ## Optimal Substructure
-*Why is the best packing of the first \( i \) items under capacity \( w \) built from best packings of fewer items?*
+*Why is the best packing of the first \\( i \\) items under capacity \\( w \\) built from best packings of fewer items?*
 
 ## Overlapping Subproblems
-*In the take/leave recursion tree, which \( (i, w) \) pairs reappear? Why does the count of distinct pairs stay small?*
+*In the take/leave recursion tree, which \\( (i, w) \\) pairs reappear? Why does the count of distinct pairs stay small?*
 
 ## State Definition
-*What does \( OPT(i, w) \) mean? Name the two axes and exactly what each index ranges over.*
+*What does \\( OPT(i, w) \\) mean? Name the two axes and exactly what each index ranges over.*
 
 ## The Take-or-Leave Recurrence
-*Write the choice for item \( i \): skip it vs take it (paying weight, gaining value). What max do you take, and what guards "take"?*
+*Write the choice for item \\( i \\): skip it vs take it (paying weight, gaining value). What max do you take, and what guards "take"?*
 
 ### Base Cases
 *What are the values when there are no items left, or when capacity is zero?*
 
 ## Top-Down Memoization
-*How do you cache on the pair \( (i, w) \)? What does the recursion return at the leaves, and when do you hit the cache?*
+*How do you cache on the pair \\( (i, w) \\)? What does the recursion return at the leaves, and when do you hit the cache?*
 
 ## Bottom-Up Table & Fill Order
-*In what order do you fill the \( (i, w) \) grid so each cell's dependencies (the row above) are already computed?*
+*In what order do you fill the \\( (i, w) \\) grid so each cell's dependencies (the row above) are already computed?*
 
 ## Reconstructing Which Items
-*Walking the filled table backward from \( OPT(n, W) \), how do you tell whether item \( i \) was taken?*
+*Walking the filled table backward from \\( OPT(n, W) \\), how do you tell whether item \\( i \\) was taken?*
 
 ## 1D Space Optimization
 *How do you collapse to a single row, and why must the capacity loop run backward for 0/1 (but forward for unbounded)?*
 
 ## Time Complexity
-*Apply cost = states × transition. How many \( (i, w) \) states are there, and what is the O(1) work per state?*
+*Apply cost = states × transition. How many \\( (i, w) \\) states are there, and what is the O(1) work per state?*
 
 ### Pseudo-Polynomial Explained
-*Why is \( O(nW) \) NOT polynomial in the input size? Tie it to how \( W \) is encoded in bits.*
+*Why is \\( O(nW) \\) NOT polynomial in the input size? Tie it to how \\( W \\) is encoded in bits.*
 
 ### Beating Brute Force
-*The subset brute force is \( O(2^n) \) — how does indexing by \( (i, w) \) collapse that to \( O(nW) \)?*
+*The subset brute force is \\( O(2^n) \\) — how does indexing by \\( (i, w) \\) collapse that to \\( O(nW) \\)?*
 
 ## Space Complexity
-*The full table is \( O(nW) \). After the 1D trick it is \( O(W) \) — what dependency makes one row enough? And the recursion-stack cost top-down?*
+*The full table is \\( O(nW) \\). After the 1D trick it is \\( O(W) \\) — what dependency makes one row enough? And the recursion-stack cost top-down?*
 
 ## Variants & Related Problems
 *How do subset-sum, partition-equal-subset, and bounded knapsack reduce to or extend this template?*

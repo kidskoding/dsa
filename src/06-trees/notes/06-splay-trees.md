@@ -25,29 +25,29 @@
 
 ## Amortized Analysis
 ### What the Amortized Claim Promises
-*State what "amortized \( O(\log n) \)" guarantees — why is the average over a sequence good even when one operation isn't?*
+*State what "amortized \\( O(\log n) \\)" guarantees — why is the average over a sequence good even when one operation isn't?*
 ### The Potential Idea (Intuition)
 *Without grinding the algebra, why does an expensive deep access "pay" by flattening the tree and lowering future costs?*
 
 ## No Strict Height Bound
-*A single operation can be \( O(n) \) on a degenerate shape — why is that acceptable here, and when is it NOT acceptable?*
+*A single operation can be \\( O(n) \\) on a degenerate shape — why is that acceptable here, and when is it NOT acceptable?*
 
 ## Self-Adjusting and Locality
 *How does splaying exploit temporal locality and the working-set of recently accessed keys, and why can it beat a balanced tree on skewed access patterns?*
 
 ## Time Complexity
 ### Per-Operation Worst Case
-*Why can a single search/insert/delete cost \( O(n) \), and what shape causes it?*
+*Why can a single search/insert/delete cost \\( O(n) \\), and what shape causes it?*
 ### Amortized Cost
-*Why is every operation \( O(\log n) \) amortized over a sequence, so \( m \) operations cost \( O(m \log n) \)?*
+*Why is every operation \\( O(\log n) \\) amortized over a sequence, so \\( m \\) operations cost \\( O(m \log n) \\)?*
 ### Access-Pattern Sensitivity
-*Why does a tree accessed with strong locality beat the \( \log n \) average, approaching \( O(1) \) for a tiny working set?*
+*Why does a tree accessed with strong locality beat the \\( \log n \\) average, approaching \\( O(1) \\) for a tiny working set?*
 
 ## Space Complexity
 ### Node Storage
-*Why is the tree \( \Theta(n) \), and why does a splay tree need NO stored height, balance factor, or color?*
+*Why is the tree \\( \Theta(n) \\), and why does a splay tree need NO stored height, balance factor, or color?*
 ### Recursion / Stack Depth
-*Why can recursive splaying use \( O(n) \) stack space in the worst case, and how does an iterative bottom-up or top-down splay avoid that?*
+*Why can recursive splaying use \\( O(n) \\) stack space in the worst case, and how does an iterative bottom-up or top-down splay avoid that?*
 
 ## Implementation Walkthrough
 ### Node Layout

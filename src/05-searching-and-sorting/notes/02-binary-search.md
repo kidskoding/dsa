@@ -31,25 +31,25 @@
 *What update mistake leaves `lo` and `hi` unchanged, and why does that cause an infinite loop?*
 
 ## Variants: Lower Bound & Upper Bound
-*How do you find the first element \( \ge \) the target, or the insertion point, instead of just any match?*
+*How do you find the first element \\( \ge \\) the target, or the insertion point, instead of just any match?*
 
 ### Leftmost vs Rightmost Match
 *With duplicates present, how do you bias the search to return the first or last equal element?*
 
 ## Time Complexity
-*How many times can you halve \( n \) before the window is empty, and why does that count the comparisons?*
+*How many times can you halve \\( n \\) before the window is empty, and why does that count the comparisons?*
 
 ### Best Case
-*What lets binary search return in \( O(1) \), and how likely is that?*
+*What lets binary search return in \\( O(1) \\), and how likely is that?*
 
 ### Worst & Average Case
-*Why are both worst and average \( \Theta(\log n) \), and how few steps is that for a million elements?*
+*Why are both worst and average \\( \Theta(\log n) \\), and how few steps is that for a million elements?*
 
 ### Constant Factors vs Linear Search
-*Why might linear search still win for very small arrays despite \( O(\log n) \)?*
+*Why might linear search still win for very small arrays despite \\( O(\log n) \\)?*
 
 ## Space Complexity
-*Why is the iterative version \( O(1) \) while the recursive version costs \( O(\log n) \) call-stack space?*
+*Why is the iterative version \\( O(1) \\) while the recursive version costs \\( O(\log n) \\) call-stack space?*
 
 ## Trade-offs vs Linear Search & Hashing
 *When does the cost of keeping data sorted outweigh the lookup speedup, and when does hashing beat both?*

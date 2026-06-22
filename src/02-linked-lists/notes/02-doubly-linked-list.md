@@ -28,7 +28,7 @@
 *Every edit touches more pointers than in a singly list — break them out.*
 
 ### Insert at Head / Tail
-*With a tail pointer or tail sentinel, why are both ends now symmetric \( O(1) \) inserts, and which links update at each end?*
+*With a tail pointer or tail sentinel, why are both ends now symmetric \\( O(1) \\) inserts, and which links update at each end?*
 
 ### Insert Between Two Nodes
 *Which four pointers change when you splice a new node between a left and right neighbor, and in what safe order so no link is read after it's overwritten?*
@@ -46,25 +46,25 @@
 *Reason about what the backward pointer makes cheap and what it leaves unchanged.*
 
 ### Insert / Delete at a Known Node
-*Why is splicing in or removing a node you already hold strictly \( O(1) \), and why is this the single biggest win over a singly list?*
+*Why is splicing in or removing a node you already hold strictly \\( O(1) \\), and why is this the single biggest win over a singly list?*
 
 ### Head & Tail Operations
-*Why are insert and delete at *both* ends \( O(1) \) here, when a singly list could only cheaply delete at the head?*
+*Why are insert and delete at *both* ends \\( O(1) \\) here, when a singly list could only cheaply delete at the head?*
 
 ### Search & Index Access
-*Why are search and "get the k-th node" still \( O(n) \), and how does bidirectional access only halve the constant, not the order?*
+*Why are search and "get the k-th node" still \\( O(n) \\), and how does bidirectional access only halve the constant, not the order?*
 
 ## Space Complexity
 *Reason about the cost of the second pointer.*
 
 ### Two Pointers Per Node
-*Why is total space \( O(n) \) but with a larger constant than a singly list, and when does that overhead actually matter?*
+*Why is total space \\( O(n) \\) but with a larger constant than a singly list, and when does that overhead actually matter?*
 
 ### Sentinel Overhead
-*Why do the dummy head and tail add only \( O(1) \) fixed space while removing branching from every operation?*
+*Why do the dummy head and tail add only \\( O(1) \\) fixed space while removing branching from every operation?*
 
 ### Auxiliary Space of Operations
-*Why do all insert, delete, and search operations need only \( O(1) \) extra space, and why is a recursive traversal still \( O(n) \) on the stack?*
+*Why do all insert, delete, and search operations need only \\( O(1) \\) extra space, and why is a recursive traversal still \\( O(n) \\) on the stack?*
 
 ## Trade-offs vs Singly Linked
 *Two pointers per node means more memory and more links to keep consistent — when is the backward link worth that overhead?*

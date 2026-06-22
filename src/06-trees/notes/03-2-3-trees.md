@@ -35,19 +35,19 @@
 
 ## Time Complexity
 ### Search
-*Why is search \( O(\log n) \), and how does scanning one or two keys per node add only a constant factor over a binary descent?*
+*Why is search \\( O(\log n) \\), and how does scanning one or two keys per node add only a constant factor over a binary descent?*
 ### Insert and the Cost of Splits
-*Why is a single insert \( O(\log n) \) even when a split cascades — how many nodes can a cascade touch at most?*
+*Why is a single insert \\( O(\log n) \\) even when a split cascades — how many nodes can a cascade touch at most?*
 ### Delete and the Cost of Merges
-*Why does a borrow-or-merge chain on delete also stay within \( O(\log n) \) levels?*
+*Why does a borrow-or-merge chain on delete also stay within \\( O(\log n) \\) levels?*
 ### Why Height Stays Logarithmic (Intuition)
-*With every leaf at the same depth and each node branching 2 or 3 ways, why must the height sit between \( \log_3 n \) and \( \log_2 n \) — argue from branching, not a derivation?*
+*With every leaf at the same depth and each node branching 2 or 3 ways, why must the height sit between \\( \log_3 n \\) and \\( \log_2 n \\) — argue from branching, not a derivation?*
 
 ## Space Complexity
 ### Node Storage
-*Why is total storage \( \Theta(n) \), and what extra slack do nodes carry by reserving room for a possible second key and third child?*
+*Why is total storage \\( \Theta(n) \\), and what extra slack do nodes carry by reserving room for a possible second key and third child?*
 ### Recursion and the Promotion Path
-*Why does insert/delete recursion use \( O(\log n) \) stack depth, and what does the promoted/merged key need carried back up?*
+*Why does insert/delete recursion use \\( O(\log n) \\) stack depth, and what does the promoted/merged key need carried back up?*
 
 ## Implementation Walkthrough
 ### Node Layout

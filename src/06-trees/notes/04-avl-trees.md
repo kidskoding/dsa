@@ -5,9 +5,9 @@
 
 ## Balance Factor Invariant
 ### Defining the Balance Factor
-*Define \( bf = h_{left} - h_{right} \) — which values are legal at every node?*
+*Define \\( bf = h_{left} - h_{right} \\) — which values are legal at every node?*
 ### Why ±1 Is Enough
-*Why does capping every node's imbalance at one keep the whole tree's height close to \( \log n \) — argue from how much two near-equal subtrees can differ?*
+*Why does capping every node's imbalance at one keep the whole tree's height close to \\( \log n \\) — argue from how much two near-equal subtrees can differ?*
 
 ## Search (Same as BST)
 *Why does lookup borrow the BST algorithm unchanged, and what does the maintained balance buy the search?*
@@ -30,24 +30,24 @@
 *Walk the pointer surgery of a single rotation — which three links move, who becomes the new subtree root, and how does the parent get reattached?*
 
 ## Tracking Heights Without Recomputing
-*How do you keep stored heights correct after a rotation in \( O(1) \) using only the children's heights?*
+*How do you keep stored heights correct after a rotation in \\( O(1) \\) using only the children's heights?*
 
 ## How Balance Is Maintained
 *Why does fixing the lowest unbalanced node restore the balance factor for the whole path above it on insert?*
 
 ## Time Complexity
 ### Search / Insert / Delete
-*Why are all three \( O(\log n) \) in the worst case — what does the maintained balance guarantee about \( h \) that a plain BST cannot?*
+*Why are all three \\( O(\log n) \\) in the worst case — what does the maintained balance guarantee about \\( h \\) that a plain BST cannot?*
 ### Cost of Rebalancing
-*Why is each rotation \( O(1) \), and why does insert do at most one rotation while delete may do up to \( O(\log n) \)?*
+*Why is each rotation \\( O(1) \\), and why does insert do at most one rotation while delete may do up to \\( O(\log n) \\)?*
 ### Why Height Stays Logarithmic (Intuition)
-*Given the ±1 rule, why can't an AVL tree of height \( h \) be "sparse" — intuitively, why does each extra level force a near-doubling of nodes?*
+*Given the ±1 rule, why can't an AVL tree of height \\( h \\) be "sparse" — intuitively, why does each extra level force a near-doubling of nodes?*
 
 ## Space Complexity
 ### Node Storage and the Height Field
-*Why is the tree \( \Theta(n) \), and what does the per-node stored height (or balance factor) add?*
+*Why is the tree \\( \Theta(n) \\), and what does the per-node stored height (or balance factor) add?*
 ### Recursion Call Stack
-*Why does recursive insert/delete use \( O(\log n) \) stack space, and why is that bounded here when it isn't for a plain BST?*
+*Why does recursive insert/delete use \\( O(\log n) \\) stack space, and why is that bounded here when it isn't for a plain BST?*
 
 ## Implementation Walkthrough
 ### Node Layout

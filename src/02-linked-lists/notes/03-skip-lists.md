@@ -42,26 +42,26 @@
 ## Time Complexity
 *Reason about why the randomized structure behaves like a logarithmic one.*
 
-### Why Search Is Expected \( O(\log n) \)
-*Why does halving (roughly) the candidates at each level make the expected number of levels about \( \log n \), and why is the work per level expected constant?*
+### Why Search Is Expected \\( O(\log n) \\)
+*Why does halving (roughly) the candidates at each level make the expected number of levels about \\( \log n \\), and why is the work per level expected constant?*
 
 ### Insert & Delete
-*Why do insert and delete share search's \( O(\log n) \) expected cost plus an expected-constant amount of splicing across the touched levels?*
+*Why do insert and delete share search's \\( O(\log n) \\) expected cost plus an expected-constant amount of splicing across the touched levels?*
 
 ### Worst Case vs Expected
-*Why is the worst case \( O(n) \) (every tower the same height), why is "expected" the honest word, and why does it rarely bite in practice?*
+*Why is the worst case \\( O(n) \\) (every tower the same height), why is "expected" the honest word, and why does it rarely bite in practice?*
 
 ## Space Complexity
 *Reason about the cost of all those extra pointers.*
 
 ### Expected Tower Heights
-*Why does the average tower height stay constant, making total pointer space expected \( O(n) \) rather than \( O(n \log n) \)?*
+*Why does the average tower height stay constant, making total pointer space expected \\( O(n) \\) rather than \\( O(n \log n) \\)?*
 
 ### Tuning with the Probability Factor
-*How does the coin's probability \( p \) trade pointer space against search speed, and what does a smaller \( p \) do to both?*
+*How does the coin's probability \\( p \\) trade pointer space against search speed, and what does a smaller \\( p \\) do to both?*
 
 ### Search Auxiliary Space
-*Why does a search need only \( O(1) \) working space, while remembering the update path for insert/delete costs \( O(\log n) \) expected?*
+*Why does a search need only \\( O(1) \\) working space, while remembering the update path for insert/delete costs \\( O(\log n) \\) expected?*
 
 ## Trade-offs vs Balanced Trees
 *Simpler code and no rotations vs randomized (not worst-case) guarantees — when does a skip list win over a red-black or AVL tree?*
@@ -76,7 +76,7 @@
 *Before writing code, break the problem into the pieces you must get right.*
 
 ### State & Setup
-*What does the structure hold (a head with an array of forward pointers, a current level, a max level, the probability \( p \)), and what does the empty list look like?*
+*What does the structure hold (a head with an array of forward pointers, a current level, a max level, the probability \\( p \\)), and what does the empty list look like?*
 
 ### The Random-Level Routine
 *How does the coin-flip loop decide a new node's height, what caps it, and how should the RNG be seeded to avoid degenerate runs?*

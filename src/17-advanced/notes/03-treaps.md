@@ -37,13 +37,13 @@
 *Reason about why the bounds are expected rather than worst-case.*
 
 ### Search, Insert, Delete
-*Each cost is proportional to the depth of a node. Why is the expected depth \( O(\log n) \), and what input could still produce an \( O(n) \) chain?*
+*Each cost is proportional to the depth of a node. Why is the expected depth \\( O(\log n) \\), and what input could still produce an \\( O(n) \\) chain?*
 
 ### Split and Merge
-*Why do split and merge also run in expected \( O(\log n) \), and how do insert/delete reduce to them?*
+*Why do split and merge also run in expected \\( O(\log n) \\), and how do insert/delete reduce to them?*
 
 ### Where the Randomness Lives
-*Is the \( O(\log n) \) over random priorities or over random inputs — and why does that distinction matter for an adversary?*
+*Is the \\( O(\log n) \\) over random priorities or over random inputs — and why does that distinction matter for an adversary?*
 
 ## Space Complexity
 *Account for everything a node carries.*

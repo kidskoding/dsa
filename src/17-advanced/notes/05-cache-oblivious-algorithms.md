@@ -4,7 +4,7 @@
 *What problem do these solve — getting good memory-hierarchy performance without hard-coding the cache size or block size into the algorithm?*
 
 ## Oblivious vs Cache-Aware
-*What's the difference between an algorithm tuned to a known \( B \) and \( M \) and one that performs well without ever naming them?*
+*What's the difference between an algorithm tuned to a known \\( B \\) and \\( M \\) and one that performs well without ever naming them?*
 
 ## The Ideal-Cache Model
 *What are the model's assumptions: two memory levels, automatic block transfers, and an optimal replacement policy?*
@@ -13,13 +13,13 @@
 *Why does being optimal in this model imply good behavior across every level of a real multi-level hierarchy at once?*
 
 ### The Tall-Cache Assumption
-*What does \( M = \Omega(B^2) \) assume about the cache's shape, and why do several optimal bounds quietly depend on it?*
+*What does \\( M = \Omega(B^2) \\) assume about the cache's shape, and why do several optimal bounds quietly depend on it?*
 
 ## Recursive Divide-and-Conquer for Locality
 *Why does repeatedly halving a problem until subproblems fit in cache yield good locality "for free," with no knowledge of cache size?*
 
 ### The "Free Blocking" Argument
-*At some recursion level a subproblem just fits in \( M \) (and below that, in \( B \)). Why does the algorithm reach that level automatically without being told where it is?*
+*At some recursion level a subproblem just fits in \\( M \\) (and below that, in \\( B \\)). Why does the algorithm reach that level automatically without being told where it is?*
 
 ## The van Emde Boas Memory Layout
 *How does laying out a search tree recursively (top half, then each bottom subtree contiguously) cut search I/Os, and why is the naive array-order (BFS) layout worse?*
@@ -34,13 +34,13 @@
 *Separate ordinary running time from I/O cost.*
 
 ### Why Work Stays Asymptotically Normal
-*Why does the recursive blocking not change the classic operation count (e.g. matrix multiply is still \( \Theta(n^3) \) work, sorting \( \Theta(n\log n) \))?*
+*Why does the recursive blocking not change the classic operation count (e.g. matrix multiply is still \\( \Theta(n^3) \\) work, sorting \\( \Theta(n\log n) \\))?*
 
 ## Cache Complexity (I/O Cost)
 *This is the whole point of the model — reason about block transfers.*
 
 ### Scanning and Search Bounds
-*Why is a linear scan \( O(n/B) \) I/Os, and why does the vEB-laid-out tree search cost \( O(\log_B n) \) like a B-tree despite being binary?*
+*Why is a linear scan \\( O(n/B) \\) I/Os, and why does the vEB-laid-out tree search cost \\( O(\log_B n) \\) like a B-tree despite being binary?*
 
 ### Matrix Multiply and Sorting Bounds
 *State the cache-oblivious matrix-multiply I/O bound and the sorting bound, and point to where the tall-cache assumption is used.*

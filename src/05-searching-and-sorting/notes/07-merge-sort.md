@@ -33,20 +33,20 @@
 ## Time Complexity
 *Why is the cost the work-per-level times the number of levels — reason it out from the recursion tree (no formal recurrence solving).*
 
-### Why Best, Average, and Worst Are All \( \Theta(n \log n) \)
+### Why Best, Average, and Worst Are All \\( \Theta(n \log n) \\)
 *Why does input order not change the cost, unlike quicksort or insertion sort?*
 
 ### Constant Factors vs Quicksort
 *Why does merge sort often lose to quicksort in practice despite the same big-O?*
 
 ## Space Complexity
-*Where does the \( O(n) \) auxiliary array come from, and how much call-stack depth does the recursion add?*
+*Where does the \\( O(n) \\) auxiliary array come from, and how much call-stack depth does the recursion add?*
 
 ### Reducing the Copying
 *How can ping-ponging between two buffers cut redundant array copies?*
 
 ### Linked-List Merge Sort
-*Why can a linked list be merge-sorted with only \( O(1) \) extra node space?*
+*Why can a linked list be merge-sorted with only \\( O(1) \\) extra node space?*
 
 ## Trade-offs vs Quicksort & Heapsort
 *When do you pick merge sort's predictability and stability over quicksort's cache-friendly speed?*

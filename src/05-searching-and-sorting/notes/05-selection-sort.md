@@ -18,7 +18,7 @@
 ### Tracking the Min Index, Not the Value
 *Why hold onto the position of the smallest element rather than its value during the scan?*
 
-## Minimal Writes: Exactly \( n-1 \) Swaps
+## Minimal Writes: Exactly \\( n-1 \\) Swaps
 *Why does selection sort perform the fewest writes of the quadratic sorts, and when does write-cost matter?*
 
 ## Stability & In-Place
@@ -31,16 +31,16 @@
 *Why does the comparison count come out the same regardless of input order — count the inner-loop work across all passes.*
 
 ### Why There's No Best Case
-*Why does even an already-sorted array still cost \( \Theta(n^2) \) comparisons?*
+*Why does even an already-sorted array still cost \\( \Theta(n^2) \\) comparisons?*
 
 ### Average & Worst Case
-*Why are average and worst case identical at \( \Theta(n^2) \), unlike most other sorts?*
+*Why are average and worst case identical at \\( \Theta(n^2) \\), unlike most other sorts?*
 
 ### Comparisons vs Swaps
-*Why is the swap count only \( O(n) \) while comparisons stay \( \Theta(n^2) \), and when does that asymmetry matter?*
+*Why is the swap count only \\( O(n) \\) while comparisons stay \\( \Theta(n^2) \\), and when does that asymmetry matter?*
 
 ## Space Complexity
-*Why is selection sort \( O(1) \) auxiliary space with no recursion stack?*
+*Why is selection sort \\( O(1) \\) auxiliary space with no recursion stack?*
 
 ## Trade-offs vs Bubble & Insertion Sort
 *When does the low swap count win out, and when do the other quadratic sorts beat it?*
@@ -55,7 +55,7 @@
 *Break the algorithm into the parts you must get right before you write a line.*
 
 ### Setup
-*What does the outer loop range over, and what does index \( i \) mean each iteration?*
+*What does the outer loop range over, and what does index \\( i \\) mean each iteration?*
 
 ### The Min-Finding Inner Loop
 *How do you scan the suffix and remember where the minimum sits?*

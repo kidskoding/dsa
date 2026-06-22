@@ -1,7 +1,7 @@
 # Monotonic Stack
 
 ## What It Is & When to Use It
-*What class of problems — "for each element, find the nearest larger or smaller one" — collapses from \( O(n^2) \) to \( O(n) \) once you keep a stack in sorted order, and what signals that a problem is secretly a monotonic-stack problem?*
+*What class of problems — "for each element, find the nearest larger or smaller one" — collapses from \\( O(n^2) \\) to \\( O(n) \\) once you keep a stack in sorted order, and what signals that a problem is secretly a monotonic-stack problem?*
 
 ## How the Ordered Stack Works
 *As you scan the array, what does the stack hold at any moment, and why does keeping it strictly ordered let each new element instantly "answer" the elements it displaces?*
@@ -31,19 +31,19 @@
 *Why does pushing a zero-height bar at the end (and/or a boundary at the start) flush the stack cleanly and remove an annoying "drain the leftovers" edge case?*
 
 ## Time Complexity
-*Why is the whole scan \( O(n) \) even though a single incoming element can trigger many pops in one step?*
+*Why is the whole scan \\( O(n) \\) even though a single incoming element can trigger many pops in one step?*
 
 ### Best Case
 *When does the stack barely move — an already-monotonic input — and why is the per-element work still just a push and one comparison?*
 
 ### Worst & Average Case
-*Each index is pushed exactly once and popped at most once — why does that cap the total number of pops across the entire run at \( n \), making the amortized cost per element \( O(1) \) and the whole algorithm \( \Theta(n) \)?*
+*Each index is pushed exactly once and popped at most once — why does that cap the total number of pops across the entire run at \\( n \\), making the amortized cost per element \\( O(1) \\) and the whole algorithm \\( \Theta(n) \\)?*
 
 ## Space Complexity
-*Why is the extra space \( O(n) \) in the worst case (a fully monotonic input that never pops), and what input shape forces the stack to hold every element at once?*
+*Why is the extra space \\( O(n) \\) in the worst case (a fully monotonic input that never pops), and what input shape forces the stack to hold every element at once?*
 
 ## Trade-offs vs. Brute Force & Other Structures
-*When is the naive \( O(n^2) \) double loop actually fine, and when would a different structure (segment tree, sparse table) be preferred over a monotonic stack?*
+*When is the naive \\( O(n^2) \\) double loop actually fine, and when would a different structure (segment tree, sparse table) be preferred over a monotonic stack?*
 
 ## Common Bugs & Edge Cases
 *Where do bugs creep in — wrong strict-vs-nonstrict comparison on ties, pushing values instead of indices, forgetting to drain the stack at the end, or mishandling an empty or single-element array?*
