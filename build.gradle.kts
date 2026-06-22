@@ -67,3 +67,13 @@ val moduleTestTasks = moduleDirs.map { dir ->
 tasks.named("test") {
     dependsOn(moduleTestTasks)
 }
+
+// Lint: runs editorconfig-checker (same as the CI `lint` job) via lint.sh,
+// which fetches the checker binary into build/tools/ on first use.
+//   ./gradlew lint
+tasks.register<Exec>("lint") {
+    group = "verification"
+    description = "Run editorconfig-checker over the repo (CI lint)."
+    workingDir = rootDir
+    commandLine("bash", "lint.sh")
+}
