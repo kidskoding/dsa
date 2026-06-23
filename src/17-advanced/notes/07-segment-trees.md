@@ -83,5 +83,8 @@
 // implement from scratch here
 ```
 
+## Summary
+*Recap the whole topic in a few lines — the core idea, the key complexities and trade-offs, and when to reach for it. The cheat-sheet you'd skim before an exam or interview.*
+
 ## My Notes
 *Fill this in as you learn.*
