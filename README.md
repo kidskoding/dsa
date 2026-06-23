@@ -320,15 +320,6 @@ The checker binary is fetched into `build/tools/` on first use, then run with
 `.editorconfig-checker.json`. It exits non-zero and lists `file:line` for any
 violation, so run it before you push.
 
-## Student workflow
-
-1. Read the topic in the mdBook
-2. Open the `.java` skeleton in your editor
-3. Implement until the tests pass
-4. Work through `PROBLEM_SET.md` for the module
-5. Fill in your notes and reflections in the markdown
-6. Check the topic off in `TODO.md`
-
 ## Distribution & usage
 
 The main repo holds only the blank skeletons (the template).
