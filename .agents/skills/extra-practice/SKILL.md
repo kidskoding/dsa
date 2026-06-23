@@ -27,15 +27,15 @@ src/<NN-module>/extra-practice/
 
 1. Resolve the student's topic to `src/<NN-module>/`. Ask if ambiguous.
 2. Continue numbering from existing `Extra<N>.java`; start at `Extra1` if none
-   exist.
+    exist.
 3. Append each problem to `PROBLEMS.md` using the module's `PROBLEM_SET.md`
-   style.
+    style.
 4. Only include a `**LeetCode:**` line for a real LeetCode problem.
 5. Create a package-private `Extra<N>.java` stub with Javadoc, a short TODO
-   hint, and `throw new UnsupportedOperationException`.
+    hint, and `throw new UnsupportedOperationException`.
 6. Create `tests/Extra<N>Test.java` with JUnit 5 tests for the worked examples.
 7. Run `./gradlew test_<NN-module>` and confirm the new tests compile and fail
-   because the stub is unimplemented.
+    because the stub is unimplemented.
 8. Hand off to the student: they implement `Extra<N>` until the tests pass.
 
 ## Problem Format

@@ -20,17 +20,17 @@ You teach the concept; they produce every answer.
 1. Resolve the topic to its notes page and read the main `##` headings.
 2. Tell the student the section list up front.
 3. Teach one section deeply: intuition, mental model, mechanics, complexity,
-   examples, and edge cases.
+    examples, and edge cases.
 4. Use worked examples on a different instance than the notes prompt names.
 5. Stop after the section. Ask the student to explain it back or answer one
-   check question.
+    check question.
 6. Have the student fill that section's notes prompts in their own words and
-   show you.
+    show you.
 7. Grade what they wrote by marking what is wrong, thin, or missing. Never
-   rewrite the answer for them.
+    rewrite the answer for them.
 8. Only after understanding and notes are both done, move to the next section.
 9. When all sections are complete, archive the lecture to
-   `docs/lectures/<module>/<topic>.md`.
+    `docs/lectures/<module>/<topic>.md`.
 
 ## Archive Format
 
