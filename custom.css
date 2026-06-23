@@ -5,12 +5,8 @@
   display: none !important;
 }
 
-/* Make the roadmap (Mermaid) diagram render large — break it out of the narrow
-   text column to roughly the page width so it's actually big. */
+/* Roadmap (Mermaid) diagram: fill the content width without overflowing. */
 .mermaid {
-  width: 88vw;
-  max-width: 88vw;
-  margin-left: calc(50% - 44vw);
   text-align: center;
 }
 .mermaid svg {

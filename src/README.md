@@ -18,7 +18,7 @@ graph TD
     F --> LL["02 · Linked Lists"]
     F --> SQ["03 · Stacks & Queues"]
     F --> HT["12 · Hash Tables"]
-    A --> RC["04 · Recursion & D&C"]
+    A --> RC["04 · Recursion &<br/>Divide and Conqueror"]
     RC --> SS["05 · Searching & Sorting"]
     SS --> TR["06 · Trees"]
     TR --> HE["07 · Heaps"]
@@ -49,18 +49,14 @@ graph TD
 | **6 · Strings** | `15` String Algorithms | KMP, Rabin–Karp, Z-algorithm | linear-time pattern matching (pairs with Tries from Phase 3) |
 | **7 · Advanced** | `17` | segment/Fenwick trees, lazy propagation, sparse tables, suffix arrays/trees, treaps, vEB | competitive-programming range-query power — a capstone |
 
-### How to work a module
+### How to work a module / topic
 
 1. **Read** the topic page — concept → complexity → implementation walkthrough.
 2. **Implement** the `code/` skeleton until the `tests/concepts` tests go green.
 3. **Grind** the problem set — **Foundational** first (write them cold), then **Applied** (recognize the pattern, no peeking). They self-grade via tests, and LeetCode ones link out.
 4. **Reflect** — fill in your own notes as you learn.
 
-> Some topics are concept/proof only (e.g. *comparison lower bound*, *exchange
-> argument*) — those are notes-only, no skeleton. Code earns its place only when
-> there's something to implement.
-
-### Pace & checkpoints
+### Pacing and Checkpoints
 
 - ~1 module/week solo. Don't advance until the **Foundational** problems are automatic; re-do a few old **Applied** ones weekly so earlier patterns stay sharp.
 - **After Phase 2** → most easy/medium array & sorting problems are comfortable.
