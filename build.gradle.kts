@@ -32,15 +32,17 @@ val moduleDirs = file("src").listFiles()
 val moduleTestTasks = moduleDirs.map { dir ->
     val id = dir.name // e.g. "06-trees"
 
-    // main = module impl + problemset, excluding the tests/ subtree.
+    // main = module impl + problemset + extra-practice stubs, excluding every
+    // tests/ subtree (the top-level one and any under extra-practice/).
     val mainSet = sourceSets.create("main_$id") {
         java.setSrcDirs(listOf(dir))
-        java.exclude("tests/**")
+        java.exclude("tests/**", "extra-practice/tests/**")
     }
 
-    // test = everything under tests/, compiled against this module's main output.
+    // test = everything under tests/ (plus generated extra-practice/tests/),
+    // compiled against this module's main output. Missing dirs are ignored.
     val testSet = sourceSets.create("test_$id") {
-        java.setSrcDirs(listOf(File(dir, "tests")))
+        java.setSrcDirs(listOf(File(dir, "tests"), File(dir, "extra-practice/tests")))
         compileClasspath += mainSet.output
         runtimeClasspath += mainSet.output
     }
