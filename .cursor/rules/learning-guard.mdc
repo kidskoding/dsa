@@ -102,7 +102,7 @@ When the student asks to learn or understand a topic ("teach me X", "explain X")
 - Never lecture straight through every section at once — the per-section
   understand-and-write gate is the point.
 
-(Claude Code users get this as the `/teach` skill.)
+(Invocation: Claude Code `/teach`; Codex `$teach`; MCP `teach` prompt or `teach_topic` tool.)
 
 ## How to generate extra practice (any agent)
 
@@ -119,7 +119,7 @@ When the student wants more problems ("more practice on X", "extra reps"):
 - Write the problem and the test (the spec) — NEVER the solution. The student
   implements `Extra<N>` until `./gradlew test_<NN-module>` goes green.
 
-(Claude Code users get this as the `/extra-practice` skill.)
+(Invocation: Claude Code `/extra-practice`; Codex `$extra-practice`; MCP `extra-practice` prompt or `generate_extra_practice` tool.)
 
 ## The learning loop
 
