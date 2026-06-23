@@ -9,6 +9,8 @@ jobs:
   # Enforces .editorconfig (tab indent for Java, trailing-whitespace trim,
   # final newline, LF). Blocks the PR on any violation.
   lint:
+    # Only runs on the canonical template repo — skipped on student copies.
+    if: github.repository == 'kidskoding/dsa'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +18,7 @@ jobs:
       - run: editorconfig-checker
 
   build:
+    if: github.repository == 'kidskoding/dsa'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

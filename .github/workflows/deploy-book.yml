@@ -20,6 +20,8 @@ concurrency:
 
 jobs:
   build:
+    # Only the canonical template publishes the book — skipped on student copies.
+    if: github.repository == 'kidskoding/dsa'
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: '0.5.3'
