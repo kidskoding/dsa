@@ -51,10 +51,14 @@ graph TD
 
 ### How to work a module / topic
 
-1. **Read** the topic page — concept → complexity → implementation walkthrough.
+Best done **with an AI coding agent as a tutor** — see [Learning with AI](learning-with-ai.md) for the full setup. Per topic:
+
+1. **Learn** it section by section — `/teach <topic>` (or "teach me `<topic>`"). The agent teaches one section, then stops until you understand it and have written that section's notes in your own words.
 2. **Implement** the `code/` skeleton until the `tests/concepts` tests go green.
 3. **Grind** the problem set — **Foundational** first (write them cold), then **Applied** (recognize the pattern, no peeking). They self-grade via tests, and LeetCode ones link out.
-4. **Reflect** — fill in your own notes as you learn.
+4. **Drill more** when you want extra reps — `/extra-practice <module>` generates fresh problems + stubs + tests in the same format.
+
+The agent never hands over answers — it teaches, grades, and drills; you write every note, skeleton, and solution.
 
 ### Pacing and Checkpoints
 

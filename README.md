@@ -19,10 +19,19 @@ Each module folder under `src/` holds:
 - `tests/concepts/*Test.java` — JUnit 5 tests for the topic skeletons.
 - `tests/problemset/*Test.java` — JUnit 5 tests for the problem set.
 - `PROBLEM_SET.md` — the module's problems (Foundational + Applied).
+- `extra-practice/` — generated on demand by `/extra-practice` (problems +
+  stubs + tests); not shipped, gitignored archives aside.
 
 All `.java` files use the default package (no `package` line) and are
 compiled per module — flat and dependency-free. Topic skeleton classes are
 package-private so the numbered filenames compile.
+
+**AI tooling.** The repo is built to be worked with an AI coding agent as a
+*tutor*. Guard + teaching protocol live in one canonical `AGENTS.md` (the other
+agents' files symlink/import it); Claude Code skills are in `.claude/skills/`
+(portable copies in `.agents/skills/`); and a zero-dependency MCP server in
+[`mcp/`](mcp/README.md) exposes `teach_topic` / `generate_extra_practice` to any
+MCP agent. See [**Learning with AI**](src/learning-with-ai.md).
 
 ## Table of Contents
 
@@ -322,12 +331,24 @@ violation, so run it before you push.
 
 ## Student workflow
 
-1. Read the topic in the mdBook
-2. Open the `.java` skeleton in your editor
-3. Implement until the tests pass
-4. Work through `PROBLEM_SET.md` for the module
-5. Fill in your notes and reflections in the markdown
-6. Check the topic off in `TODO.md`
+Work this **with an AI coding agent** (Claude Code, Cursor, Copilot, Codex,
+Gemini, Windsurf, Aider) — but as a tutor, never an autocomplete. The repo ships
+guard files that put any cooperating agent into *tutor mode*: it teaches and
+grades, but never fills in your notes, code, or problems. Full guide:
+[**Learning with AI**](src/learning-with-ai.md).
+
+Per topic:
+
+1. **Learn it** — `/teach <topic>` (or "teach me `<topic>`"): a section-gated lecture that stops after each section until you understand it and have written that section's notes in your own words.
+2. **Implement** the `code/` skeleton until `./gradlew test_<module>` passes.
+3. **Get reviewed** — "review my passing code for edge cases, don't fix it."
+4. **Drill** the module's `PROBLEM_SET.md` — Foundational cold, then Applied.
+5. **More reps** — `/extra-practice <module>` (or "more problems on `<topic>`") generates fresh problems + stubs + tests into `src/<module>/extra-practice/`.
+6. **Space it out** and check the topic off in `TODO.md`.
+
+The teach + extra-practice flows work in any agent three ways: the instruction
+files (zero setup), the zero-dependency MCP server in [`mcp/`](mcp/README.md)
+(approve once), and Claude Code skills (`/teach`, `/extra-practice`).
 
 ## Distribution & usage
 
