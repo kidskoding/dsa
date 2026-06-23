@@ -1,6 +1,7 @@
 # Summary
 
 [Introduction](README.md)
+[Learning with AI](learning-with-ai.md)
 
 # Module 0: Foundations
 - [0.1 Asymptotic Analysis](00-foundations/notes/01-asymptotic-analysis.md)
