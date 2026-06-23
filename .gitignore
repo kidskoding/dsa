@@ -17,3 +17,6 @@ book/
 # MacOS
 .DS_Store
 
+
+# Generated lecture archives (teach skill) — folder doc stays tracked
+docs/lectures/
