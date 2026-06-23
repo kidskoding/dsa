@@ -1,0 +1,3 @@
+# Always load the workbook guard + teaching protocol into context.
+read:
+  - CONVENTIONS.md
