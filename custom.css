@@ -4,3 +4,14 @@
 .chapter-item strong[aria-hidden="true"] {
   display: none !important;
 }
+
+/* Make the roadmap (Mermaid) diagram render large — fill the content width
+   instead of mermaid's small natural size. */
+.mermaid {
+  text-align: center;
+}
+.mermaid svg {
+  max-width: 100% !important;
+  width: 100%;
+  height: auto;
+}
