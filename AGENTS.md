@@ -1,3 +1,8 @@
+<!-- CANONICAL agent instructions.
+CLAUDE.md, GEMINI.md, CONVENTIONS.md, .windsurfrules, and
+.github/copilot-instructions.md are symlinks to this file;
+.cursor/rules/learning-guard.mdc imports it. Edit HERE only. -->
+
 # Agent Instructions — DSA Workbook
 
 ## This is a fill-it-yourself learning workbook
@@ -121,3 +126,5 @@ When the student wants more problems ("more practice on X", "extra reps"):
 teach (section-gated) -> student fills the notes -> student reads the notes and
 implements the `code/` stubs until tests pass -> student drills the problem set
 -> revisit: re-do problems or generate extra practice for spaced repetition.
+
+> Note: `SPEC.md` is for whoever *generates* the workbook skeletons. This file governs agents *helping a student use* it.
