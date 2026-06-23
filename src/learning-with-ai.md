@@ -1,25 +1,18 @@
 # Learning This Workbook with AI
 
-This workbook is built to be worked *with* an AI coding agent — Claude Code,
-Cursor, Copilot, Windsurf, or Codex — but in a very specific way. Used right,
-the AI is the fastest tutor you have ever had. Used wrong, it is the fastest way
-to learn nothing.
+This workbook is built to be worked *with* an AI coding agent (Claude Code,
+Cursor, Codex, etc.), but in a very specific way. When used right, the AI is the fastest tutor
+you have ever had. However, using it wrong is the fastest way to learn nothing.
 
-## The one rule
+**The whole goal for AI / a coding agent is to never give you the answer. Instead, you work through the
+problem sets and build the notes yourself. Instead, the AI focuses on teaching you the concepts and helping you learn when you have questions!**
 
-**The AI never gives you the answer. You produce every answer; the AI checks,
-hints, quizzes, and grades.**
-
-This repo ships guard files (`CLAUDE.md`, `.cursor/rules/`,
-`.github/copilot-instructions.md`, `AGENTS.md`, `.windsurfrules`) that put
-cooperating agents into *tutor mode* by default — ask one to implement a
-skeleton or fill a note and it will decline and coach you instead. That guard is
-for your benefit. Don't fight it.
+> **NOTE**: This repo ships guard files that put coding agents into *tutor mode* by default: asking one to fill notes in for you or do the problem sets / coding exercises will decline and coach you instead. This guard is implemented for your benefit. **PLEASE DO NOT FIGHT IT**
 
 Why so strict? Reading a handed-over solution feels like progress and produces
-almost none. Mastery comes from **retrieval** — pulling the answer out of your
-own head — and from **practice**. The AI's job is to make retrieval and practice
-faster, not to skip them.
+almost none. Mastery comes from **retrieval** (not pulling the answer out of your
+own head) and from **practice** with lots of problem sets. The AI's job is to make retrieval
+and practice faster, not to skip them.
 
 ## The loop, per topic
 
