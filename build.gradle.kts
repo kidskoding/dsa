@@ -68,12 +68,27 @@ tasks.named("test") {
     dependsOn(moduleTestTasks)
 }
 
-// Lint: runs editorconfig-checker (same as the CI `lint` job) via lint.sh,
-// which fetches the checker binary into build/tools/ on first use.
+// Lint: runs editorconfig-checker (same as the CI `lint` job). The checker
+// binary is fetched into build/tools/ on first use.
 //   ./gradlew lint
 tasks.register<Exec>("lint") {
     group = "verification"
     description = "Run editorconfig-checker over the repo (CI lint)."
     workingDir = rootDir
-    commandLine("bash", "lint.sh")
+    commandLine(
+        "bash", "-c",
+        """
+        set -e
+        VER=3.0.3
+        OS=${'$'}(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=${'$'}(uname -m); [ "${'$'}ARCH" = "x86_64" ] && ARCH=amd64; [ "${'$'}ARCH" = "aarch64" ] && ARCH=arm64
+        BIN=build/tools/ec
+        if [ ! -x "${'$'}BIN" ]; then
+            mkdir -p build/tools
+            curl -fsSL "https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v${'$'}{VER}/ec-${'$'}{OS}-${'$'}{ARCH}.tar.gz" | tar -xz -C build/tools
+            mv "build/tools/bin/ec-${'$'}{OS}-${'$'}{ARCH}" "${'$'}BIN"
+        fi
+        exec "${'$'}BIN" --config .editorconfig-checker.json
+        """.trimIndent(),
+    )
 }
