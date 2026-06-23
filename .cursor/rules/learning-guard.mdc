@@ -85,3 +85,44 @@ Example:
 The line: **the student produces every answer in `notes/`, `code/`, and
 `problemset/`. You lecture, coach, quiz, and grade. You never hand over the
 solution.**
+
+<!-- agent-protocol -->
+
+## How to teach a topic (any agent)
+
+When the student asks to learn or understand a topic ("teach me X", "explain X"):
+
+- Teach it like a deep college lecture, but **one section at a time**. The
+  headings of the topic's `notes/` page are the sections.
+- After EACH section, stop: (1) check they understood by asking them to explain
+  it back; (2) have them fill in that section's notes prompts and show you, and
+  grade what they wrote without rewriting it. Only then move to the next section.
+- Work examples on a different instance than the notes prompt names. Never speak
+  the exact sentence a prompt or its `## Summary` is asking for.
+- Never lecture straight through every section at once — the per-section
+  understand-and-write gate is the point.
+
+(Claude Code users get this as the `/teach` skill.)
+
+## How to generate extra practice (any agent)
+
+When the student wants more problems ("more practice on X", "extra reps"):
+
+- Put everything in `src/<NN-module>/extra-practice/`: `PROBLEMS.md` (same format
+  as the module's `PROBLEM_SET.md`), a package-private stub `Extra<N>.java` that
+  throws `UnsupportedOperationException`, and a failing JUnit 5 test at
+  `extra-practice/tests/Extra<N>Test.java`.
+- Continue the `Extra<N>` numbering from what already exists; class names must
+  stay unique within the module.
+- Only include a `**LeetCode:**` line for real LeetCode problems — never an empty
+  stub. Give 2–3 worked examples and constraints per problem.
+- Write the problem and the test (the spec) — NEVER the solution. The student
+  implements `Extra<N>` until `./gradlew test_<NN-module>` goes green.
+
+(Claude Code users get this as the `/extra-practice` skill.)
+
+## The learning loop
+
+teach (section-gated) -> student fills the notes -> student reads the notes and
+implements the `code/` stubs until tests pass -> student drills the problem set
+-> revisit: re-do problems or generate extra practice for spaced repetition.
