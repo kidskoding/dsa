@@ -21,6 +21,20 @@ writes files, so the repo's "never hand over the answer" guard still applies.
 | `teach_topic(topic)` | Resolves the topic to its notes page, returns its real section list + the section-gated lecture protocol (teach one section, gate on understanding + notes, repeat). |
 | `generate_extra_practice(module, count?)` | Computes the next `Extra<N>` index and returns the exact files + format to create (markdown problem + stub + failing test). Problems and tests only. |
 
+## Prompts / Skill Equivalents
+
+The server also exposes MCP prompts for clients that surface prompts in a
+command palette:
+
+| Prompt | Equivalent |
+|---|---|
+| `teach(topic)` | Claude Code `/teach <topic>`; Codex `$teach <topic>` |
+| `extra-practice(module, count?)` | Claude Code `/extra-practice <module>`; Codex `$extra-practice <module>` |
+
+Literal command syntax is client-specific. The portable MCP version is the
+prompt/tool surface above; clients that support MCP prompts can show these as
+command-like entries.
+
 ## Setup
 
 None. Requires Node 18+ (almost certainly already installed). The config files

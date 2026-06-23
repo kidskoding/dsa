@@ -221,6 +221,64 @@ const tools = {
   },
 };
 
+const promptText = {
+  teach:
+    "Use when the student asks to learn, be taught, or have a DSA topic explained in this workbook. Equivalent to Claude Code's /teach command and Codex's $teach skill.",
+  "extra-practice":
+    "Use when the student wants more practice problems on a topic or module. Equivalent to Claude Code's /extra-practice command and Codex's $extra-practice skill.",
+};
+
+function promptMessages(text) {
+  return {
+    messages: [
+      {
+        role: "user",
+        content: { type: "text", text },
+      },
+    ],
+  };
+}
+
+const prompts = {
+  teach: {
+    description: promptText.teach,
+    arguments: [
+      {
+        name: "topic",
+        description: 'Topic or module to teach, e.g. "stacks", "dijkstra", "03".',
+        required: true,
+      },
+    ],
+    get(args) {
+      const result = tools.teach_topic.run({ topic: args?.topic });
+      const text = result.content?.[0]?.text || "No prompt generated.";
+      return promptMessages(text);
+    },
+  },
+
+  "extra-practice": {
+    description: promptText["extra-practice"],
+    arguments: [
+      {
+        name: "module",
+        description: 'Module to drill, e.g. "arrays", "03", "graph-algorithms".',
+        required: true,
+      },
+      {
+        name: "count",
+        description: "How many problems to generate. Defaults to 3.",
+        required: false,
+      },
+    ],
+    get(args) {
+      const count = args?.count === undefined ? undefined : Number(args.count);
+      const result = tools.generate_extra_practice.run({ module: args?.module, count });
+      const text = result.content?.[0]?.text || "No prompt generated.";
+      return promptMessages(text);
+    },
+  },
+};
+
 // --- minimal JSON-RPC 2.0 over newline-delimited stdio ---------------------
 
 const PROTOCOL_VERSION = "2025-06-18";
@@ -231,7 +289,7 @@ function dispatch(method, params) {
     case "initialize":
       return {
         protocolVersion: params?.protocolVersion || PROTOCOL_VERSION,
-        capabilities: { tools: {} },
+        capabilities: { tools: {}, prompts: {} },
         serverInfo: { name: "dsa-workbook", version: "1.0.0" },
       };
     case "ping":
@@ -247,7 +305,22 @@ function dispatch(method, params) {
     case "resources/list":
       return { resources: [] };
     case "prompts/list":
-      return { prompts: [] };
+      return {
+        prompts: Object.entries(prompts).map(([name, p]) => ({
+          name,
+          description: p.description,
+          arguments: p.arguments,
+        })),
+      };
+    case "prompts/get": {
+      const p = prompts[params?.name];
+      if (!p) {
+        const e = new Error(`Unknown prompt: ${params?.name}`);
+        e.code = -32602;
+        throw e;
+      }
+      return p.get(params?.arguments || {});
+    }
     case "tools/call": {
       const t = tools[params?.name];
       if (!t) return { content: [{ type: "text", text: `Unknown tool: ${params?.name}` }], isError: true };
