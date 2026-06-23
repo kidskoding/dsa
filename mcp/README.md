@@ -43,12 +43,13 @@ shuts it down with the session.
 
 ## Per-agent configuration
 
-Repo-scoped configs are already shipped for three agents — just approve the
+Repo-scoped configs are already shipped for four agents — just approve the
 server when the tool prompts:
 
 - **Claude Code** → `.mcp.json` (run `/mcp` to approve, then the `dsa-workbook` tools).
 - **Cursor** → `.cursor/mcp.json` (Settings → MCP → enable).
 - **VS Code / Copilot agent mode** → `.vscode/mcp.json` (Start the server from the MCP view).
+- **Zed** → `.zed/settings.json` (`context_servers`; Agent Panel shows a green dot when active).
 
 For agents that use a global config, add this block:
 

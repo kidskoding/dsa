@@ -12,11 +12,11 @@ book/
 *.iml
 .vscode/*
 !.vscode/mcp.json
-.zed/
+.zed/*
+!.zed/settings.json
 
 # MacOS
 .DS_Store
-
 
 # Generated lecture archives (teach skill) — folder doc stays tracked
 docs/lectures/
