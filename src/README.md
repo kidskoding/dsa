@@ -40,10 +40,10 @@ graph TD
 
 | Phase | Modules | What you learn | What it unlocks |
 |---|---|---|---|
-| **0 · Foundations** | `00` | Big-O, recurrences, amortized analysis | The language to reason about *every* later structure — don't skip it |
-| **1 · Linear structures** | `01` Arrays · `02` Linked Lists · `03` Stacks & Queues · `12` Hash Tables | contiguous vs linked memory, LIFO/FIFO, O(1) hashing, prefix sums, monotonic stack | the containers every algorithm is built on *(pull Hash Tables forward — it's used everywhere)* |
-| **2 · Recursion & order** | `04` Recursion & D&C · `05` Searching & Sorting | recursion/backtracking, divide-and-conquer, the comparison sorts, binary search (incl. on the answer), quickselect | recursive thinking + the sort/search toolkit trees, graphs, and DP all lean on |
-| **3 · Hierarchical** | `06` Trees · `07` Heaps · `16` Tries · `08` Spatial Trees | BSTs & balance (AVL/RB/B-tree), priority queues, prefix trees, k-d/quad trees | logarithmic ordered / priority / prefix queries |
+| **0 · Foundations** | `00` | Big-O, recurrences, amortized analysis | The language to reason about *every* later structure: don't skip it |
+| **1 · Linear structures** | `01` Arrays · `02` Linked Lists · `03` Stacks & Queues · `12` Hash Tables | contiguous vs linked memory, LIFO/FIFO, O(1) hashing, prefix sums, monotonic stack | the containers every algorithm is built on *(pull Hash Tables forward: it's used everywhere)* |
+| **2 · Recursion & Order** | `04` Recursion / Divide and Conqueror · `05` Searching and Sorting | recursion/backtracking, divide-and-conquer, the comparison sorts, binary search (incl. on the answer), quickselect | recursive thinking + the sort/search toolkit trees, graphs, and DP all lean on |
+| **3 · Hierarchical** | `06` Trees · `07` Heaps · `16` Tries · `08` Spatial Trees | BSTs and Balance (i.e. AVL/RB/B-tree), priority queues, prefix trees, k-d/quad trees | logarithmic ordered / priority / prefix queries |
 | **4 · Graphs** | `09` Disjoint Sets · `10` Graph Fundamentals · `11` Graph Algorithms | union-find, BFS/DFS/topo/SCC, Dijkstra/Bellman-Ford/Floyd-Warshall, MST, max-flow/min-cut | modeling the huge class of problems that are secretly graphs |
 | **5 · Paradigms** | `13` Dynamic Programming · `14` Greedy | state/transition design, the classic DPs, exchange-argument greedy | optimization problems — the hardest, most rewarding tier |
 | **6 · Strings** | `15` String Algorithms | KMP, Rabin–Karp, Z-algorithm | linear-time pattern matching (pairs with Tries from Phase 3) |
