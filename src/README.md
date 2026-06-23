@@ -11,22 +11,29 @@ tests pass and grind the problems until the patterns are automatic.
 Work the modules in this order — each phase assumes the vocabulary of the ones
 above it. Inside a phase, order is flexible.
 
-```text
-Phase 0   00 Foundations
-  |
-Phase 1   01 Arrays  .  02 Linked Lists  .  03 Stacks & Queues  .  12 Hash Tables
-  |
-Phase 2   04 Recursion & Divide and Conquer  ->  05 Searching & Sorting
-  |
-Phase 3   06 Trees  .  07 Heaps  .  16 Tries  .  08 Spatial Trees
-  |
-Phase 4   09 Disjoint Sets  ->  10 Graph Fundamentals  ->  11 Graph Algorithms
-  |
-Phase 5   13 Dynamic Programming  .  14 Greedy
-  |
-Phase 6   15 String Algorithms
-  |
-Phase 7   17 Advanced   (capstone)
+```mermaid
+graph TD
+    F["00 · Foundations"]
+    F --> A["01 · Arrays"]
+    F --> LL["02 · Linked Lists"]
+    F --> SQ["03 · Stacks & Queues"]
+    F --> HT["12 · Hash Tables"]
+    A --> RC["04 · Recursion & D&C"]
+    RC --> SS["05 · Searching & Sorting"]
+    SS --> TR["06 · Trees"]
+    TR --> HE["07 · Heaps"]
+    TR --> TRI["16 · Tries"]
+    TR --> SPT["08 · Spatial Trees"]
+    HT --> DSU["09 · Disjoint Sets"]
+    TR --> DSU
+    DSU --> GF["10 · Graph Fundamentals"]
+    GF --> GA["11 · Graph Algorithms"]
+    SS --> DP["13 · Dynamic Programming"]
+    SS --> GR["14 · Greedy"]
+    TRI --> STR["15 · String Algorithms"]
+    HE --> ADV["17 · Advanced"]
+    GA --> ADV
+    DP --> ADV
 ```
 
 ### The path

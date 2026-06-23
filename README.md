@@ -274,10 +274,12 @@ package-private so the numbered filenames compile.
 
 ## Run the book
 
-You can run the book locally using `mdbook`, which you can install via `cargo`
+You can run the book locally using `mdbook`. The roadmap on the intro page is a
+[Mermaid](https://mermaid.js.org/) diagram, so you also need the
+`mdbook-mermaid` preprocessor. Install both via `cargo`:
 
 ```bash
-cargo install mdbook
+cargo install mdbook mdbook-mermaid
 ```
 
 Run the book locally to preview it in your browser
@@ -286,7 +288,8 @@ Run the book locally to preview it in your browser
 mdbook serve --open
 ```
 
-> **NOTE**: Math (recurrences, bounds, proofs) renders via MathJax.
+> **NOTE**: Math (recurrences, bounds, proofs) renders via MathJax, and the
+> roadmap renders via `mdbook-mermaid`.
 
 ## Run the tests
 

@@ -10,8 +10,13 @@ default-theme = "gruvbox"
 git-repository-url = ""
 preferred-dark-theme = "gruvbox"
 additional-css = ["gruvbox/css/variables.css", "gruvbox/highlight.css", "custom.css"]
-additional-js = ["gruvbox/gruvbox.js"]
+additional-js = ["gruvbox/gruvbox.js", "mermaid.min.js", "mermaid-init.js"]
 
 [output.html.fold]
 enable = true
 level = 1
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
