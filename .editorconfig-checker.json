@@ -1,5 +1,5 @@
 {
-  "Exclude": ["build/", "book/", "SPEC.md", "gradlew", "gradlew.bat", "gradle/wrapper/"],
+  "Exclude": ["build/", "book/", "docs/", "SPEC.md", "gradlew", "gradlew.bat", "gradle/wrapper/"],
   "Disable": {
     "MaxLineLength": true
   }
