@@ -1,9 +1,0 @@
-{
-  "context_servers": {
-    "dsa-workbook": {
-      "source": "custom",
-      "command": "node",
-      "args": ["mcp/server.mjs"]
-    }
-  }
-}

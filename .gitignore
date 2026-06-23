@@ -12,8 +12,7 @@ book/
 *.iml
 .vscode/*
 !.vscode/mcp.json
-.zed/*
-!.zed/settings.json
+.zed/
 
 # MacOS
 .DS_Store

@@ -43,13 +43,12 @@ shuts it down with the session.
 
 ## Per-agent configuration
 
-Repo-scoped configs are already shipped for four agents — just approve the
+Repo-scoped configs are already shipped for three agents — just approve the
 server when the tool prompts:
 
 - **Claude Code** → `.mcp.json` (run `/mcp` to approve, then the `dsa-workbook` tools).
 - **Cursor** → `.cursor/mcp.json` (Settings → MCP → enable).
 - **VS Code / Copilot agent mode** → `.vscode/mcp.json` (Start the server from the MCP view).
-- **Zed** → `.zed/settings.json` (`context_servers`; Agent Panel shows a green dot when active).
 
 For agents that use a global config, add this block:
 
@@ -71,6 +70,15 @@ For agents that use a global config, add this block:
   [mcp_servers.dsa-workbook]
   command = "node"
   args = ["mcp/server.mjs"]
+  ```
+- **Zed** → add to `.zed/settings.json` (Zed edits this file live, so it's not
+  shipped — paste the block yourself):
+  ```json
+  {
+    "context_servers": {
+      "dsa-workbook": { "source": "custom", "command": "node", "args": ["mcp/server.mjs"] }
+    }
+  }
   ```
 
 > Run agents from the repo root so `mcp/server.mjs` resolves. The server figures
