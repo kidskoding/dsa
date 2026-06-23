@@ -1,0 +1,69 @@
+# DSA Workbook MCP Server
+
+Makes the workbook's **teach** and **extra-practice** workflows work in *any*
+MCP-capable agent — not just Claude Code skills. Same tutor guard, same
+section-gated teaching, same problem format, one implementation.
+
+It only **resolves and computes** (reads a topic's real section headings, scans
+for the next `Extra<N>` number) and hands back a guard-bound protocol for the
+agent to follow. It never writes solutions, notes, or implementations — the agent
+writes files, so the repo's "never hand over the answer" guard still applies.
+
+## Tools
+
+| Tool | What it does |
+|---|---|
+| `list_curriculum` | Lists every module and topic. |
+| `teach_topic(topic)` | Resolves the topic to its notes page, returns its real section list + the section-gated lecture protocol (teach one section, gate on understanding + notes, repeat). |
+| `generate_extra_practice(module, count?)` | Computes the next `Extra<N>` index and returns the exact files + format to create (markdown problem + stub + failing test). Problems and tests only. |
+
+## One-time setup
+
+```bash
+cd mcp
+npm install
+```
+
+Node 18+ required. That's it — the config files below point agents at
+`mcp/server.mjs`.
+
+## Per-agent configuration
+
+Repo-scoped configs are already shipped for three agents — just approve the
+server when the tool prompts:
+
+- **Claude Code** → `.mcp.json` (run `/mcp` to approve, then `/dsa-workbook` tools).
+- **Cursor** → `.cursor/mcp.json` (Settings → MCP → enable).
+- **VS Code / Copilot agent mode** → `.vscode/mcp.json` (Start the server from the MCP view).
+
+For agents that use a global config, add this block:
+
+```json
+{
+  "mcpServers": {
+    "dsa-workbook": {
+      "command": "node",
+      "args": ["mcp/server.mjs"]
+    }
+  }
+}
+```
+
+- **Windsurf** → `~/.codeium/windsurf/mcp_config.json`.
+- **Gemini CLI** → `.gemini/settings.json` (repo) or `~/.gemini/settings.json` (global).
+- **Codex** → `~/.codex/config.toml`:
+  ```toml
+  [mcp_servers.dsa-workbook]
+  command = "node"
+  args = ["mcp/server.mjs"]
+  ```
+
+> Run agents from the repo root so `mcp/server.mjs` resolves. The server figures
+> out the workbook root itself; override with `DSA_WORKBOOK_ROOT` if needed.
+
+## No MCP? You're still covered
+
+Every agent also auto-loads the same protocol from its instruction file
+(`CLAUDE.md`, `AGENTS.md`, `.cursor/rules/`, `.github/copilot-instructions.md`,
+`.windsurfrules`, `GEMINI.md`, `CONVENTIONS.md`). MCP just adds the push-button,
+deterministic version on top.

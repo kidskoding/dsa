@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "dsa-workbook": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mcp/server.mjs"]
+    }
+  }
+}

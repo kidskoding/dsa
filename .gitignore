@@ -10,8 +10,12 @@ book/
 # IDE
 .idea/
 *.iml
-.vscode/
+.vscode/*
+!.vscode/mcp.json
 .zed/
 
 # MacOS
 .DS_Store
+
+# MCP server deps
+mcp/node_modules/

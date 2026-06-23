@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dsa-workbook": {
+      "command": "node",
+      "args": ["mcp/server.mjs"]
+    }
+  }
+}
