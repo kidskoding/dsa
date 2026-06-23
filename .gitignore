@@ -17,5 +17,3 @@ book/
 # MacOS
 .DS_Store
 
-# MCP server deps
-mcp/node_modules/

@@ -1,18 +1,19 @@
 #!/usr/bin/env node
-// DSA Workbook MCP server.
+// DSA Workbook MCP server — ZERO dependencies.
 //
 // Exposes the workbook's teaching + practice protocols as MCP tools so they work
-// in ANY MCP-capable agent (Claude Code, Cursor, Windsurf, Copilot agent mode,
+// in ANY stdio-MCP agent (Claude Code, Cursor, Windsurf, Copilot agent mode,
 // Codex, Gemini CLI) — not just Claude Code skills.
+//
+// MCP over stdio is just newline-delimited JSON-RPC 2.0, so this hand-implements
+// the handshake with Node built-ins only. No npm install: fork -> clone -> the
+// agent runs `node mcp/server.mjs` directly and it works.
 //
 // The server only RESOLVES and COMPUTES (reads notes headings, scans for the next
 // problem number) and returns a guard-bound protocol for the agent to follow. It
 // never writes solutions, notes, or implementations — the agent writes files, so
 // the repo's tutor guard still applies everywhere.
 
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod";
 import { readdirSync, readFileSync, existsSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, relative } from "node:path";
@@ -28,7 +29,7 @@ const GUARD = [
   "answer. Decline hand-overs even if asked directly.",
 ].join("\n");
 
-// --- helpers ---------------------------------------------------------------
+// --- workbook helpers ------------------------------------------------------
 
 const moduleDirs = () =>
   existsSync(SRC)
@@ -81,12 +82,10 @@ function resolveTopic(query) {
     const hay = (t.rel + " " + t.title).toLowerCase();
     if (t.title.toLowerCase() === q) return 100;
     if (hay.includes(q)) return 50 + (t.title.toLowerCase().includes(q) ? 10 : 0);
-    const hits = q.split(/\s+/).filter((w) => w && hay.includes(w)).length;
-    return hits;
+    return q.split(/\s+/).filter((w) => w && hay.includes(w)).length;
   };
-  return all.map((t) => ({ t, s: score(t) })).sort((a, b) => b.s - a.s)[0]?.s > 0
-    ? all.map((t) => ({ t, s: score(t) })).sort((a, b) => b.s - a.s)[0].t
-    : null;
+  const ranked = all.map((t) => ({ t, s: score(t) })).sort((a, b) => b.s - a.s)[0];
+  return ranked && ranked.s > 0 ? ranked.t : null;
 }
 
 function nextExtraIndex(moduleDir) {
@@ -100,111 +99,194 @@ function nextExtraIndex(moduleDir) {
   return max + 1;
 }
 
-const text = (s) => ({ content: [{ type: "text", text: s }] });
+// --- tool implementations --------------------------------------------------
 
-// --- server ----------------------------------------------------------------
+const ok = (s) => ({ content: [{ type: "text", text: s }] });
+const fail = (s) => ({ content: [{ type: "text", text: s }], isError: true });
 
-const server = new McpServer({ name: "dsa-workbook", version: "1.0.0" });
-
-server.tool(
-  "list_curriculum",
-  "List every module and topic in the DSA workbook. Use to see what can be taught or drilled.",
-  {},
-  async () => {
-    const lines = [];
-    for (const m of moduleDirs()) {
-      const nd = join(SRC, m, "notes");
-      const topics = existsSync(nd)
-        ? readdirSync(nd).filter((f) => f.endsWith(".md")).map((f) => topTitle(join(nd, f)))
-        : [];
-      lines.push(`${m}: ${topics.join(", ")}`);
-    }
-    return text(lines.join("\n") || "No modules found.");
-  }
-);
-
-server.tool(
-  "teach_topic",
-  "Begin a section-gated lecture on a DSA topic. Resolves the topic to its notes page, returns its real section list, and the protocol to teach one section at a time with a human-in-the-loop gate.",
-  { topic: z.string().describe('Topic or module to teach, e.g. "stacks", "dijkstra", "03".') },
-  async ({ topic }) => {
-    const t = resolveTopic(topic);
-    if (!t) return text(`No topic matched "${topic}". Call list_curriculum to see options.`);
-    const secs = sections(t.file);
-    const list = secs.map((s, i) => `  ${i + 1}. ${s}`).join("\n");
-    return text(
-      [
-        GUARD,
-        "",
-        `TEACH: ${t.title}`,
-        `Source notes page: ${t.rel}`,
-        "",
-        "Main sections (teach these IN ORDER, one at a time):",
-        list,
-        "",
-        "PROTOCOL — section-gated lecture:",
-        "1. Tell the student the section list above so they know the shape.",
-        "2. Teach ONE section deeply: intuition -> mental model -> mechanics ->",
-        "   complexity. Use analogies and a worked example on a DIFFERENT instance",
-        "   than the notes prompt names. Never speak the exact sentence a prompt or",
-        "   its ## Summary is asking for.",
-        "3. GATE (do not skip): after the section, STOP. (a) Ask them to explain it",
-        "   back; if wrong/thin, re-teach differently. (b) Have them fill that",
-        "   section's notes prompts in their own words and show you; grade what they",
-        "   wrote — mark wrong/thin/missing, never rewrite it.",
-        "4. Only when they understand AND have written their notes, move to the next",
-        "   section. Repeat for all sections.",
-        "5. When done, archive the lecture to docs/lectures/<module>/<topic>.md",
-        "   (re-teaching replaces that file).",
-      ].join("\n")
-    );
-  }
-);
-
-server.tool(
-  "generate_extra_practice",
-  "Set up fresh practice problems for a module. Computes the next Extra<N> number and returns the exact file layout + format the agent must create (markdown problem + stub + failing test). Problems and tests only — never solutions.",
-  {
-    module: z.string().describe('Module to drill, e.g. "arrays", "03", "graph-algorithms".'),
-    count: z.number().int().min(1).max(20).optional().describe("How many problems (default 3)."),
+const tools = {
+  list_curriculum: {
+    description:
+      "List every module and topic in the DSA workbook. Use to see what can be taught or drilled.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    run() {
+      const lines = [];
+      for (const m of moduleDirs()) {
+        const nd = join(SRC, m, "notes");
+        const topics = existsSync(nd)
+          ? readdirSync(nd).filter((f) => f.endsWith(".md")).map((f) => topTitle(join(nd, f)))
+          : [];
+        lines.push(`${m}: ${topics.join(", ")}`);
+      }
+      return ok(lines.join("\n") || "No modules found.");
+    },
   },
-  async ({ module, count }) => {
-    const dir = resolveModule(module);
-    if (!dir) return text(`No module matched "${module}". Call list_curriculum to see options.`);
-    const start = nextExtraIndex(dir);
-    const n = count ?? 3;
-    const idxs = Array.from({ length: n }, (_, i) => start + i);
-    const base = `src/${dir}/extra-practice`;
-    return text(
-      [
-        GUARD,
-        "",
-        `EXTRA PRACTICE for module: ${dir}`,
-        `Create ${n} problem(s), numbered Extra${idxs[0]}..Extra${idxs[idxs.length - 1]}`,
-        `(continuing from existing — next free index is ${start}).`,
-        "",
-        "Create these files:",
-        `  ${base}/PROBLEMS.md            (append; same format as the module's PROBLEM_SET.md)`,
-        ...idxs.map((i) => `  ${base}/Extra${i}.java          (package-private stub, throws UnsupportedOperationException)`),
-        ...idxs.map((i) => `  ${base}/tests/Extra${i}Test.java  (JUnit 5, one @Test per worked example, fails until solved)`),
-        "",
-        "PROBLEMS.md format per problem (exactly):",
-        "  ## Problem <N>: <Title>",
-        "  **LeetCode:** [<num>. <name>](https://leetcode.com/problems/<slug>/)   <- only if real LeetCode; else omit this line",
-        "  ### Description  <prose>",
-        "  ### Examples     <2-3 worked Input/Output blocks>",
-        "  ### Constraints  <bounds>",
-        "  ---",
-        "",
-        "Rules:",
-        "- Map Problem <N> in the markdown to class Extra<N>.",
-        "- Mix difficulty easy -> hard; vary patterns; don't clone the shipped set.",
-        "- Write the problem and the TEST (the spec) only. NEVER the solution — leave",
-        "  the stub throwing. The student implements Extra<N> until the test passes.",
-        `- Verify with: ./gradlew test_${dir}  (the new Extra*Test should compile and FAIL).`,
-      ].join("\n")
-    );
-  }
-);
 
-await server.connect(new StdioServerTransport());
+  teach_topic: {
+    description:
+      "Begin a section-gated lecture on a DSA topic. Resolves the topic to its notes page, returns its real section list, and the protocol to teach one section at a time with a human-in-the-loop gate.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        topic: { type: "string", description: 'Topic or module to teach, e.g. "stacks", "dijkstra", "03".' },
+      },
+      required: ["topic"],
+      additionalProperties: false,
+    },
+    run(args) {
+      if (!args || typeof args.topic !== "string") return fail("teach_topic requires a string 'topic'.");
+      const t = resolveTopic(args.topic);
+      if (!t) return fail(`No topic matched "${args.topic}". Call list_curriculum to see options.`);
+      const secs = sections(t.file);
+      const list = secs.map((s, i) => `  ${i + 1}. ${s}`).join("\n");
+      return ok(
+        [
+          GUARD,
+          "",
+          `TEACH: ${t.title}`,
+          `Source notes page: ${t.rel}`,
+          "",
+          "Main sections (teach these IN ORDER, one at a time):",
+          list,
+          "",
+          "PROTOCOL — section-gated lecture:",
+          "1. Tell the student the section list above so they know the shape.",
+          "2. Teach ONE section deeply: intuition -> mental model -> mechanics ->",
+          "   complexity. Use analogies and a worked example on a DIFFERENT instance",
+          "   than the notes prompt names. Never speak the exact sentence a prompt or",
+          "   its ## Summary is asking for.",
+          "3. GATE (do not skip): after the section, STOP. (a) Ask them to explain it",
+          "   back; if wrong/thin, re-teach differently. (b) Have them fill that",
+          "   section's notes prompts in their own words and show you; grade what they",
+          "   wrote — mark wrong/thin/missing, never rewrite it.",
+          "4. Only when they understand AND have written their notes, move to the next",
+          "   section. Repeat for all sections.",
+          "5. When done, archive the lecture to docs/lectures/<module>/<topic>.md",
+          "   (re-teaching replaces that file).",
+        ].join("\n")
+      );
+    },
+  },
+
+  generate_extra_practice: {
+    description:
+      "Set up fresh practice problems for a module. Computes the next Extra<N> number and returns the exact file layout + format the agent must create (markdown problem + stub + failing test). Problems and tests only — never solutions.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        module: { type: "string", description: 'Module to drill, e.g. "arrays", "03", "graph-algorithms".' },
+        count: { type: "integer", minimum: 1, maximum: 20, description: "How many problems (default 3)." },
+      },
+      required: ["module"],
+      additionalProperties: false,
+    },
+    run(args) {
+      if (!args || typeof args.module !== "string") return fail("generate_extra_practice requires a string 'module'.");
+      const dir = resolveModule(args.module);
+      if (!dir) return fail(`No module matched "${args.module}". Call list_curriculum to see options.`);
+      const start = nextExtraIndex(dir);
+      const n = Number.isInteger(args.count) ? Math.min(Math.max(args.count, 1), 20) : 3;
+      const idxs = Array.from({ length: n }, (_, i) => start + i);
+      const base = `src/${dir}/extra-practice`;
+      return ok(
+        [
+          GUARD,
+          "",
+          `EXTRA PRACTICE for module: ${dir}`,
+          `Create ${n} problem(s), numbered Extra${idxs[0]}..Extra${idxs[idxs.length - 1]}`,
+          `(continuing from existing — next free index is ${start}).`,
+          "",
+          "Create these files:",
+          `  ${base}/PROBLEMS.md            (append; same format as the module's PROBLEM_SET.md)`,
+          ...idxs.map((i) => `  ${base}/Extra${i}.java          (package-private stub, throws UnsupportedOperationException)`),
+          ...idxs.map((i) => `  ${base}/tests/Extra${i}Test.java  (JUnit 5, one @Test per worked example, fails until solved)`),
+          "",
+          "PROBLEMS.md format per problem (exactly):",
+          "  ## Problem <N>: <Title>",
+          "  **LeetCode:** [<num>. <name>](https://leetcode.com/problems/<slug>/)   <- only if real LeetCode; else omit this line",
+          "  ### Description  <prose>",
+          "  ### Examples     <2-3 worked Input/Output blocks>",
+          "  ### Constraints  <bounds>",
+          "  ---",
+          "",
+          "Rules:",
+          "- Map Problem <N> in the markdown to class Extra<N>.",
+          "- Mix difficulty easy -> hard; vary patterns; don't clone the shipped set.",
+          "- Write the problem and the TEST (the spec) only. NEVER the solution — leave",
+          "  the stub throwing. The student implements Extra<N> until the test passes.",
+          `- Verify with: ./gradlew test_${dir}  (the new Extra*Test should compile and FAIL).`,
+        ].join("\n")
+      );
+    },
+  },
+};
+
+// --- minimal JSON-RPC 2.0 over newline-delimited stdio ---------------------
+
+const PROTOCOL_VERSION = "2025-06-18";
+const send = (obj) => process.stdout.write(JSON.stringify(obj) + "\n");
+
+function dispatch(method, params) {
+  switch (method) {
+    case "initialize":
+      return {
+        protocolVersion: params?.protocolVersion || PROTOCOL_VERSION,
+        capabilities: { tools: {} },
+        serverInfo: { name: "dsa-workbook", version: "1.0.0" },
+      };
+    case "ping":
+      return {};
+    case "tools/list":
+      return {
+        tools: Object.entries(tools).map(([name, t]) => ({
+          name,
+          description: t.description,
+          inputSchema: t.inputSchema,
+        })),
+      };
+    case "resources/list":
+      return { resources: [] };
+    case "prompts/list":
+      return { prompts: [] };
+    case "tools/call": {
+      const t = tools[params?.name];
+      if (!t) return { content: [{ type: "text", text: `Unknown tool: ${params?.name}` }], isError: true };
+      return t.run(params?.arguments || {});
+    }
+    default: {
+      const e = new Error(`Method not found: ${method}`);
+      e.code = -32601;
+      throw e;
+    }
+  }
+}
+
+function onMessage(line) {
+  let msg;
+  try {
+    msg = JSON.parse(line);
+  } catch {
+    return; // ignore unparseable lines
+  }
+  const { id, method, params } = msg;
+  // Notifications (no id) get no response.
+  if (id === undefined || id === null) return;
+  try {
+    send({ jsonrpc: "2.0", id, result: dispatch(method, params) });
+  } catch (err) {
+    send({ jsonrpc: "2.0", id, error: { code: err.code || -32603, message: String(err.message || err) } });
+  }
+}
+
+let buf = "";
+process.stdin.setEncoding("utf8");
+process.stdin.on("data", (chunk) => {
+  buf += chunk;
+  let i;
+  while ((i = buf.indexOf("\n")) >= 0) {
+    const line = buf.slice(0, i).trim();
+    buf = buf.slice(i + 1);
+    if (line) onMessage(line);
+  }
+});
+process.stdin.on("end", () => process.exit(0));

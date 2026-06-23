@@ -4,6 +4,10 @@ Makes the workbook's **teach** and **extra-practice** workflows work in *any*
 MCP-capable agent — not just Claude Code skills. Same tutor guard, same
 section-gated teaching, same problem format, one implementation.
 
+**Zero dependencies, zero install.** It's a single Node file using only built-ins.
+Fork → clone → your agent runs `node mcp/server.mjs` for you. Nothing to
+`npm install`, nothing to host.
+
 It only **resolves and computes** (reads a topic's real section headings, scans
 for the next `Extra<N>` number) and hands back a guard-bound protocol for the
 agent to follow. It never writes solutions, notes, or implementations — the agent
@@ -17,22 +21,18 @@ writes files, so the repo's "never hand over the answer" guard still applies.
 | `teach_topic(topic)` | Resolves the topic to its notes page, returns its real section list + the section-gated lecture protocol (teach one section, gate on understanding + notes, repeat). |
 | `generate_extra_practice(module, count?)` | Computes the next `Extra<N>` index and returns the exact files + format to create (markdown problem + stub + failing test). Problems and tests only. |
 
-## One-time setup
+## Setup
 
-```bash
-cd mcp
-npm install
-```
-
-Node 18+ required. That's it — the config files below point agents at
-`mcp/server.mjs`.
+None. Requires Node 18+ (almost certainly already installed). The config files
+below point your agent at `mcp/server.mjs`; the agent spawns it on demand and
+shuts it down with the session.
 
 ## Per-agent configuration
 
 Repo-scoped configs are already shipped for three agents — just approve the
 server when the tool prompts:
 
-- **Claude Code** → `.mcp.json` (run `/mcp` to approve, then `/dsa-workbook` tools).
+- **Claude Code** → `.mcp.json` (run `/mcp` to approve, then the `dsa-workbook` tools).
 - **Cursor** → `.cursor/mcp.json` (Settings → MCP → enable).
 - **VS Code / Copilot agent mode** → `.vscode/mcp.json` (Start the server from the MCP view).
 

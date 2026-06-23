@@ -3,15 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "MCP server for the DSA workbook — portable teach + extra-practice tools that work in any MCP-capable agent.",
+  "description": "Zero-dependency MCP server for the DSA workbook — portable teach + extra-practice tools that work in any stdio-MCP agent, no install required.",
   "bin": {
     "dsa-workbook-mcp": "server.mjs"
   },
   "scripts": {
     "start": "node server.mjs"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0",
-    "zod": "^3.23.8"
   }
 }
